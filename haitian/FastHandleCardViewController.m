@@ -7,20 +7,20 @@
 //
 
 #import "FastHandleCardViewController.h"
+#import "WSPageView.h"
+#import "WSIndexBanner.h"
 #define kMargin 10
+
+#define pageHeight 150
 static NSString *const cellId = @"cellId";
 static NSString *const headerId = @"headerId";
 static NSString *const footerId = @"footerId";
-@interface FastHandleCardViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface FastHandleCardViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,WSPageViewDelegate,WSPageViewDataSource>
 
 @property (nonatomic, strong)UICollectionView *collectionView;
 @end
 
 @implementation FastHandleCardViewController
-{
-    NSArray *arr;
-    NSArray *arr1;
-}
 #ifdef __IPHONE_7_0
 - (UIRectEdge)edgesForExtendedLayout
 {
@@ -31,10 +31,24 @@ static NSString *const footerId = @"footerId";
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor whiteColor];
     self.title=@"快速办卡";
-    arr=@[@"好评推荐",@"极速放款"];
-    arr1=@[@"HighPraise",@"FastLoan"];
+    WSPageView *pageView = [[WSPageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH,pageHeight)];
+    pageView.delegate = self;
+    pageView.dataSource = self;
+    pageView.minimumPageAlpha = 0.4;   //非当前页的透明比例
+    pageView.minimumPageScale = 0.85;  //非当前页的缩放比例
+    pageView.orginPageCount = 3; //原始页数
     
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-64-44) collectionViewLayout:[UICollectionViewFlowLayout new]];
+    pageView.backgroundColor=[UIColor grayColor];
+    //初始化pageControl
+    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, pageView.frame.size.height - 8 - 10, WIDTH, 8)];
+    pageControl.pageIndicatorTintColor = [UIColor grayColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+    pageView.pageControl = pageControl;
+    [pageView addSubview:pageControl];
+    [pageView stopTimer];
+    [self.view addSubview:pageView];
+    
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0,CGRectGetMaxY(pageView.frame)+10, WIDTH, HEIGHT-64-44) collectionViewLayout:[UICollectionViewFlowLayout new]];
     [_collectionView setBackgroundColor:kColorFromRGBHex(0xEBEBEB)];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
@@ -47,6 +61,30 @@ static NSString *const footerId = @"footerId";
     [self.view addSubview:_collectionView];
     // Do any additional setup after loading the view.
 }
+#pragma mark NewPagedFlowView Delegate
+- (CGSize)sizeForPageInFlowView:(WSPageView *)flowView {
+    return CGSizeMake(WIDTH, pageHeight);
+}
+#pragma mark NewPagedFlowView Datasource
+- (NSInteger)numberOfPagesInFlowView:(WSPageView *)flowView {
+    return 3;
+}
+
+- (UIView *)flowView:(WSPageView *)flowView cellForPageAtIndex:(NSInteger)index{
+    WSIndexBanner *bannerView = (WSIndexBanner *)[flowView dequeueReusableCell];
+    if (!bannerView) {
+        
+        bannerView = [[WSIndexBanner alloc] initWithFrame:CGRectMake(0, 0,  WIDTH , pageHeight)];
+        bannerView.layer.cornerRadius = 4;
+        bannerView.layer.masksToBounds = YES;
+    }
+    [bannerView.mainImageView setImage:[UIImage imageNamed:@"WechatIMG2"]];
+    //    bannerView.mainImageView.image = self.imageArray[index];
+    //    [bannerView.mainImageView sd_setImageWithURL:[NSURL URLWithString:ImgURLArray[index]]];
+    
+    return bannerView;
+}
+
 
 #pragma mark ---- UICollectionViewDataSource
 

@@ -8,17 +8,34 @@
 
 #import "PersonCenterViewController.h"
 
-@interface PersonCenterViewController ()
-
+@interface PersonCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property(strong, nonatomic)UIView *headView;
 @end
 
 @implementation PersonCenterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title=@"个人中心";
+    self.view.backgroundColor=[UIColor whiteColor];
+    UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+    tab.delegate=self;
+    tab.dataSource=self;
+    [self.view addSubview:tab];
     // Do any additional setup after loading the view.
 }
 
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+
+    return  6;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    cell.textLabel.text=@"个人资料";
+    return cell;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

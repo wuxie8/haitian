@@ -8,6 +8,8 @@
 
 #import "HomePageViewController.h"
 #import "ASValueTrackingSlider.h"
+
+#define ImageHeight 200
 @interface HomePageViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(strong, nonatomic)UIView*headView;
 @end
@@ -41,17 +43,17 @@
 {
     if (!_headView) {
         _headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 500)];
-        UIImageView *image=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 180)];
+        UIImageView *image=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH,  ImageHeight)];
         [image setImage:[UIImage imageNamed:@"banner"]];
         [_headView addSubview:image];
         
-        UIView *whiteView=[[UIView alloc]initWithFrame:CGRectMake(0, 180, WIDTH, 87)];
+        UIView *whiteView=[[UIView alloc]initWithFrame:CGRectMake(0,  ImageHeight, WIDTH, 87)];
         whiteView.backgroundColor=[UIColor grayColor];
         [_headView addSubview:whiteView];
         
         
         
-        UIView *view=[[UIView alloc]initWithFrame:CGRectMake(21, 160, WIDTH-21*2, 90)];
+        UIView *view=[[UIView alloc]initWithFrame:CGRectMake(21,  ImageHeight-13, WIDTH-21*2, 90)];
         view.backgroundColor=[UIColor whiteColor];
         [_headView addSubview:view];
         
@@ -83,7 +85,7 @@
         [view addSubview:label4];
         _headView.backgroundColor=[UIColor whiteColor];
         
-        UIView *view1 =[[UIView alloc]initWithFrame:CGRectMake(0, 270, WIDTH, 210)];
+        UIView *view1 =[[UIView alloc]initWithFrame:CGRectMake(0,  CGRectGetMaxY(whiteView.frame), WIDTH, 210)];
         
         UILabel *lab1=[[UILabel alloc]initWithFrame:CGRectMake(42, 50, 40, 20)];
         lab1.text=@"金额";
@@ -91,6 +93,7 @@
         ASValueTrackingSlider *asValue=[[ASValueTrackingSlider alloc]initWithFrame:CGRectMake(CGRectGetMaxX(lab1.frame)+10, 50, 250, 20)];
         asValue.maximumValue=10000;
         asValue.minimumValue=0;
+        asValue.value=5000;
         NSNumberFormatter *tempFormatter = [[NSNumberFormatter alloc] init];
         [tempFormatter setPositivePrefix:@"¥"];
         [tempFormatter setNegativePrefix:@"¥"];
@@ -98,11 +101,12 @@
         [asValue setNumberFormatter:tempFormatter];
         asValue.popUpViewColor = [UIColor colorWithHue:0.55 saturation:0.8 brightness:0.9 alpha:0.7];
         asValue.font = [UIFont fontWithName:@"GillSans-Bold" size:22];
-        UIImage *leftTrack = [[UIImage imageNamed:@"学生贷"]
-                              resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 14)];
+        UIImage *leftTrack = [[UIImage imageNamed:@"dot"]
+                              resizableImageWithCapInsets:UIEdgeInsetsMake(0, 24, 0, 24)];
         [asValue showPopUpView];
-        [asValue setMinimumTrackImage:leftTrack forState:UIControlStateNormal];
-     
+//        [asValue setMinimumTrackImage:leftTrack forState:UIControlStateNormal];
+        asValue.maximumValueImage=[UIImage imageNamed:@"dot"];
+        [asValue setThumbImage:[UIImage imageNamed:@"dot"] forState:UIControlStateNormal];
         asValue.textColor = [UIColor colorWithHue:0.55 saturation:1.0 brightness:0.5 alpha:1];
         [view1 addSubview:asValue];
        
@@ -122,7 +126,7 @@
         [asValue2 setNumberFormatter:tempFormatter2];
         asValue2.popUpViewColor = [UIColor colorWithHue:0.55 saturation:0.8 brightness:0.9 alpha:0.7];
         asValue2.font = [UIFont fontWithName:@"GillSans-Bold" size:22];
-        UIImage *leftTrack2 = [[UIImage imageNamed:@"学生贷"]
+        UIImage *leftTrack2 = [[UIImage imageNamed:@"dot"]
                               resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 14)];
         [asValue2 showPopUpView];
         [asValue2 setMinimumTrackImage:leftTrack2 forState:UIControlStateNormal];

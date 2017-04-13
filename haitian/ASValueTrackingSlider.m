@@ -193,7 +193,11 @@ static void * ASValueTrackingSliderBoundsContext = &ASValueTrackingSliderBoundsC
 }
 
 #pragma mark - private
-
+// 控制slider的宽和高，这个方法才是真正的改变slider滑道的高的
+- (CGRect)trackRectForBounds:(CGRect)bounds
+{
+    return CGRectMake(0, 0, 250, 20);
+}
 - (void)setup
 {
     _autoAdjustTrackColor = YES;
