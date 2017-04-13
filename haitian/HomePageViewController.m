@@ -22,6 +22,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor=BaseColor;
     arr1=@[@"applyFor",@"audit",@"borrow"];
      arr2=@[@"APP申请，大数据授信",@"APP申请，大数据授信",@"APP申请，大数据授信"];
      arr3=@[@"APP申请，大数据授信",@"APP申请，大数据授信",@"APP申请，大数据授信"];
@@ -92,14 +93,14 @@
         NSNumberFormatter *tempFormatter = [[NSNumberFormatter alloc] init];
         [tempFormatter setPositivePrefix:@"¥"];
         [tempFormatter setNegativePrefix:@"¥"];
-        [asValue setMaxFractionDigitsDisplayed:0];
+        [asValue setMaxFractionDigitsDisplayed:100];
         [asValue setNumberFormatter:tempFormatter];
         asValue.popUpViewColor = [UIColor colorWithHue:0.55 saturation:0.8 brightness:0.9 alpha:0.7];
         asValue.font = [UIFont fontWithName:@"GillSans-Bold" size:22];
       
         [asValue showPopUpView];
       
-        asValue.minimumValueImage=[UIImage imageNamed:@"dot"];
+//        asValue.minimumValueImage=[UIImage imageNamed:@"dot"];
         [asValue setThumbImage:[UIImage imageNamed:@"dot"] forState:UIControlStateNormal];
         asValue.textColor = [UIColor colorWithHue:0.55 saturation:1.0 brightness:0.5 alpha:1];
         [view1 addSubview:asValue];
@@ -124,7 +125,7 @@
                               resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 14)];
         [asValue2 showPopUpView];
         [asValue2 setMinimumTrackImage:leftTrack2 forState:UIControlStateNormal];
-        
+         [asValue2  setThumbImage:[UIImage imageNamed:@"dot"] forState:UIControlStateNormal];
         asValue2.textColor = [UIColor colorWithHue:0.55 saturation:1.0 brightness:0.5 alpha:1];
         [view1 addSubview:asValue2];
         

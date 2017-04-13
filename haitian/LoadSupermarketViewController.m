@@ -8,6 +8,7 @@
 
 #import "LoadSupermarketViewController.h"
 #import "ASValueTrackingSlider.h"
+#import "LoadSupermarketCollectionViewCell.h"
 #define kMargin 10
 
 static NSString *const cellId = @"cellId";
@@ -32,7 +33,7 @@ static NSString *const footerId = @"footerId";
 #endif
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor=[UIColor whiteColor];
+ self.view.backgroundColor=BaseColor;
   self.title=@"贷款超市";
     arr=@[@"好评推荐",@"极速放款"];
       arr1=@[@"HighPraise",@"FastLoan"];
@@ -43,7 +44,7 @@ static NSString *const footerId = @"footerId";
     _collectionView.dataSource = self;
     self.collectionView.alwaysBounceVertical = YES;
     // 注册cell、sectionHeader、sectionFooter
-    [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:cellId];
+    [_collectionView registerClass:[LoadSupermarketCollectionViewCell class] forCellWithReuseIdentifier:cellId];
     [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerId];
     [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerId];
     
@@ -70,8 +71,8 @@ static NSString *const footerId = @"footerId";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [_collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor purpleColor];
+   LoadSupermarketCollectionViewCell *cell =(LoadSupermarketCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+//    cell.backgroundColor = [UIColor purpleColor];
     
     return cell;
 }
@@ -96,18 +97,7 @@ static NSString *const footerId = @"footerId";
         [headerView addSubview:lab];
         return headerView;
     }
-    else if([kind isEqualToString:UICollectionElementKindSectionFooter])
-    {
-        UICollectionReusableView *footerView = [_collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:footerId forIndexPath:indexPath];
-        if(footerView == nil)
-        {
-            footerView = [[UICollectionReusableView alloc] init];
-        }
-        footerView.backgroundColor = [UIColor lightGrayColor];
         
-        return footerView;
-    }
-    
     return nil;
 }
 #pragma mark UICollectionViewDelegateFlowLayout

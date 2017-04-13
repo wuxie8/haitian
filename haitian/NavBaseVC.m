@@ -17,6 +17,7 @@
 - (void)setTitle:(NSString *)title
 {
     self.navigationItem.title = title;
+     self.view.backgroundColor=BaseColor;
 }
 
 #ifdef __IPHONE_7_0
