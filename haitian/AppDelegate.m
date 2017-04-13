@@ -55,11 +55,11 @@
     [tabBarController.tabBar insertSubview:barBgView atIndex:0];
     tabBarController.tabBar.opaque = YES;
     
-    tabBarController.viewControllers=@[nav1C,nav2C,nav3C];
+    tabBarController.viewControllers=@[nav1C,nav2C,nav3C,nav4C];
     tabBarController.selectedIndex = 0; //默认选中第几个图标（此步操作在绑定viewControllers数据源之后）
-    NSArray *titles = @[@"简单借款秒借版",@"贷款超市",@"快速办卡",@"个人中心"];
-    NSArray *images=@[@"jishiyu",@"lending",@"Mineing"];
-    NSArray *selectedImages=@[@"jishiyuBlue",@"lendingBlue",@"MineingBlue"];
+    NSArray *titles = @[@"首页",@"贷款超市",@"快速办卡",@"个人中心"];
+    NSArray *images=@[@"HomePage",@"LoadSupermarket",@"FastHandleCard",@"PersonCenter"];
+    NSArray *selectedImages=@[@"HomePageHeight",@"LoadSupermarketHeight",@"FastHandleCardHeight",@"PersonCenterHeight"];
     //               NSArray *titles = @[@"简单借款秒借版",@"个人中心",@"设置"];
     //        NSArray *images=@[@"lending",@"Mineing"];
     //         NSArray *selectedImages=@[@"lendingBlue",@"MineingBlue"];

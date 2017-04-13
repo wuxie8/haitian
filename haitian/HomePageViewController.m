@@ -22,7 +22,6 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self loadHeadView];
     arr1=@[@"applyFor",@"audit",@"borrow"];
      arr2=@[@"APP申请，大数据授信",@"APP申请，大数据授信",@"APP申请，大数据授信"];
      arr3=@[@"APP申请，大数据授信",@"APP申请，大数据授信",@"APP申请，大数据授信"];
@@ -34,15 +33,11 @@
     // Do any additional setup after loading the view.
 }
 
--(void)loadHeadView
-{
-   
-    
-}
+
 -(UIView *)headView
 {
     if (!_headView) {
-        _headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 500)];
+        _headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 520)];
         UIImageView *image=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH,  ImageHeight)];
         [image setImage:[UIImage imageNamed:@"banner"]];
         [_headView addSubview:image];
@@ -90,7 +85,7 @@
         UILabel *lab1=[[UILabel alloc]initWithFrame:CGRectMake(42, 50, 40, 20)];
         lab1.text=@"金额";
         [view1 addSubview:lab1];
-        ASValueTrackingSlider *asValue=[[ASValueTrackingSlider alloc]initWithFrame:CGRectMake(CGRectGetMaxX(lab1.frame)+10, 50, 250, 20)];
+        ASValueTrackingSlider *asValue=[[ASValueTrackingSlider alloc]initWithFrame:CGRectMake(CGRectGetMaxX(lab1.frame)+10, 50, 250, 10)];
         asValue.maximumValue=10000;
         asValue.minimumValue=0;
         asValue.value=5000;
@@ -101,11 +96,10 @@
         [asValue setNumberFormatter:tempFormatter];
         asValue.popUpViewColor = [UIColor colorWithHue:0.55 saturation:0.8 brightness:0.9 alpha:0.7];
         asValue.font = [UIFont fontWithName:@"GillSans-Bold" size:22];
-        UIImage *leftTrack = [[UIImage imageNamed:@"dot"]
-                              resizableImageWithCapInsets:UIEdgeInsetsMake(0, 24, 0, 24)];
+      
         [asValue showPopUpView];
-//        [asValue setMinimumTrackImage:leftTrack forState:UIControlStateNormal];
-        asValue.maximumValueImage=[UIImage imageNamed:@"dot"];
+      
+        asValue.minimumValueImage=[UIImage imageNamed:@"dot"];
         [asValue setThumbImage:[UIImage imageNamed:@"dot"] forState:UIControlStateNormal];
         asValue.textColor = [UIColor colorWithHue:0.55 saturation:1.0 brightness:0.5 alpha:1];
         [view1 addSubview:asValue];
@@ -137,7 +131,12 @@
         UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(18, CGRectGetMaxY(lab2.frame)+30, WIDTH-36, 50)];
         [but setImage:[UIImage imageNamed:@"ApplyImmediately"] forState:UIControlStateNormal];
         [view1 addSubview:but];
-        [_headView addSubview:view1];
+        
+        UIView *view2=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(view1.frame)+15, WIDTH, 5)];
+        view2.backgroundColor=[UIColor grayColor];
+         [_headView addSubview:view1];
+        [_headView addSubview:view2];
+       
     }
     return _headView;
 }
