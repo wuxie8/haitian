@@ -12,6 +12,9 @@
 		8402B9F91E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402B9F81E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m */; };
 		846856151EA059F400C74F87 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856141EA059F400C74F87 /* LoginViewController.m */; };
 		846856181EA0764900C74F87 /* AccountPassswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856171EA0764900C74F87 /* AccountPassswordViewController.m */; };
+		846856241EA0813C00C74F87 /* NetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856211EA0813C00C74F87 /* NetWorkManager.m */; };
+		846856251EA0813C00C74F87 /* NetWorkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856231EA0813C00C74F87 /* NetWorkUtil.m */; };
+		8468562C1EA0822900C74F87 /* MessageAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8468562B1EA0822900C74F87 /* MessageAlertView.m */; };
 		84A7398B1E9E25B700A42502 /* WSIndexBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A739881E9E25B700A42502 /* WSIndexBanner.m */; };
 		84A7398C1E9E25B700A42502 /* WSPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7398A1E9E25B700A42502 /* WSPageView.m */; };
 		84B9DBEB1E9DC0990066A92D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DBEA1E9DC0990066A92D /* main.m */; };
@@ -62,6 +65,12 @@
 		846856141EA059F400C74F87 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		846856161EA0764900C74F87 /* AccountPassswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountPassswordViewController.h; sourceTree = "<group>"; };
 		846856171EA0764900C74F87 /* AccountPassswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountPassswordViewController.m; sourceTree = "<group>"; };
+		846856201EA0813B00C74F87 /* NetWorkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetWorkManager.h; path = NetWork/NetWorkManager.h; sourceTree = "<group>"; };
+		846856211EA0813C00C74F87 /* NetWorkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetWorkManager.m; path = NetWork/NetWorkManager.m; sourceTree = "<group>"; };
+		846856221EA0813C00C74F87 /* NetWorkUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetWorkUtil.h; path = NetWork/NetWorkUtil.h; sourceTree = "<group>"; };
+		846856231EA0813C00C74F87 /* NetWorkUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetWorkUtil.m; path = NetWork/NetWorkUtil.m; sourceTree = "<group>"; };
+		8468562A1EA0822900C74F87 /* MessageAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageAlertView.h; path = MessageAlertView/MessageAlertView.h; sourceTree = "<group>"; };
+		8468562B1EA0822900C74F87 /* MessageAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageAlertView.m; path = MessageAlertView/MessageAlertView.m; sourceTree = "<group>"; };
 		84A739871E9E25B700A42502 /* WSIndexBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WSIndexBanner.h; path = "第三方轮播/WSIndexBanner.h"; sourceTree = "<group>"; };
 		84A739881E9E25B700A42502 /* WSIndexBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WSIndexBanner.m; path = "第三方轮播/WSIndexBanner.m"; sourceTree = "<group>"; };
 		84A739891E9E25B700A42502 /* WSPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WSPageView.h; path = "第三方轮播/WSPageView.h"; sourceTree = "<group>"; };
@@ -156,6 +165,26 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		8468561F1EA0810700C74F87 /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				846856201EA0813B00C74F87 /* NetWorkManager.h */,
+				846856211EA0813C00C74F87 /* NetWorkManager.m */,
+				846856221EA0813C00C74F87 /* NetWorkUtil.h */,
+				846856231EA0813C00C74F87 /* NetWorkUtil.m */,
+			);
+			name = NetWork;
+			sourceTree = "<group>";
+		};
+		846856291EA0820900C74F87 /* MessageAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				8468562A1EA0822900C74F87 /* MessageAlertView.h */,
+				8468562B1EA0822900C74F87 /* MessageAlertView.m */,
+			);
+			name = MessageAlertView;
+			sourceTree = "<group>";
+		};
 		84A739861E9E257200A42502 /* 第三方轮播 */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +226,8 @@
 				84B9DBEF1E9DC0990066A92D /* ViewController.h */,
 				84B9DBF01E9DC0990066A92D /* ViewController.m */,
 				84B9DBF21E9DC0990066A92D /* Main.storyboard */,
+				846856291EA0820900C74F87 /* MessageAlertView */,
+				8468561F1EA0810700C74F87 /* NetWork */,
 				84A739861E9E257200A42502 /* 第三方轮播 */,
 				84B9DC521E9DEC200066A92D /* ASValueTrackingSlider */,
 				84B9DC491E9DD9CE0066A92D /* HomePageViewController.h */,
@@ -474,6 +505,7 @@
 			files = (
 				84A7398B1E9E25B700A42502 /* WSIndexBanner.m in Sources */,
 				8402B9DA1E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m in Sources */,
+				846856251EA0813C00C74F87 /* NetWorkUtil.m in Sources */,
 				84B9DBF11E9DC0990066A92D /* ViewController.m in Sources */,
 				84B9DBEE1E9DC0990066A92D /* AppDelegate.m in Sources */,
 				8402B9F91E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m in Sources */,
@@ -482,6 +514,7 @@
 				84B9DC511E9DEC1C0066A92D /* ASValueTrackingSlider.m in Sources */,
 				84B9DC501E9DEC1C0066A92D /* ASValuePopUpView.m in Sources */,
 				84B9DC431E9DCDF50066A92D /* FastHandleCardViewController.m in Sources */,
+				8468562C1EA0822900C74F87 /* MessageAlertView.m in Sources */,
 				84B9DBEB1E9DC0990066A92D /* main.m in Sources */,
 				84A7398C1E9E25B700A42502 /* WSPageView.m in Sources */,
 				84B9DC371E9DCCC10066A92D /* GestureBaseVC.m in Sources */,
@@ -490,6 +523,7 @@
 				84B9DC4B1E9DD9CE0066A92D /* HomePageViewController.m in Sources */,
 				846856151EA059F400C74F87 /* LoginViewController.m in Sources */,
 				84B9DC351E9DCCC10066A92D /* BaseNC.m in Sources */,
+				846856241EA0813C00C74F87 /* NetWorkManager.m in Sources */,
 				84B9DC461E9DCE240066A92D /* PersonCenterViewController.m in Sources */,
 				84B9DC391E9DCCC10066A92D /* NavBaseVC.m in Sources */,
 			);

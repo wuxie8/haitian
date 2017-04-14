@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "AccountPassswordViewController.h"
 #define ViewHeight 50
 #define ButtonWeight 150
 @interface LoginViewController ()
@@ -84,9 +85,84 @@
     
     UIButton *accountPasswordBut=[[UIButton alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(loginButton.frame)+10, 150, 30)];
     [accountPasswordBut setTitle:@"账号密码登录" forState:UIControlStateNormal];
+    [accountPasswordBut addTarget:self action:@selector(accountPasswordClick) forControlEvents:UIControlEventTouchUpInside];
     [loginView addSubview:accountPasswordBut];
 
+    
+ 
     // Do any additional setup after loading the view.
+}
+-(void)verificationCodeRegister
+{
+    UIView *view1=[self.view viewWithTag:100];
+    
+    UITextField *text1=(UITextField *)[view1 viewWithTag:1000];
+    
+    if (text1.text.length==0) {
+        [MessageAlertView showErrorMessage:@"请输入手机号"];
+        return;
+    }
+    else if (text1.text.length!=11)
+    {
+        [MessageAlertView showErrorMessage:@"请输入正确的手机号"];
+        return;
+    }
+    
+    __block NSInteger second = 60;
+    //全局队列    默认优先级
+    dispatch_queue_t quene = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    //定时器模式  事件源
+    dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, quene);
+    //NSEC_PER_SEC是秒，＊1是每秒
+    dispatch_source_set_timer(timer, dispatch_walltime(NULL, 0), NSEC_PER_SEC * 1, 0);
+    //设置响应dispatch源事件的block，在dispatch源指定的队列上运行
+    dispatch_source_set_event_handler(timer, ^{
+        //回调主线程，在主线程中操作UI
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (second >= 0) {
+                [but setTitle:[NSString stringWithFormat:@"%ld秒",(long)second] forState:UIControlStateNormal];
+                second--;
+                [but setEnabled:NO];
+                but.alpha=0.4;
+                but.backgroundColor=[UIColor grayColor];
+            }
+            else
+            {
+                //这句话必须写否则会出问题
+                dispatch_source_cancel(timer);
+                [but setTitle:@"获取验证码" forState:UIControlStateNormal];
+                [but setEnabled:YES];
+                but.alpha=1;
+                but.backgroundColor=AppBackColor;
+            }
+        });
+    });
+    //启动源
+    dispatch_resume(timer);
+    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
+                       text1.text,@"mobile",
+                       
+                       nil];
+    [[NetWorkManager sharedManager]postJSON:verificationCoderegister parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *dic=(NSDictionary *)responseObject;
+        if ([dic[@"status"]boolValue]) {
+            [MessageAlertView showSuccessMessage:@"发送成功"];
+        }
+        else
+        {
+            [MessageAlertView showErrorMessage:[NSString stringWithFormat:@"%@",dic[@"info"]]];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        
+    }];
+}
+
+-(void)accountPasswordClick
+{
+    AccountPassswordViewController *AccountPasssword=[[AccountPassswordViewController alloc]init];
+    [self.navigationController pushViewController:AccountPasssword animated:YES];
+
 }
 
 - (void)didReceiveMemoryWarning {

@@ -10,4 +10,6 @@
 #define Header_h
 
 #import "Public.h"
+#import "NetWorkUtil.h"
+#import "NetWorkManager.h"
 #endif /* Header_h */
