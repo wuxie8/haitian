@@ -96,7 +96,20 @@ NSString *const FillColorAnimation = @"fillColor";
 
 - (void)setString:(NSString *)string
 {
+    
+    if ([string hasPrefix:@"¥"] ) {
+        string=[string stringByReplacingOccurrencesOfString:@"¥" withString:@""];
+        int i=[string intValue];
+        i=i/100*100;
+        
+        [[_attributedString mutableString] setString:[NSString stringWithFormat:@"¥%d",i]];
+        
+         _textLayer.string = _attributedString;
+        return;
+    }
+    
     [[_attributedString mutableString] setString:string];
+   
     _textLayer.string = _attributedString;
 }
 
