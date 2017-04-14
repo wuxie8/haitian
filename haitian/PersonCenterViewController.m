@@ -7,7 +7,7 @@
 //
 
 #import "PersonCenterViewController.h"
-
+#import "LoginViewController.h"
 @interface PersonCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(strong, nonatomic)UIView *headView;
 @end
@@ -64,6 +64,7 @@
         {
             UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(40, 20, 150, 30)];
             [but setTitle:@"点击登陆" forState: UIControlStateNormal ];
+            [but addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
             but.backgroundColor=[UIColor redColor];
             [cell.contentView addSubview:but];
         }
@@ -118,6 +119,13 @@
    
     
     return cell;
+}
+
+-(void)login
+{
+    LoginViewController *login=[[LoginViewController alloc]init];
+    [self.navigationController pushViewController:login animated:YES];
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
