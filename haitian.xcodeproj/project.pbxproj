@@ -15,6 +15,13 @@
 		846856241EA0813C00C74F87 /* NetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856211EA0813C00C74F87 /* NetWorkManager.m */; };
 		846856251EA0813C00C74F87 /* NetWorkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856231EA0813C00C74F87 /* NetWorkUtil.m */; };
 		8468562C1EA0822900C74F87 /* MessageAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8468562B1EA0822900C74F87 /* MessageAlertView.m */; };
+		846856381EA08FF900C74F87 /* BaseNC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8468562F1EA08FF900C74F87 /* BaseNC.m */; };
+		846856391EA08FF900C74F87 /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856311EA08FF900C74F87 /* BaseVC.m */; };
+		8468563A1EA08FF900C74F87 /* GestureBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856331EA08FF900C74F87 /* GestureBaseVC.m */; };
+		8468563B1EA08FF900C74F87 /* GestureNavBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856351EA08FF900C74F87 /* GestureNavBaseVC.m */; };
+		8468563C1EA08FF900C74F87 /* NavBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856371EA08FF900C74F87 /* NavBaseVC.m */; };
+		846856411EA0902D00C74F87 /* ASValuePopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8468563E1EA0902D00C74F87 /* ASValuePopUpView.m */; };
+		846856421EA0902D00C74F87 /* ASValueTrackingSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856401EA0902D00C74F87 /* ASValueTrackingSlider.m */; };
 		84A7398B1E9E25B700A42502 /* WSIndexBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A739881E9E25B700A42502 /* WSIndexBanner.m */; };
 		84A7398C1E9E25B700A42502 /* WSPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7398A1E9E25B700A42502 /* WSPageView.m */; };
 		84B9DBEB1E9DC0990066A92D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DBEA1E9DC0990066A92D /* main.m */; };
@@ -25,17 +32,10 @@
 		84B9DBF91E9DC0990066A92D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B9DBF71E9DC0990066A92D /* LaunchScreen.storyboard */; };
 		84B9DC041E9DC0990066A92D /* haitianTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC031E9DC0990066A92D /* haitianTests.m */; };
 		84B9DC0F1E9DC0990066A92D /* haitianUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC0E1E9DC0990066A92D /* haitianUITests.m */; };
-		84B9DC351E9DCCC10066A92D /* BaseNC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC2C1E9DCCC10066A92D /* BaseNC.m */; };
-		84B9DC361E9DCCC10066A92D /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC2E1E9DCCC10066A92D /* BaseVC.m */; };
-		84B9DC371E9DCCC10066A92D /* GestureBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC301E9DCCC10066A92D /* GestureBaseVC.m */; };
-		84B9DC381E9DCCC10066A92D /* GestureNavBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC321E9DCCC10066A92D /* GestureNavBaseVC.m */; };
-		84B9DC391E9DCCC10066A92D /* NavBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC341E9DCCC10066A92D /* NavBaseVC.m */; };
 		84B9DC401E9DCDBC0066A92D /* LoadSupermarketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC3F1E9DCDBC0066A92D /* LoadSupermarketViewController.m */; };
 		84B9DC431E9DCDF50066A92D /* FastHandleCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC421E9DCDF50066A92D /* FastHandleCardViewController.m */; };
 		84B9DC461E9DCE240066A92D /* PersonCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC451E9DCE240066A92D /* PersonCenterViewController.m */; };
 		84B9DC4B1E9DD9CE0066A92D /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC4A1E9DD9CE0066A92D /* HomePageViewController.m */; };
-		84B9DC501E9DEC1C0066A92D /* ASValuePopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC4D1E9DEC1C0066A92D /* ASValuePopUpView.m */; };
-		84B9DC511E9DEC1C0066A92D /* ASValueTrackingSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC4F1E9DEC1C0066A92D /* ASValueTrackingSlider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +71,21 @@
 		846856231EA0813C00C74F87 /* NetWorkUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetWorkUtil.m; path = NetWork/NetWorkUtil.m; sourceTree = "<group>"; };
 		8468562A1EA0822900C74F87 /* MessageAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageAlertView.h; path = MessageAlertView/MessageAlertView.h; sourceTree = "<group>"; };
 		8468562B1EA0822900C74F87 /* MessageAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageAlertView.m; path = MessageAlertView/MessageAlertView.m; sourceTree = "<group>"; };
+		8468562D1EA08EFF00C74F87 /* Serve.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Serve.h; sourceTree = "<group>"; };
+		8468562E1EA08FF900C74F87 /* BaseNC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseNC.h; path = Base/BaseNC.h; sourceTree = "<group>"; };
+		8468562F1EA08FF900C74F87 /* BaseNC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseNC.m; path = Base/BaseNC.m; sourceTree = "<group>"; };
+		846856301EA08FF900C74F87 /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseVC.h; path = Base/BaseVC.h; sourceTree = "<group>"; };
+		846856311EA08FF900C74F87 /* BaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseVC.m; path = Base/BaseVC.m; sourceTree = "<group>"; };
+		846856321EA08FF900C74F87 /* GestureBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GestureBaseVC.h; path = Base/GestureBaseVC.h; sourceTree = "<group>"; };
+		846856331EA08FF900C74F87 /* GestureBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GestureBaseVC.m; path = Base/GestureBaseVC.m; sourceTree = "<group>"; };
+		846856341EA08FF900C74F87 /* GestureNavBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GestureNavBaseVC.h; path = Base/GestureNavBaseVC.h; sourceTree = "<group>"; };
+		846856351EA08FF900C74F87 /* GestureNavBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GestureNavBaseVC.m; path = Base/GestureNavBaseVC.m; sourceTree = "<group>"; };
+		846856361EA08FF900C74F87 /* NavBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NavBaseVC.h; path = Base/NavBaseVC.h; sourceTree = "<group>"; };
+		846856371EA08FF900C74F87 /* NavBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavBaseVC.m; path = Base/NavBaseVC.m; sourceTree = "<group>"; };
+		8468563D1EA0902D00C74F87 /* ASValuePopUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASValuePopUpView.h; path = ASValueTrackingSlider/ASValuePopUpView.h; sourceTree = "<group>"; };
+		8468563E1EA0902D00C74F87 /* ASValuePopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASValuePopUpView.m; path = ASValueTrackingSlider/ASValuePopUpView.m; sourceTree = "<group>"; };
+		8468563F1EA0902D00C74F87 /* ASValueTrackingSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASValueTrackingSlider.h; path = ASValueTrackingSlider/ASValueTrackingSlider.h; sourceTree = "<group>"; };
+		846856401EA0902D00C74F87 /* ASValueTrackingSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASValueTrackingSlider.m; path = ASValueTrackingSlider/ASValueTrackingSlider.m; sourceTree = "<group>"; };
 		84A739871E9E25B700A42502 /* WSIndexBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WSIndexBanner.h; path = "第三方轮播/WSIndexBanner.h"; sourceTree = "<group>"; };
 		84A739881E9E25B700A42502 /* WSIndexBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WSIndexBanner.m; path = "第三方轮播/WSIndexBanner.m"; sourceTree = "<group>"; };
 		84A739891E9E25B700A42502 /* WSPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WSPageView.h; path = "第三方轮播/WSPageView.h"; sourceTree = "<group>"; };
@@ -91,16 +106,6 @@
 		84B9DC0A1E9DC0990066A92D /* haitianUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = haitianUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B9DC0E1E9DC0990066A92D /* haitianUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = haitianUITests.m; sourceTree = "<group>"; };
 		84B9DC101E9DC0990066A92D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84B9DC2B1E9DCCC10066A92D /* BaseNC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNC.h; sourceTree = "<group>"; };
-		84B9DC2C1E9DCCC10066A92D /* BaseNC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNC.m; sourceTree = "<group>"; };
-		84B9DC2D1E9DCCC10066A92D /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
-		84B9DC2E1E9DCCC10066A92D /* BaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseVC.m; sourceTree = "<group>"; };
-		84B9DC2F1E9DCCC10066A92D /* GestureBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureBaseVC.h; sourceTree = "<group>"; };
-		84B9DC301E9DCCC10066A92D /* GestureBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureBaseVC.m; sourceTree = "<group>"; };
-		84B9DC311E9DCCC10066A92D /* GestureNavBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestureNavBaseVC.h; sourceTree = "<group>"; };
-		84B9DC321E9DCCC10066A92D /* GestureNavBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestureNavBaseVC.m; sourceTree = "<group>"; };
-		84B9DC331E9DCCC10066A92D /* NavBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavBaseVC.h; sourceTree = "<group>"; };
-		84B9DC341E9DCCC10066A92D /* NavBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavBaseVC.m; sourceTree = "<group>"; };
 		84B9DC3E1E9DCDBC0066A92D /* LoadSupermarketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadSupermarketViewController.h; sourceTree = "<group>"; };
 		84B9DC3F1E9DCDBC0066A92D /* LoadSupermarketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadSupermarketViewController.m; sourceTree = "<group>"; };
 		84B9DC411E9DCDF50066A92D /* FastHandleCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastHandleCardViewController.h; sourceTree = "<group>"; };
@@ -111,10 +116,6 @@
 		84B9DC481E9DCF5A0066A92D /* Public.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Public.h; sourceTree = "<group>"; };
 		84B9DC491E9DD9CE0066A92D /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
 		84B9DC4A1E9DD9CE0066A92D /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
-		84B9DC4C1E9DEC1C0066A92D /* ASValuePopUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASValuePopUpView.h; sourceTree = "<group>"; };
-		84B9DC4D1E9DEC1C0066A92D /* ASValuePopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASValuePopUpView.m; sourceTree = "<group>"; };
-		84B9DC4E1E9DEC1C0066A92D /* ASValueTrackingSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASValueTrackingSlider.h; sourceTree = "<group>"; };
-		84B9DC4F1E9DEC1C0066A92D /* ASValueTrackingSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASValueTrackingSlider.m; sourceTree = "<group>"; };
 		C281EA8F719D2415E82CC71C /* libPods-haitian.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-haitian.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4265450D8E7CFA0ADBFE28C /* Pods-haitian.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haitian.release.xcconfig"; path = "Pods/Target Support Files/Pods-haitian/Pods-haitian.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -226,6 +227,7 @@
 				84B9DBEF1E9DC0990066A92D /* ViewController.h */,
 				84B9DBF01E9DC0990066A92D /* ViewController.m */,
 				84B9DBF21E9DC0990066A92D /* Main.storyboard */,
+				84B9DC3A1E9DCCC90066A92D /* Base */,
 				846856291EA0820900C74F87 /* MessageAlertView */,
 				8468561F1EA0810700C74F87 /* NetWork */,
 				84A739861E9E257200A42502 /* 第三方轮播 */,
@@ -243,7 +245,6 @@
 				84B9DC441E9DCE240066A92D /* PersonCenterViewController.h */,
 				84B9DC451E9DCE240066A92D /* PersonCenterViewController.m */,
 				846856121EA0597200C74F87 /* Login */,
-				84B9DC3A1E9DCCC90066A92D /* Base */,
 				84B9DBF51E9DC0990066A92D /* Assets.xcassets */,
 				84B9DBF71E9DC0990066A92D /* LaunchScreen.storyboard */,
 				84B9DBFA1E9DC0990066A92D /* Info.plist */,
@@ -255,6 +256,7 @@
 		84B9DBE91E9DC0990066A92D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8468562D1EA08EFF00C74F87 /* Serve.h */,
 				84B9DC471E9DCF2A0066A92D /* Header.h */,
 				84B9DC481E9DCF5A0066A92D /* Public.h */,
 				84B9DBEA1E9DC0990066A92D /* main.m */,
@@ -283,16 +285,16 @@
 		84B9DC3A1E9DCCC90066A92D /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				84B9DC2B1E9DCCC10066A92D /* BaseNC.h */,
-				84B9DC2C1E9DCCC10066A92D /* BaseNC.m */,
-				84B9DC2D1E9DCCC10066A92D /* BaseVC.h */,
-				84B9DC2E1E9DCCC10066A92D /* BaseVC.m */,
-				84B9DC2F1E9DCCC10066A92D /* GestureBaseVC.h */,
-				84B9DC301E9DCCC10066A92D /* GestureBaseVC.m */,
-				84B9DC311E9DCCC10066A92D /* GestureNavBaseVC.h */,
-				84B9DC321E9DCCC10066A92D /* GestureNavBaseVC.m */,
-				84B9DC331E9DCCC10066A92D /* NavBaseVC.h */,
-				84B9DC341E9DCCC10066A92D /* NavBaseVC.m */,
+				8468562E1EA08FF900C74F87 /* BaseNC.h */,
+				8468562F1EA08FF900C74F87 /* BaseNC.m */,
+				846856301EA08FF900C74F87 /* BaseVC.h */,
+				846856311EA08FF900C74F87 /* BaseVC.m */,
+				846856321EA08FF900C74F87 /* GestureBaseVC.h */,
+				846856331EA08FF900C74F87 /* GestureBaseVC.m */,
+				846856341EA08FF900C74F87 /* GestureNavBaseVC.h */,
+				846856351EA08FF900C74F87 /* GestureNavBaseVC.m */,
+				846856361EA08FF900C74F87 /* NavBaseVC.h */,
+				846856371EA08FF900C74F87 /* NavBaseVC.m */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -300,10 +302,10 @@
 		84B9DC521E9DEC200066A92D /* ASValueTrackingSlider */ = {
 			isa = PBXGroup;
 			children = (
-				84B9DC4C1E9DEC1C0066A92D /* ASValuePopUpView.h */,
-				84B9DC4D1E9DEC1C0066A92D /* ASValuePopUpView.m */,
-				84B9DC4E1E9DEC1C0066A92D /* ASValueTrackingSlider.h */,
-				84B9DC4F1E9DEC1C0066A92D /* ASValueTrackingSlider.m */,
+				8468563D1EA0902D00C74F87 /* ASValuePopUpView.h */,
+				8468563E1EA0902D00C74F87 /* ASValuePopUpView.m */,
+				8468563F1EA0902D00C74F87 /* ASValueTrackingSlider.h */,
+				846856401EA0902D00C74F87 /* ASValueTrackingSlider.m */,
 			);
 			name = ASValueTrackingSlider;
 			sourceTree = "<group>";
@@ -506,26 +508,26 @@
 				84A7398B1E9E25B700A42502 /* WSIndexBanner.m in Sources */,
 				8402B9DA1E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m in Sources */,
 				846856251EA0813C00C74F87 /* NetWorkUtil.m in Sources */,
+				8468563A1EA08FF900C74F87 /* GestureBaseVC.m in Sources */,
+				846856391EA08FF900C74F87 /* BaseVC.m in Sources */,
+				846856411EA0902D00C74F87 /* ASValuePopUpView.m in Sources */,
 				84B9DBF11E9DC0990066A92D /* ViewController.m in Sources */,
 				84B9DBEE1E9DC0990066A92D /* AppDelegate.m in Sources */,
 				8402B9F91E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m in Sources */,
+				8468563C1EA08FF900C74F87 /* NavBaseVC.m in Sources */,
+				846856421EA0902D00C74F87 /* ASValueTrackingSlider.m in Sources */,
 				84B9DC401E9DCDBC0066A92D /* LoadSupermarketViewController.m in Sources */,
 				846856181EA0764900C74F87 /* AccountPassswordViewController.m in Sources */,
-				84B9DC511E9DEC1C0066A92D /* ASValueTrackingSlider.m in Sources */,
-				84B9DC501E9DEC1C0066A92D /* ASValuePopUpView.m in Sources */,
+				846856381EA08FF900C74F87 /* BaseNC.m in Sources */,
 				84B9DC431E9DCDF50066A92D /* FastHandleCardViewController.m in Sources */,
 				8468562C1EA0822900C74F87 /* MessageAlertView.m in Sources */,
 				84B9DBEB1E9DC0990066A92D /* main.m in Sources */,
 				84A7398C1E9E25B700A42502 /* WSPageView.m in Sources */,
-				84B9DC371E9DCCC10066A92D /* GestureBaseVC.m in Sources */,
-				84B9DC361E9DCCC10066A92D /* BaseVC.m in Sources */,
-				84B9DC381E9DCCC10066A92D /* GestureNavBaseVC.m in Sources */,
 				84B9DC4B1E9DD9CE0066A92D /* HomePageViewController.m in Sources */,
 				846856151EA059F400C74F87 /* LoginViewController.m in Sources */,
-				84B9DC351E9DCCC10066A92D /* BaseNC.m in Sources */,
+				8468563B1EA08FF900C74F87 /* GestureNavBaseVC.m in Sources */,
 				846856241EA0813C00C74F87 /* NetWorkManager.m in Sources */,
 				84B9DC461E9DCE240066A92D /* PersonCenterViewController.m in Sources */,
-				84B9DC391E9DCCC10066A92D /* NavBaseVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
