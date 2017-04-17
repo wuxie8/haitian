@@ -80,7 +80,7 @@
         loginButton.backgroundColor=AppBackColor;
         [loginButton setTitle:@"注册" forState:UIControlStateNormal];
         loginButton.clipsToBounds=YES;
-    [loginButton addTarget:self action:@selector(registerClick ) forControlEvents:UIControlEventTouchUpInside];
+    [loginButton addTarget:self action:@selector(registerClick) forControlEvents:UIControlEventTouchUpInside];
         loginButton.layer.cornerRadius=5;
         [self.view addSubview:loginButton];
     
@@ -131,7 +131,7 @@
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
-        
+        DLog(@"%@",error);
     }];
 
 }

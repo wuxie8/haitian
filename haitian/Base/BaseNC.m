@@ -18,8 +18,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [[UINavigationBar appearance] setBarTintColor:kColorFromRGB(245, 245, 245)];
+     [[UINavigationBar appearance] setBarTintColor:AppButtonbackgroundColor];
+//    [[UINavigationBar appearance] setBarTintColor:kColorFromRGB(245, 245, 245)];
     [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:

@@ -17,6 +17,7 @@
 - (void)setTitle:(NSString *)title
 {
     self.navigationItem.title = title;
+     [[UINavigationBar appearance] setBarTintColor:AppButtonbackgroundColor];
 }
 
 #ifdef __IPHONE_7_0

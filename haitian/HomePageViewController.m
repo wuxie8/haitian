@@ -94,16 +94,16 @@
         [view1 addSubview:lab1];
         ASValueTrackingSlider *asValue=[[ASValueTrackingSlider alloc]initWithFrame:CGRectMake(CGRectGetMaxX(lab1.frame)+10, 50, 250, 10)];
         asValue.maximumValue=10000;
-        asValue.minimumValue=0;
+        asValue.minimumValue=1000;
         asValue.value=5000;
-        asValue.font=[UIFont systemFontOfSize:8];
+      
         NSNumberFormatter *tempFormatter = [[NSNumberFormatter alloc] init];
         [tempFormatter setPositivePrefix:@"¥"];
         [tempFormatter setNegativePrefix:@"¥"];
         [asValue setMaxFractionDigitsDisplayed:0];
         [asValue setNumberFormatter:tempFormatter];
         asValue.popUpViewColor = [UIColor colorWithHue:0.55 saturation:0.8 brightness:0.9 alpha:0.7];
-        asValue.font = [UIFont fontWithName:@"GillSans-Bold" size:14];
+        asValue.font = [UIFont fontWithName:@"GillSans-Bold" size:10];
       
         [asValue showPopUpView];
         [asValue setThumbImage:[UIImage imageNamed:@"dot"] forState:UIControlStateNormal];
@@ -126,7 +126,7 @@
         [asValue2 setMaxFractionDigitsDisplayed:0];
         [asValue2 setNumberFormatter:tempFormatter2];
         asValue2.popUpViewColor = [UIColor colorWithHue:0.55 saturation:0.8 brightness:0.9 alpha:0.7];
-        asValue2.font = [UIFont fontWithName:@"GillSans-Bold" size:14];
+        asValue2.font = [UIFont fontWithName:@"GillSans-Bold" size:10];
        
         [asValue2 showPopUpView];
          [asValue2  setThumbImage:[UIImage imageNamed:@"dot"] forState:UIControlStateNormal];

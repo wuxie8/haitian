@@ -17,7 +17,9 @@
 - (void)setTitle:(NSString *)title
 {
     self.navigationItem.title = title;
-     self.view.backgroundColor=BaseColor;
+    self.view.backgroundColor=BaseColor;
+    self.navigationController.navigationBar.tintColor = [UIColor redColor];
+[[UINavigationBar appearance] setBarTintColor:AppButtonbackgroundColor];
 }
 
 #ifdef __IPHONE_7_0

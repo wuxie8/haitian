@@ -11,13 +11,6 @@
 
 #pragma mark Log
 
-#ifdef __IPHONE_7_0
-- (UIRectEdge)edgesForExtendedLayout
-{
-    return UIRectEdgeNone;
-}
-#endif
-
 #ifdef DEBUG
 #define DLog( s, ... ) NSLog( @"%s <第%d行> %@",__FUNCTION__,  __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 #else
