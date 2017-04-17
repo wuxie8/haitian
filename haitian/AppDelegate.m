@@ -71,7 +71,7 @@
         item.image = [[UIImage imageNamed:[images objectAtIndex:i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         item.selectedImage = [[UIImage imageNamed:[selectedImages objectAtIndex:i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         
-        tabBarController.tabBar.tintColor = [UIColor blueColor];
+        tabBarController.tabBar.tintColor = kColorFromRGBHex(0xed6c3e);
     }
     return  tabBarController;
 }

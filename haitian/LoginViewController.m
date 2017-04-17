@@ -61,7 +61,7 @@
 //        [view addSubview:backView];
         if (i==arr.count-1) {
             but=[[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(text.frame)+10, 20+i*(ViewHeight+10), WIDTH-20*2-CGRectGetMaxX(text.frame), ViewHeight)];
-            but.backgroundColor=AppBackColor;
+            but.backgroundColor=AppButtonbackgroundColor;
             [but addTarget:self action:@selector(verificationCode) forControlEvents:UIControlEventTouchUpInside];
             [but setTitle:@"获取验证码" forState:UIControlStateNormal];
             but.titleLabel.font    = [UIFont systemFontOfSize:  14];
@@ -76,7 +76,7 @@
     }
     
     UIButton *loginButton=[[UIButton alloc]initWithFrame:CGRectMake(20, 20+2*(ViewHeight+10)+20, WIDTH-20*2, 50)];
-    loginButton.backgroundColor=AppBackColor;
+    loginButton.backgroundColor=AppButtonbackgroundColor;
     [loginButton setTitle:@"立即登录" forState:UIControlStateNormal];
     [loginButton addTarget:self action:@selector(loginClick) forControlEvents:UIControlEventTouchUpInside];
       loginButton.layer.masksToBounds = YES;
@@ -133,7 +133,7 @@
                 [but setTitle:@"获取验证码" forState:UIControlStateNormal];
                 [but setEnabled:YES];
                 but.alpha=1;
-                but.backgroundColor=AppBackColor;
+                but.backgroundColor=AppButtonbackgroundColor;
             }
         });
     });

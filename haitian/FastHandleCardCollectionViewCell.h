@@ -10,7 +10,7 @@
 
 @interface FastHandleCardCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, strong)UIImageView *imageView;
+@property (nonatomic, strong)UIImageView *bankimageView;
 @property (nonatomic, strong)UILabel *titleLabel;
 @property(strong, nonatomic)UILabel*detailLabel;
 

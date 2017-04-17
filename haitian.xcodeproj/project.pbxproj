@@ -22,6 +22,8 @@
 		8468563C1EA08FF900C74F87 /* NavBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856371EA08FF900C74F87 /* NavBaseVC.m */; };
 		846856411EA0902D00C74F87 /* ASValuePopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8468563E1EA0902D00C74F87 /* ASValuePopUpView.m */; };
 		846856421EA0902D00C74F87 /* ASValueTrackingSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856401EA0902D00C74F87 /* ASValueTrackingSlider.m */; };
+		846856451EA0969E00C74F87 /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856441EA0969E00C74F87 /* ForgotPasswordViewController.m */; };
+		846856481EA09A8B00C74F87 /* UtilTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856471EA09A8B00C74F87 /* UtilTools.m */; };
 		84A7398B1E9E25B700A42502 /* WSIndexBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A739881E9E25B700A42502 /* WSIndexBanner.m */; };
 		84A7398C1E9E25B700A42502 /* WSPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7398A1E9E25B700A42502 /* WSPageView.m */; };
 		84B9DBEB1E9DC0990066A92D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DBEA1E9DC0990066A92D /* main.m */; };
@@ -86,6 +88,10 @@
 		8468563E1EA0902D00C74F87 /* ASValuePopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASValuePopUpView.m; path = ASValueTrackingSlider/ASValuePopUpView.m; sourceTree = "<group>"; };
 		8468563F1EA0902D00C74F87 /* ASValueTrackingSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASValueTrackingSlider.h; path = ASValueTrackingSlider/ASValueTrackingSlider.h; sourceTree = "<group>"; };
 		846856401EA0902D00C74F87 /* ASValueTrackingSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASValueTrackingSlider.m; path = ASValueTrackingSlider/ASValueTrackingSlider.m; sourceTree = "<group>"; };
+		846856431EA0969E00C74F87 /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewController.h; sourceTree = "<group>"; };
+		846856441EA0969E00C74F87 /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
+		846856461EA09A8B00C74F87 /* UtilTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilTools.h; sourceTree = "<group>"; };
+		846856471EA09A8B00C74F87 /* UtilTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilTools.m; sourceTree = "<group>"; };
 		84A739871E9E25B700A42502 /* WSIndexBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WSIndexBanner.h; path = "第三方轮播/WSIndexBanner.h"; sourceTree = "<group>"; };
 		84A739881E9E25B700A42502 /* WSIndexBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WSIndexBanner.m; path = "第三方轮播/WSIndexBanner.m"; sourceTree = "<group>"; };
 		84A739891E9E25B700A42502 /* WSPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WSPageView.h; path = "第三方轮播/WSPageView.h"; sourceTree = "<group>"; };
@@ -162,6 +168,8 @@
 				846856141EA059F400C74F87 /* LoginViewController.m */,
 				846856161EA0764900C74F87 /* AccountPassswordViewController.h */,
 				846856171EA0764900C74F87 /* AccountPassswordViewController.m */,
+				846856431EA0969E00C74F87 /* ForgotPasswordViewController.h */,
+				846856441EA0969E00C74F87 /* ForgotPasswordViewController.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -184,6 +192,15 @@
 				8468562B1EA0822900C74F87 /* MessageAlertView.m */,
 			);
 			name = MessageAlertView;
+			sourceTree = "<group>";
+		};
+		846856491EA09AA400C74F87 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				846856461EA09A8B00C74F87 /* UtilTools.h */,
+				846856471EA09A8B00C74F87 /* UtilTools.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		84A739861E9E257200A42502 /* 第三方轮播 */ = {
@@ -227,6 +244,7 @@
 				84B9DBEF1E9DC0990066A92D /* ViewController.h */,
 				84B9DBF01E9DC0990066A92D /* ViewController.m */,
 				84B9DBF21E9DC0990066A92D /* Main.storyboard */,
+				846856491EA09AA400C74F87 /* Utils */,
 				84B9DC3A1E9DCCC90066A92D /* Base */,
 				846856291EA0820900C74F87 /* MessageAlertView */,
 				8468561F1EA0810700C74F87 /* NetWork */,
@@ -517,6 +535,7 @@
 				8468563C1EA08FF900C74F87 /* NavBaseVC.m in Sources */,
 				846856421EA0902D00C74F87 /* ASValueTrackingSlider.m in Sources */,
 				84B9DC401E9DCDBC0066A92D /* LoadSupermarketViewController.m in Sources */,
+				846856451EA0969E00C74F87 /* ForgotPasswordViewController.m in Sources */,
 				846856181EA0764900C74F87 /* AccountPassswordViewController.m in Sources */,
 				846856381EA08FF900C74F87 /* BaseNC.m in Sources */,
 				84B9DC431E9DCDF50066A92D /* FastHandleCardViewController.m in Sources */,
@@ -525,6 +544,7 @@
 				84A7398C1E9E25B700A42502 /* WSPageView.m in Sources */,
 				84B9DC4B1E9DD9CE0066A92D /* HomePageViewController.m in Sources */,
 				846856151EA059F400C74F87 /* LoginViewController.m in Sources */,
+				846856481EA09A8B00C74F87 /* UtilTools.m in Sources */,
 				8468563B1EA08FF900C74F87 /* GestureNavBaseVC.m in Sources */,
 				846856241EA0813C00C74F87 /* NetWorkManager.m in Sources */,
 				84B9DC461E9DCE240066A92D /* PersonCenterViewController.m in Sources */,

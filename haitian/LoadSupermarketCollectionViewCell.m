@@ -24,15 +24,15 @@
         self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.imageView.frame)+10, 20, 80, 40)];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         self.titleLabel.textColor = [UIColor blackColor];
-        self.titleLabel.text=@"仓鼠贷";
-        self.titleLabel.font = [UIFont systemFontOfSize:16];
+//        self.titleLabel.text=@"仓鼠贷";
+        self.titleLabel.font = [UIFont boldSystemFontOfSize:16];
         [self.contentView addSubview:self.titleLabel];
         
         
         self.detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(30, CGRectGetMaxY(self.imageView.frame), frame.size.width-30*2,40)];
         self.detailLabel.textAlignment = NSTextAlignmentCenter;
-        self.detailLabel.text=@"有身份证可借5000元\n最快3分钟下款";
-        self.detailLabel.adjustsFontSizeToFitWidth=YES;
+//        self.detailLabel.text=@"有身份证可借5000元\n最快3分钟下款";
+        self.detailLabel.font=[UIFont systemFontOfSize:12];
         self.detailLabel.numberOfLines=2;
         self.detailLabel.textColor = [UIColor  blackColor];
        

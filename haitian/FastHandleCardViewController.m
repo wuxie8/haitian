@@ -10,9 +10,10 @@
 #import "WSPageView.h"
 #import "WSIndexBanner.h"
 #import "FastHandleCardCollectionViewCell.h"
+#define pageHeight 150
 #define kMargin 10
 
-#define pageHeight 150
+
 static NSString *const cellId = @"cellId";
 static NSString *const headerId = @"headerId";
 static NSString *const footerId = @"footerId";
@@ -22,6 +23,13 @@ static NSString *const footerId = @"footerId";
 @end
 
 @implementation FastHandleCardViewController
+
+{
+    NSArray *imageArray;
+       NSArray *titleArray;
+     NSArray *describeArray;
+    
+}
 #ifdef __IPHONE_7_0
 - (UIRectEdge)edgesForExtendedLayout
 {
@@ -30,7 +38,9 @@ static NSString *const footerId = @"footerId";
 #endif
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    imageArray=@[@"pudongBank",@"everBrighBank",@"MinshengBank",@"zhaoshangBank",@"zhongxinbank",@"peaceBank",@"xingyeBank",@"zheshangBank",@"jiaotongbank"];
+    titleArray=@[@"浦发银行",@"光大银行",@"民生银行",@"招商银行",@"中信银行",@"平安银行",@"兴业银行",@"浙商银行",@"交通银行"];
+    describeArray=@[@"刷卡得3888元大奖",@"10元吃哈根达斯",@"最快3秒核发",@"玩卡必备 优惠多",@"1元带你看大片",@"周三享5折",@"最快当天下卡",@"5元看电影",@"日日刷 日日返"];
     self.title=@"快速办卡";
     WSPageView *pageView = [[WSPageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH,pageHeight)];
     pageView.delegate = self;
@@ -49,7 +59,7 @@ static NSString *const footerId = @"footerId";
     [pageView stopTimer];
     [self.view addSubview:pageView];
     
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0,CGRectGetMaxY(pageView.frame)+10, WIDTH, HEIGHT-64-44) collectionViewLayout:[UICollectionViewFlowLayout new]];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0,CGRectGetMaxY(pageView.frame)+10, WIDTH, HEIGHT-64-44-pageHeight) collectionViewLayout:[UICollectionViewFlowLayout new]];
     [_collectionView setBackgroundColor:kColorFromRGBHex(0xEBEBEB)];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
@@ -103,9 +113,11 @@ static NSString *const footerId = @"footerId";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    FastHandleCardCollectionViewCell *cell = (FastHandleCardCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+    FastHandleCardCollectionViewCell *cell = (FastHandleCardCollectionViewCell *)[_collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
-    
+    [cell.bankimageView setImage:[UIImage imageNamed:imageArray[indexPath.row]]];
+    [cell.titleLabel setText:titleArray[indexPath.row]];
+    [cell.detailLabel setText:describeArray[indexPath.row]];
     return cell;
 }
 // 和UITableView类似，UICollectionView也可设置段头段尾
@@ -119,8 +131,7 @@ static NSString *const footerId = @"footerId";
         {
             headerView = [[UICollectionReusableView alloc] init];
         }
-        headerView.backgroundColor = [UIColor grayColor];
-        
+        headerView.backgroundColor = [UIColor whiteColor];
     
         UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(10, 10, 100, 20)];
         lab.text=@"快速办卡";
@@ -133,7 +144,7 @@ static NSString *const footerId = @"footerId";
 #pragma mark UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake((WIDTH-kMargin*4)/3, (WIDTH-kMargin*4)/3);
+    return CGSizeMake((WIDTH-kMargin*5)/3, (WIDTH-kMargin*5)/3);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section

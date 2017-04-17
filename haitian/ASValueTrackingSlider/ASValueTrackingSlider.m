@@ -220,7 +220,7 @@ static void * ASValueTrackingSliderBoundsContext = &ASValueTrackingSliderBoundsC
     [self addSubview:self.popUpView];
 
     self.textColor = [UIColor whiteColor];
-    self.font = [UIFont boldSystemFontOfSize:20.0f];
+    self.font = [UIFont boldSystemFontOfSize:12.0f];
     [self positionAndUpdatePopUpView];
 }
 
@@ -253,8 +253,8 @@ static void * ASValueTrackingSliderBoundsContext = &ASValueTrackingSliderBoundsC
 - (void)adjustPopUpViewFrame
 {
     CGRect thumbRect = [self thumbRect];
-    CGFloat thumbW = thumbRect.size.width;
-    CGFloat thumbH = thumbRect.size.height;
+    CGFloat thumbW = thumbRect.size.width/2;
+    CGFloat thumbH = thumbRect.size.height/2;
     
     CGRect popUpRect = CGRectInset(thumbRect, (thumbW - _popUpViewSize.width)/2, (thumbH - _popUpViewSize.height)/2);
     popUpRect.origin.y = thumbRect.origin.y - _popUpViewSize.height;

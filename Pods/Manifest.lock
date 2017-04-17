@@ -14,13 +14,20 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - RealReachability (1.1.8):
+    - RealReachability/Connection (= 1.1.8)
+    - RealReachability/Ping (= 1.1.8)
+  - RealReachability/Connection (1.1.8)
+  - RealReachability/Ping (1.1.8)
 
 DEPENDENCIES:
   - AFNetworking
+  - RealReachability
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  RealReachability: e6c8a2bbffa316006e8c282efc1ee2567d61a920
 
-PODFILE CHECKSUM: 0f52b1cba2bb1be47e03245f517dbfa18a204f98
+PODFILE CHECKSUM: deaaa36d6bbd7c87afe68a10aa6c9355b12a2a7e
 
 COCOAPODS: 1.2.0

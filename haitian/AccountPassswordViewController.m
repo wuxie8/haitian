@@ -7,6 +7,7 @@
 //
 
 #import "AccountPassswordViewController.h"
+#import "ForgotPasswordViewController.h"
 #define ViewHeight 50
 #define ButtonWeight 150
 @interface AccountPassswordViewController ()
@@ -75,7 +76,7 @@
     }
     
     UIButton *loginButton=[[UIButton alloc]initWithFrame:CGRectMake(20, 20+2*(ViewHeight+10)+20, WIDTH-20*2, 50)];
-    loginButton.backgroundColor=AppBackColor;
+    loginButton.backgroundColor=AppButtonbackgroundColor;
     [loginButton setTitle:@"立即登录" forState:UIControlStateNormal];
     [loginButton addTarget:self action:@selector(loginClick) forControlEvents:UIControlEventTouchUpInside];
     loginButton.layer.masksToBounds = YES;
@@ -88,10 +89,16 @@
     
     UIButton *ForgotpasswordBut=[[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(loginButton.frame)-150, CGRectGetMaxY(loginButton.frame)+10, 150, 30)];
     [ForgotpasswordBut setTitle:@"忘记密码" forState:UIControlStateNormal];
-    [ForgotpasswordBut addTarget:self action:@selector(ForgotpasswordButClick) forControlEvents:UIControlEventTouchUpInside];
+    [ForgotpasswordBut addTarget:self action:@selector(forgotpasswordButClick) forControlEvents:UIControlEventTouchUpInside];
  ForgotpasswordBut.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [loginView addSubview:ForgotpasswordBut];
     // Do any additional setup after loading the view.
+}
+-(void)forgotpasswordButClick
+{
+    ForgotPasswordViewController *forgotPassword=[[ForgotPasswordViewController alloc]init];
+    [self.navigationController pushViewController:forgotPassword animated:YES];
+
 }
 
 - (void)didReceiveMemoryWarning {
