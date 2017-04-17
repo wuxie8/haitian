@@ -96,11 +96,11 @@
         asValue.maximumValue=10000;
         asValue.minimumValue=0;
         asValue.value=5000;
-        asValue.font=[UIFont systemFontOfSize:12];
+        asValue.font=[UIFont systemFontOfSize:8];
         NSNumberFormatter *tempFormatter = [[NSNumberFormatter alloc] init];
         [tempFormatter setPositivePrefix:@"¥"];
         [tempFormatter setNegativePrefix:@"¥"];
-        [asValue setMaxFractionDigitsDisplayed:100];
+        [asValue setMaxFractionDigitsDisplayed:0];
         [asValue setNumberFormatter:tempFormatter];
         asValue.popUpViewColor = [UIColor colorWithHue:0.55 saturation:0.8 brightness:0.9 alpha:0.7];
         asValue.font = [UIFont fontWithName:@"GillSans-Bold" size:14];

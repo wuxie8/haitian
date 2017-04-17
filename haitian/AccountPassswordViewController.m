@@ -9,6 +9,7 @@
 #import "AccountPassswordViewController.h"
 #import "ForgotPasswordViewController.h"
 #import "User.h"
+#import "RegisterVC.h"
 #define ViewHeight 50
 #define ButtonWeight 150
 @interface AccountPassswordViewController ()
@@ -26,7 +27,8 @@
     image.contentMode=UIViewContentModeScaleAspectFill;
     [self.view addSubview:image];
     self.title=@"密码登录";
-    
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"注册" style:UIBarButtonItemStylePlain  target:self action:@selector(registere)];
+    self.navigationItem.rightBarButtonItem = backItem;
     UIView *  loginView=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(image.frame), WIDTH, HEIGHT-ButtonWeight)];
     [self.view addSubview:loginView];
     NSArray *arr=@[@"Account",@"code"];
@@ -53,7 +55,7 @@
         UITextField *text=[[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(image1.frame)+10, 0, view.frame.size.width-CGRectGetMaxX(image1.frame)+20,  ViewHeight)];
         text.placeholder=arr1[i];
         text.keyboardType= UIKeyboardTypeNumberPad;
-        text.delegate=self;
+//        text.delegate=self;
         text.tag=1000+i;
         [view addSubview:text];
         
@@ -85,15 +87,30 @@
     [loginView addSubview:loginButton];
     
     UIButton *accountPasswordBut=[[UIButton alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(loginButton.frame)+10, 150, 30)];
+     [accountPasswordBut setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [accountPasswordBut setTitle:@"验证码快捷登录" forState:UIControlStateNormal];
+    [accountPasswordBut addTarget:self action:@selector(VerificationCodeLogin) forControlEvents:UIControlEventTouchUpInside];
     [loginView addSubview:accountPasswordBut];
     
     UIButton *ForgotpasswordBut=[[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(loginButton.frame)-150, CGRectGetMaxY(loginButton.frame)+10, 150, 30)];
     [ForgotpasswordBut setTitle:@"忘记密码" forState:UIControlStateNormal];
+      [ForgotpasswordBut setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [ForgotpasswordBut addTarget:self action:@selector(forgotpasswordButClick) forControlEvents:UIControlEventTouchUpInside];
  ForgotpasswordBut.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [loginView addSubview:ForgotpasswordBut];
     // Do any additional setup after loading the view.
+}
+
+-(void)registere
+{
+    RegisterVC *registervc=[[RegisterVC alloc]init];
+    [self.navigationController pushViewController:registervc animated:YES];
+    
+}
+-(void)VerificationCodeLogin
+{
+
+    [self.navigationController popViewControllerAnimated:NO];
 }
 -(void)forgotpasswordButClick
 {
@@ -113,8 +130,8 @@
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
                        diction[@"0"],@"username",
                        
-                       diction[@"1"],@"code",
-                       @"2",@"logintype",
+                       diction[@"1"],@"password",
+                       @"1",@"logintype",
                        nil];
     [[NetWorkManager sharedManager]postJSON:dologin parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *resultDic=(NSDictionary *)responseObject;
@@ -127,7 +144,9 @@
             if ( [NSKeyedArchiver archiveRootObject:Context.currentUser toFile:DOCUMENT_FOLDER(@"loginedUser")]) {
                 //保存用户登录状态以及登录成功通知
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"kIsLogin"];
+                UIViewController *viewCtl = self.navigationController.viewControllers[self.navigationController.viewControllers.count-3];
                 
+                [self.navigationController popToViewController:viewCtl animated:YES];
             }
         }
         else

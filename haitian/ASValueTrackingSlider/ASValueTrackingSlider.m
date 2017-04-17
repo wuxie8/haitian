@@ -220,7 +220,7 @@ static void * ASValueTrackingSliderBoundsContext = &ASValueTrackingSliderBoundsC
     [self addSubview:self.popUpView];
 
     self.textColor = [UIColor whiteColor];
-    self.font = [UIFont boldSystemFontOfSize:12.0f];
+    self.font = [UIFont boldSystemFontOfSize:8.0f];
     [self positionAndUpdatePopUpView];
 }
 

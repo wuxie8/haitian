@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "AccountPassswordViewController.h"
 #import "User.h"
+#import "RegisterVC.h"
 #define ViewHeight 50
 #define ButtonWeight 150
 @interface LoginViewController ()
@@ -26,7 +27,8 @@
   image.contentMode=UIViewContentModeScaleAspectFill;
     [self.view addSubview:image];
     self.title=@"验证码登录";
-    
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"注册" style:UIBarButtonItemStylePlain  target:self action:@selector(registere)];
+    self.navigationItem.rightBarButtonItem = backItem;
     UIView *  loginView=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(image.frame), WIDTH, HEIGHT-ButtonWeight)];
     [self.view addSubview:loginView];
     NSArray *arr=@[@"Account",@"code"];
@@ -86,12 +88,19 @@
     
     UIButton *accountPasswordBut=[[UIButton alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(loginButton.frame)+10, 150, 30)];
     [accountPasswordBut setTitle:@"账号密码登录" forState:UIControlStateNormal];
+    [accountPasswordBut setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [accountPasswordBut addTarget:self action:@selector(accountPasswordClick) forControlEvents:UIControlEventTouchUpInside];
     [loginView addSubview:accountPasswordBut];
 
     
  
     // Do any additional setup after loading the view.
+}
+-(void)registere
+{
+    RegisterVC *registervc=[[RegisterVC alloc]init];
+    [self.navigationController pushViewController:registervc animated:YES];
+
 }
 -(void)verificationCodeRegister
 {
@@ -184,7 +193,7 @@
             if ( [NSKeyedArchiver archiveRootObject:Context.currentUser toFile:DOCUMENT_FOLDER(@"loginedUser")]) {
                 //保存用户登录状态以及登录成功通知
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"kIsLogin"];
-                
+                [self.navigationController popViewControllerAnimated:YES];
             }
         }
         else
