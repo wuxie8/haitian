@@ -46,7 +46,9 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    if (indexPath.section==0) {
+        return 80;
+    }
     return  60;
 }
 //对应的section有多少row
@@ -62,10 +64,14 @@
             
         case 0:
         {
-            UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(40, 20, 150, 30)];
+            cell.backgroundColor=AppButtonbackgroundColor;
+            UIImageView *image=[[UIImageView alloc]initWithFrame:CGRectMake( 20 , 20, 40, 40)];
+            [image setImage:[UIImage imageNamed:@"avatar"]];
+            [cell.contentView addSubview:image];
+            UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(image.frame)+10, 20, 150, 40)];
             [but setTitle:@"点击登陆" forState: UIControlStateNormal ];
             [but addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
-            but.backgroundColor=[UIColor redColor];
+//            but.backgroundColor=[UIColor redColor];
             [cell.contentView addSubview:but];
         }
             break;
@@ -78,12 +84,12 @@
             image.clipsToBounds=YES;
             [cell.contentView addSubview:image];
             
-            UILabel *textlabel1=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(image.frame)+10, 10, WIDTH/2-CGRectGetMaxX(image.frame), 15)];
+            UILabel *textlabel1=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(image.frame)+20, 10, WIDTH/2-CGRectGetMaxX(image.frame), 15)];
             textlabel1.text=@"我的借款";
             [cell.contentView addSubview:textlabel1];
             
             
-            UILabel *detailtextlabel1=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(image.frame)+10, CGRectGetMaxY(textlabel1.frame)+10, WIDTH/2-CGRectGetMaxX(image.frame), 15)];
+            UILabel *detailtextlabel1=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(image.frame)+20, CGRectGetMaxY(textlabel1.frame)+10, WIDTH/2-CGRectGetMaxX(image.frame), 15)];
             detailtextlabel1.text=@"查看借款详情";
             [cell.contentView addSubview:detailtextlabel1];
             
@@ -93,12 +99,12 @@
             image2.clipsToBounds=YES;
             [cell.contentView addSubview:image2];
             
-            UILabel *textlabel2=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(image2.frame)+10, 10, WIDTH/2-CGRectGetMaxX(image.frame), 15)];
+            UILabel *textlabel2=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(image2.frame)+20, 10, WIDTH/2-CGRectGetMaxX(image.frame), 15)];
             textlabel2.text=@"我的借款";
             [cell.contentView addSubview:textlabel2];
             
             
-            UILabel *detailtextlabel2=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(image2.frame)+10, CGRectGetMaxY(textlabel2.frame)+10, WIDTH/2-CGRectGetMaxX(image.frame), 15)];
+            UILabel *detailtextlabel2=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(image2.frame)+20, CGRectGetMaxY(textlabel2.frame)+10, WIDTH/2-CGRectGetMaxX(image.frame), 15)];
             detailtextlabel2.text=@"1张卡券可用";
             [cell.contentView addSubview:detailtextlabel2];
             
@@ -124,6 +130,7 @@
 -(void)login
 {
     LoginViewController *login=[[LoginViewController alloc]init];
+    login.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:login animated:YES];
 
 }

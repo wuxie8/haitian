@@ -253,11 +253,11 @@ static void * ASValueTrackingSliderBoundsContext = &ASValueTrackingSliderBoundsC
 - (void)adjustPopUpViewFrame
 {
     CGRect thumbRect = [self thumbRect];
-    CGFloat thumbW = thumbRect.size.width/2;
-    CGFloat thumbH = thumbRect.size.height/2;
+    CGFloat thumbW = thumbRect.size.width;
+    CGFloat thumbH = thumbRect.size.height;
     
     CGRect popUpRect = CGRectInset(thumbRect, (thumbW - _popUpViewSize.width)/2, (thumbH - _popUpViewSize.height)/2);
-    popUpRect.origin.y = thumbRect.origin.y - _popUpViewSize.height;
+    popUpRect.origin.y = thumbRect.origin.y - _popUpViewSize.height+10;
     
     // determine if popUpRect extends beyond the frame of the UISlider
     // if so adjust frame and set the center offset of the PopUpView's arrow

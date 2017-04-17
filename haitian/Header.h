@@ -15,4 +15,5 @@
 #import "Serve.h"
 #import "MessageAlertView.h"
 #import "UtilTools.h"
+#import "UserInfoContext.h"
 #endif /* Header_h */

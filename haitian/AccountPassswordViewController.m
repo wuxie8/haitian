@@ -8,6 +8,7 @@
 
 #import "AccountPassswordViewController.h"
 #import "ForgotPasswordViewController.h"
+#import "User.h"
 #define ViewHeight 50
 #define ButtonWeight 150
 @interface AccountPassswordViewController ()
@@ -99,6 +100,46 @@
     ForgotPasswordViewController *forgotPassword=[[ForgotPasswordViewController alloc]init];
     [self.navigationController pushViewController:forgotPassword animated:YES];
 
+}
+-(void)loginClick
+{
+    NSMutableDictionary *diction=[NSMutableDictionary dictionary];
+    for (int i=0; i<2; i++) {
+        UIView *view1=[self.view viewWithTag:100+i];
+        
+        UITextField *text1=(UITextField *)[view1 viewWithTag:1000+i];
+        [diction setObject:text1.text forKey:[NSString stringWithFormat:@"%d",i]];
+    }
+    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
+                       diction[@"0"],@"username",
+                       
+                       diction[@"1"],@"code",
+                       @"2",@"logintype",
+                       nil];
+    [[NetWorkManager sharedManager]postJSON:dologin parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *resultDic=(NSDictionary *)responseObject;
+        if ([resultDic[@"status"]boolValue]) {
+            User *user=[[User alloc]init];
+            user.token=resultDic[@"token"];
+            user.uid=resultDic[@"uid"];
+            user.username=resultDic[@"username"];
+            Context.currentUser=user;
+            if ( [NSKeyedArchiver archiveRootObject:Context.currentUser toFile:DOCUMENT_FOLDER(@"loginedUser")]) {
+                //保存用户登录状态以及登录成功通知
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"kIsLogin"];
+                
+            }
+        }
+        else
+        {
+            [MessageAlertView showErrorMessage:resultDic[@"info"]];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        
+    }];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
