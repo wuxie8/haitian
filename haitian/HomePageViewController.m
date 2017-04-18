@@ -8,7 +8,7 @@
 
 #import "HomePageViewController.h"
 #import "ASValueTrackingSlider.h"
-
+#import "CertificationViewController.h"
 #define ImageHeight 220
 #define viewHeight 80
 @interface HomePageViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -135,6 +135,7 @@
         
         UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(18, CGRectGetMaxY(lab2.frame)+30, WIDTH-36, 50)];
         [but setImage:[UIImage imageNamed:@"ApplyImmediately"] forState:UIControlStateNormal];
+        [but addTarget:self action:@selector(applyForLoan) forControlEvents:UIControlEventTouchUpInside];
         [view1 addSubview:but];
         
         UIView *view2=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(view1.frame)+15, WIDTH, 5)];
@@ -145,7 +146,11 @@
     }
     return _headView;
 }
-
+-(void)applyForLoan
+{
+    CertificationViewController *certification=[[CertificationViewController alloc]init];
+    [self.navigationController pushViewController:certification animated:YES];
+}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 80;

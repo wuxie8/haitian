@@ -10,6 +10,7 @@
 		2E2193132720ACDF463B286D /* libPods-haitian.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C281EA8F719D2415E82CC71C /* libPods-haitian.a */; };
 		8402B9DA1E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402B9D91E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m */; };
 		8402B9F91E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402B9F81E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m */; };
+		84546F4A1EA5E77B00AD0350 /* CertificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84546F491EA5E77B00AD0350 /* CertificationViewController.m */; };
 		846856151EA059F400C74F87 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856141EA059F400C74F87 /* LoginViewController.m */; };
 		846856181EA0764900C74F87 /* AccountPassswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856171EA0764900C74F87 /* AccountPassswordViewController.m */; };
 		846856241EA0813C00C74F87 /* NetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856211EA0813C00C74F87 /* NetWorkManager.m */; };
@@ -66,6 +67,8 @@
 		8402B9D91E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadSupermarketCollectionViewCell.m; sourceTree = "<group>"; };
 		8402B9F71E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastHandleCardCollectionViewCell.h; sourceTree = "<group>"; };
 		8402B9F81E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastHandleCardCollectionViewCell.m; sourceTree = "<group>"; };
+		84546F481EA5E77B00AD0350 /* CertificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificationViewController.h; sourceTree = "<group>"; };
+		84546F491EA5E77B00AD0350 /* CertificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificationViewController.m; sourceTree = "<group>"; };
 		846856131EA059F400C74F87 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		846856141EA059F400C74F87 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		846856161EA0764900C74F87 /* AccountPassswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountPassswordViewController.h; sourceTree = "<group>"; };
@@ -170,6 +173,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		84546F3E1EA5A0B200AD0350 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				84B9DC491E9DD9CE0066A92D /* HomePageViewController.h */,
+				84B9DC4A1E9DD9CE0066A92D /* HomePageViewController.m */,
+				84546F481EA5E77B00AD0350 /* CertificationViewController.h */,
+				84546F491EA5E77B00AD0350 /* CertificationViewController.m */,
+			);
+			name = HomePage;
+			sourceTree = "<group>";
+		};
 		846856121EA0597200C74F87 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,8 +283,7 @@
 				8468561F1EA0810700C74F87 /* NetWork */,
 				84A739861E9E257200A42502 /* 第三方轮播 */,
 				84B9DC521E9DEC200066A92D /* ASValueTrackingSlider */,
-				84B9DC491E9DD9CE0066A92D /* HomePageViewController.h */,
-				84B9DC4A1E9DD9CE0066A92D /* HomePageViewController.m */,
+				84546F3E1EA5A0B200AD0350 /* HomePage */,
 				84B9DC3E1E9DCDBC0066A92D /* LoadSupermarketViewController.h */,
 				84B9DC3F1E9DCDBC0066A92D /* LoadSupermarketViewController.m */,
 				8402B9D81E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.h */,
@@ -562,6 +575,7 @@
 				846856391EA08FF900C74F87 /* BaseVC.m in Sources */,
 				846856411EA0902D00C74F87 /* ASValuePopUpView.m in Sources */,
 				84B9DBF11E9DC0990066A92D /* ViewController.m in Sources */,
+				84546F4A1EA5E77B00AD0350 /* CertificationViewController.m in Sources */,
 				84B9DBEE1E9DC0990066A92D /* AppDelegate.m in Sources */,
 				84CD81F51EA48F30009B786F /* RegisterVC.m in Sources */,
 				8402B9F91E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m in Sources */,
