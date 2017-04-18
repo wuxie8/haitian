@@ -60,6 +60,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    cell.selectionStyle= UITableViewCellSelectionStyleNone;
     switch (indexPath.section) {
             
         case 0:
@@ -71,13 +72,29 @@
             UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(image.frame)+10, 20, 150, 40)];
             [but setTitle:@"点击登陆" forState: UIControlStateNormal ];
             [but addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
-//            but.backgroundColor=[UIColor redColor];
             [cell.contentView addSubview:but];
         }
             break;
        
         case 1:
         {
+            
+            UITapGestureRecognizer *minimalTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(minimalTap)];
+            minimalTap.numberOfTouchesRequired = 1;
+            minimalTap.numberOfTapsRequired = 1;
+           
+            UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, cell.frame.size.width/2, cell.frame.size.height)];
+            view.userInteractionEnabled=YES;
+            [view addGestureRecognizer:minimalTap];
+            [cell.contentView addSubview:view];
+            UITapGestureRecognizer *minimalTap2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick)];
+           
+            minimalTap2.numberOfTouchesRequired = 1;
+            minimalTap2.numberOfTapsRequired = 1;
+            UIView *view1=[[UIView alloc]initWithFrame:CGRectMake(cell.frame.size.width/2, 0, cell.frame.size.width/2, cell.frame.size.height)];
+            view1 .userInteractionEnabled=YES;
+            [view1 addGestureRecognizer:minimalTap2];
+            [cell.contentView addSubview:view1];
             UIImageView *image=[[UIImageView alloc]initWithFrame:CGRectMake(20, 10, 30, 30)];
             image.image=[UIImage imageNamed:@"MyBorrow"];
             image.contentMode=UIViewContentModeScaleAspectFill;
@@ -126,7 +143,14 @@
     
     return cell;
 }
+-(void)minimalTap
+{
+   
+}
+-(void)tapClick
+{
 
+}
 -(void)login
 {
     LoginViewController *login=[[LoginViewController alloc]init];

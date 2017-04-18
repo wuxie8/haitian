@@ -263,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				846856491EA09AA400C74F87 /* Utils */,
+				84CD81F61EA4909F009B786F /* Appdeledate */,
 				84B9DC3A1E9DCCC90066A92D /* Base */,
 				846856291EA0820900C74F87 /* MessageAlertView */,
 				8468561F1EA0810700C74F87 /* NetWork */,
@@ -281,7 +282,6 @@
 				84B9DC441E9DCE240066A92D /* PersonCenterViewController.h */,
 				84B9DC451E9DCE240066A92D /* PersonCenterViewController.m */,
 				846856121EA0597200C74F87 /* Login */,
-				84CD81F61EA4909F009B786F /* Appdeledate */,
 				84B9DBE91E9DC0990066A92D /* Supporting Files */,
 			);
 			path = haitian;
