@@ -168,7 +168,7 @@
     [cell.imageView setContentMode:UIViewContentModeScaleAspectFill];
     cell.imageView.clipsToBounds=YES;
     cell.imageView.image=[UIImage imageNamed:arr1[indexPath.row]];
-    
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     cell.textLabel.text=arr2[indexPath.row];
     cell.detailTextLabel.text=arr3[indexPath.row];
     return cell;

@@ -269,6 +269,10 @@ static void * ASValueTrackingSliderBoundsContext = &ASValueTrackingSliderBoundsC
 
     [self.popUpView setArrowCenterOffset:offset];
     self.popUpView.frame = CGRectIntegral(popUpRect);
+    CGRect frame=self.popUpView.frame;
+    frame.size.height-=10;
+    frame.origin.y+=10;
+    self.popUpView.frame=frame;
 }
 
 - (void)autoColorTrack

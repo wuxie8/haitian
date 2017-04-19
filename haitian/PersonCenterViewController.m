@@ -8,6 +8,7 @@
 
 #import "PersonCenterViewController.h"
 #import "LoginViewController.h"
+#import "HelpCenterViewController.h"
 @interface PersonCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(strong, nonatomic)UIView *headView;
 @end
@@ -149,6 +150,20 @@
 }
 -(void)tapClick
 {
+
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.section) {
+        case 4:
+        {HelpCenterViewController *helpCenter=[[HelpCenterViewController alloc]init];
+            [self.navigationController pushViewController:helpCenter animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
 
 }
 -(void)login

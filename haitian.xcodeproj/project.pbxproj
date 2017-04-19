@@ -42,6 +42,8 @@
 		84B9DC461E9DCE240066A92D /* PersonCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC451E9DCE240066A92D /* PersonCenterViewController.m */; };
 		84B9DC4B1E9DD9CE0066A92D /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC4A1E9DD9CE0066A92D /* HomePageViewController.m */; };
 		84CD81F51EA48F30009B786F /* RegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD81F41EA48F30009B786F /* RegisterVC.m */; };
+		84F5D3FD1EA7039D00EC8C9D /* HelpCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FC1EA7039D00EC8C9D /* HelpCenterViewController.m */; };
+		84F5D4001EA703D100EC8C9D /* XDMultTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FF1EA703D100EC8C9D /* XDMultTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,7 @@
 		8402B9F81E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastHandleCardCollectionViewCell.m; sourceTree = "<group>"; };
 		84546F481EA5E77B00AD0350 /* CertificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificationViewController.h; sourceTree = "<group>"; };
 		84546F491EA5E77B00AD0350 /* CertificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificationViewController.m; sourceTree = "<group>"; };
+		84546F541EA6200900AD0350 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		846856131EA059F400C74F87 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		846856141EA059F400C74F87 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		846856161EA0764900C74F87 /* AccountPassswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountPassswordViewController.h; sourceTree = "<group>"; };
@@ -134,6 +137,10 @@
 		84B9DC4A1E9DD9CE0066A92D /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
 		84CD81F31EA48F30009B786F /* RegisterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterVC.h; sourceTree = "<group>"; };
 		84CD81F41EA48F30009B786F /* RegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterVC.m; sourceTree = "<group>"; };
+		84F5D3FB1EA7039D00EC8C9D /* HelpCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpCenterViewController.h; sourceTree = "<group>"; };
+		84F5D3FC1EA7039D00EC8C9D /* HelpCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpCenterViewController.m; sourceTree = "<group>"; };
+		84F5D3FE1EA703D100EC8C9D /* XDMultTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDMultTableView.h; sourceTree = "<group>"; };
+		84F5D3FF1EA703D100EC8C9D /* XDMultTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDMultTableView.m; sourceTree = "<group>"; };
 		C281EA8F719D2415E82CC71C /* libPods-haitian.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-haitian.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4265450D8E7CFA0ADBFE28C /* Pods-haitian.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haitian.release.xcconfig"; path = "Pods/Target Support Files/Pods-haitian/Pods-haitian.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -292,8 +299,7 @@
 				84B9DC421E9DCDF50066A92D /* FastHandleCardViewController.m */,
 				8402B9F71E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.h */,
 				8402B9F81E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m */,
-				84B9DC441E9DCE240066A92D /* PersonCenterViewController.h */,
-				84B9DC451E9DCE240066A92D /* PersonCenterViewController.m */,
+				84F5D4011EA7461000EC8C9D /* Person */,
 				846856121EA0597200C74F87 /* Login */,
 				84B9DBE91E9DC0990066A92D /* Supporting Files */,
 			);
@@ -372,9 +378,23 @@
 			name = Appdeledate;
 			sourceTree = "<group>";
 		};
+		84F5D4011EA7461000EC8C9D /* Person */ = {
+			isa = PBXGroup;
+			children = (
+				84B9DC441E9DCE240066A92D /* PersonCenterViewController.h */,
+				84B9DC451E9DCE240066A92D /* PersonCenterViewController.m */,
+				84F5D3FB1EA7039D00EC8C9D /* HelpCenterViewController.h */,
+				84F5D3FC1EA7039D00EC8C9D /* HelpCenterViewController.m */,
+				84F5D3FE1EA703D100EC8C9D /* XDMultTableView.h */,
+				84F5D3FF1EA703D100EC8C9D /* XDMultTableView.m */,
+			);
+			name = Person;
+			sourceTree = "<group>";
+		};
 		E5D4A71C4E15B4A453FF3CA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84546F541EA6200900AD0350 /* MapKit.framework */,
 				C281EA8F719D2415E82CC71C /* libPods-haitian.a */,
 			);
 			name = Frameworks;
@@ -567,6 +587,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F5D3FD1EA7039D00EC8C9D /* HelpCenterViewController.m in Sources */,
 				847A11501EA45F0C002D8832 /* User.m in Sources */,
 				84A7398B1E9E25B700A42502 /* WSIndexBanner.m in Sources */,
 				8402B9DA1E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m in Sources */,
@@ -584,6 +605,7 @@
 				84B9DC401E9DCDBC0066A92D /* LoadSupermarketViewController.m in Sources */,
 				846856451EA0969E00C74F87 /* ForgotPasswordViewController.m in Sources */,
 				846856181EA0764900C74F87 /* AccountPassswordViewController.m in Sources */,
+				84F5D4001EA703D100EC8C9D /* XDMultTableView.m in Sources */,
 				846856381EA08FF900C74F87 /* BaseNC.m in Sources */,
 				84B9DC431E9DCDF50066A92D /* FastHandleCardViewController.m in Sources */,
 				8468562C1EA0822900C74F87 /* MessageAlertView.m in Sources */,
@@ -753,6 +775,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Admin.haitian;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "";
 			};
 			name = Debug;
 		};
@@ -767,6 +790,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Admin.haitian;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "";
 			};
 			name = Release;
 		};
