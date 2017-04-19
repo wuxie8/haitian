@@ -44,6 +44,7 @@
 		84CD81F51EA48F30009B786F /* RegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD81F41EA48F30009B786F /* RegisterVC.m */; };
 		84F5D3FD1EA7039D00EC8C9D /* HelpCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FC1EA7039D00EC8C9D /* HelpCenterViewController.m */; };
 		84F5D4001EA703D100EC8C9D /* XDMultTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FF1EA703D100EC8C9D /* XDMultTableView.m */; };
+		84F5D4041EA7492A00EC8C9D /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D4031EA7492A00EC8C9D /* FeedbackViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +142,8 @@
 		84F5D3FC1EA7039D00EC8C9D /* HelpCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpCenterViewController.m; sourceTree = "<group>"; };
 		84F5D3FE1EA703D100EC8C9D /* XDMultTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDMultTableView.h; sourceTree = "<group>"; };
 		84F5D3FF1EA703D100EC8C9D /* XDMultTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDMultTableView.m; sourceTree = "<group>"; };
+		84F5D4021EA7492A00EC8C9D /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		84F5D4031EA7492A00EC8C9D /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		C281EA8F719D2415E82CC71C /* libPods-haitian.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-haitian.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4265450D8E7CFA0ADBFE28C /* Pods-haitian.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haitian.release.xcconfig"; path = "Pods/Target Support Files/Pods-haitian/Pods-haitian.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -387,6 +390,8 @@
 				84F5D3FC1EA7039D00EC8C9D /* HelpCenterViewController.m */,
 				84F5D3FE1EA703D100EC8C9D /* XDMultTableView.h */,
 				84F5D3FF1EA703D100EC8C9D /* XDMultTableView.m */,
+				84F5D4021EA7492A00EC8C9D /* FeedbackViewController.h */,
+				84F5D4031EA7492A00EC8C9D /* FeedbackViewController.m */,
 			);
 			name = Person;
 			sourceTree = "<group>";
@@ -610,6 +615,7 @@
 				84B9DC431E9DCDF50066A92D /* FastHandleCardViewController.m in Sources */,
 				8468562C1EA0822900C74F87 /* MessageAlertView.m in Sources */,
 				847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */,
+				84F5D4041EA7492A00EC8C9D /* FeedbackViewController.m in Sources */,
 				84B9DBEB1E9DC0990066A92D /* main.m in Sources */,
 				84A7398C1E9E25B700A42502 /* WSPageView.m in Sources */,
 				84B9DC4B1E9DD9CE0066A92D /* HomePageViewController.m in Sources */,

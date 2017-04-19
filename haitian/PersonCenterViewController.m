@@ -9,6 +9,7 @@
 #import "PersonCenterViewController.h"
 #import "LoginViewController.h"
 #import "HelpCenterViewController.h"
+#import "FeedbackViewController.h"
 @interface PersonCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(strong, nonatomic)UIView *headView;
 @end
@@ -158,6 +159,11 @@
         case 4:
         {HelpCenterViewController *helpCenter=[[HelpCenterViewController alloc]init];
             [self.navigationController pushViewController:helpCenter animated:YES];
+        }
+            break;
+        case 5:
+        {FeedbackViewController *feedback=[[FeedbackViewController alloc]init];
+            [self.navigationController pushViewController:feedback animated:YES];
         }
             break;
             

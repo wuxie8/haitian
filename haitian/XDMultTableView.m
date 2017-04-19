@@ -26,7 +26,7 @@ static const CGFloat CELLHEIGHT = 44.0f;
         _tableView = [[UITableView alloc] initWithFrame:self.bounds];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.backgroundColor  = [UIColor clearColor];
+        _tableView.backgroundColor  = [UIColor whiteColor];
         _tableView.separatorStyle   = UITableViewCellSeparatorStyleNone;
         
         _tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
@@ -112,7 +112,7 @@ static const CGFloat CELLHEIGHT = 44.0f;
         view.frame = frame;
     }else{
         view = [[UIView alloc] init];
-        view.backgroundColor = DEFAULTHEADVIEWCOLOR;
+        view.backgroundColor = [UIColor whiteColor];
         view.layer.borderColor = [UIColor whiteColor].CGColor;
         view.layer.borderWidth = 0.5;
         NSString *title = [self invoke_titleForHeaderInSection:section];
@@ -127,14 +127,14 @@ static const CGFloat CELLHEIGHT = 44.0f;
     view.tag = section;
     CGFloat imgH = height-20;
     CGFloat imgW = imgH;
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(width-imgW-10, (height-imgH)/2, imgW, imgH)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(width-imgW-10, (height-imgH)/2+10, imgW/2, imgH/2)];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
-    imageView.image = [UIImage imageNamed:@"down_blue"];
+    imageView.image = [UIImage imageNamed:@"RightArrow"];
     NSNumber *sectionObj = [NSNumber numberWithInteger:section];
     if ([_multopenSectionArray containsObject:sectionObj]) {
-        imageView.transform = CGAffineTransformMakeRotation(0);
+        imageView.transform = CGAffineTransformMakeRotation(M_PI);
     }else{
-        imageView.transform = CGAffineTransformMakeRotation(-M_PI/2);
+        imageView.transform = CGAffineTransformMakeRotation(M_PI/2);
     }
     imageView.tag = 100;
     [view addSubview:imageView];
@@ -204,14 +204,14 @@ static const CGFloat CELLHEIGHT = 44.0f;
         [_multopenSectionArray removeObject:sectionObj];
         [_tableView deleteRowsAtIndexPaths:deleteArray withRowAnimation:UITableViewRowAnimationFade];
         [UIView animateWithDuration:0.3 animations:^{
-            imageView.transform = CGAffineTransformMakeRotation(-M_PI/2);
+            imageView.transform = CGAffineTransformMakeRotation(M_PI/2);
         }];
     }else{
         [_multopenSectionArray addObject:sectionObj];
         NSArray *insertArray = [self buildInsertRowWithSection:section];
         [_tableView insertRowsAtIndexPaths:insertArray withRowAnimation:UITableViewRowAnimationFade];
         [UIView animateWithDuration:0.3 animations:^{
-            imageView.transform = CGAffineTransformMakeRotation(0);
+            imageView.transform = CGAffineTransformMakeRotation(M_PI);
         }];
     }
 }
