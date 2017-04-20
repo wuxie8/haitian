@@ -10,6 +10,8 @@
 		2E2193132720ACDF463B286D /* libPods-haitian.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C281EA8F719D2415E82CC71C /* libPods-haitian.a */; };
 		8402B9DA1E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402B9D91E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m */; };
 		8402B9F91E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402B9F81E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m */; };
+		8451AFBB1EA859FA002F04B6 /* PersonCenter.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8451AFBA1EA859FA002F04B6 /* PersonCenter.xcassets */; };
+		8451AFBF1EA85E65002F04B6 /* MessageAlertView.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8451AFBE1EA85E65002F04B6 /* MessageAlertView.xcassets */; };
 		84546F4A1EA5E77B00AD0350 /* CertificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84546F491EA5E77B00AD0350 /* CertificationViewController.m */; };
 		846856151EA059F400C74F87 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856141EA059F400C74F87 /* LoginViewController.m */; };
 		846856181EA0764900C74F87 /* AccountPassswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856171EA0764900C74F87 /* AccountPassswordViewController.m */; };
@@ -45,6 +47,18 @@
 		84F5D3FD1EA7039D00EC8C9D /* HelpCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FC1EA7039D00EC8C9D /* HelpCenterViewController.m */; };
 		84F5D4001EA703D100EC8C9D /* XDMultTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FF1EA703D100EC8C9D /* XDMultTableView.m */; };
 		84F5D4041EA7492A00EC8C9D /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D4031EA7492A00EC8C9D /* FeedbackViewController.m */; };
+		84F5D4191EA7675E00EC8C9D /* TZAlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F5D4051EA7675E00EC8C9D /* TZAlbumCell.xib */; };
+		84F5D41A1EA7675E00EC8C9D /* TZAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D4071EA7675E00EC8C9D /* TZAssetCell.m */; };
+		84F5D41B1EA7675E00EC8C9D /* TZAssetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F5D4081EA7675E00EC8C9D /* TZAssetCell.xib */; };
+		84F5D41C1EA7675E00EC8C9D /* TZAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D40A1EA7675E00EC8C9D /* TZAssetModel.m */; };
+		84F5D41D1EA7675E00EC8C9D /* TZImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D40C1EA7675E00EC8C9D /* TZImageManager.m */; };
+		84F5D41E1EA7675E00EC8C9D /* TZImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D40E1EA7675E00EC8C9D /* TZImagePickerController.m */; };
+		84F5D41F1EA7675E00EC8C9D /* TZPhotoPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D4101EA7675E00EC8C9D /* TZPhotoPickerController.m */; };
+		84F5D4201EA7675E00EC8C9D /* TZPhotoPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D4121EA7675E00EC8C9D /* TZPhotoPreviewCell.m */; };
+		84F5D4211EA7675E00EC8C9D /* TZPhotoPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D4141EA7675E00EC8C9D /* TZPhotoPreviewController.m */; };
+		84F5D4221EA7675E00EC8C9D /* TZVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D4161EA7675E00EC8C9D /* TZVideoPlayerController.m */; };
+		84F5D4231EA7675E00EC8C9D /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D4181EA7675E00EC8C9D /* UIView+Layout.m */; };
+		84F5D4271EA768EA00EC8C9D /* TZTestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D4261EA768EA00EC8C9D /* TZTestCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +84,8 @@
 		8402B9D91E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadSupermarketCollectionViewCell.m; sourceTree = "<group>"; };
 		8402B9F71E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastHandleCardCollectionViewCell.h; sourceTree = "<group>"; };
 		8402B9F81E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastHandleCardCollectionViewCell.m; sourceTree = "<group>"; };
+		8451AFBA1EA859FA002F04B6 /* PersonCenter.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PersonCenter.xcassets; sourceTree = "<group>"; };
+		8451AFBE1EA85E65002F04B6 /* MessageAlertView.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MessageAlertView.xcassets; sourceTree = "<group>"; };
 		84546F481EA5E77B00AD0350 /* CertificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificationViewController.h; sourceTree = "<group>"; };
 		84546F491EA5E77B00AD0350 /* CertificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificationViewController.m; sourceTree = "<group>"; };
 		84546F541EA6200900AD0350 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -144,6 +160,28 @@
 		84F5D3FF1EA703D100EC8C9D /* XDMultTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDMultTableView.m; sourceTree = "<group>"; };
 		84F5D4021EA7492A00EC8C9D /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
 		84F5D4031EA7492A00EC8C9D /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
+		84F5D4051EA7675E00EC8C9D /* TZAlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TZAlbumCell.xib; sourceTree = "<group>"; };
+		84F5D4061EA7675E00EC8C9D /* TZAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZAssetCell.h; sourceTree = "<group>"; };
+		84F5D4071EA7675E00EC8C9D /* TZAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZAssetCell.m; sourceTree = "<group>"; };
+		84F5D4081EA7675E00EC8C9D /* TZAssetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TZAssetCell.xib; sourceTree = "<group>"; };
+		84F5D4091EA7675E00EC8C9D /* TZAssetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZAssetModel.h; sourceTree = "<group>"; };
+		84F5D40A1EA7675E00EC8C9D /* TZAssetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZAssetModel.m; sourceTree = "<group>"; };
+		84F5D40B1EA7675E00EC8C9D /* TZImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZImageManager.h; sourceTree = "<group>"; };
+		84F5D40C1EA7675E00EC8C9D /* TZImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZImageManager.m; sourceTree = "<group>"; };
+		84F5D40D1EA7675E00EC8C9D /* TZImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZImagePickerController.h; sourceTree = "<group>"; };
+		84F5D40E1EA7675E00EC8C9D /* TZImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZImagePickerController.m; sourceTree = "<group>"; };
+		84F5D40F1EA7675E00EC8C9D /* TZPhotoPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZPhotoPickerController.h; sourceTree = "<group>"; };
+		84F5D4101EA7675E00EC8C9D /* TZPhotoPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZPhotoPickerController.m; sourceTree = "<group>"; };
+		84F5D4111EA7675E00EC8C9D /* TZPhotoPreviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZPhotoPreviewCell.h; sourceTree = "<group>"; };
+		84F5D4121EA7675E00EC8C9D /* TZPhotoPreviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZPhotoPreviewCell.m; sourceTree = "<group>"; };
+		84F5D4131EA7675E00EC8C9D /* TZPhotoPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZPhotoPreviewController.h; sourceTree = "<group>"; };
+		84F5D4141EA7675E00EC8C9D /* TZPhotoPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZPhotoPreviewController.m; sourceTree = "<group>"; };
+		84F5D4151EA7675E00EC8C9D /* TZVideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZVideoPlayerController.h; sourceTree = "<group>"; };
+		84F5D4161EA7675E00EC8C9D /* TZVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZVideoPlayerController.m; sourceTree = "<group>"; };
+		84F5D4171EA7675E00EC8C9D /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
+		84F5D4181EA7675E00EC8C9D /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
+		84F5D4251EA768EA00EC8C9D /* TZTestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZTestCell.h; sourceTree = "<group>"; };
+		84F5D4261EA768EA00EC8C9D /* TZTestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZTestCell.m; sourceTree = "<group>"; };
 		C281EA8F719D2415E82CC71C /* libPods-haitian.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-haitian.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4265450D8E7CFA0ADBFE28C /* Pods-haitian.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haitian.release.xcconfig"; path = "Pods/Target Support Files/Pods-haitian/Pods-haitian.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,6 +219,15 @@
 				F4265450D8E7CFA0ADBFE28C /* Pods-haitian.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8451AFB81EA8599F002F04B6 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				8451AFBA1EA859FA002F04B6 /* PersonCenter.xcassets */,
+				8451AFBE1EA85E65002F04B6 /* MessageAlertView.xcassets */,
+			);
+			name = Resource;
 			sourceTree = "<group>";
 		};
 		84546F3E1EA5A0B200AD0350 /* HomePage */ = {
@@ -288,6 +335,7 @@
 			children = (
 				846856491EA09AA400C74F87 /* Utils */,
 				84CD81F61EA4909F009B786F /* Appdeledate */,
+				8451AFB81EA8599F002F04B6 /* Resource */,
 				84B9DC3A1E9DCCC90066A92D /* Base */,
 				846856291EA0820900C74F87 /* MessageAlertView */,
 				8468561F1EA0810700C74F87 /* NetWork */,
@@ -392,8 +440,38 @@
 				84F5D3FF1EA703D100EC8C9D /* XDMultTableView.m */,
 				84F5D4021EA7492A00EC8C9D /* FeedbackViewController.h */,
 				84F5D4031EA7492A00EC8C9D /* FeedbackViewController.m */,
+				84F5D4241EA7676300EC8C9D /* TZImagePickerController */,
 			);
 			name = Person;
+			sourceTree = "<group>";
+		};
+		84F5D4241EA7676300EC8C9D /* TZImagePickerController */ = {
+			isa = PBXGroup;
+			children = (
+				84F5D4251EA768EA00EC8C9D /* TZTestCell.h */,
+				84F5D4261EA768EA00EC8C9D /* TZTestCell.m */,
+				84F5D4051EA7675E00EC8C9D /* TZAlbumCell.xib */,
+				84F5D4061EA7675E00EC8C9D /* TZAssetCell.h */,
+				84F5D40C1EA7675E00EC8C9D /* TZImageManager.m */,
+				84F5D4071EA7675E00EC8C9D /* TZAssetCell.m */,
+				84F5D4081EA7675E00EC8C9D /* TZAssetCell.xib */,
+				84F5D4091EA7675E00EC8C9D /* TZAssetModel.h */,
+				84F5D40A1EA7675E00EC8C9D /* TZAssetModel.m */,
+				84F5D40B1EA7675E00EC8C9D /* TZImageManager.h */,
+				84F5D40D1EA7675E00EC8C9D /* TZImagePickerController.h */,
+				84F5D40E1EA7675E00EC8C9D /* TZImagePickerController.m */,
+				84F5D40F1EA7675E00EC8C9D /* TZPhotoPickerController.h */,
+				84F5D4101EA7675E00EC8C9D /* TZPhotoPickerController.m */,
+				84F5D4111EA7675E00EC8C9D /* TZPhotoPreviewCell.h */,
+				84F5D4121EA7675E00EC8C9D /* TZPhotoPreviewCell.m */,
+				84F5D4131EA7675E00EC8C9D /* TZPhotoPreviewController.h */,
+				84F5D4141EA7675E00EC8C9D /* TZPhotoPreviewController.m */,
+				84F5D4151EA7675E00EC8C9D /* TZVideoPlayerController.h */,
+				84F5D4161EA7675E00EC8C9D /* TZVideoPlayerController.m */,
+				84F5D4171EA7675E00EC8C9D /* UIView+Layout.h */,
+				84F5D4181EA7675E00EC8C9D /* UIView+Layout.m */,
+			);
+			name = TZImagePickerController;
 			sourceTree = "<group>";
 		};
 		E5D4A71C4E15B4A453FF3CA2 /* Frameworks */ = {
@@ -517,9 +595,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F5D41B1EA7675E00EC8C9D /* TZAssetCell.xib in Resources */,
 				84B9DBF91E9DC0990066A92D /* LaunchScreen.storyboard in Resources */,
 				84B9DBF61E9DC0990066A92D /* Assets.xcassets in Resources */,
 				84B9DBF41E9DC0990066A92D /* Main.storyboard in Resources */,
+				84F5D4191EA7675E00EC8C9D /* TZAlbumCell.xib in Resources */,
+				8451AFBF1EA85E65002F04B6 /* MessageAlertView.xcassets in Resources */,
+				8451AFBB1EA859FA002F04B6 /* PersonCenter.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,11 +676,14 @@
 			files = (
 				84F5D3FD1EA7039D00EC8C9D /* HelpCenterViewController.m in Sources */,
 				847A11501EA45F0C002D8832 /* User.m in Sources */,
+				84F5D41A1EA7675E00EC8C9D /* TZAssetCell.m in Sources */,
 				84A7398B1E9E25B700A42502 /* WSIndexBanner.m in Sources */,
 				8402B9DA1E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m in Sources */,
 				846856251EA0813C00C74F87 /* NetWorkUtil.m in Sources */,
 				8468563A1EA08FF900C74F87 /* GestureBaseVC.m in Sources */,
+				84F5D41E1EA7675E00EC8C9D /* TZImagePickerController.m in Sources */,
 				846856391EA08FF900C74F87 /* BaseVC.m in Sources */,
+				84F5D41D1EA7675E00EC8C9D /* TZImageManager.m in Sources */,
 				846856411EA0902D00C74F87 /* ASValuePopUpView.m in Sources */,
 				84B9DBF11E9DC0990066A92D /* ViewController.m in Sources */,
 				84546F4A1EA5E77B00AD0350 /* CertificationViewController.m in Sources */,
@@ -608,21 +693,28 @@
 				8468563C1EA08FF900C74F87 /* NavBaseVC.m in Sources */,
 				846856421EA0902D00C74F87 /* ASValueTrackingSlider.m in Sources */,
 				84B9DC401E9DCDBC0066A92D /* LoadSupermarketViewController.m in Sources */,
+				84F5D4201EA7675E00EC8C9D /* TZPhotoPreviewCell.m in Sources */,
 				846856451EA0969E00C74F87 /* ForgotPasswordViewController.m in Sources */,
 				846856181EA0764900C74F87 /* AccountPassswordViewController.m in Sources */,
 				84F5D4001EA703D100EC8C9D /* XDMultTableView.m in Sources */,
 				846856381EA08FF900C74F87 /* BaseNC.m in Sources */,
+				84F5D41F1EA7675E00EC8C9D /* TZPhotoPickerController.m in Sources */,
 				84B9DC431E9DCDF50066A92D /* FastHandleCardViewController.m in Sources */,
+				84F5D41C1EA7675E00EC8C9D /* TZAssetModel.m in Sources */,
 				8468562C1EA0822900C74F87 /* MessageAlertView.m in Sources */,
 				847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */,
+				84F5D4271EA768EA00EC8C9D /* TZTestCell.m in Sources */,
 				84F5D4041EA7492A00EC8C9D /* FeedbackViewController.m in Sources */,
 				84B9DBEB1E9DC0990066A92D /* main.m in Sources */,
 				84A7398C1E9E25B700A42502 /* WSPageView.m in Sources */,
 				84B9DC4B1E9DD9CE0066A92D /* HomePageViewController.m in Sources */,
 				846856151EA059F400C74F87 /* LoginViewController.m in Sources */,
+				84F5D4231EA7675E00EC8C9D /* UIView+Layout.m in Sources */,
+				84F5D4221EA7675E00EC8C9D /* TZVideoPlayerController.m in Sources */,
 				846856481EA09A8B00C74F87 /* UtilTools.m in Sources */,
 				8468563B1EA08FF900C74F87 /* GestureNavBaseVC.m in Sources */,
 				846856241EA0813C00C74F87 /* NetWorkManager.m in Sources */,
+				84F5D4211EA7675E00EC8C9D /* TZPhotoPreviewController.m in Sources */,
 				84B9DC461E9DCE240066A92D /* PersonCenterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

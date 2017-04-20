@@ -18,7 +18,7 @@
 {
     NSArray *arr;
     NSArray  *arr1;
-}
+   }
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"个人中心";
@@ -153,16 +153,20 @@
 {
 
 }
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.section) {
         case 4:
         {HelpCenterViewController *helpCenter=[[HelpCenterViewController alloc]init];
+            helpCenter.hidesBottomBarWhenPushed=YES;
             [self.navigationController pushViewController:helpCenter animated:YES];
         }
             break;
         case 5:
         {FeedbackViewController *feedback=[[FeedbackViewController alloc]init];
+            feedback.hidesBottomBarWhenPushed=YES;
+
             [self.navigationController pushViewController:feedback animated:YES];
         }
             break;
