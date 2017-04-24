@@ -125,9 +125,9 @@
     [_selectedPhotos removeObjectAtIndex:but.tag];
     [_collectionView reloadData];
     
-    if (_selectedPhotos.count==0) {
-        _collectionView.alpha = 0;
-    }
+//    if (_selectedPhotos.count==0) {
+//        _collectionView.alpha = 0;
+//    }
 }
 #pragma mark Click Event
 

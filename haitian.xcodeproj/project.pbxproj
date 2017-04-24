@@ -43,6 +43,8 @@
 		84B9DC431E9DCDF50066A92D /* FastHandleCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC421E9DCDF50066A92D /* FastHandleCardViewController.m */; };
 		84B9DC461E9DCE240066A92D /* PersonCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC451E9DCE240066A92D /* PersonCenterViewController.m */; };
 		84B9DC4B1E9DD9CE0066A92D /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC4A1E9DD9CE0066A92D /* HomePageViewController.m */; };
+		84C50C381EADA5BC00AD0B62 /* Authentication.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C50C371EADA5BC00AD0B62 /* Authentication.xcassets */; };
+		84C50C3B1EADD49C00AD0B62 /* IdVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50C3A1EADD49C00AD0B62 /* IdVerificationViewController.m */; };
 		84CD81F51EA48F30009B786F /* RegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD81F41EA48F30009B786F /* RegisterVC.m */; };
 		84F5D3FD1EA7039D00EC8C9D /* HelpCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FC1EA7039D00EC8C9D /* HelpCenterViewController.m */; };
 		84F5D4001EA703D100EC8C9D /* XDMultTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FF1EA703D100EC8C9D /* XDMultTableView.m */; };
@@ -152,6 +154,9 @@
 		84B9DC481E9DCF5A0066A92D /* Public.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Public.h; sourceTree = "<group>"; };
 		84B9DC491E9DD9CE0066A92D /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
 		84B9DC4A1E9DD9CE0066A92D /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
+		84C50C371EADA5BC00AD0B62 /* Authentication.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Authentication.xcassets; sourceTree = "<group>"; };
+		84C50C391EADD49B00AD0B62 /* IdVerificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdVerificationViewController.h; sourceTree = "<group>"; };
+		84C50C3A1EADD49C00AD0B62 /* IdVerificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdVerificationViewController.m; sourceTree = "<group>"; };
 		84CD81F31EA48F30009B786F /* RegisterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterVC.h; sourceTree = "<group>"; };
 		84CD81F41EA48F30009B786F /* RegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterVC.m; sourceTree = "<group>"; };
 		84F5D3FB1EA7039D00EC8C9D /* HelpCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpCenterViewController.h; sourceTree = "<group>"; };
@@ -226,6 +231,7 @@
 			children = (
 				8451AFBA1EA859FA002F04B6 /* PersonCenter.xcassets */,
 				8451AFBE1EA85E65002F04B6 /* MessageAlertView.xcassets */,
+				84C50C371EADA5BC00AD0B62 /* Authentication.xcassets */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -237,6 +243,8 @@
 				84B9DC4A1E9DD9CE0066A92D /* HomePageViewController.m */,
 				84546F481EA5E77B00AD0350 /* CertificationViewController.h */,
 				84546F491EA5E77B00AD0350 /* CertificationViewController.m */,
+				84C50C391EADD49B00AD0B62 /* IdVerificationViewController.h */,
+				84C50C3A1EADD49C00AD0B62 /* IdVerificationViewController.m */,
 			);
 			name = HomePage;
 			sourceTree = "<group>";
@@ -598,6 +606,7 @@
 				84F5D41B1EA7675E00EC8C9D /* TZAssetCell.xib in Resources */,
 				84B9DBF91E9DC0990066A92D /* LaunchScreen.storyboard in Resources */,
 				84B9DBF61E9DC0990066A92D /* Assets.xcassets in Resources */,
+				84C50C381EADA5BC00AD0B62 /* Authentication.xcassets in Resources */,
 				84B9DBF41E9DC0990066A92D /* Main.storyboard in Resources */,
 				84F5D4191EA7675E00EC8C9D /* TZAlbumCell.xib in Resources */,
 				8451AFBF1EA85E65002F04B6 /* MessageAlertView.xcassets in Resources */,
@@ -683,6 +692,7 @@
 				8468563A1EA08FF900C74F87 /* GestureBaseVC.m in Sources */,
 				84F5D41E1EA7675E00EC8C9D /* TZImagePickerController.m in Sources */,
 				846856391EA08FF900C74F87 /* BaseVC.m in Sources */,
+				84C50C3B1EADD49C00AD0B62 /* IdVerificationViewController.m in Sources */,
 				84F5D41D1EA7675E00EC8C9D /* TZImageManager.m in Sources */,
 				846856411EA0902D00C74F87 /* ASValuePopUpView.m in Sources */,
 				84B9DBF11E9DC0990066A92D /* ViewController.m in Sources */,
