@@ -45,6 +45,19 @@
 		84B9DC4B1E9DD9CE0066A92D /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC4A1E9DD9CE0066A92D /* HomePageViewController.m */; };
 		84C50C381EADA5BC00AD0B62 /* Authentication.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C50C371EADA5BC00AD0B62 /* Authentication.xcassets */; };
 		84C50C3B1EADD49C00AD0B62 /* IdVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50C3A1EADD49C00AD0B62 /* IdVerificationViewController.m */; };
+		84C50C401EADF3DE00AD0B62 /* RectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50C3F1EADF3DE00AD0B62 /* RectManager.m */; };
+		84C50C471EADF40D00AD0B62 /* UIAlertController+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50C441EADF40D00AD0B62 /* UIAlertController+Extend.m */; };
+		84C50C481EADF40D00AD0B62 /* UIImage+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50C461EADF40D00AD0B62 /* UIImage+Extend.m */; };
+		84C50C4E1EADF44A00AD0B62 /* IDInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50C4D1EADF44A00AD0B62 /* IDInfo.m */; };
+		84C50C511EADF45700AD0B62 /* LHSIDCardScaningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50C501EADF45700AD0B62 /* LHSIDCardScaningView.m */; };
+		84C50C5A1EADF47100AD0B62 /* AVCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50C531EADF47100AD0B62 /* AVCaptureViewController.m */; };
+		84C50C5B1EADF47100AD0B62 /* IDAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50C551EADF47100AD0B62 /* IDAuthViewController.m */; };
+		84C50C5C1EADF47100AD0B62 /* IDAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C50C561EADF47100AD0B62 /* IDAuthViewController.xib */; };
+		84C50C5D1EADF47100AD0B62 /* IDInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50C581EADF47100AD0B62 /* IDInfoViewController.m */; };
+		84C50C5E1EADF47100AD0B62 /* IDInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C50C591EADF47100AD0B62 /* IDInfoViewController.xib */; };
+		84C50C611EADFD8A00AD0B62 /* libexidcardios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C50C601EADFD8A00AD0B62 /* libexidcardios.a */; };
+		84C50C651EAE00AA00AD0B62 /* libexidcardios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C50C641EAE00AA00AD0B62 /* libexidcardios.a */; };
+		84C50C671EAE064A00AD0B62 /* zocr0.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C50C661EAE04F200AD0B62 /* zocr0.lib */; };
 		84CD81F51EA48F30009B786F /* RegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD81F41EA48F30009B786F /* RegisterVC.m */; };
 		84F5D3FD1EA7039D00EC8C9D /* HelpCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FC1EA7039D00EC8C9D /* HelpCenterViewController.m */; };
 		84F5D4001EA703D100EC8C9D /* XDMultTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FF1EA703D100EC8C9D /* XDMultTableView.m */; };
@@ -157,6 +170,29 @@
 		84C50C371EADA5BC00AD0B62 /* Authentication.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Authentication.xcassets; sourceTree = "<group>"; };
 		84C50C391EADD49B00AD0B62 /* IdVerificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdVerificationViewController.h; sourceTree = "<group>"; };
 		84C50C3A1EADD49C00AD0B62 /* IdVerificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdVerificationViewController.m; sourceTree = "<group>"; };
+		84C50C3E1EADF3DE00AD0B62 /* RectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RectManager.h; sourceTree = "<group>"; };
+		84C50C3F1EADF3DE00AD0B62 /* RectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RectManager.m; sourceTree = "<group>"; };
+		84C50C431EADF40D00AD0B62 /* UIAlertController+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Extend.h"; sourceTree = "<group>"; };
+		84C50C441EADF40D00AD0B62 /* UIAlertController+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Extend.m"; sourceTree = "<group>"; };
+		84C50C451EADF40D00AD0B62 /* UIImage+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extend.h"; sourceTree = "<group>"; };
+		84C50C461EADF40D00AD0B62 /* UIImage+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extend.m"; sourceTree = "<group>"; };
+		84C50C4C1EADF44A00AD0B62 /* IDInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDInfo.h; sourceTree = "<group>"; };
+		84C50C4D1EADF44A00AD0B62 /* IDInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDInfo.m; sourceTree = "<group>"; };
+		84C50C4F1EADF45700AD0B62 /* LHSIDCardScaningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHSIDCardScaningView.h; sourceTree = "<group>"; };
+		84C50C501EADF45700AD0B62 /* LHSIDCardScaningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHSIDCardScaningView.m; sourceTree = "<group>"; };
+		84C50C521EADF47100AD0B62 /* AVCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCaptureViewController.h; sourceTree = "<group>"; };
+		84C50C531EADF47100AD0B62 /* AVCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCaptureViewController.m; sourceTree = "<group>"; };
+		84C50C541EADF47100AD0B62 /* IDAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDAuthViewController.h; sourceTree = "<group>"; };
+		84C50C551EADF47100AD0B62 /* IDAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDAuthViewController.m; sourceTree = "<group>"; };
+		84C50C561EADF47100AD0B62 /* IDAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IDAuthViewController.xib; sourceTree = "<group>"; };
+		84C50C571EADF47100AD0B62 /* IDInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDInfoViewController.h; sourceTree = "<group>"; };
+		84C50C581EADF47100AD0B62 /* IDInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDInfoViewController.m; sourceTree = "<group>"; };
+		84C50C591EADF47100AD0B62 /* IDInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IDInfoViewController.xib; sourceTree = "<group>"; };
+		84C50C5F1EADF9E400AD0B62 /* excards.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = excards.h; sourceTree = "<group>"; };
+		84C50C601EADFD8A00AD0B62 /* libexidcardios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libexidcardios.a; path = "../../Downloads/IDCardRecognition-master/IDCardRecognition/libexidcard/libexidcardios.a"; sourceTree = "<group>"; };
+		84C50C621EADFDA200AD0B62 /* zocr0.lib */ = {isa = PBXFileReference; lastKnownFileType = file; name = zocr0.lib; path = "../../Downloads/IDCardRecognition-master/IDCardRecognition/libexidcard/dicts/zocr0.lib"; sourceTree = "<group>"; };
+		84C50C641EAE00AA00AD0B62 /* libexidcardios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libexidcardios.a; sourceTree = "<group>"; };
+		84C50C661EAE04F200AD0B62 /* zocr0.lib */ = {isa = PBXFileReference; lastKnownFileType = file; path = zocr0.lib; sourceTree = "<group>"; };
 		84CD81F31EA48F30009B786F /* RegisterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterVC.h; sourceTree = "<group>"; };
 		84CD81F41EA48F30009B786F /* RegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterVC.m; sourceTree = "<group>"; };
 		84F5D3FB1EA7039D00EC8C9D /* HelpCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpCenterViewController.h; sourceTree = "<group>"; };
@@ -196,6 +232,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C50C671EAE064A00AD0B62 /* zocr0.lib in Frameworks */,
+				84C50C651EAE00AA00AD0B62 /* libexidcardios.a in Frameworks */,
+				84C50C611EADFD8A00AD0B62 /* libexidcardios.a in Frameworks */,
 				2E2193132720ACDF463B286D /* libPods-haitian.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,6 +284,7 @@
 				84546F491EA5E77B00AD0350 /* CertificationViewController.m */,
 				84C50C391EADD49B00AD0B62 /* IdVerificationViewController.h */,
 				84C50C3A1EADD49C00AD0B62 /* IdVerificationViewController.m */,
+				84C50C3C1EADF3A700AD0B62 /* IdCardRecognition */,
 			);
 			name = HomePage;
 			sourceTree = "<group>";
@@ -368,9 +408,12 @@
 		84B9DBE91E9DC0990066A92D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				84C50C641EAE00AA00AD0B62 /* libexidcardios.a */,
+				84C50C661EAE04F200AD0B62 /* zocr0.lib */,
 				8468562D1EA08EFF00C74F87 /* Serve.h */,
 				84B9DC471E9DCF2A0066A92D /* Header.h */,
 				84B9DC481E9DCF5A0066A92D /* Public.h */,
+				84C50C5F1EADF9E400AD0B62 /* excards.h */,
 				84B9DBEA1E9DC0990066A92D /* main.m */,
 			);
 			name = "Supporting Files";
@@ -420,6 +463,71 @@
 				846856401EA0902D00C74F87 /* ASValueTrackingSlider.m */,
 			);
 			name = ASValueTrackingSlider;
+			sourceTree = "<group>";
+		};
+		84C50C3C1EADF3A700AD0B62 /* IdCardRecognition */ = {
+			isa = PBXGroup;
+			children = (
+				84C50C4B1EADF42500AD0B62 /* Controller */,
+				84C50C4A1EADF42300AD0B62 /* View */,
+				84C50C491EADF42100AD0B62 /* Model */,
+				84C50C421EADF3F900AD0B62 /* Category */,
+				84C50C3D1EADF3CD00AD0B62 /* Tool */,
+			);
+			name = IdCardRecognition;
+			sourceTree = "<group>";
+		};
+		84C50C3D1EADF3CD00AD0B62 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				84C50C3E1EADF3DE00AD0B62 /* RectManager.h */,
+				84C50C3F1EADF3DE00AD0B62 /* RectManager.m */,
+			);
+			name = Tool;
+			sourceTree = "<group>";
+		};
+		84C50C421EADF3F900AD0B62 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				84C50C431EADF40D00AD0B62 /* UIAlertController+Extend.h */,
+				84C50C441EADF40D00AD0B62 /* UIAlertController+Extend.m */,
+				84C50C451EADF40D00AD0B62 /* UIImage+Extend.h */,
+				84C50C461EADF40D00AD0B62 /* UIImage+Extend.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
+		84C50C491EADF42100AD0B62 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84C50C4C1EADF44A00AD0B62 /* IDInfo.h */,
+				84C50C4D1EADF44A00AD0B62 /* IDInfo.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		84C50C4A1EADF42300AD0B62 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84C50C4F1EADF45700AD0B62 /* LHSIDCardScaningView.h */,
+				84C50C501EADF45700AD0B62 /* LHSIDCardScaningView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		84C50C4B1EADF42500AD0B62 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				84C50C521EADF47100AD0B62 /* AVCaptureViewController.h */,
+				84C50C531EADF47100AD0B62 /* AVCaptureViewController.m */,
+				84C50C541EADF47100AD0B62 /* IDAuthViewController.h */,
+				84C50C551EADF47100AD0B62 /* IDAuthViewController.m */,
+				84C50C561EADF47100AD0B62 /* IDAuthViewController.xib */,
+				84C50C571EADF47100AD0B62 /* IDInfoViewController.h */,
+				84C50C581EADF47100AD0B62 /* IDInfoViewController.m */,
+				84C50C591EADF47100AD0B62 /* IDInfoViewController.xib */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		84CD81F61EA4909F009B786F /* Appdeledate */ = {
@@ -485,6 +593,8 @@
 		E5D4A71C4E15B4A453FF3CA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84C50C621EADFDA200AD0B62 /* zocr0.lib */,
+				84C50C601EADFD8A00AD0B62 /* libexidcardios.a */,
 				84546F541EA6200900AD0350 /* MapKit.framework */,
 				C281EA8F719D2415E82CC71C /* libPods-haitian.a */,
 			);
@@ -608,8 +718,10 @@
 				84B9DBF61E9DC0990066A92D /* Assets.xcassets in Resources */,
 				84C50C381EADA5BC00AD0B62 /* Authentication.xcassets in Resources */,
 				84B9DBF41E9DC0990066A92D /* Main.storyboard in Resources */,
+				84C50C5E1EADF47100AD0B62 /* IDInfoViewController.xib in Resources */,
 				84F5D4191EA7675E00EC8C9D /* TZAlbumCell.xib in Resources */,
 				8451AFBF1EA85E65002F04B6 /* MessageAlertView.xcassets in Resources */,
+				84C50C5C1EADF47100AD0B62 /* IDAuthViewController.xib in Resources */,
 				8451AFBB1EA859FA002F04B6 /* PersonCenter.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -684,9 +796,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				84F5D3FD1EA7039D00EC8C9D /* HelpCenterViewController.m in Sources */,
+				84C50C481EADF40D00AD0B62 /* UIImage+Extend.m in Sources */,
 				847A11501EA45F0C002D8832 /* User.m in Sources */,
 				84F5D41A1EA7675E00EC8C9D /* TZAssetCell.m in Sources */,
 				84A7398B1E9E25B700A42502 /* WSIndexBanner.m in Sources */,
+				84C50C5D1EADF47100AD0B62 /* IDInfoViewController.m in Sources */,
 				8402B9DA1E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m in Sources */,
 				846856251EA0813C00C74F87 /* NetWorkUtil.m in Sources */,
 				8468563A1EA08FF900C74F87 /* GestureBaseVC.m in Sources */,
@@ -696,10 +810,13 @@
 				84F5D41D1EA7675E00EC8C9D /* TZImageManager.m in Sources */,
 				846856411EA0902D00C74F87 /* ASValuePopUpView.m in Sources */,
 				84B9DBF11E9DC0990066A92D /* ViewController.m in Sources */,
+				84C50C401EADF3DE00AD0B62 /* RectManager.m in Sources */,
 				84546F4A1EA5E77B00AD0350 /* CertificationViewController.m in Sources */,
 				84B9DBEE1E9DC0990066A92D /* AppDelegate.m in Sources */,
 				84CD81F51EA48F30009B786F /* RegisterVC.m in Sources */,
 				8402B9F91E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m in Sources */,
+				84C50C4E1EADF44A00AD0B62 /* IDInfo.m in Sources */,
+				84C50C5A1EADF47100AD0B62 /* AVCaptureViewController.m in Sources */,
 				8468563C1EA08FF900C74F87 /* NavBaseVC.m in Sources */,
 				846856421EA0902D00C74F87 /* ASValueTrackingSlider.m in Sources */,
 				84B9DC401E9DCDBC0066A92D /* LoadSupermarketViewController.m in Sources */,
@@ -716,6 +833,7 @@
 				84F5D4271EA768EA00EC8C9D /* TZTestCell.m in Sources */,
 				84F5D4041EA7492A00EC8C9D /* FeedbackViewController.m in Sources */,
 				84B9DBEB1E9DC0990066A92D /* main.m in Sources */,
+				84C50C471EADF40D00AD0B62 /* UIAlertController+Extend.m in Sources */,
 				84A7398C1E9E25B700A42502 /* WSPageView.m in Sources */,
 				84B9DC4B1E9DD9CE0066A92D /* HomePageViewController.m in Sources */,
 				846856151EA059F400C74F87 /* LoginViewController.m in Sources */,
@@ -724,8 +842,10 @@
 				846856481EA09A8B00C74F87 /* UtilTools.m in Sources */,
 				8468563B1EA08FF900C74F87 /* GestureNavBaseVC.m in Sources */,
 				846856241EA0813C00C74F87 /* NetWorkManager.m in Sources */,
+				84C50C511EADF45700AD0B62 /* LHSIDCardScaningView.m in Sources */,
 				84F5D4211EA7675E00EC8C9D /* TZPhotoPreviewController.m in Sources */,
 				84B9DC461E9DCE240066A92D /* PersonCenterViewController.m in Sources */,
+				84C50C5B1EADF47100AD0B62 /* IDAuthViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -805,6 +925,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -821,9 +942,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-all_load";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -854,6 +976,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -864,8 +987,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-all_load";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -878,9 +1002,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = NUH99A3LBD;
+				ENABLE_BITCODE = NO;
+				ENABLE_ON_DEMAND_RESOURCES = YES;
 				GCC_PREFIX_HEADER = /Users/admin/Desktop/haitian/haitian/Header.h;
 				INFOPLIST_FILE = haitian/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/haitian",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Admin.haitian;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "";
@@ -893,9 +1024,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = NUH99A3LBD;
+				ENABLE_BITCODE = NO;
+				ENABLE_ON_DEMAND_RESOURCES = YES;
 				GCC_PREFIX_HEADER = /Users/admin/Desktop/haitian/haitian/Header.h;
 				INFOPLIST_FILE = haitian/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/haitian",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Admin.haitian;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "";

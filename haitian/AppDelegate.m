@@ -48,7 +48,6 @@
     
     
     UITabBarController *tabBarController=[[UITabBarController alloc]init];
-    
     //改变tabBar的背景颜色
     UIView *barBgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 49)];
     barBgView.backgroundColor = [UIColor whiteColor];

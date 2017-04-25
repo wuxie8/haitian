@@ -107,12 +107,9 @@ dic=[NSDictionary dictionaryWithObjectsAndKeys:
     cell.imageView.image=[UIImage imageNamed:arr2[indexPath.row]];
     cell.textLabel.text=arr1[indexPath.row];
     if ([(NSNumber *)[dic objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]]boolValue]) {
-        DLog(@"yes");
     }
     else
     {
-        DLog(@"no");
-
     
     }
     cell.detailTextLabel.text=@"fdsbjkf";

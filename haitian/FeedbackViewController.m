@@ -91,7 +91,6 @@
 }
 #pragma mark UICollectionView
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    DLog(@"%lu",self.selectedPhotos.count + 1);
     return self.selectedPhotos.count + 1;
     
 }

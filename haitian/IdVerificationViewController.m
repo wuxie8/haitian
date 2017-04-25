@@ -7,6 +7,8 @@
 //
 
 #import "IdVerificationViewController.h"
+#import "IDAuthViewController.h"
+
 
 @interface IdVerificationViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(strong, nonatomic)UIView *headView;
@@ -15,12 +17,13 @@
 @end
 
 @implementation IdVerificationViewController
-
+{
+    NSArray *arr;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"身份认证";
-    
-    
+    arr=@[@"IdPositive",@"IdOpposite"];
     UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
     tab.delegate=self;
     tab.dataSource=self;
@@ -29,6 +32,39 @@
     [self.view addSubview:tab];
     // Do any additional setup after loading the view.
 }
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+
+    return 2;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 250;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    
+    UIImageView *cellImageView=[[UIImageView alloc]initWithFrame:CGRectMake(30, 20, WIDTH-30*2, 200)];
+    cellImageView.image=[UIImage imageNamed:arr[indexPath.row]];
+    cellImageView.tag=indexPath.row+1000;
+    cellImageView.userInteractionEnabled=YES;
+    UITapGestureRecognizer *cellImageTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cellImageClick:)];
+    [cellImageView addGestureRecognizer:cellImageTap];
+    [cell.contentView addSubview:cellImageView];
+    return cell;
+}
+-(void)cellImageClick:(UITapGestureRecognizer *)tap
+{
+    NSInteger row = tap.view.tag;
+    if (row==1000) {
+        IDAuthViewController *IDAuthVC = [[IDAuthViewController alloc] init];
+        
+        [self.navigationController pushViewController:IDAuthVC animated:YES];    }
+      }
+
+#pragma mark 懒加载
 -(UIView *)headView
 {
     if (_headView==nil) {
@@ -48,39 +84,17 @@
         UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(10, 20, WIDTH-20, 40 )];
         [but setTitle:@"下一步" forState:UIControlStateNormal];
         [but addTarget:self action:@selector(nextStep) forControlEvents:UIControlEventTouchUpInside];
-            
         but.enabled=NO;
         but.backgroundColor=AppPageColor;
         [_footView addSubview:but];
     }
     return _footView;
 }
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+
+#pragma mark 实现的方法
+-(void)nextStep
 {
 
-    return 2;
-}
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 150;
-}
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-    
-    UIImageView *cellImageView=[[UIImageView alloc]initWithFrame:CGRectMake(30, 20, WIDTH-30*2, 100)];
-    cellImageView.image=[UIImage imageNamed:@"BindCreditCard"];
-    cellImageView.tag=indexPath.row+1000;
-    cellImageView.userInteractionEnabled=YES;
-    UITapGestureRecognizer *cellImageTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cellImageClick:)];
-    [cellImageView addGestureRecognizer:cellImageTap];
-    [cell.contentView addSubview:cellImageView];
-    return cell;
-}
--(void)cellImageClick:(UITapGestureRecognizer *)tap
-{
-    NSInteger section = tap.view.tag;
-    DLog(@"%ld",(long)section);
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
