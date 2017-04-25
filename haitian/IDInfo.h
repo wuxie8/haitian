@@ -19,4 +19,8 @@
 @property (nonatomic,copy) NSString *issue; //签发机关
 @property (nonatomic,copy) NSString *valid; //有效期
 
+@property(copy, nonatomic)UIImage *IDPositiveImage;
+
+@property(copy, nonatomic)UIImage *IDOppositeImage;
+
 @end

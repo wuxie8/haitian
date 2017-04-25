@@ -20,18 +20,19 @@
 @interface LHSIDCardScaningView () {
     CAShapeLayer *_IDCardScanningWindowLayer;
     NSTimer *_timer;
+    BOOL facePathBool;
 }
 
 @end
 
 @implementation LHSIDCardScaningView
 
-- (instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame  {
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor clearColor];
         
         // 添加扫描窗口
-        [self addScaningWindow];
+//        [self addScaningWindow];
         
         // 添加定时器
         [self addTimer];
@@ -41,7 +42,9 @@
 }
 
 #pragma mark - 添加扫描窗口
--(void)addScaningWindow {
+-(void)addScaningWindowWithheadIV:(BOOL)headIVBool
+{
+    facePathBool=headIVBool;
     // 中间包裹线
     _IDCardScanningWindowLayer = [CAShapeLayer layer];
     _IDCardScanningWindowLayer.position = self.layer.position;
@@ -66,29 +69,32 @@
     fillLayer.fillColor = [UIColor blackColor].CGColor;
     fillLayer.opacity = 0.6;
     
-    [self.layer addSublayer:fillLayer];
+//    [self.layer addSublayer:fillLayer];
     
     CGFloat facePathWidth = iPhone5or5cor5sorSE? 125: (iPhone6or6sor7? 150: 180);
     CGFloat facePathHeight = facePathWidth * 0.812;
     CGRect rect = _IDCardScanningWindowLayer.frame;
-    self.facePathRect = (CGRect){CGRectGetMaxX(rect) - facePathWidth - 35,CGRectGetMaxY(rect) - facePathHeight - 25,facePathWidth,facePathHeight};
-    
-    // 提示标签
-    CGPoint center = self.center;
-    center.x = CGRectGetMaxX(_IDCardScanningWindowLayer.frame) + 20;
-    [self addTipLabelWithText:@"将身份证人像面置于此区域内，头像对准，扫描" center:center];
+         self.facePathRect = (CGRect){CGRectGetMaxX(rect) - facePathWidth - 35,CGRectGetMaxY(rect) - facePathHeight - 25,facePathWidth,facePathHeight};
+   
+ 
     
     /*
     CGPoint center1 = (CGPoint){CGRectGetMidX(_facePathRect), CGRectGetMidY(_facePathRect)};
     [self addTipLabelWithText:@"人像" center:center1];
      */
-    
-//    // 人像
-//    UIImageView *headIV = [[UIImageView alloc] initWithFrame:_facePathRect];
-//    headIV.image = [UIImage imageNamed:@"idcard_first_head"];
-//    headIV.transform = CGAffineTransformMakeRotation(M_PI * 0.5);
-//    headIV.contentMode = UIViewContentModeScaleAspectFill;
-//    [self addSubview:headIV];
+    if (headIVBool) {
+        // 提示标签
+        CGPoint center = self.center;
+        center.x = CGRectGetMaxX(_IDCardScanningWindowLayer.frame) + 20;
+        [self addTipLabelWithText:@"将身份证人像面置于此区域内，头像对准，扫描" center:center];
+        // 人像
+        UIImageView *headIV = [[UIImageView alloc] initWithFrame:_facePathRect];
+        headIV.image = [UIImage imageNamed:@"idcard_first_head"];
+        headIV.transform = CGAffineTransformMakeRotation(M_PI * 0.5);
+        headIV.contentMode = UIViewContentModeScaleAspectFill;
+        [self addSubview:headIV];
+    }
+  
 }
 
 #pragma mark - 添加提示标签
@@ -124,11 +130,18 @@
 - (void)drawRect:(CGRect)rect {
     rect = _IDCardScanningWindowLayer.frame;
 
+    if (facePathBool) {
+         // 人像提示框
+        UIBezierPath *facePath = [UIBezierPath bezierPathWithRect:_facePathRect];
+        facePath.lineWidth = 1.5;
+        [[UIColor whiteColor] set];
+        [facePath stroke];
+    }
     // 人像提示框
-    UIBezierPath *facePath = [UIBezierPath bezierPathWithRect:_facePathRect];
-    facePath.lineWidth = 1.5;
-    [[UIColor whiteColor] set];
-    [facePath stroke];
+//    UIBezierPath *facePath = [UIBezierPath bezierPathWithRect:_facePathRect];
+//    facePath.lineWidth = 1.5;
+//    [[UIColor whiteColor] set];
+//    [facePath stroke];
     
     // 水平扫描线
     CGContextRef context = UIGraphicsGetCurrentContext();

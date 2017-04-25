@@ -10,5 +10,11 @@
 
 @interface AVCaptureViewController : UIViewController
 
+typedef void (^ImageBackBlock) (UIImage *image,NSString *direction);
+
+@property (nonatomic,copy) ImageBackBlock refundBlock; //退款
+
+@property(strong, nonatomic)NSString*direction;
+
 @end
 

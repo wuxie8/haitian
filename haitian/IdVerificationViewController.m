@@ -8,8 +8,8 @@
 
 #import "IdVerificationViewController.h"
 #import "IDAuthViewController.h"
-
-
+#import "AVCaptureViewController.h"
+#import "IdOpposite ViewController.h"
 @interface IdVerificationViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(strong, nonatomic)UIView *headView;
 
@@ -19,6 +19,30 @@
 @implementation IdVerificationViewController
 {
     NSArray *arr;
+    UIButton *but;
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+
+    [super viewWillAppear:animated];
+    DLog(@"%@",Context.idInfo.IDPositiveImage);
+    DLog(@"%@",Context.idInfo.IDOppositeImage);
+
+    if (Context.idInfo.IDPositiveImage) {
+        UIImageView *imageView1=[self.view viewWithTag:1000];
+        imageView1.image=Context.idInfo.IDPositiveImage;
+        imageView1.userInteractionEnabled=NO;
+    }
+    if (Context.idInfo.IDOppositeImage) {
+        UIImageView *imageView2=[self.view viewWithTag:1001];
+        imageView2.image=Context.idInfo.IDOppositeImage;
+        imageView2.userInteractionEnabled=NO;
+    }
+    if (Context.idInfo.IDPositiveImage&&Context.idInfo.IDOppositeImage) {
+        but.enabled=YES;
+        but.backgroundColor=AppButtonbackgroundColor;
+    }
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,6 +53,7 @@
     tab.dataSource=self;
     tab.scrollEnabled=NO;
     tab.tableHeaderView=self.headView;
+    tab.tableFooterView=self.footView;
     [self.view addSubview:tab];
     // Do any additional setup after loading the view.
 }
@@ -47,22 +72,35 @@
     UITableViewCell *cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     
     UIImageView *cellImageView=[[UIImageView alloc]initWithFrame:CGRectMake(30, 20, WIDTH-30*2, 200)];
-    cellImageView.image=[UIImage imageNamed:arr[indexPath.row]];
     cellImageView.tag=indexPath.row+1000;
     cellImageView.userInteractionEnabled=YES;
     UITapGestureRecognizer *cellImageTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cellImageClick:)];
     [cellImageView addGestureRecognizer:cellImageTap];
+    if (indexPath.row==0) {
+        cellImageView.image=Context.idInfo.IDPositiveImage?Context.idInfo.IDPositiveImage:[UIImage imageNamed:arr[indexPath.row]];
+    }
+    if (indexPath.row==1) {
+        cellImageView.image=Context.idInfo.IDOppositeImage?Context.idInfo.IDOppositeImage:[UIImage imageNamed:arr[indexPath.row]];
+    }
+
     [cell.contentView addSubview:cellImageView];
+
+
     return cell;
 }
 -(void)cellImageClick:(UITapGestureRecognizer *)tap
 {
     NSInteger row = tap.view.tag;
     if (row==1000) {
-        IDAuthViewController *IDAuthVC = [[IDAuthViewController alloc] init];
-        
-        [self.navigationController pushViewController:IDAuthVC animated:YES];    }
-      }
+        AVCaptureViewController *AVCaptureVC = [[AVCaptureViewController alloc] init];
+        AVCaptureVC.direction=@"Positive";
+        [self.navigationController pushViewController:AVCaptureVC animated:YES];
+    }
+    else
+    {
+        [self.navigationController pushViewController:[IdOpposite_ViewController new] animated:YES];
+    }
+}
 
 #pragma mark 懒加载
 -(UIView *)headView
@@ -81,7 +119,7 @@
 {
     if (!_footView) {
         _footView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 80)];
-        UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(10, 20, WIDTH-20, 40 )];
+       but=[[UIButton alloc]initWithFrame:CGRectMake(10, 20, WIDTH-20, 40 )];
         [but setTitle:@"下一步" forState:UIControlStateNormal];
         [but addTarget:self action:@selector(nextStep) forControlEvents:UIControlEventTouchUpInside];
         but.enabled=NO;

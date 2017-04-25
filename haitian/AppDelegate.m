@@ -24,6 +24,7 @@
     [self.window makeKeyAndVisible];
     
     self.window  = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    Context.idInfo = [NSKeyedUnarchiver unarchiveObjectWithFile:DOCUMENT_FOLDER(@"iDInfofile")];
 
     
     self.window.rootViewController=[AppDelegate setTabBarController];

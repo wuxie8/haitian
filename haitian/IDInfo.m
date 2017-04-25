@@ -10,65 +10,40 @@
 
 @implementation IDInfo
 
-/*
-- (BOOL)isEqual:(IDInfo *)idInfo {
-    if (idInfo == nil) {
-        return NO;
-    }
+//归档
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.num forKey:@"num"];
+    [aCoder encodeObject:self.name forKey:@"name"];
+    [aCoder encodeObject:self.gender forKey:@"gender"];
+    [aCoder encodeObject:self.nation forKey:@"nation"];
     
-    if (_type == 1) {
-        if ((_type == idInfo.type)
-            && [_num isEqualToString:idInfo.num]
-            && [_name isEqualToString:idInfo.name]
-            && [_gender isEqualToString:idInfo.gender]
-            && [_nation isEqualToString:idInfo.nation]
-            && [_address isEqualToString:idInfo.address]) {
-            
-            return YES;
-        }
-    } else if (_type == 2) {
-        if ([_issue isEqualToString:idInfo.issue]
-            && [_valid isEqualToString:idInfo.valid]) {
-            
-            return YES;
-        }
-    }
-    
-    return NO;
+    [aCoder encodeObject:self.issue forKey:@"issue"];
+    [aCoder encodeObject:self.address forKey:@"address"];
+    [aCoder encodeObject:self.valid forKey:@"valid"];
+    [aCoder encodeObject:self.IDPositiveImage forKey:@"IDPositiveImage"];
+    [aCoder encodeObject:self.IDOppositeImage forKey:@"IDOppositeImage"];
+  
 }
 
-- (BOOL)isOK {
-    if (_num != nil
-        && _name!= nil
-        && _gender!= nil
-        && _nation!= nil
-        && _address!= nil) {
+//解档
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super init]) {
+        self.num = [aDecoder decodeObjectForKey:@"num"];
+        self.name = [aDecoder decodeObjectForKey:@"name"];
+        self.gender = [aDecoder decodeObjectForKey:@"gender"];
+        self.nation = [aDecoder decodeObjectForKey:@"nation"];
         
-        if (_num.length>0
-            && _name.length > 0
-            && _gender.length > 0
-            && _nation.length > 0
-            && _address.length > 0) {
-            
-            return YES;
-        }
-    } else if (_issue != nil
-               && _valid!= nil) {
-        
-        if (_issue.length > 0
-            && _valid.length > 0) {
-            
-            return YES;
-        }
+        self.issue = [aDecoder decodeObjectForKey:@"issue"];
+        self.address = [aDecoder decodeObjectForKey:@"address"];
+        self.valid = [aDecoder decodeObjectForKey:@"valid"];
+        self.IDPositiveImage = [aDecoder decodeObjectForKey:@"IDPositiveImage"];
+        self.IDOppositeImage = [aDecoder decodeObjectForKey:@"IDOppositeImage"];
+      
     }
-    
-    return NO;
+    return self;
 }
- */
-
-//-(NSString *)description {
-//    return [NSString stringWithFormat:@"<%@>",@{@"姓名：":_name,@"性别：":_gender,@"民族：":_nation,@"住址：":_address,@"公民身份证：":_num}];
-//}
 
 
 @end

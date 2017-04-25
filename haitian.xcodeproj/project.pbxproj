@@ -10,6 +10,9 @@
 		2E2193132720ACDF463B286D /* libPods-haitian.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C281EA8F719D2415E82CC71C /* libPods-haitian.a */; };
 		8402B9DA1E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402B9D91E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m */; };
 		8402B9F91E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402B9F81E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m */; };
+		842C82C01EAEE6BA005D27A7 /* zocr0.lib in Resources */ = {isa = PBXBuildFile; fileRef = 842C82BF1EAEE6BA005D27A7 /* zocr0.lib */; };
+		842C82C11EAEE6DE005D27A7 /* zocr0.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 842C82BF1EAEE6BA005D27A7 /* zocr0.lib */; };
+		842C82C41EAEFDCB005D27A7 /* IdOpposite ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842C82C31EAEFDCB005D27A7 /* IdOpposite ViewController.m */; };
 		8451AFBB1EA859FA002F04B6 /* PersonCenter.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8451AFBA1EA859FA002F04B6 /* PersonCenter.xcassets */; };
 		8451AFBF1EA85E65002F04B6 /* MessageAlertView.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8451AFBE1EA85E65002F04B6 /* MessageAlertView.xcassets */; };
 		84546F4A1EA5E77B00AD0350 /* CertificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84546F491EA5E77B00AD0350 /* CertificationViewController.m */; };
@@ -55,9 +58,7 @@
 		84C50C5C1EADF47100AD0B62 /* IDAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C50C561EADF47100AD0B62 /* IDAuthViewController.xib */; };
 		84C50C5D1EADF47100AD0B62 /* IDInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50C581EADF47100AD0B62 /* IDInfoViewController.m */; };
 		84C50C5E1EADF47100AD0B62 /* IDInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C50C591EADF47100AD0B62 /* IDInfoViewController.xib */; };
-		84C50C611EADFD8A00AD0B62 /* libexidcardios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C50C601EADFD8A00AD0B62 /* libexidcardios.a */; };
 		84C50C651EAE00AA00AD0B62 /* libexidcardios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C50C641EAE00AA00AD0B62 /* libexidcardios.a */; };
-		84C50C671EAE064A00AD0B62 /* zocr0.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C50C661EAE04F200AD0B62 /* zocr0.lib */; };
 		84CD81F51EA48F30009B786F /* RegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD81F41EA48F30009B786F /* RegisterVC.m */; };
 		84F5D3FD1EA7039D00EC8C9D /* HelpCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FC1EA7039D00EC8C9D /* HelpCenterViewController.m */; };
 		84F5D4001EA703D100EC8C9D /* XDMultTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FF1EA703D100EC8C9D /* XDMultTableView.m */; };
@@ -99,6 +100,9 @@
 		8402B9D91E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadSupermarketCollectionViewCell.m; sourceTree = "<group>"; };
 		8402B9F71E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastHandleCardCollectionViewCell.h; sourceTree = "<group>"; };
 		8402B9F81E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastHandleCardCollectionViewCell.m; sourceTree = "<group>"; };
+		842C82BF1EAEE6BA005D27A7 /* zocr0.lib */ = {isa = PBXFileReference; lastKnownFileType = file; path = zocr0.lib; sourceTree = "<group>"; };
+		842C82C21EAEFDCB005D27A7 /* IdOpposite ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IdOpposite ViewController.h"; sourceTree = "<group>"; };
+		842C82C31EAEFDCB005D27A7 /* IdOpposite ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IdOpposite ViewController.m"; sourceTree = "<group>"; };
 		8451AFBA1EA859FA002F04B6 /* PersonCenter.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PersonCenter.xcassets; sourceTree = "<group>"; };
 		8451AFBE1EA85E65002F04B6 /* MessageAlertView.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MessageAlertView.xcassets; sourceTree = "<group>"; };
 		84546F481EA5E77B00AD0350 /* CertificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificationViewController.h; sourceTree = "<group>"; };
@@ -192,7 +196,6 @@
 		84C50C601EADFD8A00AD0B62 /* libexidcardios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libexidcardios.a; path = "../../Downloads/IDCardRecognition-master/IDCardRecognition/libexidcard/libexidcardios.a"; sourceTree = "<group>"; };
 		84C50C621EADFDA200AD0B62 /* zocr0.lib */ = {isa = PBXFileReference; lastKnownFileType = file; name = zocr0.lib; path = "../../Downloads/IDCardRecognition-master/IDCardRecognition/libexidcard/dicts/zocr0.lib"; sourceTree = "<group>"; };
 		84C50C641EAE00AA00AD0B62 /* libexidcardios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libexidcardios.a; sourceTree = "<group>"; };
-		84C50C661EAE04F200AD0B62 /* zocr0.lib */ = {isa = PBXFileReference; lastKnownFileType = file; path = zocr0.lib; sourceTree = "<group>"; };
 		84CD81F31EA48F30009B786F /* RegisterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterVC.h; sourceTree = "<group>"; };
 		84CD81F41EA48F30009B786F /* RegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterVC.m; sourceTree = "<group>"; };
 		84F5D3FB1EA7039D00EC8C9D /* HelpCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpCenterViewController.h; sourceTree = "<group>"; };
@@ -232,9 +235,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84C50C671EAE064A00AD0B62 /* zocr0.lib in Frameworks */,
+				842C82C11EAEE6DE005D27A7 /* zocr0.lib in Frameworks */,
 				84C50C651EAE00AA00AD0B62 /* libexidcardios.a in Frameworks */,
-				84C50C611EADFD8A00AD0B62 /* libexidcardios.a in Frameworks */,
 				2E2193132720ACDF463B286D /* libPods-haitian.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,7 +411,7 @@
 			isa = PBXGroup;
 			children = (
 				84C50C641EAE00AA00AD0B62 /* libexidcardios.a */,
-				84C50C661EAE04F200AD0B62 /* zocr0.lib */,
+				842C82BF1EAEE6BA005D27A7 /* zocr0.lib */,
 				8468562D1EA08EFF00C74F87 /* Serve.h */,
 				84B9DC471E9DCF2A0066A92D /* Header.h */,
 				84B9DC481E9DCF5A0066A92D /* Public.h */,
@@ -520,6 +522,8 @@
 			children = (
 				84C50C521EADF47100AD0B62 /* AVCaptureViewController.h */,
 				84C50C531EADF47100AD0B62 /* AVCaptureViewController.m */,
+				842C82C21EAEFDCB005D27A7 /* IdOpposite ViewController.h */,
+				842C82C31EAEFDCB005D27A7 /* IdOpposite ViewController.m */,
 				84C50C541EADF47100AD0B62 /* IDAuthViewController.h */,
 				84C50C551EADF47100AD0B62 /* IDAuthViewController.m */,
 				84C50C561EADF47100AD0B62 /* IDAuthViewController.xib */,
@@ -722,6 +726,7 @@
 				84F5D4191EA7675E00EC8C9D /* TZAlbumCell.xib in Resources */,
 				8451AFBF1EA85E65002F04B6 /* MessageAlertView.xcassets in Resources */,
 				84C50C5C1EADF47100AD0B62 /* IDAuthViewController.xib in Resources */,
+				842C82C01EAEE6BA005D27A7 /* zocr0.lib in Resources */,
 				8451AFBB1EA859FA002F04B6 /* PersonCenter.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -796,6 +801,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84F5D3FD1EA7039D00EC8C9D /* HelpCenterViewController.m in Sources */,
+				842C82C41EAEFDCB005D27A7 /* IdOpposite ViewController.m in Sources */,
 				84C50C481EADF40D00AD0B62 /* UIImage+Extend.m in Sources */,
 				847A11501EA45F0C002D8832 /* User.m in Sources */,
 				84F5D41A1EA7675E00EC8C9D /* TZAssetCell.m in Sources */,

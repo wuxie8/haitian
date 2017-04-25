@@ -149,6 +149,7 @@
 -(void)applyForLoan
 {
     CertificationViewController *certification=[[CertificationViewController alloc]init];
+    certification.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:certification animated:YES];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

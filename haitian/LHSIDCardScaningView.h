@@ -12,4 +12,5 @@
 
 @property (nonatomic,assign) CGRect facePathRect;
 
+-(void)addScaningWindowWithheadIV:(BOOL)headIVBool;
 @end
