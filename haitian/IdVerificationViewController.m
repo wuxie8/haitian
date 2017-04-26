@@ -10,6 +10,7 @@
 #import "IDAuthViewController.h"
 #import "AVCaptureViewController.h"
 #import "IdOpposite ViewController.h"
+#import "FaceStreamDetectorViewController.h"
 @interface IdVerificationViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(strong, nonatomic)UIView *headView;
 
@@ -132,7 +133,8 @@
 #pragma mark 实现的方法
 -(void)nextStep
 {
-
+    FaceStreamDetectorViewController *face=[[FaceStreamDetectorViewController alloc]init];
+    [self.navigationController pushViewController:face animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

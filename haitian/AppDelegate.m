@@ -12,6 +12,8 @@
 #import "FastHandleCardViewController.h"
 #import "PersonCenterViewController.h"
 #import "BaseNC.h"
+#import "iflyMSC/IFlyFaceSDK.h"
+
 @interface AppDelegate ()
 
 @end
@@ -25,8 +27,7 @@
     
     self.window  = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     Context.idInfo = [NSKeyedUnarchiver unarchiveObjectWithFile:DOCUMENT_FOLDER(@"iDInfofile")];
-
-    
+    [self makeConfiguration];
     self.window.rootViewController=[AppDelegate setTabBarController];
     // Override point for customization after application launch.
     return YES;
@@ -76,6 +77,26 @@
     return  tabBarController;
 }
 
+#pragma mark --- 配置文件
+-(void)makeConfiguration
+{
+    //设置log等级，此处log为默认在app沙盒目录下的msc.log文件
+    [IFlySetting setLogFile:LVL_ALL];
+    
+    //输出在console的log开关
+    [IFlySetting showLogcat:YES];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *cachePath = [paths objectAtIndex:0];
+    //设置msc.log的保存路径
+    [IFlySetting setLogFilePath:cachePath];
+    
+    //创建语音配置,appid必须要传入，仅执行一次则可
+    NSString *initString = [[NSString alloc] initWithFormat:@"appid=%@,",USER_APPID];
+    
+    //所有服务启动前，需要确保执行createUtility
+    [IFlySpeechUtility createUtility:initString];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

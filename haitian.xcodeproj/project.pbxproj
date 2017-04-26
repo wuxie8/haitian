@@ -13,6 +13,36 @@
 		842C82C01EAEE6BA005D27A7 /* zocr0.lib in Resources */ = {isa = PBXBuildFile; fileRef = 842C82BF1EAEE6BA005D27A7 /* zocr0.lib */; };
 		842C82C11EAEE6DE005D27A7 /* zocr0.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 842C82BF1EAEE6BA005D27A7 /* zocr0.lib */; };
 		842C82C41EAEFDCB005D27A7 /* IdOpposite ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842C82C31EAEFDCB005D27A7 /* IdOpposite ViewController.m */; };
+		842E61C71EB08A5700BF91FB /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61C61EB08A5700BF91FB /* iflyMSC.framework */; };
+		842E61C91EB08A9300BF91FB /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61C81EB08A9300BF91FB /* libz.tbd */; };
+		842E61CB1EB08AA000BF91FB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61CA1EB08AA000BF91FB /* CoreLocation.framework */; };
+		842E61CD1EB08AAD00BF91FB /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61CC1EB08AAD00BF91FB /* CoreTelephony.framework */; };
+		842E61CF1EB08AB500BF91FB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61CE1EB08AB500BF91FB /* AVFoundation.framework */; };
+		842E61D11EB08ABD00BF91FB /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61D01EB08ABD00BF91FB /* AddressBook.framework */; };
+		842E61D31EB08AC500BF91FB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61D21EB08AC500BF91FB /* AudioToolbox.framework */; };
+		842E61D51EB08AD100BF91FB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61D41EB08AD100BF91FB /* SystemConfiguration.framework */; };
+		842E61D71EB08ADA00BF91FB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61D61EB08ADA00BF91FB /* QuartzCore.framework */; };
+		842E61D91EB08AE300BF91FB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61D81EB08AE300BF91FB /* UIKit.framework */; };
+		842E61DB1EB08AED00BF91FB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61DA1EB08AED00BF91FB /* Foundation.framework */; };
+		842E61DD1EB08AF500BF91FB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61DC1EB08AF500BF91FB /* CoreGraphics.framework */; };
+		842E61DF1EB08B6600BF91FB /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61DE1EB08B6600BF91FB /* libstdc++.tbd */; };
+		842E61E51EB08BEF00BF91FB /* FaceStreamDetectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E61E41EB08BEE00BF91FB /* FaceStreamDetectorViewController.m */; };
+		842E61EC1EB08C2E00BF91FB /* CanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E61EB1EB08C2E00BF91FB /* CanvasView.m */; };
+		842E61F01EB08C4B00BF91FB /* CaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E61EF1EB08C4B00BF91FB /* CaptureManager.m */; };
+		842E61FD1EB08C8300BF91FB /* CalculatorTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E61F61EB08C8300BF91FB /* CalculatorTools.m */; };
+		842E61FE1EB08C8300BF91FB /* IFlyFaceImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E61F81EB08C8300BF91FB /* IFlyFaceImage.m */; };
+		842E61FF1EB08C8300BF91FB /* UIImage+compress.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E61FA1EB08C8300BF91FB /* UIImage+compress.m */; };
+		842E62001EB08C8300BF91FB /* UIImage+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E61FC1EB08C8300BF91FB /* UIImage+Extensions.m */; };
+		842E62031EB08C9000BF91FB /* PermissionDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E62021EB08C9000BF91FB /* PermissionDetector.m */; };
+		842E62061EB08C9700BF91FB /* IFlyFaceResultKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E62051EB08C9700BF91FB /* IFlyFaceResultKeys.m */; };
+		842E620D1EB08D9B00BF91FB /* openMouth0.png in Resources */ = {isa = PBXBuildFile; fileRef = 842E62071EB08D9B00BF91FB /* openMouth0.png */; };
+		842E620E1EB08D9B00BF91FB /* openMouth1.png in Resources */ = {isa = PBXBuildFile; fileRef = 842E62081EB08D9B00BF91FB /* openMouth1.png */; };
+		842E620F1EB08D9B00BF91FB /* shakeHead0.png in Resources */ = {isa = PBXBuildFile; fileRef = 842E62091EB08D9B00BF91FB /* shakeHead0.png */; };
+		842E62101EB08D9B00BF91FB /* shakeHead1.png in Resources */ = {isa = PBXBuildFile; fileRef = 842E620A1EB08D9B00BF91FB /* shakeHead1.png */; };
+		842E62111EB08D9B00BF91FB /* shakeHead2.png in Resources */ = {isa = PBXBuildFile; fileRef = 842E620B1EB08D9B00BF91FB /* shakeHead2.png */; };
+		842E62121EB08D9B00BF91FB /* shakeHead3.png in Resources */ = {isa = PBXBuildFile; fileRef = 842E620C1EB08D9B00BF91FB /* shakeHead3.png */; };
+		842E62161EB0915D00BF91FB /* DetectionSuccessfulViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E62151EB0915D00BF91FB /* DetectionSuccessfulViewController.m */; };
+		842E621B1EB0A19E00BF91FB /* BankCardAuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E621A1EB0A19E00BF91FB /* BankCardAuthenticationViewController.m */; };
 		8451AFBB1EA859FA002F04B6 /* PersonCenter.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8451AFBA1EA859FA002F04B6 /* PersonCenter.xcassets */; };
 		8451AFBF1EA85E65002F04B6 /* MessageAlertView.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8451AFBE1EA85E65002F04B6 /* MessageAlertView.xcassets */; };
 		84546F4A1EA5E77B00AD0350 /* CertificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84546F491EA5E77B00AD0350 /* CertificationViewController.m */; };
@@ -103,6 +133,48 @@
 		842C82BF1EAEE6BA005D27A7 /* zocr0.lib */ = {isa = PBXFileReference; lastKnownFileType = file; path = zocr0.lib; sourceTree = "<group>"; };
 		842C82C21EAEFDCB005D27A7 /* IdOpposite ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IdOpposite ViewController.h"; sourceTree = "<group>"; };
 		842C82C31EAEFDCB005D27A7 /* IdOpposite ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IdOpposite ViewController.m"; sourceTree = "<group>"; };
+		842E61C61EB08A5700BF91FB /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
+		842E61C81EB08A9300BF91FB /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		842E61CA1EB08AA000BF91FB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		842E61CC1EB08AAD00BF91FB /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		842E61CE1EB08AB500BF91FB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		842E61D01EB08ABD00BF91FB /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		842E61D21EB08AC500BF91FB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		842E61D41EB08AD100BF91FB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		842E61D61EB08ADA00BF91FB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		842E61D81EB08AE300BF91FB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		842E61DA1EB08AED00BF91FB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		842E61DC1EB08AF500BF91FB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		842E61DE1EB08B6600BF91FB /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		842E61E31EB08BEE00BF91FB /* FaceStreamDetectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceStreamDetectorViewController.h; sourceTree = "<group>"; };
+		842E61E41EB08BEE00BF91FB /* FaceStreamDetectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceStreamDetectorViewController.m; sourceTree = "<group>"; };
+		842E61E81EB08C0D00BF91FB /* DemoPreDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoPreDefine.h; sourceTree = "<group>"; };
+		842E61EA1EB08C2E00BF91FB /* CanvasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasView.h; sourceTree = "<group>"; };
+		842E61EB1EB08C2E00BF91FB /* CanvasView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasView.m; sourceTree = "<group>"; };
+		842E61EE1EB08C4B00BF91FB /* CaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureManager.h; sourceTree = "<group>"; };
+		842E61EF1EB08C4B00BF91FB /* CaptureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureManager.m; sourceTree = "<group>"; };
+		842E61F51EB08C8300BF91FB /* CalculatorTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorTools.h; sourceTree = "<group>"; };
+		842E61F61EB08C8300BF91FB /* CalculatorTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorTools.m; sourceTree = "<group>"; };
+		842E61F71EB08C8300BF91FB /* IFlyFaceImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFlyFaceImage.h; sourceTree = "<group>"; };
+		842E61F81EB08C8300BF91FB /* IFlyFaceImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFlyFaceImage.m; sourceTree = "<group>"; };
+		842E61F91EB08C8300BF91FB /* UIImage+compress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+compress.h"; sourceTree = "<group>"; };
+		842E61FA1EB08C8300BF91FB /* UIImage+compress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+compress.m"; sourceTree = "<group>"; };
+		842E61FB1EB08C8300BF91FB /* UIImage+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extensions.h"; sourceTree = "<group>"; };
+		842E61FC1EB08C8300BF91FB /* UIImage+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extensions.m"; sourceTree = "<group>"; };
+		842E62011EB08C9000BF91FB /* PermissionDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissionDetector.h; sourceTree = "<group>"; };
+		842E62021EB08C9000BF91FB /* PermissionDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PermissionDetector.m; sourceTree = "<group>"; };
+		842E62041EB08C9700BF91FB /* IFlyFaceResultKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFlyFaceResultKeys.h; sourceTree = "<group>"; };
+		842E62051EB08C9700BF91FB /* IFlyFaceResultKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFlyFaceResultKeys.m; sourceTree = "<group>"; };
+		842E62071EB08D9B00BF91FB /* openMouth0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = openMouth0.png; sourceTree = "<group>"; };
+		842E62081EB08D9B00BF91FB /* openMouth1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = openMouth1.png; sourceTree = "<group>"; };
+		842E62091EB08D9B00BF91FB /* shakeHead0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shakeHead0.png; sourceTree = "<group>"; };
+		842E620A1EB08D9B00BF91FB /* shakeHead1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shakeHead1.png; sourceTree = "<group>"; };
+		842E620B1EB08D9B00BF91FB /* shakeHead2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shakeHead2.png; sourceTree = "<group>"; };
+		842E620C1EB08D9B00BF91FB /* shakeHead3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shakeHead3.png; sourceTree = "<group>"; };
+		842E62141EB0915D00BF91FB /* DetectionSuccessfulViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetectionSuccessfulViewController.h; sourceTree = "<group>"; };
+		842E62151EB0915D00BF91FB /* DetectionSuccessfulViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetectionSuccessfulViewController.m; sourceTree = "<group>"; };
+		842E62191EB0A19E00BF91FB /* BankCardAuthenticationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCardAuthenticationViewController.h; sourceTree = "<group>"; };
+		842E621A1EB0A19E00BF91FB /* BankCardAuthenticationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankCardAuthenticationViewController.m; sourceTree = "<group>"; };
 		8451AFBA1EA859FA002F04B6 /* PersonCenter.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PersonCenter.xcassets; sourceTree = "<group>"; };
 		8451AFBE1EA85E65002F04B6 /* MessageAlertView.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MessageAlertView.xcassets; sourceTree = "<group>"; };
 		84546F481EA5E77B00AD0350 /* CertificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificationViewController.h; sourceTree = "<group>"; };
@@ -235,6 +307,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				842E61DF1EB08B6600BF91FB /* libstdc++.tbd in Frameworks */,
+				842E61DD1EB08AF500BF91FB /* CoreGraphics.framework in Frameworks */,
+				842E61DB1EB08AED00BF91FB /* Foundation.framework in Frameworks */,
+				842E61D91EB08AE300BF91FB /* UIKit.framework in Frameworks */,
+				842E61D71EB08ADA00BF91FB /* QuartzCore.framework in Frameworks */,
+				842E61D51EB08AD100BF91FB /* SystemConfiguration.framework in Frameworks */,
+				842E61D31EB08AC500BF91FB /* AudioToolbox.framework in Frameworks */,
+				842E61D11EB08ABD00BF91FB /* AddressBook.framework in Frameworks */,
+				842E61CF1EB08AB500BF91FB /* AVFoundation.framework in Frameworks */,
+				842E61CD1EB08AAD00BF91FB /* CoreTelephony.framework in Frameworks */,
+				842E61CB1EB08AA000BF91FB /* CoreLocation.framework in Frameworks */,
+				842E61C91EB08A9300BF91FB /* libz.tbd in Frameworks */,
+				842E61C71EB08A5700BF91FB /* iflyMSC.framework in Frameworks */,
 				842C82C11EAEE6DE005D27A7 /* zocr0.lib in Frameworks */,
 				84C50C651EAE00AA00AD0B62 /* libexidcardios.a in Frameworks */,
 				2E2193132720ACDF463B286D /* libPods-haitian.a in Frameworks */,
@@ -267,9 +352,119 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		842E61E11EB08BCA00BF91FB /* FaceRecognition */ = {
+			isa = PBXGroup;
+			children = (
+				842E61E71EB08BFC00BF91FB /* Tools */,
+				842E61E21EB08BD900BF91FB /* FaceDetector */,
+			);
+			name = FaceRecognition;
+			sourceTree = "<group>";
+		};
+		842E61E21EB08BD900BF91FB /* FaceDetector */ = {
+			isa = PBXGroup;
+			children = (
+				842E61E31EB08BEE00BF91FB /* FaceStreamDetectorViewController.h */,
+				842E61E41EB08BEE00BF91FB /* FaceStreamDetectorViewController.m */,
+			);
+			name = FaceDetector;
+			sourceTree = "<group>";
+		};
+		842E61E71EB08BFC00BF91FB /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				842E61F41EB08C6700BF91FB /* Result */,
+				842E61F31EB08C6400BF91FB /* Permission */,
+				842E61F21EB08C6000BF91FB /* Image */,
+				842E61ED1EB08C3400BF91FB /* Capture */,
+				842E61E91EB08C1800BF91FB /* CanvasView */,
+				842E61E81EB08C0D00BF91FB /* DemoPreDefine.h */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
+		842E61E91EB08C1800BF91FB /* CanvasView */ = {
+			isa = PBXGroup;
+			children = (
+				842E61EA1EB08C2E00BF91FB /* CanvasView.h */,
+				842E61EB1EB08C2E00BF91FB /* CanvasView.m */,
+			);
+			name = CanvasView;
+			sourceTree = "<group>";
+		};
+		842E61ED1EB08C3400BF91FB /* Capture */ = {
+			isa = PBXGroup;
+			children = (
+				842E61EE1EB08C4B00BF91FB /* CaptureManager.h */,
+				842E61EF1EB08C4B00BF91FB /* CaptureManager.m */,
+			);
+			name = Capture;
+			sourceTree = "<group>";
+		};
+		842E61F21EB08C6000BF91FB /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				842E61F51EB08C8300BF91FB /* CalculatorTools.h */,
+				842E61F61EB08C8300BF91FB /* CalculatorTools.m */,
+				842E61F71EB08C8300BF91FB /* IFlyFaceImage.h */,
+				842E61F81EB08C8300BF91FB /* IFlyFaceImage.m */,
+				842E61F91EB08C8300BF91FB /* UIImage+compress.h */,
+				842E61FA1EB08C8300BF91FB /* UIImage+compress.m */,
+				842E61FB1EB08C8300BF91FB /* UIImage+Extensions.h */,
+				842E61FC1EB08C8300BF91FB /* UIImage+Extensions.m */,
+			);
+			name = Image;
+			sourceTree = "<group>";
+		};
+		842E61F31EB08C6400BF91FB /* Permission */ = {
+			isa = PBXGroup;
+			children = (
+				842E62011EB08C9000BF91FB /* PermissionDetector.h */,
+				842E62021EB08C9000BF91FB /* PermissionDetector.m */,
+			);
+			name = Permission;
+			sourceTree = "<group>";
+		};
+		842E61F41EB08C6700BF91FB /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				842E62041EB08C9700BF91FB /* IFlyFaceResultKeys.h */,
+				842E62051EB08C9700BF91FB /* IFlyFaceResultKeys.m */,
+			);
+			name = Result;
+			sourceTree = "<group>";
+		};
+		842E62171EB0A15200BF91FB /* IdentityAuthentication */ = {
+			isa = PBXGroup;
+			children = (
+				842E61E11EB08BCA00BF91FB /* FaceRecognition */,
+				84C50C3C1EADF3A700AD0B62 /* IdCardRecognition */,
+				84C50C391EADD49B00AD0B62 /* IdVerificationViewController.h */,
+				84C50C3A1EADD49C00AD0B62 /* IdVerificationViewController.m */,
+				842E62141EB0915D00BF91FB /* DetectionSuccessfulViewController.h */,
+				842E62151EB0915D00BF91FB /* DetectionSuccessfulViewController.m */,
+			);
+			name = IdentityAuthentication;
+			sourceTree = "<group>";
+		};
+		842E62181EB0A17300BF91FB /* BankCardAuthentication */ = {
+			isa = PBXGroup;
+			children = (
+				842E62191EB0A19E00BF91FB /* BankCardAuthenticationViewController.h */,
+				842E621A1EB0A19E00BF91FB /* BankCardAuthenticationViewController.m */,
+			);
+			name = BankCardAuthentication;
+			sourceTree = "<group>";
+		};
 		8451AFB81EA8599F002F04B6 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				842E62071EB08D9B00BF91FB /* openMouth0.png */,
+				842E62081EB08D9B00BF91FB /* openMouth1.png */,
+				842E62091EB08D9B00BF91FB /* shakeHead0.png */,
+				842E620A1EB08D9B00BF91FB /* shakeHead1.png */,
+				842E620B1EB08D9B00BF91FB /* shakeHead2.png */,
+				842E620C1EB08D9B00BF91FB /* shakeHead3.png */,
 				8451AFBA1EA859FA002F04B6 /* PersonCenter.xcassets */,
 				8451AFBE1EA85E65002F04B6 /* MessageAlertView.xcassets */,
 				84C50C371EADA5BC00AD0B62 /* Authentication.xcassets */,
@@ -284,9 +479,8 @@
 				84B9DC4A1E9DD9CE0066A92D /* HomePageViewController.m */,
 				84546F481EA5E77B00AD0350 /* CertificationViewController.h */,
 				84546F491EA5E77B00AD0350 /* CertificationViewController.m */,
-				84C50C391EADD49B00AD0B62 /* IdVerificationViewController.h */,
-				84C50C3A1EADD49C00AD0B62 /* IdVerificationViewController.m */,
-				84C50C3C1EADF3A700AD0B62 /* IdCardRecognition */,
+				842E62181EB0A17300BF91FB /* BankCardAuthentication */,
+				842E62171EB0A15200BF91FB /* IdentityAuthentication */,
 			);
 			name = HomePage;
 			sourceTree = "<group>";
@@ -597,6 +791,19 @@
 		E5D4A71C4E15B4A453FF3CA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				842E61DE1EB08B6600BF91FB /* libstdc++.tbd */,
+				842E61DC1EB08AF500BF91FB /* CoreGraphics.framework */,
+				842E61DA1EB08AED00BF91FB /* Foundation.framework */,
+				842E61D81EB08AE300BF91FB /* UIKit.framework */,
+				842E61D61EB08ADA00BF91FB /* QuartzCore.framework */,
+				842E61D41EB08AD100BF91FB /* SystemConfiguration.framework */,
+				842E61D21EB08AC500BF91FB /* AudioToolbox.framework */,
+				842E61D01EB08ABD00BF91FB /* AddressBook.framework */,
+				842E61CE1EB08AB500BF91FB /* AVFoundation.framework */,
+				842E61CC1EB08AAD00BF91FB /* CoreTelephony.framework */,
+				842E61CA1EB08AA000BF91FB /* CoreLocation.framework */,
+				842E61C81EB08A9300BF91FB /* libz.tbd */,
+				842E61C61EB08A5700BF91FB /* iflyMSC.framework */,
 				84C50C621EADFDA200AD0B62 /* zocr0.lib */,
 				84C50C601EADFD8A00AD0B62 /* libexidcardios.a */,
 				84546F541EA6200900AD0350 /* MapKit.framework */,
@@ -718,14 +925,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				84F5D41B1EA7675E00EC8C9D /* TZAssetCell.xib in Resources */,
+				842E62111EB08D9B00BF91FB /* shakeHead2.png in Resources */,
 				84B9DBF91E9DC0990066A92D /* LaunchScreen.storyboard in Resources */,
 				84B9DBF61E9DC0990066A92D /* Assets.xcassets in Resources */,
+				842E62101EB08D9B00BF91FB /* shakeHead1.png in Resources */,
 				84C50C381EADA5BC00AD0B62 /* Authentication.xcassets in Resources */,
 				84B9DBF41E9DC0990066A92D /* Main.storyboard in Resources */,
 				84C50C5E1EADF47100AD0B62 /* IDInfoViewController.xib in Resources */,
 				84F5D4191EA7675E00EC8C9D /* TZAlbumCell.xib in Resources */,
+				842E620F1EB08D9B00BF91FB /* shakeHead0.png in Resources */,
 				8451AFBF1EA85E65002F04B6 /* MessageAlertView.xcassets in Resources */,
+				842E620D1EB08D9B00BF91FB /* openMouth0.png in Resources */,
 				84C50C5C1EADF47100AD0B62 /* IDAuthViewController.xib in Resources */,
+				842E620E1EB08D9B00BF91FB /* openMouth1.png in Resources */,
+				842E62121EB08D9B00BF91FB /* shakeHead3.png in Resources */,
 				842C82C01EAEE6BA005D27A7 /* zocr0.lib in Resources */,
 				8451AFBB1EA859FA002F04B6 /* PersonCenter.xcassets in Resources */,
 			);
@@ -801,9 +1014,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				84F5D3FD1EA7039D00EC8C9D /* HelpCenterViewController.m in Sources */,
+				842E61FE1EB08C8300BF91FB /* IFlyFaceImage.m in Sources */,
+				842E62161EB0915D00BF91FB /* DetectionSuccessfulViewController.m in Sources */,
+				842E61E51EB08BEF00BF91FB /* FaceStreamDetectorViewController.m in Sources */,
 				842C82C41EAEFDCB005D27A7 /* IdOpposite ViewController.m in Sources */,
 				84C50C481EADF40D00AD0B62 /* UIImage+Extend.m in Sources */,
 				847A11501EA45F0C002D8832 /* User.m in Sources */,
+				842E62031EB08C9000BF91FB /* PermissionDetector.m in Sources */,
 				84F5D41A1EA7675E00EC8C9D /* TZAssetCell.m in Sources */,
 				84A7398B1E9E25B700A42502 /* WSIndexBanner.m in Sources */,
 				84C50C5D1EADF47100AD0B62 /* IDInfoViewController.m in Sources */,
@@ -814,23 +1031,28 @@
 				846856391EA08FF900C74F87 /* BaseVC.m in Sources */,
 				84C50C3B1EADD49C00AD0B62 /* IdVerificationViewController.m in Sources */,
 				84F5D41D1EA7675E00EC8C9D /* TZImageManager.m in Sources */,
+				842E61FD1EB08C8300BF91FB /* CalculatorTools.m in Sources */,
 				846856411EA0902D00C74F87 /* ASValuePopUpView.m in Sources */,
 				84B9DBF11E9DC0990066A92D /* ViewController.m in Sources */,
 				84C50C401EADF3DE00AD0B62 /* RectManager.m in Sources */,
 				84546F4A1EA5E77B00AD0350 /* CertificationViewController.m in Sources */,
+				842E62001EB08C8300BF91FB /* UIImage+Extensions.m in Sources */,
 				84B9DBEE1E9DC0990066A92D /* AppDelegate.m in Sources */,
 				84CD81F51EA48F30009B786F /* RegisterVC.m in Sources */,
+				842E61FF1EB08C8300BF91FB /* UIImage+compress.m in Sources */,
 				8402B9F91E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m in Sources */,
 				84C50C4E1EADF44A00AD0B62 /* IDInfo.m in Sources */,
 				84C50C5A1EADF47100AD0B62 /* AVCaptureViewController.m in Sources */,
 				8468563C1EA08FF900C74F87 /* NavBaseVC.m in Sources */,
 				846856421EA0902D00C74F87 /* ASValueTrackingSlider.m in Sources */,
+				842E62061EB08C9700BF91FB /* IFlyFaceResultKeys.m in Sources */,
 				84B9DC401E9DCDBC0066A92D /* LoadSupermarketViewController.m in Sources */,
 				84F5D4201EA7675E00EC8C9D /* TZPhotoPreviewCell.m in Sources */,
 				846856451EA0969E00C74F87 /* ForgotPasswordViewController.m in Sources */,
 				846856181EA0764900C74F87 /* AccountPassswordViewController.m in Sources */,
 				84F5D4001EA703D100EC8C9D /* XDMultTableView.m in Sources */,
 				846856381EA08FF900C74F87 /* BaseNC.m in Sources */,
+				842E61F01EB08C4B00BF91FB /* CaptureManager.m in Sources */,
 				84F5D41F1EA7675E00EC8C9D /* TZPhotoPickerController.m in Sources */,
 				84B9DC431E9DCDF50066A92D /* FastHandleCardViewController.m in Sources */,
 				84F5D41C1EA7675E00EC8C9D /* TZAssetModel.m in Sources */,
@@ -844,11 +1066,13 @@
 				84B9DC4B1E9DD9CE0066A92D /* HomePageViewController.m in Sources */,
 				846856151EA059F400C74F87 /* LoginViewController.m in Sources */,
 				84F5D4231EA7675E00EC8C9D /* UIView+Layout.m in Sources */,
+				842E621B1EB0A19E00BF91FB /* BankCardAuthenticationViewController.m in Sources */,
 				84F5D4221EA7675E00EC8C9D /* TZVideoPlayerController.m in Sources */,
 				846856481EA09A8B00C74F87 /* UtilTools.m in Sources */,
 				8468563B1EA08FF900C74F87 /* GestureNavBaseVC.m in Sources */,
 				846856241EA0813C00C74F87 /* NetWorkManager.m in Sources */,
 				84C50C511EADF45700AD0B62 /* LHSIDCardScaningView.m in Sources */,
+				842E61EC1EB08C2E00BF91FB /* CanvasView.m in Sources */,
 				84F5D4211EA7675E00EC8C9D /* TZPhotoPreviewController.m in Sources */,
 				84B9DC461E9DCE240066A92D /* PersonCenterViewController.m in Sources */,
 				84C50C5B1EADF47100AD0B62 /* IDAuthViewController.m in Sources */,
@@ -1010,6 +1234,11 @@
 				DEVELOPMENT_TEAM = NUH99A3LBD;
 				ENABLE_BITCODE = NO;
 				ENABLE_ON_DEMAND_RESOURCES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"\"$(SRCROOT)/iflyMSC.framework\"",
+				);
 				GCC_PREFIX_HEADER = /Users/admin/Desktop/haitian/haitian/Header.h;
 				INFOPLIST_FILE = haitian/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
@@ -1032,6 +1261,11 @@
 				DEVELOPMENT_TEAM = NUH99A3LBD;
 				ENABLE_BITCODE = NO;
 				ENABLE_ON_DEMAND_RESOURCES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"\"$(SRCROOT)/iflyMSC.framework\"",
+				);
 				GCC_PREFIX_HEADER = /Users/admin/Desktop/haitian/haitian/Header.h;
 				INFOPLIST_FILE = haitian/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;

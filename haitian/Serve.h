@@ -38,6 +38,8 @@
 
 #define filter @"&m=business&a=filter"
 
+#define USER_APPID           @"58fffe9f"
+
 //贷款
 #define code @"jiandanjiekuanmiaojieban"
 

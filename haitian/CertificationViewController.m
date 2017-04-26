@@ -8,6 +8,7 @@
 
 #import "CertificationViewController.h"
 #import "IdVerificationViewController.h"
+#import "BankCardAuthenticationViewController.h"
 @interface CertificationViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(strong, nonatomic)UIView*headView;
@@ -35,7 +36,7 @@
 dic=[NSDictionary dictionaryWithObjectsAndKeys:
                   num1 , @"0",
                     num1, @"1",
-                   [NSNumber numberWithBool:YES], @"2",nil];
+                   [NSNumber numberWithBool:NO], @"2",nil];
     UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
     tab.delegate=self;
     tab.dataSource=self;
@@ -107,12 +108,14 @@ dic=[NSDictionary dictionaryWithObjectsAndKeys:
     cell.imageView.image=[UIImage imageNamed:arr2[indexPath.row]];
     cell.textLabel.text=arr1[indexPath.row];
     if ([(NSNumber *)[dic objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]]boolValue]) {
+        cell.detailTextLabel.text=@"已认证";
+
     }
     else
     {
-    
+        cell.detailTextLabel.text=@"待认证";
+
     }
-    cell.detailTextLabel.text=@"fdsbjkf";
     cell.detailTextLabel.textColor=[UIColor blueColor];
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     cell.accessoryType =UITableViewCellAccessoryDisclosureIndicator;
@@ -127,7 +130,11 @@ dic=[NSDictionary dictionaryWithObjectsAndKeys:
             [self.navigationController pushViewController:[IdVerificationViewController new] animated:YES];
         }
             break;
-            
+        case 2:
+        {
+            [self.navigationController pushViewController:[BankCardAuthenticationViewController new] animated:YES];
+        }
+            break;
         default:
             break;
     }
