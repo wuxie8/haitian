@@ -43,6 +43,5 @@
 //贷款
 #define code @"jiandanjiekuanmiaojieban"
 
-#define APIHelp @"http://v2api20160516.eexuu.com/swagger"
 
 #endif /* Serve_h */
