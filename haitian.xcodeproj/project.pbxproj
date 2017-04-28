@@ -10,8 +10,6 @@
 		2E2193132720ACDF463B286D /* libPods-haitian.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C281EA8F719D2415E82CC71C /* libPods-haitian.a */; };
 		8402B9DA1E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402B9D91E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m */; };
 		8402B9F91E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402B9F81E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m */; };
-		842C82C01EAEE6BA005D27A7 /* zocr0.lib in Resources */ = {isa = PBXBuildFile; fileRef = 842C82BF1EAEE6BA005D27A7 /* zocr0.lib */; };
-		842C82C11EAEE6DE005D27A7 /* zocr0.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 842C82BF1EAEE6BA005D27A7 /* zocr0.lib */; };
 		842C82C41EAEFDCB005D27A7 /* IdOpposite ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842C82C31EAEFDCB005D27A7 /* IdOpposite ViewController.m */; };
 		842E61C71EB08A5700BF91FB /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61C61EB08A5700BF91FB /* iflyMSC.framework */; };
 		842E61C91EB08A9300BF91FB /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61C81EB08A9300BF91FB /* libz.tbd */; };
@@ -43,6 +41,12 @@
 		842E62121EB08D9B00BF91FB /* shakeHead3.png in Resources */ = {isa = PBXBuildFile; fileRef = 842E620C1EB08D9B00BF91FB /* shakeHead3.png */; };
 		842E62161EB0915D00BF91FB /* DetectionSuccessfulViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E62151EB0915D00BF91FB /* DetectionSuccessfulViewController.m */; };
 		842E621B1EB0A19E00BF91FB /* BankCardAuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E621A1EB0A19E00BF91FB /* BankCardAuthenticationViewController.m */; };
+		84361FDC1EB1EFB9008595E7 /* YLSOPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84361FDB1EB1EFB9008595E7 /* YLSOPickerView.m */; };
+		843DD7781EB2DE810014E283 /* AVFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61CE1EB08AB500BF91FB /* AVFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		843DD7791EB2DE960014E283 /* iflyMSC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61C61EB08A5700BF91FB /* iflyMSC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		843DD77B1EB2E10F0014E283 /* libexidcardios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 843DD77A1EB2E10F0014E283 /* libexidcardios.a */; };
+		843DD77E1EB2F14A0014E283 /* DataSubmittedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843DD77D1EB2F14A0014E283 /* DataSubmittedViewController.m */; };
+		844FE79E1EB2D49000CFBE6B /* zocr0.lib in Resources */ = {isa = PBXBuildFile; fileRef = 844FE79D1EB2D49000CFBE6B /* zocr0.lib */; };
 		8451AFBB1EA859FA002F04B6 /* PersonCenter.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8451AFBA1EA859FA002F04B6 /* PersonCenter.xcassets */; };
 		8451AFBF1EA85E65002F04B6 /* MessageAlertView.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8451AFBE1EA85E65002F04B6 /* MessageAlertView.xcassets */; };
 		84546F4A1EA5E77B00AD0350 /* CertificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84546F491EA5E77B00AD0350 /* CertificationViewController.m */; };
@@ -88,7 +92,6 @@
 		84C50C5C1EADF47100AD0B62 /* IDAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C50C561EADF47100AD0B62 /* IDAuthViewController.xib */; };
 		84C50C5D1EADF47100AD0B62 /* IDInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50C581EADF47100AD0B62 /* IDInfoViewController.m */; };
 		84C50C5E1EADF47100AD0B62 /* IDInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C50C591EADF47100AD0B62 /* IDInfoViewController.xib */; };
-		84C50C651EAE00AA00AD0B62 /* libexidcardios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C50C641EAE00AA00AD0B62 /* libexidcardios.a */; };
 		84CD81F51EA48F30009B786F /* RegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD81F41EA48F30009B786F /* RegisterVC.m */; };
 		84F5D3FD1EA7039D00EC8C9D /* HelpCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FC1EA7039D00EC8C9D /* HelpCenterViewController.m */; };
 		84F5D4001EA703D100EC8C9D /* XDMultTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FF1EA703D100EC8C9D /* XDMultTableView.m */; };
@@ -124,13 +127,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		843DD7771EB2DC7F0014E283 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				843DD7791EB2DE960014E283 /* iflyMSC.framework in Embed Frameworks */,
+				843DD7781EB2DE810014E283 /* AVFoundation.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		4DF801E35F7F19BF0A7FC1A2 /* Pods-haitian.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haitian.debug.xcconfig"; path = "Pods/Target Support Files/Pods-haitian/Pods-haitian.debug.xcconfig"; sourceTree = "<group>"; };
 		8402B9D81E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadSupermarketCollectionViewCell.h; sourceTree = "<group>"; };
 		8402B9D91E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadSupermarketCollectionViewCell.m; sourceTree = "<group>"; };
 		8402B9F71E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastHandleCardCollectionViewCell.h; sourceTree = "<group>"; };
 		8402B9F81E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastHandleCardCollectionViewCell.m; sourceTree = "<group>"; };
-		842C82BF1EAEE6BA005D27A7 /* zocr0.lib */ = {isa = PBXFileReference; lastKnownFileType = file; path = zocr0.lib; sourceTree = "<group>"; };
 		842C82C21EAEFDCB005D27A7 /* IdOpposite ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IdOpposite ViewController.h"; sourceTree = "<group>"; };
 		842C82C31EAEFDCB005D27A7 /* IdOpposite ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IdOpposite ViewController.m"; sourceTree = "<group>"; };
 		842E61C61EB08A5700BF91FB /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
@@ -175,6 +192,12 @@
 		842E62151EB0915D00BF91FB /* DetectionSuccessfulViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetectionSuccessfulViewController.m; sourceTree = "<group>"; };
 		842E62191EB0A19E00BF91FB /* BankCardAuthenticationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCardAuthenticationViewController.h; sourceTree = "<group>"; };
 		842E621A1EB0A19E00BF91FB /* BankCardAuthenticationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankCardAuthenticationViewController.m; sourceTree = "<group>"; };
+		84361FDA1EB1EFB9008595E7 /* YLSOPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLSOPickerView.h; sourceTree = "<group>"; };
+		84361FDB1EB1EFB9008595E7 /* YLSOPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLSOPickerView.m; sourceTree = "<group>"; };
+		843DD77A1EB2E10F0014E283 /* libexidcardios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libexidcardios.a; sourceTree = "<group>"; };
+		843DD77C1EB2F14A0014E283 /* DataSubmittedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSubmittedViewController.h; sourceTree = "<group>"; };
+		843DD77D1EB2F14A0014E283 /* DataSubmittedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSubmittedViewController.m; sourceTree = "<group>"; };
+		844FE79D1EB2D49000CFBE6B /* zocr0.lib */ = {isa = PBXFileReference; lastKnownFileType = file; path = zocr0.lib; sourceTree = "<group>"; };
 		8451AFBA1EA859FA002F04B6 /* PersonCenter.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PersonCenter.xcassets; sourceTree = "<group>"; };
 		8451AFBE1EA85E65002F04B6 /* MessageAlertView.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MessageAlertView.xcassets; sourceTree = "<group>"; };
 		84546F481EA5E77B00AD0350 /* CertificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificationViewController.h; sourceTree = "<group>"; };
@@ -267,7 +290,6 @@
 		84C50C5F1EADF9E400AD0B62 /* excards.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = excards.h; sourceTree = "<group>"; };
 		84C50C601EADFD8A00AD0B62 /* libexidcardios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libexidcardios.a; path = "../../Downloads/IDCardRecognition-master/IDCardRecognition/libexidcard/libexidcardios.a"; sourceTree = "<group>"; };
 		84C50C621EADFDA200AD0B62 /* zocr0.lib */ = {isa = PBXFileReference; lastKnownFileType = file; name = zocr0.lib; path = "../../Downloads/IDCardRecognition-master/IDCardRecognition/libexidcard/dicts/zocr0.lib"; sourceTree = "<group>"; };
-		84C50C641EAE00AA00AD0B62 /* libexidcardios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libexidcardios.a; sourceTree = "<group>"; };
 		84CD81F31EA48F30009B786F /* RegisterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterVC.h; sourceTree = "<group>"; };
 		84CD81F41EA48F30009B786F /* RegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterVC.m; sourceTree = "<group>"; };
 		84F5D3FB1EA7039D00EC8C9D /* HelpCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpCenterViewController.h; sourceTree = "<group>"; };
@@ -307,21 +329,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				842E61CF1EB08AB500BF91FB /* AVFoundation.framework in Frameworks */,
 				842E61DF1EB08B6600BF91FB /* libstdc++.tbd in Frameworks */,
 				842E61DD1EB08AF500BF91FB /* CoreGraphics.framework in Frameworks */,
 				842E61DB1EB08AED00BF91FB /* Foundation.framework in Frameworks */,
 				842E61D91EB08AE300BF91FB /* UIKit.framework in Frameworks */,
+				843DD77B1EB2E10F0014E283 /* libexidcardios.a in Frameworks */,
 				842E61D71EB08ADA00BF91FB /* QuartzCore.framework in Frameworks */,
 				842E61D51EB08AD100BF91FB /* SystemConfiguration.framework in Frameworks */,
 				842E61D31EB08AC500BF91FB /* AudioToolbox.framework in Frameworks */,
 				842E61D11EB08ABD00BF91FB /* AddressBook.framework in Frameworks */,
-				842E61CF1EB08AB500BF91FB /* AVFoundation.framework in Frameworks */,
 				842E61CD1EB08AAD00BF91FB /* CoreTelephony.framework in Frameworks */,
 				842E61CB1EB08AA000BF91FB /* CoreLocation.framework in Frameworks */,
 				842E61C91EB08A9300BF91FB /* libz.tbd in Frameworks */,
 				842E61C71EB08A5700BF91FB /* iflyMSC.framework in Frameworks */,
-				842C82C11EAEE6DE005D27A7 /* zocr0.lib in Frameworks */,
-				84C50C651EAE00AA00AD0B62 /* libexidcardios.a in Frameworks */,
 				2E2193132720ACDF463B286D /* libPods-haitian.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,6 +473,8 @@
 			children = (
 				842E62191EB0A19E00BF91FB /* BankCardAuthenticationViewController.h */,
 				842E621A1EB0A19E00BF91FB /* BankCardAuthenticationViewController.m */,
+				84361FDA1EB1EFB9008595E7 /* YLSOPickerView.h */,
+				84361FDB1EB1EFB9008595E7 /* YLSOPickerView.m */,
 			);
 			name = BankCardAuthentication;
 			sourceTree = "<group>";
@@ -479,6 +502,8 @@
 				84B9DC4A1E9DD9CE0066A92D /* HomePageViewController.m */,
 				84546F481EA5E77B00AD0350 /* CertificationViewController.h */,
 				84546F491EA5E77B00AD0350 /* CertificationViewController.m */,
+				843DD77C1EB2F14A0014E283 /* DataSubmittedViewController.h */,
+				843DD77D1EB2F14A0014E283 /* DataSubmittedViewController.m */,
 				842E62181EB0A17300BF91FB /* BankCardAuthentication */,
 				842E62171EB0A15200BF91FB /* IdentityAuthentication */,
 			);
@@ -604,8 +629,8 @@
 		84B9DBE91E9DC0990066A92D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				84C50C641EAE00AA00AD0B62 /* libexidcardios.a */,
-				842C82BF1EAEE6BA005D27A7 /* zocr0.lib */,
+				844FE79D1EB2D49000CFBE6B /* zocr0.lib */,
+				843DD77A1EB2E10F0014E283 /* libexidcardios.a */,
 				8468562D1EA08EFF00C74F87 /* Serve.h */,
 				84B9DC471E9DCF2A0066A92D /* Header.h */,
 				84B9DC481E9DCF5A0066A92D /* Public.h */,
@@ -825,6 +850,7 @@
 				84B9DBE41E9DC0990066A92D /* Resources */,
 				5BE2168A3FBD85675BA824A3 /* [CP] Embed Pods Frameworks */,
 				AE5D7B473AAA0CB761DD739C /* [CP] Copy Pods Resources */,
+				843DD7771EB2DC7F0014E283 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -924,6 +950,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				844FE79E1EB2D49000CFBE6B /* zocr0.lib in Resources */,
 				84F5D41B1EA7675E00EC8C9D /* TZAssetCell.xib in Resources */,
 				842E62111EB08D9B00BF91FB /* shakeHead2.png in Resources */,
 				84B9DBF91E9DC0990066A92D /* LaunchScreen.storyboard in Resources */,
@@ -939,7 +966,6 @@
 				84C50C5C1EADF47100AD0B62 /* IDAuthViewController.xib in Resources */,
 				842E620E1EB08D9B00BF91FB /* openMouth1.png in Resources */,
 				842E62121EB08D9B00BF91FB /* shakeHead3.png in Resources */,
-				842C82C01EAEE6BA005D27A7 /* zocr0.lib in Resources */,
 				8451AFBB1EA859FA002F04B6 /* PersonCenter.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1040,6 +1066,7 @@
 				84B9DBEE1E9DC0990066A92D /* AppDelegate.m in Sources */,
 				84CD81F51EA48F30009B786F /* RegisterVC.m in Sources */,
 				842E61FF1EB08C8300BF91FB /* UIImage+compress.m in Sources */,
+				843DD77E1EB2F14A0014E283 /* DataSubmittedViewController.m in Sources */,
 				8402B9F91E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m in Sources */,
 				84C50C4E1EADF44A00AD0B62 /* IDInfo.m in Sources */,
 				84C50C5A1EADF47100AD0B62 /* AVCaptureViewController.m in Sources */,
@@ -1056,6 +1083,7 @@
 				84F5D41F1EA7675E00EC8C9D /* TZPhotoPickerController.m in Sources */,
 				84B9DC431E9DCDF50066A92D /* FastHandleCardViewController.m in Sources */,
 				84F5D41C1EA7675E00EC8C9D /* TZAssetModel.m in Sources */,
+				84361FDC1EB1EFB9008595E7 /* YLSOPickerView.m in Sources */,
 				8468562C1EA0822900C74F87 /* MessageAlertView.m in Sources */,
 				847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */,
 				84F5D4271EA768EA00EC8C9D /* TZTestCell.m in Sources */,

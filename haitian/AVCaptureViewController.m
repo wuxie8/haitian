@@ -17,6 +17,7 @@
 #import "RectManager.h"
 #import "UIAlertController+Extend.h"
 
+
 @interface AVCaptureViewController () <AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureMetadataOutputObjectsDelegate>
 
 // 摄像头设备

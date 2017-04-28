@@ -95,8 +95,8 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
             [session addOutput:videoDataOutput];
             AVCaptureConnection *connection = [videoDataOutput connectionWithMediaType:AVMediaTypeVideo];
             if ([connection isVideoStabilizationSupported]){
-                [connection setEnablesVideoStabilizationWhenAvailable:YES];
-            }
+                connection.preferredVideoStabilizationMode=AVCaptureVideoStabilizationModeOff;
+                }
             
             if ([connection isVideoOrientationSupported]){
                 connection.videoOrientation = AVCaptureVideoOrientationLandscapeLeft;
