@@ -71,6 +71,15 @@
 		847A11501EA45F0C002D8832 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114D1EA45F0C002D8832 /* User.m */; };
 		847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114F1EA45F0C002D8832 /* UserInfoContext.m */; };
 		84A733301EB81934008ABB7E /* FamilyInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7332F1EB81934008ABB7E /* FamilyInformationViewController.m */; };
+		84A733331EB85FB1008ABB7E /* ContactInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A733321EB85FB1008ABB7E /* ContactInformationViewController.m */; };
+		84A733381EB86BA0008ABB7E /* AddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A733351EB86BA0008ABB7E /* AddressVC.m */; };
+		84A733391EB86BA0008ABB7E /* PersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A733371EB86BA0008ABB7E /* PersonModel.m */; };
+		84A733531EB86C82008ABB7E /* AddressBookVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7334A1EB86C82008ABB7E /* AddressBookVC.m */; };
+		84A733541EB86C82008ABB7E /* CDFInitialsAvatar.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7334C1EB86C82008ABB7E /* CDFInitialsAvatar.m */; };
+		84A733551EB86C82008ABB7E /* NSString+TKUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7334E1EB86C82008ABB7E /* NSString+TKUtilities.m */; };
+		84A733561EB86C82008ABB7E /* PersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A733501EB86C82008ABB7E /* PersonCell.m */; };
+		84A733571EB86C82008ABB7E /* XHJAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A733521EB86C82008ABB7E /* XHJAddressBook.m */; };
+		84A7335B1EB88660008ABB7E /* ReferenceDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7335A1EB88660008ABB7E /* ReferenceDataViewController.m */; };
 		84A7398B1E9E25B700A42502 /* WSIndexBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A739881E9E25B700A42502 /* WSIndexBanner.m */; };
 		84A7398C1E9E25B700A42502 /* WSPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7398A1E9E25B700A42502 /* WSPageView.m */; };
 		84B36FCB1EB32820001FCD96 /* ProfessionalInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B36FCA1EB32820001FCD96 /* ProfessionalInformationViewController.m */; };
@@ -251,6 +260,24 @@
 		847A114F1EA45F0C002D8832 /* UserInfoContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoContext.m; sourceTree = "<group>"; };
 		84A7332E1EB81934008ABB7E /* FamilyInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FamilyInformationViewController.h; sourceTree = "<group>"; };
 		84A7332F1EB81934008ABB7E /* FamilyInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FamilyInformationViewController.m; sourceTree = "<group>"; };
+		84A733311EB85FB1008ABB7E /* ContactInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactInformationViewController.h; sourceTree = "<group>"; };
+		84A733321EB85FB1008ABB7E /* ContactInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactInformationViewController.m; sourceTree = "<group>"; };
+		84A733341EB86BA0008ABB7E /* AddressVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressVC.h; sourceTree = "<group>"; };
+		84A733351EB86BA0008ABB7E /* AddressVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressVC.m; sourceTree = "<group>"; };
+		84A733361EB86BA0008ABB7E /* PersonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonModel.h; sourceTree = "<group>"; };
+		84A733371EB86BA0008ABB7E /* PersonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonModel.m; sourceTree = "<group>"; };
+		84A733491EB86C82008ABB7E /* AddressBookVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBookVC.h; sourceTree = "<group>"; };
+		84A7334A1EB86C82008ABB7E /* AddressBookVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookVC.m; sourceTree = "<group>"; };
+		84A7334B1EB86C82008ABB7E /* CDFInitialsAvatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDFInitialsAvatar.h; sourceTree = "<group>"; };
+		84A7334C1EB86C82008ABB7E /* CDFInitialsAvatar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDFInitialsAvatar.m; sourceTree = "<group>"; };
+		84A7334D1EB86C82008ABB7E /* NSString+TKUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TKUtilities.h"; sourceTree = "<group>"; };
+		84A7334E1EB86C82008ABB7E /* NSString+TKUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TKUtilities.m"; sourceTree = "<group>"; };
+		84A7334F1EB86C82008ABB7E /* PersonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCell.h; sourceTree = "<group>"; };
+		84A733501EB86C82008ABB7E /* PersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCell.m; sourceTree = "<group>"; };
+		84A733511EB86C82008ABB7E /* XHJAddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHJAddressBook.h; sourceTree = "<group>"; };
+		84A733521EB86C82008ABB7E /* XHJAddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHJAddressBook.m; sourceTree = "<group>"; };
+		84A733591EB88660008ABB7E /* ReferenceDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReferenceDataViewController.h; sourceTree = "<group>"; };
+		84A7335A1EB88660008ABB7E /* ReferenceDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReferenceDataViewController.m; sourceTree = "<group>"; };
 		84A739871E9E25B700A42502 /* WSIndexBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WSIndexBanner.h; path = "第三方轮播/WSIndexBanner.h"; sourceTree = "<group>"; };
 		84A739881E9E25B700A42502 /* WSIndexBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WSIndexBanner.m; path = "第三方轮播/WSIndexBanner.m"; sourceTree = "<group>"; };
 		84A739891E9E25B700A42502 /* WSPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WSPageView.h; path = "第三方轮播/WSPageView.h"; sourceTree = "<group>"; };
@@ -521,6 +548,8 @@
 				84546F491EA5E77B00AD0350 /* CertificationViewController.m */,
 				843DD77C1EB2F14A0014E283 /* DataSubmittedViewController.h */,
 				843DD77D1EB2F14A0014E283 /* DataSubmittedViewController.m */,
+				84A733591EB88660008ABB7E /* ReferenceDataViewController.h */,
+				84A7335A1EB88660008ABB7E /* ReferenceDataViewController.m */,
 				84B36FC81EB327DC001FCD96 /* ProfessionalInformation */,
 				842E62181EB0A17300BF91FB /* BankCardAuthentication */,
 				842E62171EB0A15200BF91FB /* IdentityAuthentication */,
@@ -598,6 +627,23 @@
 			name = User;
 			sourceTree = "<group>";
 		};
+		84A733581EB86C97008ABB7E /* Addressbook */ = {
+			isa = PBXGroup;
+			children = (
+				84A733491EB86C82008ABB7E /* AddressBookVC.h */,
+				84A7334A1EB86C82008ABB7E /* AddressBookVC.m */,
+				84A7334B1EB86C82008ABB7E /* CDFInitialsAvatar.h */,
+				84A7334C1EB86C82008ABB7E /* CDFInitialsAvatar.m */,
+				84A7334D1EB86C82008ABB7E /* NSString+TKUtilities.h */,
+				84A7334E1EB86C82008ABB7E /* NSString+TKUtilities.m */,
+				84A7334F1EB86C82008ABB7E /* PersonCell.h */,
+				84A733501EB86C82008ABB7E /* PersonCell.m */,
+				84A733511EB86C82008ABB7E /* XHJAddressBook.h */,
+				84A733521EB86C82008ABB7E /* XHJAddressBook.m */,
+			);
+			name = Addressbook;
+			sourceTree = "<group>";
+		};
 		84A739861E9E257200A42502 /* 第三方轮播 */ = {
 			isa = PBXGroup;
 			children = (
@@ -616,6 +662,13 @@
 				84B36FCA1EB32820001FCD96 /* ProfessionalInformationViewController.m */,
 				84A7332E1EB81934008ABB7E /* FamilyInformationViewController.h */,
 				84A7332F1EB81934008ABB7E /* FamilyInformationViewController.m */,
+				84A733311EB85FB1008ABB7E /* ContactInformationViewController.h */,
+				84A733321EB85FB1008ABB7E /* ContactInformationViewController.m */,
+				84A733341EB86BA0008ABB7E /* AddressVC.h */,
+				84A733351EB86BA0008ABB7E /* AddressVC.m */,
+				84A733361EB86BA0008ABB7E /* PersonModel.h */,
+				84A733371EB86BA0008ABB7E /* PersonModel.m */,
+				84A733581EB86C97008ABB7E /* Addressbook */,
 				846629061EB34231003E7979 /* LZCityPickerClass */,
 			);
 			name = ProfessionalInformation;
@@ -1099,20 +1152,25 @@
 				846856251EA0813C00C74F87 /* NetWorkUtil.m in Sources */,
 				8468563A1EA08FF900C74F87 /* GestureBaseVC.m in Sources */,
 				84F5D41E1EA7675E00EC8C9D /* TZImagePickerController.m in Sources */,
+				84A733561EB86C82008ABB7E /* PersonCell.m in Sources */,
 				846856391EA08FF900C74F87 /* BaseVC.m in Sources */,
 				84C50C3B1EADD49C00AD0B62 /* IdVerificationViewController.m in Sources */,
 				84F5D41D1EA7675E00EC8C9D /* TZImageManager.m in Sources */,
 				842E61FD1EB08C8300BF91FB /* CalculatorTools.m in Sources */,
 				846856411EA0902D00C74F87 /* ASValuePopUpView.m in Sources */,
+				84A733531EB86C82008ABB7E /* AddressBookVC.m in Sources */,
 				84B9DBF11E9DC0990066A92D /* ViewController.m in Sources */,
 				84C50C401EADF3DE00AD0B62 /* RectManager.m in Sources */,
+				84A733551EB86C82008ABB7E /* NSString+TKUtilities.m in Sources */,
 				84546F4A1EA5E77B00AD0350 /* CertificationViewController.m in Sources */,
 				842E62001EB08C8300BF91FB /* UIImage+Extensions.m in Sources */,
 				84B9DBEE1E9DC0990066A92D /* AppDelegate.m in Sources */,
 				84CD81F51EA48F30009B786F /* RegisterVC.m in Sources */,
 				842E61FF1EB08C8300BF91FB /* UIImage+compress.m in Sources */,
 				843DD77E1EB2F14A0014E283 /* DataSubmittedViewController.m in Sources */,
+				84A733541EB86C82008ABB7E /* CDFInitialsAvatar.m in Sources */,
 				8402B9F91E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m in Sources */,
+				84A733391EB86BA0008ABB7E /* PersonModel.m in Sources */,
 				8466290F1EB34252003E7979 /* LZCityPickerController.m in Sources */,
 				84C50C4E1EADF44A00AD0B62 /* IDInfo.m in Sources */,
 				84C50C5A1EADF47100AD0B62 /* AVCaptureViewController.m in Sources */,
@@ -1121,9 +1179,12 @@
 				842E62061EB08C9700BF91FB /* IFlyFaceResultKeys.m in Sources */,
 				84B9DC401E9DCDBC0066A92D /* LoadSupermarketViewController.m in Sources */,
 				84F5D4201EA7675E00EC8C9D /* TZPhotoPreviewCell.m in Sources */,
+				84A733381EB86BA0008ABB7E /* AddressVC.m in Sources */,
 				846856451EA0969E00C74F87 /* ForgotPasswordViewController.m in Sources */,
 				846856181EA0764900C74F87 /* AccountPassswordViewController.m in Sources */,
 				84F5D4001EA703D100EC8C9D /* XDMultTableView.m in Sources */,
+				84A733331EB85FB1008ABB7E /* ContactInformationViewController.m in Sources */,
+				84A7335B1EB88660008ABB7E /* ReferenceDataViewController.m in Sources */,
 				846856381EA08FF900C74F87 /* BaseNC.m in Sources */,
 				846629111EB34252003E7979 /* LZPickerModel.m in Sources */,
 				842E61F01EB08C4B00BF91FB /* CaptureManager.m in Sources */,
@@ -1139,6 +1200,7 @@
 				84B9DBEB1E9DC0990066A92D /* main.m in Sources */,
 				84C50C471EADF40D00AD0B62 /* UIAlertController+Extend.m in Sources */,
 				84A7398C1E9E25B700A42502 /* WSPageView.m in Sources */,
+				84A733571EB86C82008ABB7E /* XHJAddressBook.m in Sources */,
 				84B9DC4B1E9DD9CE0066A92D /* HomePageViewController.m in Sources */,
 				846856151EA059F400C74F87 /* LoginViewController.m in Sources */,
 				84F5D4231EA7675E00EC8C9D /* UIView+Layout.m in Sources */,

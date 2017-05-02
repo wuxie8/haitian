@@ -8,6 +8,9 @@
 
 #import "DataSubmittedViewController.h"
 #import "ProfessionalInformationViewController.h"
+#import "FamilyInformationViewController.h"
+#import "ContactInformationViewController.h"
+#import "ReferenceDataViewController.h"
 @interface DataSubmittedViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(strong, nonatomic)UIView*headView;
@@ -50,7 +53,7 @@
         _headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 100)];
         _headView.backgroundColor=[UIColor redColor];
         UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 60)];
-        imageView.image=[UIImage imageNamed:@""];
+        imageView.image=[UIImage imageNamed:@"DataSubmitted-1"];
         [_headView addSubview:imageView];
     }
     return _headView;
@@ -66,7 +69,7 @@
         but.layer.cornerRadius =  20;
         //            //将多余的部分切掉
         but.layer.masksToBounds = YES;
-        but.enabled=NO;
+//        but.enabled=NO;
         but.backgroundColor=AppPageColor;
         [_footView addSubview:but];
     }
@@ -128,7 +131,15 @@
             [self.navigationController pushViewController:[ProfessionalInformationViewController new] animated:YES];
 
             break;
+        case 1:
+            [self.navigationController pushViewController:[FamilyInformationViewController new] animated:YES];
             
+            break;
+            
+        case 2:
+            [self.navigationController pushViewController:[ContactInformationViewController new] animated:YES];
+            
+            break;
         default:
             break;
     }
@@ -137,7 +148,8 @@
 #pragma mark 实现方法
 -(void)nextStep
 {
-    
+    [self.navigationController pushViewController:[ReferenceDataViewController new] animated:YES];
+
 }
 
 - (void)didReceiveMemoryWarning {

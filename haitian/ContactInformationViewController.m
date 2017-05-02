@@ -1,19 +1,15 @@
 //
-//  FamilyInformationViewController.m
+//  ContactInformationViewController.m
 //  haitian
 //
 //  Created by Admin on 2017/5/2.
 //  Copyright © 2017年 Admin. All rights reserved.
 //
 
-#import "FamilyInformationViewController.h"
-#import "YLSOPickerView.h"
-#import "LZCityPickerController.h"
 #import "ContactInformationViewController.h"
-#define professional @"请选择婚姻状况"
-#define schoolRecord  @"请选择学历"
-@interface FamilyInformationViewController ()<UITableViewDelegate,UITableViewDataSource>
-
+#import "YLSOPickerView.h"
+#import "AddressVC.h"
+@interface ContactInformationViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 
 @property(strong, nonatomic)UIView*headView;
@@ -21,9 +17,11 @@
 @property(strong, nonatomic)UIView*footView;
 
 @property(strong, nonatomic)NSMutableDictionary*dic;
+
 @end
 
-@implementation FamilyInformationViewController
+@implementation ContactInformationViewController
+
 {
     NSArray *arr;
     NSArray *placeArr;
@@ -31,15 +29,13 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title=@"职业信息";
+    self.title=@"联系人信息";
     
     
-    arr=@[@"婚姻状况",@"家庭住址",@"家庭详细地址"];
-    placeArr=@[@"请选择",@"请选择",@"请输入家庭住址"];
+    arr=@[@"与联系人的关系",@"姓名:",@"电话号码"];
+    placeArr=@[@"请输入与联系人关系",@"请输入联系人姓名",@"请从通讯录中获取"];
     _dataArray=@[@"已婚",@"未婚"];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getValue:) name:professional object:nil];
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getschoolRecordValue:) name:schoolRecord object:nil];
     
     
     UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
@@ -111,32 +107,16 @@
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    if (textField.tag==1000) {
-        YLSOPickerView *picker = [[YLSOPickerView alloc]init];
-        picker.array = _dataArray;
-        picker.title = professional;
-        [picker show];
-        return NO;
-        
-    }
-    else if (textField.tag==1001) {
-        [LZCityPickerController showPickerInViewController:self selectBlock:^(NSString *address, NSString *province, NSString *city, NSString *area) {
-            UITextField *text=[self.view viewWithTag:1001];
-            text.text=address;
-            [self.dic setObject:address forKey:@"1001"];
+    if (textField.tag==1002) {
+        AddressVC *address=[[AddressVC alloc]init];
+        [address setClickBlock:^(NSString *tel){
+            // remove the transform animation if the animation finished and wasn't interrupted
+            UITextField *textField=(UITextField *)[self.view viewWithTag:1002];
+            textField.text=tel;
             
         }];
-        
+        [self.navigationController pushViewController:address animated:YES];
         return NO;
-        
-    }
-    else if (textField.tag==1013) {
-        YLSOPickerView *picker = [[YLSOPickerView alloc]init];
-        picker.array = @[@"高中及中专以下",@"大学专科",@"大学本科",@"研究生及以上"];
-        picker.title = schoolRecord;
-        [picker show];
-        return NO;
-        
     }
     return YES;
 }
@@ -151,23 +131,10 @@
 
 -(void)ImmediatelyBinding
 {
-    [self.navigationController pushViewController:[ContactInformationViewController new] animated:YES];
+  
+    
+}
 
-}
--(void)getValue:(NSNotification *)notification
-{
-    UITextField *textField=(UITextField *)[self.view viewWithTag:1000];
-    textField.text=notification.object;
-    [self.dic setObject:notification.object forKey:@"1000"];
-    
-}
--(void)getschoolRecordValue:(NSNotification *)notification
-{
-    UITextField *textField=(UITextField *)[self.view viewWithTag:1013];
-    textField.text=notification.object;
-    [self.dic setObject:notification.object forKey:@"1013"];
-    
-}
 #pragma mark 懒加载
 -(NSMutableDictionary *)dic
 {
