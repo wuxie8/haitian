@@ -85,7 +85,6 @@
                 [assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
                     isGranted=YES;
                     *stop = YES;
-                    NSLog(@"enumerate");
                     dispatch_semaphore_signal(sema);
                 } failureBlock:^(NSError *error) {
                     isGranted=NO;

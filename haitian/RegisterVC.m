@@ -140,7 +140,7 @@
     UIView *view1=[self.view viewWithTag:100];
     
     UITextField *text1=(UITextField *)[view1 viewWithTag:1000];
-  
+
     if (text1.text.length==0) {
         [MessageAlertView showErrorMessage:@"请输入手机号"];
         return;

@@ -60,7 +60,6 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
                                                 [self updateAccelertionData:accelerometerData.acceleration];
                                             }
                                             else{
-                                                NSLog(@"%@", error);
                                             }
                                         }];
     
@@ -82,7 +81,6 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
         //input device
         AVCaptureDeviceInput *videoDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:videoDevice error:&error];
         if (error){
-            NSLog(@"%@", error);
         }
         if ([session canAddInput:videoDeviceInput]){
             [session addInput:videoDeviceInput];
@@ -245,7 +243,6 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
         default:
             break;
     }
-    NSLog(@"Warning - Didn't recognise interface orientation (%ld)",(long)orientation);
     return AVCaptureVideoOrientationPortrait;
 }
 

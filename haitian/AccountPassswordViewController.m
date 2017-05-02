@@ -77,7 +77,6 @@
 //        }
         [loginView addSubview:view];
     }
-    
     UIButton *loginButton=[[UIButton alloc]initWithFrame:CGRectMake(20, 20+2*(ViewHeight+10)+20, WIDTH-20*2, 50)];
     loginButton.backgroundColor=AppButtonbackgroundColor;
     [loginButton setTitle:@"立即登录" forState:UIControlStateNormal];

@@ -50,6 +50,10 @@
 		8451AFBB1EA859FA002F04B6 /* PersonCenter.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8451AFBA1EA859FA002F04B6 /* PersonCenter.xcassets */; };
 		8451AFBF1EA85E65002F04B6 /* MessageAlertView.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8451AFBE1EA85E65002F04B6 /* MessageAlertView.xcassets */; };
 		84546F4A1EA5E77B00AD0350 /* CertificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84546F491EA5E77B00AD0350 /* CertificationViewController.m */; };
+		8466290E1EB34252003E7979 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = 846629071EB34252003E7979 /* Address.plist */; };
+		8466290F1EB34252003E7979 /* LZCityPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846629091EB34252003E7979 /* LZCityPickerController.m */; };
+		846629101EB34252003E7979 /* LZCityPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8466290B1EB34252003E7979 /* LZCityPickerView.m */; };
+		846629111EB34252003E7979 /* LZPickerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8466290D1EB34252003E7979 /* LZPickerModel.m */; };
 		846856151EA059F400C74F87 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856141EA059F400C74F87 /* LoginViewController.m */; };
 		846856181EA0764900C74F87 /* AccountPassswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856171EA0764900C74F87 /* AccountPassswordViewController.m */; };
 		846856241EA0813C00C74F87 /* NetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856211EA0813C00C74F87 /* NetWorkManager.m */; };
@@ -66,8 +70,10 @@
 		846856481EA09A8B00C74F87 /* UtilTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856471EA09A8B00C74F87 /* UtilTools.m */; };
 		847A11501EA45F0C002D8832 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114D1EA45F0C002D8832 /* User.m */; };
 		847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114F1EA45F0C002D8832 /* UserInfoContext.m */; };
+		84A733301EB81934008ABB7E /* FamilyInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7332F1EB81934008ABB7E /* FamilyInformationViewController.m */; };
 		84A7398B1E9E25B700A42502 /* WSIndexBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A739881E9E25B700A42502 /* WSIndexBanner.m */; };
 		84A7398C1E9E25B700A42502 /* WSPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7398A1E9E25B700A42502 /* WSPageView.m */; };
+		84B36FCB1EB32820001FCD96 /* ProfessionalInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B36FCA1EB32820001FCD96 /* ProfessionalInformationViewController.m */; };
 		84B9DBEB1E9DC0990066A92D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DBEA1E9DC0990066A92D /* main.m */; };
 		84B9DBEE1E9DC0990066A92D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DBED1E9DC0990066A92D /* AppDelegate.m */; };
 		84B9DBF11E9DC0990066A92D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DBF01E9DC0990066A92D /* ViewController.m */; };
@@ -203,6 +209,13 @@
 		84546F481EA5E77B00AD0350 /* CertificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificationViewController.h; sourceTree = "<group>"; };
 		84546F491EA5E77B00AD0350 /* CertificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificationViewController.m; sourceTree = "<group>"; };
 		84546F541EA6200900AD0350 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		846629071EB34252003E7979 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
+		846629081EB34252003E7979 /* LZCityPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZCityPickerController.h; sourceTree = "<group>"; };
+		846629091EB34252003E7979 /* LZCityPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZCityPickerController.m; sourceTree = "<group>"; };
+		8466290A1EB34252003E7979 /* LZCityPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZCityPickerView.h; sourceTree = "<group>"; };
+		8466290B1EB34252003E7979 /* LZCityPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZCityPickerView.m; sourceTree = "<group>"; };
+		8466290C1EB34252003E7979 /* LZPickerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZPickerModel.h; sourceTree = "<group>"; };
+		8466290D1EB34252003E7979 /* LZPickerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZPickerModel.m; sourceTree = "<group>"; };
 		846856131EA059F400C74F87 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		846856141EA059F400C74F87 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		846856161EA0764900C74F87 /* AccountPassswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountPassswordViewController.h; sourceTree = "<group>"; };
@@ -236,10 +249,14 @@
 		847A114D1EA45F0C002D8832 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		847A114E1EA45F0C002D8832 /* UserInfoContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoContext.h; sourceTree = "<group>"; };
 		847A114F1EA45F0C002D8832 /* UserInfoContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoContext.m; sourceTree = "<group>"; };
+		84A7332E1EB81934008ABB7E /* FamilyInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FamilyInformationViewController.h; sourceTree = "<group>"; };
+		84A7332F1EB81934008ABB7E /* FamilyInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FamilyInformationViewController.m; sourceTree = "<group>"; };
 		84A739871E9E25B700A42502 /* WSIndexBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WSIndexBanner.h; path = "第三方轮播/WSIndexBanner.h"; sourceTree = "<group>"; };
 		84A739881E9E25B700A42502 /* WSIndexBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WSIndexBanner.m; path = "第三方轮播/WSIndexBanner.m"; sourceTree = "<group>"; };
 		84A739891E9E25B700A42502 /* WSPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WSPageView.h; path = "第三方轮播/WSPageView.h"; sourceTree = "<group>"; };
 		84A7398A1E9E25B700A42502 /* WSPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WSPageView.m; path = "第三方轮播/WSPageView.m"; sourceTree = "<group>"; };
+		84B36FC91EB32820001FCD96 /* ProfessionalInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalInformationViewController.h; sourceTree = "<group>"; };
+		84B36FCA1EB32820001FCD96 /* ProfessionalInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalInformationViewController.m; sourceTree = "<group>"; };
 		84B9DBE61E9DC0990066A92D /* haitian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = haitian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B9DBEA1E9DC0990066A92D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84B9DBEC1E9DC0990066A92D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -504,10 +521,25 @@
 				84546F491EA5E77B00AD0350 /* CertificationViewController.m */,
 				843DD77C1EB2F14A0014E283 /* DataSubmittedViewController.h */,
 				843DD77D1EB2F14A0014E283 /* DataSubmittedViewController.m */,
+				84B36FC81EB327DC001FCD96 /* ProfessionalInformation */,
 				842E62181EB0A17300BF91FB /* BankCardAuthentication */,
 				842E62171EB0A15200BF91FB /* IdentityAuthentication */,
 			);
 			name = HomePage;
+			sourceTree = "<group>";
+		};
+		846629061EB34231003E7979 /* LZCityPickerClass */ = {
+			isa = PBXGroup;
+			children = (
+				846629071EB34252003E7979 /* Address.plist */,
+				846629081EB34252003E7979 /* LZCityPickerController.h */,
+				846629091EB34252003E7979 /* LZCityPickerController.m */,
+				8466290A1EB34252003E7979 /* LZCityPickerView.h */,
+				8466290B1EB34252003E7979 /* LZCityPickerView.m */,
+				8466290C1EB34252003E7979 /* LZPickerModel.h */,
+				8466290D1EB34252003E7979 /* LZPickerModel.m */,
+			);
+			name = LZCityPickerClass;
 			sourceTree = "<group>";
 		};
 		846856121EA0597200C74F87 /* Login */ = {
@@ -575,6 +607,18 @@
 				84A7398A1E9E25B700A42502 /* WSPageView.m */,
 			);
 			name = "第三方轮播";
+			sourceTree = "<group>";
+		};
+		84B36FC81EB327DC001FCD96 /* ProfessionalInformation */ = {
+			isa = PBXGroup;
+			children = (
+				84B36FC91EB32820001FCD96 /* ProfessionalInformationViewController.h */,
+				84B36FCA1EB32820001FCD96 /* ProfessionalInformationViewController.m */,
+				84A7332E1EB81934008ABB7E /* FamilyInformationViewController.h */,
+				84A7332F1EB81934008ABB7E /* FamilyInformationViewController.m */,
+				846629061EB34231003E7979 /* LZCityPickerClass */,
+			);
+			name = ProfessionalInformation;
 			sourceTree = "<group>";
 		};
 		84B9DBDD1E9DC0990066A92D = {
@@ -953,6 +997,7 @@
 				844FE79E1EB2D49000CFBE6B /* zocr0.lib in Resources */,
 				84F5D41B1EA7675E00EC8C9D /* TZAssetCell.xib in Resources */,
 				842E62111EB08D9B00BF91FB /* shakeHead2.png in Resources */,
+				8466290E1EB34252003E7979 /* Address.plist in Resources */,
 				84B9DBF91E9DC0990066A92D /* LaunchScreen.storyboard in Resources */,
 				84B9DBF61E9DC0990066A92D /* Assets.xcassets in Resources */,
 				842E62101EB08D9B00BF91FB /* shakeHead1.png in Resources */,
@@ -1068,6 +1113,7 @@
 				842E61FF1EB08C8300BF91FB /* UIImage+compress.m in Sources */,
 				843DD77E1EB2F14A0014E283 /* DataSubmittedViewController.m in Sources */,
 				8402B9F91E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m in Sources */,
+				8466290F1EB34252003E7979 /* LZCityPickerController.m in Sources */,
 				84C50C4E1EADF44A00AD0B62 /* IDInfo.m in Sources */,
 				84C50C5A1EADF47100AD0B62 /* AVCaptureViewController.m in Sources */,
 				8468563C1EA08FF900C74F87 /* NavBaseVC.m in Sources */,
@@ -1079,12 +1125,14 @@
 				846856181EA0764900C74F87 /* AccountPassswordViewController.m in Sources */,
 				84F5D4001EA703D100EC8C9D /* XDMultTableView.m in Sources */,
 				846856381EA08FF900C74F87 /* BaseNC.m in Sources */,
+				846629111EB34252003E7979 /* LZPickerModel.m in Sources */,
 				842E61F01EB08C4B00BF91FB /* CaptureManager.m in Sources */,
 				84F5D41F1EA7675E00EC8C9D /* TZPhotoPickerController.m in Sources */,
 				84B9DC431E9DCDF50066A92D /* FastHandleCardViewController.m in Sources */,
 				84F5D41C1EA7675E00EC8C9D /* TZAssetModel.m in Sources */,
 				84361FDC1EB1EFB9008595E7 /* YLSOPickerView.m in Sources */,
 				8468562C1EA0822900C74F87 /* MessageAlertView.m in Sources */,
+				84B36FCB1EB32820001FCD96 /* ProfessionalInformationViewController.m in Sources */,
 				847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */,
 				84F5D4271EA768EA00EC8C9D /* TZTestCell.m in Sources */,
 				84F5D4041EA7492A00EC8C9D /* FeedbackViewController.m in Sources */,
@@ -1098,10 +1146,12 @@
 				84F5D4221EA7675E00EC8C9D /* TZVideoPlayerController.m in Sources */,
 				846856481EA09A8B00C74F87 /* UtilTools.m in Sources */,
 				8468563B1EA08FF900C74F87 /* GestureNavBaseVC.m in Sources */,
+				846629101EB34252003E7979 /* LZCityPickerView.m in Sources */,
 				846856241EA0813C00C74F87 /* NetWorkManager.m in Sources */,
 				84C50C511EADF45700AD0B62 /* LHSIDCardScaningView.m in Sources */,
 				842E61EC1EB08C2E00BF91FB /* CanvasView.m in Sources */,
 				84F5D4211EA7675E00EC8C9D /* TZPhotoPreviewController.m in Sources */,
+				84A733301EB81934008ABB7E /* FamilyInformationViewController.m in Sources */,
 				84B9DC461E9DCE240066A92D /* PersonCenterViewController.m in Sources */,
 				84C50C5B1EADF47100AD0B62 /* IDAuthViewController.m in Sources */,
 			);

@@ -57,7 +57,7 @@
     self.topView.layer.mask = maskLayer;
     
     self.doneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.doneBtn setTitle:@"Done" forState:UIControlStateNormal];
+    [self.doneBtn setTitle:@"完成" forState:UIControlStateNormal];
     [self.doneBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [self.doneBtn setFrame:YLSRect(320/375, 5/667, 50/375, 40/667)];
     [self.doneBtn addTarget:self action:@selector(quit) forControlEvents:UIControlEventTouchUpInside];
@@ -117,8 +117,8 @@
         if (!self.result) {
             self.result = self.array[0];
         }
-        NSLog(@"%@",self.result);
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"value" object:self.result];
+      
+        [[NSNotificationCenter defaultCenter]postNotificationName:self.title object:self.result];
         [self removeFromSuperview];
     }];
 }

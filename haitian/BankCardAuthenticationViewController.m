@@ -11,9 +11,11 @@
 #import "DataSubmittedViewController.h"
 @interface BankCardAuthenticationViewController ()<UITableViewDelegate,UITableViewDataSource>
 
+
+#define bank @"请选择银行"
 @property(strong, nonatomic)UIView *footView;
 
-@property(strong, nonatomic) NSMutableDictionary *dic;;
+@property(strong, nonatomic) NSMutableDictionary *dic;
 @end
 
 @implementation BankCardAuthenticationViewController
@@ -33,7 +35,7 @@
     NSArray *arr4=@[@"选择开户行",@"请输入银行卡号",@"请输入预留手机号",@"请输入手机验证码"];
     placeArr=@[arr3,arr4];
     _dataArray=@[@"建设银行",@"建设银行",@"建设银行",@"建设银行",@"建设银行",@"建设银行",@"建设银行"];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getValue:) name:@"value" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getValue:) name:bank object:nil];
 
     UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
     tab.delegate=self;
@@ -122,7 +124,7 @@
     if (textField.tag==10) {
         YLSOPickerView *picker = [[YLSOPickerView alloc]init];
         picker.array = _dataArray;
-        picker.title = @"请选择银行";
+        picker.title = bank;
         [picker show];
         return NO;
 
@@ -139,7 +141,6 @@
 #pragma mark 实现方法
 -(void)getVerificationCode
 {
-    DLog(@"%@",[_dic allValues]);
 }
 -(void)ImmediatelyBinding
 {

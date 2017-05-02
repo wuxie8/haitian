@@ -282,7 +282,6 @@
     const char *thePath = [[[NSBundle mainBundle] resourcePath] UTF8String];
     int ret = EXCARDS_Init(thePath);
     if (ret != 0) {
-        NSLog(@"初始化失败：ret=%d", ret);
     }
     
     // 添加预览图层
@@ -420,9 +419,7 @@
         CGRect faceRegion = transformedMetadataObject.bounds;
         
         if (metadataObject.type == AVMetadataObjectTypeFace) {
-            NSLog(@"是否包含头像：%d, facePathRect: %@, faceRegion: %@",CGRectContainsRect(self.faceDetectionFrame, faceRegion),NSStringFromCGRect(self.faceDetectionFrame),NSStringFromCGRect(faceRegion));
-            
-            if (CGRectContainsRect(self.faceDetectionFrame, faceRegion)) {// 只有当人脸区域的确在小框内时，才再去做捕获此时的这一帧图像
+                       if (CGRectContainsRect(self.faceDetectionFrame, faceRegion)) {// 只有当人脸区域的确在小框内时，才再去做捕获此时的这一帧图像
                 // 为videoDataOutput设置代理，程序就会自动调用下面的代理方法，捕获每一帧图像
                 if (!self.videoDataOutput.sampleBufferDelegate) {
                     [self.videoDataOutput setSampleBufferDelegate:self queue:self.queue];
@@ -449,7 +446,6 @@
             }
         }
     } else {
-        NSLog(@"输出格式不支持");
     }
 }
 
@@ -478,9 +474,7 @@
         unsigned char pResult[1024];
         int ret = EXCARDS_RecoIDCardData(buffer, (int)width, (int)height, (int)rowBytes, (int)8, (char*)pResult, sizeof(pResult));
         if (ret <= 0) {
-            NSLog(@"ret=[%d]", ret);
         } else {
-            NSLog(@"ret=[%d]", ret);
             
             // 播放一下“拍照”的声音，模拟拍照
             AudioServicesPlaySystemSound(1108);
@@ -529,7 +523,6 @@
             }
             
             if (iDInfo) {// 读取到身份证信息，实例化出IDInfo对象后，截取身份证的有效区域，获取到图像
-                NSLog(@"\n正面\n姓名：%@\n性别：%@\n民族：%@\n住址：%@\n公民身份证号码：%@\n\n反面\n签发机关：%@\n有效期限：%@",iDInfo.name,iDInfo.gender,iDInfo.nation,iDInfo.address,iDInfo.num,iDInfo.issue,iDInfo.valid);
                 
                 CGRect effectRect = [RectManager getEffectImageRect:CGSizeMake(width, height)];
                 CGRect rect = [RectManager getGuideFrame:effectRect];

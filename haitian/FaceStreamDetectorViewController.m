@@ -266,7 +266,6 @@
         return nil;
     }
     
-    NSLog(@"left=%f right=%f top=%f bottom=%f",left,right,top,bottom);
     
     isCrossBorder = NO;
     
@@ -399,7 +398,6 @@
         faceArray=nil;
     }
     @catch (NSException *exception) {
-        NSLog(@"prase exception:%@",exception.name);
     }
     @finally {
     }
@@ -409,7 +407,6 @@
 -(void)onOutputFaceImage:(IFlyFaceImage*)faceImg
 {
     NSString* strResult=[self.faceDetector trackFrame:faceImg.data withWidth:faceImg.width height:faceImg.height direction:(int)faceImg.direction];
-    NSLog(@"result:%@",strResult);
     
     //此处清理图片数据，以防止因为不必要的图片数据的反复传递造成的内存卷积占用。
     faceImg.data=nil;
@@ -492,7 +489,6 @@
             
             mouthWidthF = rightX - leftX < 0 ? abs(rightX - leftX) : rightX - leftX;
             mouthHeightF = lowerY - upperY < 0 ? abs(lowerY - upperY) : lowerY - upperY;
-            NSLog(@"%d,%d",mouthWidthF,mouthHeightF);
 //            });
         }else if (number > 1200) {
             [self delateNumber];//时间过长时重新清除数据
@@ -501,8 +497,6 @@
         
         mouthWidth = rightX - leftX < 0 ? abs(rightX - leftX) : rightX - leftX;
         mouthHeight = lowerY - upperY < 0 ? abs(lowerY - upperY) : lowerY - upperY;
-        NSLog(@"%d,%d",mouthWidth,mouthHeight);
-        NSLog(@"张嘴前：width=%d，height=%d",mouthWidthF - mouthWidth,mouthHeight - mouthHeightF);
         if (mouthWidth && mouthWidthF) {
             //张嘴验证完毕
             if (mouthHeight - mouthHeightF >= 10 && mouthWidthF - mouthWidth >= 15) {

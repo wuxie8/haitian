@@ -7,7 +7,7 @@
 //
 
 #import "DataSubmittedViewController.h"
-
+#import "ProfessionalInformationViewController.h"
 @interface DataSubmittedViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(strong, nonatomic)UIView*headView;
@@ -123,14 +123,21 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
+    switch (indexPath.row) {
+        case 0:
+            [self.navigationController pushViewController:[ProfessionalInformationViewController new] animated:YES];
+
+            break;
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark 实现方法
 -(void)nextStep
 {
-    DLog(@"dasjd");
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -26,8 +26,7 @@
 {
 
     [super viewWillAppear:animated];
-    DLog(@"%@",Context.idInfo.IDPositiveImage);
-    DLog(@"%@",Context.idInfo.IDOppositeImage);
+
 
     if (Context.idInfo.IDPositiveImage) {
         UIImageView *imageView1=[self.view viewWithTag:1000];

@@ -308,7 +308,7 @@ static SystemSoundID shake_sound_enter_id = 0;
  *
  *  @return 获取相差的天数
  */
-+ ( int)getDifferenceNumberDays:(NSString *)format dataString:(NSString*)dataString
++ (int)getDifferenceNumberDays:(NSString *)format dataString:(NSString*)dataString
 {
     
     //给时间格式设置时区（中国 东八区）
