@@ -11,7 +11,7 @@
 #import "CertificationViewController.h"
 #define ImageHeight 220
 #define viewHeight 80
-@interface HomePageViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface HomePageViewController ()<UITableViewDelegate,UITableViewDataSource,ASValueTrackingSliderDataSource>
 @property(strong, nonatomic)UIView*headView;
 @end
 
@@ -20,6 +20,12 @@
     NSArray *arr1;
     NSArray *arr2;
     NSArray *arr3;
+    int value1;
+    int value2;
+    UILabel *label2;
+
+    UILabel *label4;
+
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,6 +33,8 @@
     arr1=@[@"applyFor",@"audit",@"borrow"];
      arr2=@[@"APP申请，大数据授信",@"极速审核，当天到账",@"借款灵活，还款无压力"];
      arr3=@[@"动动手指就能借款，无需繁琐流程",@"3分钟前填资料，30分钟审核，1天到账",@"最高1万元额度，支持12个月超长分期"];
+    value1=5000;
+    value2=12;
     UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0,0, WIDTH, HEIGHT-44)];
     tab.delegate=self;
     tab.tableHeaderView=self.headView;
@@ -62,7 +70,7 @@
         label1.textAlignment=NSTextAlignmentCenter;
         [view addSubview:label1];
         
-        UILabel *label2=[[UILabel alloc]initWithFrame:CGRectMake(38, CGRectGetMaxY(label1.frame)+10, 100, 20)];
+        label2=[[UILabel alloc]initWithFrame:CGRectMake(38, CGRectGetMaxY(label1.frame)+10, 100, 20)];
         label2.text=@"953～1033";
         CGPoint point=CGPointMake(label1.center.x, label2.center.y);
         label2.center=point;
@@ -70,7 +78,7 @@
             label2.textAlignment=NSTextAlignmentCenter;
         [view addSubview:label2];
         
-        UILabel *label3=[[UILabel alloc]initWithFrame:CGRectMake(60+WIDTH/2, 10, 100, 20)];
+      UILabel *  label3=[[UILabel alloc]initWithFrame:CGRectMake(60+WIDTH/2, 10, 100, 20)];
         label3.center=CGPointMake(WIDTH/2+(WIDTH/2-20)/2, label3.center.y);
         label3.text=@"还款期限 ";
           label3.font=[UIFont systemFontOfSize:14];
@@ -78,7 +86,7 @@
         [view addSubview:label3];
         
         
-        UILabel *label4=[[UILabel alloc]initWithFrame:CGRectMake(60+WIDTH/2, CGRectGetMaxY(label3.frame)+10, 100, 20)];
+        label4=[[UILabel alloc]initWithFrame:CGRectMake(60+WIDTH/2, CGRectGetMaxY(label3.frame)+10, 100, 20)];
         label4.text=@"12个月";
         label4.font=[UIFont systemFontOfSize:14];
          label4.textAlignment=NSTextAlignmentCenter;
@@ -96,7 +104,8 @@
         asValue.maximumValue=10000;
         asValue.minimumValue=1000;
         asValue.value=5000;
-      
+//        asValue.dataSource=self;
+        asValue.tag=1001;
         NSNumberFormatter *tempFormatter = [[NSNumberFormatter alloc] init];
         [tempFormatter setPositivePrefix:@"¥"];
         [tempFormatter setNegativePrefix:@"¥"];
@@ -104,7 +113,8 @@
         [asValue setNumberFormatter:tempFormatter];
         asValue.popUpViewColor = [UIColor colorWithHue:0.55 saturation:0.8 brightness:0.9 alpha:0.7];
         asValue.font = [UIFont fontWithName:@"GillSans-Bold" size:10];
-      
+        [asValue addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];// 针对值变化添加响应方法
+
         [asValue showPopUpView];
         [asValue setThumbImage:[UIImage imageNamed:@"dot"] forState:UIControlStateNormal];
         asValue.textColor = [UIColor colorWithHue:0.55 saturation:1.0 brightness:0.5 alpha:1];
@@ -119,6 +129,10 @@
         ASValueTrackingSlider *asValue2=[[ASValueTrackingSlider alloc]initWithFrame:CGRectMake(CGRectGetMaxX(lab2.frame)+10, CGRectGetMaxY(lab1.frame)+50, 250, 20)];
         asValue2.maximumValue=12;
         asValue2.minimumValue=1;
+//        asValue2.dataSource=self;
+        asValue2.tag=1002;
+        [asValue2 addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];// 针对值变化添加响应方法
+
         NSNumberFormatter *tempFormatter2 = [[NSNumberFormatter alloc] init];
         [tempFormatter2 setPositiveSuffix:@"个月"];
         [tempFormatter2 setNegativeSuffix:@"个月"];
@@ -127,7 +141,7 @@
         [asValue2 setNumberFormatter:tempFormatter2];
         asValue2.popUpViewColor = [UIColor colorWithHue:0.55 saturation:0.8 brightness:0.9 alpha:0.7];
         asValue2.font = [UIFont fontWithName:@"GillSans-Bold" size:10];
-       
+        asValue2.dataSource=self;
         [asValue2 showPopUpView];
          [asValue2  setThumbImage:[UIImage imageNamed:@"dot"] forState:UIControlStateNormal];
         asValue2.textColor = [UIColor colorWithHue:0.55 saturation:1.0 brightness:0.5 alpha:1];
@@ -156,6 +170,29 @@
 {
     return 80;
 
+}
+- (NSString *)slider:(ASValueTrackingSlider *)slider stringForValue:(float)value;
+{
+    return [NSString stringWithFormat:@"%d个月",value2];
+}
+- (void)sliderValueChanged:(id)sender {
+    UISlider *slider = (UISlider *)sender;
+    switch (slider.tag) {
+        case 1001:
+
+            value1=slider.value;
+            value1=value1/100*100;
+            label2.text=[NSString stringWithFormat:@"%d",value1/value2];
+
+            break;
+           case 1002:
+            value2=slider.value;
+            label4.text=[NSString stringWithFormat:@"%d个月",value2];
+            label2.text=[NSString stringWithFormat:@"%d",value1/value2];
+
+        default:
+            break;
+    }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

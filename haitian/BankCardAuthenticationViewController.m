@@ -72,6 +72,10 @@
 {
     return arr.count;
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return  60;
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [[arr objectAtIndex:(section)] count];
@@ -98,7 +102,8 @@
         
         UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(WIDTH-120, 5, 100, cell.frame.size.height-10)];
         [but setTitle:@"获取验证码" forState:UIControlStateNormal];
-        but.backgroundColor=AppPageColor;
+        [but setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+//        but.backgroundColor=AppPageColor;
         [but.layer setBorderColor:[UIColor blueColor].CGColor];
         [but.layer setBorderWidth:1];
         [but.layer setMasksToBounds:YES];

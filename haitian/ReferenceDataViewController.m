@@ -50,10 +50,12 @@
 -(UIView *)headView
 {
     if (!_headView) {
-        _headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 100)];
+        _headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 80)];
         _headView.backgroundColor=[UIColor redColor];
-        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 60)];
+        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 80)];
+        DLog(@"%f",WIDTH);
         imageView.image=[UIImage imageNamed:@"DataSubmitted-3"];
+//        imageView.contentMode=UIViewContentModeScaleAspectFit;
         [_headView addSubview:imageView];
     }
     return _headView;

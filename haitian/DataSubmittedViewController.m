@@ -50,9 +50,9 @@
 -(UIView *)headView
 {
     if (!_headView) {
-        _headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 100)];
+        _headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 80)];
         _headView.backgroundColor=[UIColor redColor];
-        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 60)];
+        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 80)];
         imageView.image=[UIImage imageNamed:@"DataSubmitted-1"];
         [_headView addSubview:imageView];
     }

@@ -49,9 +49,9 @@ dic=[NSDictionary dictionaryWithObjectsAndKeys:
 -(UIView *)headView
 {
     if (!_headView) {
-        _headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 100)];
+        _headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 80)];
         _headView.backgroundColor=[UIColor redColor];
-        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 60)];
+        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 80)];
         imageView.image=[UIImage imageNamed:@"DataSubmitted-2"];
         [_headView addSubview:imageView];
     }
@@ -68,7 +68,7 @@ dic=[NSDictionary dictionaryWithObjectsAndKeys:
         //            //将多余的部分切掉
         but.layer.masksToBounds = YES;
         
-        but.enabled=NO;
+//        but.enabled=NO;
         but.backgroundColor=AppPageColor;
         [_footView addSubview:but];
     }
