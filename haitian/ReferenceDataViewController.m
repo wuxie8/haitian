@@ -7,7 +7,7 @@
 //
 
 #import "ReferenceDataViewController.h"
-
+#import "AddressBookVC.h"
 @interface ReferenceDataViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 
@@ -53,7 +53,6 @@
         _headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 80)];
         _headView.backgroundColor=[UIColor redColor];
         UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 80)];
-        DLog(@"%f",WIDTH);
         imageView.image=[UIImage imageNamed:@"DataSubmitted-3"];
 //        imageView.contentMode=UIViewContentModeScaleAspectFit;
         [_headView addSubview:imageView];
@@ -137,11 +136,12 @@
             UIView *view=[[UIView alloc]initWithFrame:CGRectMake(10, 60, WIDTH-20, HEIGHT-100)];
             view.backgroundColor=[UIColor whiteColor];
             [self.addTapView addSubview:view];
-            UILabel  *label=[[UILabel alloc]initWithFrame:CGRectMake(WIDTH/2-50, 5, 100, 30)];
+            UILabel  *label=[[UILabel alloc]initWithFrame:CGRectMake(view.frame.size.width/2-90, 5, 200, 30)];
             label.text=@"用户使用协议";
+            label.textAlignment=NSTextAlignmentCenter;
             [view addSubview:label];
             
-            UIButton *cancleButton=[[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(view.frame)-20, 5, 20, 20)];
+            UIButton *cancleButton=[[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(view.frame)-30-10, 5, 30, 30)];
             [cancleButton setImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
             [cancleButton addTarget:self action:@selector(disappearView) forControlEvents:UIControlEventTouchUpInside];
             [view addSubview:cancleButton];
@@ -179,6 +179,9 @@
 }
 -(void)click
 {
+    XHJAddressBook *_addBook=[XHJAddressBook new];
+    NSArray *array=[_addBook getAllPerson];
+    DLog(@"%@",array);
     [_addTapView removeFromSuperview];
 
 }
@@ -190,7 +193,7 @@
         _addTapView                                         = [[UIView alloc] initWithFrame:SCREEN_BOUNDS];
         _addTapView.backgroundColor                         = [UIColor grayColor];
         _addTapView.userInteractionEnabled                  = YES;
-        _addTapView.alpha                                   = 0.8;
+//        _addTapView.alpha                                   = 0.8;
     }
     return _addTapView;
 }

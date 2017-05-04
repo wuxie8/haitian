@@ -52,7 +52,7 @@ dic=[NSDictionary dictionaryWithObjectsAndKeys:
         _headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 80)];
         _headView.backgroundColor=[UIColor redColor];
         UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 80)];
-        imageView.image=[UIImage imageNamed:@"DataSubmitted-2"];
+        imageView.image=[UIImage imageNamed:@"DataSubmitted-1"];
         [_headView addSubview:imageView];
     }
     return _headView;

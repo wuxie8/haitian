@@ -103,7 +103,7 @@ static NSInteger const lz_buttonHeight = 30;
 
 - (NSDictionary *)textAttributes {
     if (_textAttributes == nil) {
-        _textAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:14],NSForegroundColorAttributeName:[UIColor blueColor]};
+        _textAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:14],NSForegroundColorAttributeName:[UIColor blackColor]};
     }
     
     return _textAttributes;
@@ -111,7 +111,7 @@ static NSInteger const lz_buttonHeight = 30;
 
 - (NSDictionary *)titleAttributes {
     if (_titleAttributes == nil) {
-        _titleAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:14],NSForegroundColorAttributeName:[UIColor blueColor]};
+        _titleAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:14],NSForegroundColorAttributeName:[UIColor blackColor]};
     }
     
     return _titleAttributes;
