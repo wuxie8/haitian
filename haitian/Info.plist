@@ -20,6 +20,8 @@
 	<string>1</string>
 	<key>NSContactsUsageDescription</key>
 	<string>访问你的通讯录</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>访问位置</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>App需要您的同意,才能访问相册</string>
 	<key>NSCameraUsageDescription</key>

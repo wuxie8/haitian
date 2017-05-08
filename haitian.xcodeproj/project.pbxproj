@@ -70,6 +70,19 @@
 		846856481EA09A8B00C74F87 /* UtilTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856471EA09A8B00C74F87 /* UtilTools.m */; };
 		847A11501EA45F0C002D8832 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114D1EA45F0C002D8832 /* User.m */; };
 		847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114F1EA45F0C002D8832 /* UserInfoContext.m */; };
+		848F1F8B1EC0078D00720FB6 /* H5Service.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 848F1F891EC0078D00720FB6 /* H5Service.bundle */; };
+		848F1F8C1EC0078D00720FB6 /* Poseidon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 848F1F8A1EC0078D00720FB6 /* Poseidon.bundle */; };
+		848F1F8F1EC0089000720FB6 /* ZMCreditSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F1F8D1EC0088F00720FB6 /* ZMCreditSDK.framework */; };
+		848F1F901EC0089000720FB6 /* ZMDependUponSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F1F8E1EC0088F00720FB6 /* ZMDependUponSDK.framework */; };
+		848F1F921EC00D6300720FB6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F1F911EC00D6300720FB6 /* MobileCoreServices.framework */; };
+		848F1F941EC00D6C00720FB6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F1F931EC00D6C00720FB6 /* CFNetwork.framework */; };
+		848F1F961EC00D7400720FB6 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F1F951EC00D7400720FB6 /* MessageUI.framework */; };
+		848F1F981EC00D7D00720FB6 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F1F971EC00D7D00720FB6 /* EventKit.framework */; };
+		848F1F9A1EC00D8300720FB6 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F1F991EC00D8300720FB6 /* AssetsLibrary.framework */; };
+		848F1F9C1EC00D9400720FB6 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F1F9B1EC00D9400720FB6 /* CoreMotion.framework */; };
+		848F1F9E1EC011DE00720FB6 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F1F9D1EC011DE00720FB6 /* LocalAuthentication.framework */; };
+		848F1FA41EC012FA00720FB6 /* lmzxResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 848F1FA11EC012FA00720FB6 /* lmzxResource.bundle */; };
+		848F1FA51EC012FA00720FB6 /* LMZXSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F1FA21EC012FA00720FB6 /* LMZXSDK.a */; };
 		84A733301EB81934008ABB7E /* FamilyInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7332F1EB81934008ABB7E /* FamilyInformationViewController.m */; };
 		84A733331EB85FB1008ABB7E /* ContactInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A733321EB85FB1008ABB7E /* ContactInformationViewController.m */; };
 		84A733381EB86BA0008ABB7E /* AddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A733351EB86BA0008ABB7E /* AddressVC.m */; };
@@ -95,6 +108,7 @@
 		84B9DC431E9DCDF50066A92D /* FastHandleCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC421E9DCDF50066A92D /* FastHandleCardViewController.m */; };
 		84B9DC461E9DCE240066A92D /* PersonCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC451E9DCE240066A92D /* PersonCenterViewController.m */; };
 		84B9DC4B1E9DD9CE0066A92D /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC4A1E9DD9CE0066A92D /* HomePageViewController.m */; };
+		84C4B0821EC00173001C685A /* CreditSesameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C4B0811EC00173001C685A /* CreditSesameViewController.m */; };
 		84C50C381EADA5BC00AD0B62 /* Authentication.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C50C371EADA5BC00AD0B62 /* Authentication.xcassets */; };
 		84C50C3B1EADD49C00AD0B62 /* IdVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50C3A1EADD49C00AD0B62 /* IdVerificationViewController.m */; };
 		84C50C401EADF3DE00AD0B62 /* RectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50C3F1EADF3DE00AD0B62 /* RectManager.m */; };
@@ -258,6 +272,20 @@
 		847A114D1EA45F0C002D8832 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		847A114E1EA45F0C002D8832 /* UserInfoContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoContext.h; sourceTree = "<group>"; };
 		847A114F1EA45F0C002D8832 /* UserInfoContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoContext.m; sourceTree = "<group>"; };
+		848F1F891EC0078D00720FB6 /* H5Service.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = H5Service.bundle; sourceTree = "<group>"; };
+		848F1F8A1EC0078D00720FB6 /* Poseidon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Poseidon.bundle; sourceTree = "<group>"; };
+		848F1F8D1EC0088F00720FB6 /* ZMCreditSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZMCreditSDK.framework; sourceTree = "<group>"; };
+		848F1F8E1EC0088F00720FB6 /* ZMDependUponSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZMDependUponSDK.framework; sourceTree = "<group>"; };
+		848F1F911EC00D6300720FB6 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		848F1F931EC00D6C00720FB6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		848F1F951EC00D7400720FB6 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		848F1F971EC00D7D00720FB6 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		848F1F991EC00D8300720FB6 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		848F1F9B1EC00D9400720FB6 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		848F1F9D1EC011DE00720FB6 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		848F1FA11EC012FA00720FB6 /* lmzxResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = lmzxResource.bundle; sourceTree = "<group>"; };
+		848F1FA21EC012FA00720FB6 /* LMZXSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = LMZXSDK.a; sourceTree = "<group>"; };
+		848F1FA31EC012FA00720FB6 /* LMZXSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMZXSDK.h; sourceTree = "<group>"; };
 		84A7332E1EB81934008ABB7E /* FamilyInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FamilyInformationViewController.h; sourceTree = "<group>"; };
 		84A7332F1EB81934008ABB7E /* FamilyInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FamilyInformationViewController.m; sourceTree = "<group>"; };
 		84A733311EB85FB1008ABB7E /* ContactInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactInformationViewController.h; sourceTree = "<group>"; };
@@ -310,6 +338,8 @@
 		84B9DC481E9DCF5A0066A92D /* Public.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Public.h; sourceTree = "<group>"; };
 		84B9DC491E9DD9CE0066A92D /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
 		84B9DC4A1E9DD9CE0066A92D /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
+		84C4B0801EC00173001C685A /* CreditSesameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditSesameViewController.h; sourceTree = "<group>"; };
+		84C4B0811EC00173001C685A /* CreditSesameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditSesameViewController.m; sourceTree = "<group>"; };
 		84C50C371EADA5BC00AD0B62 /* Authentication.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Authentication.xcassets; sourceTree = "<group>"; };
 		84C50C391EADD49B00AD0B62 /* IdVerificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdVerificationViewController.h; sourceTree = "<group>"; };
 		84C50C3A1EADD49C00AD0B62 /* IdVerificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdVerificationViewController.m; sourceTree = "<group>"; };
@@ -373,19 +403,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				848F1F9E1EC011DE00720FB6 /* LocalAuthentication.framework in Frameworks */,
+				842E61CB1EB08AA000BF91FB /* CoreLocation.framework in Frameworks */,
+				842E61CD1EB08AAD00BF91FB /* CoreTelephony.framework in Frameworks */,
+				842E61D51EB08AD100BF91FB /* SystemConfiguration.framework in Frameworks */,
+				842E61C91EB08A9300BF91FB /* libz.tbd in Frameworks */,
+				848F1F9C1EC00D9400720FB6 /* CoreMotion.framework in Frameworks */,
+				848F1F9A1EC00D8300720FB6 /* AssetsLibrary.framework in Frameworks */,
+				848F1F981EC00D7D00720FB6 /* EventKit.framework in Frameworks */,
+				848F1F961EC00D7400720FB6 /* MessageUI.framework in Frameworks */,
+				848F1F941EC00D6C00720FB6 /* CFNetwork.framework in Frameworks */,
+				848F1F921EC00D6300720FB6 /* MobileCoreServices.framework in Frameworks */,
+				848F1FA51EC012FA00720FB6 /* LMZXSDK.a in Frameworks */,
 				842E61CF1EB08AB500BF91FB /* AVFoundation.framework in Frameworks */,
 				842E61DF1EB08B6600BF91FB /* libstdc++.tbd in Frameworks */,
 				842E61DD1EB08AF500BF91FB /* CoreGraphics.framework in Frameworks */,
 				842E61DB1EB08AED00BF91FB /* Foundation.framework in Frameworks */,
 				842E61D91EB08AE300BF91FB /* UIKit.framework in Frameworks */,
+				848F1F901EC0089000720FB6 /* ZMDependUponSDK.framework in Frameworks */,
+				848F1F8F1EC0089000720FB6 /* ZMCreditSDK.framework in Frameworks */,
 				843DD77B1EB2E10F0014E283 /* libexidcardios.a in Frameworks */,
 				842E61D71EB08ADA00BF91FB /* QuartzCore.framework in Frameworks */,
-				842E61D51EB08AD100BF91FB /* SystemConfiguration.framework in Frameworks */,
 				842E61D31EB08AC500BF91FB /* AudioToolbox.framework in Frameworks */,
 				842E61D11EB08ABD00BF91FB /* AddressBook.framework in Frameworks */,
-				842E61CD1EB08AAD00BF91FB /* CoreTelephony.framework in Frameworks */,
-				842E61CB1EB08AA000BF91FB /* CoreLocation.framework in Frameworks */,
-				842E61C91EB08A9300BF91FB /* libz.tbd in Frameworks */,
 				842E61C71EB08A5700BF91FB /* iflyMSC.framework in Frameworks */,
 				2E2193132720ACDF463B286D /* libPods-haitian.a in Frameworks */,
 			);
@@ -550,6 +590,7 @@
 				843DD77D1EB2F14A0014E283 /* DataSubmittedViewController.m */,
 				84A733591EB88660008ABB7E /* ReferenceDataViewController.h */,
 				84A7335A1EB88660008ABB7E /* ReferenceDataViewController.m */,
+				84C4B07F1EC00148001C685A /* CreditSesame */,
 				84B36FC81EB327DC001FCD96 /* ProfessionalInformation */,
 				842E62181EB0A17300BF91FB /* BankCardAuthentication */,
 				842E62171EB0A15200BF91FB /* IdentityAuthentication */,
@@ -783,6 +824,15 @@
 			name = ASValueTrackingSlider;
 			sourceTree = "<group>";
 		};
+		84C4B07F1EC00148001C685A /* CreditSesame */ = {
+			isa = PBXGroup;
+			children = (
+				84C4B0801EC00173001C685A /* CreditSesameViewController.h */,
+				84C4B0811EC00173001C685A /* CreditSesameViewController.m */,
+			);
+			name = CreditSesame;
+			sourceTree = "<group>";
+		};
 		84C50C3C1EADF3A700AD0B62 /* IdCardRecognition */ = {
 			isa = PBXGroup;
 			children = (
@@ -913,6 +963,20 @@
 		E5D4A71C4E15B4A453FF3CA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				848F1F9D1EC011DE00720FB6 /* LocalAuthentication.framework */,
+				848F1FA11EC012FA00720FB6 /* lmzxResource.bundle */,
+				848F1FA21EC012FA00720FB6 /* LMZXSDK.a */,
+				848F1FA31EC012FA00720FB6 /* LMZXSDK.h */,
+				848F1F9B1EC00D9400720FB6 /* CoreMotion.framework */,
+				848F1F991EC00D8300720FB6 /* AssetsLibrary.framework */,
+				848F1F971EC00D7D00720FB6 /* EventKit.framework */,
+				848F1F951EC00D7400720FB6 /* MessageUI.framework */,
+				848F1F931EC00D6C00720FB6 /* CFNetwork.framework */,
+				848F1F911EC00D6300720FB6 /* MobileCoreServices.framework */,
+				848F1F8D1EC0088F00720FB6 /* ZMCreditSDK.framework */,
+				848F1F8E1EC0088F00720FB6 /* ZMDependUponSDK.framework */,
+				848F1F891EC0078D00720FB6 /* H5Service.bundle */,
+				848F1F8A1EC0078D00720FB6 /* Poseidon.bundle */,
 				842E61DE1EB08B6600BF91FB /* libstdc++.tbd */,
 				842E61DC1EB08AF500BF91FB /* CoreGraphics.framework */,
 				842E61DA1EB08AED00BF91FB /* Foundation.framework */,
@@ -1050,6 +1114,7 @@
 				844FE79E1EB2D49000CFBE6B /* zocr0.lib in Resources */,
 				84F5D41B1EA7675E00EC8C9D /* TZAssetCell.xib in Resources */,
 				842E62111EB08D9B00BF91FB /* shakeHead2.png in Resources */,
+				848F1F8B1EC0078D00720FB6 /* H5Service.bundle in Resources */,
 				8466290E1EB34252003E7979 /* Address.plist in Resources */,
 				84B9DBF91E9DC0990066A92D /* LaunchScreen.storyboard in Resources */,
 				84B9DBF61E9DC0990066A92D /* Assets.xcassets in Resources */,
@@ -1058,8 +1123,10 @@
 				84B9DBF41E9DC0990066A92D /* Main.storyboard in Resources */,
 				84C50C5E1EADF47100AD0B62 /* IDInfoViewController.xib in Resources */,
 				84F5D4191EA7675E00EC8C9D /* TZAlbumCell.xib in Resources */,
+				848F1F8C1EC0078D00720FB6 /* Poseidon.bundle in Resources */,
 				842E620F1EB08D9B00BF91FB /* shakeHead0.png in Resources */,
 				8451AFBF1EA85E65002F04B6 /* MessageAlertView.xcassets in Resources */,
+				848F1FA41EC012FA00720FB6 /* lmzxResource.bundle in Resources */,
 				842E620D1EB08D9B00BF91FB /* openMouth0.png in Resources */,
 				84C50C5C1EADF47100AD0B62 /* IDAuthViewController.xib in Resources */,
 				842E620E1EB08D9B00BF91FB /* openMouth1.png in Resources */,
@@ -1216,6 +1283,7 @@
 				84A733301EB81934008ABB7E /* FamilyInformationViewController.m in Sources */,
 				84B9DC461E9DCE240066A92D /* PersonCenterViewController.m in Sources */,
 				84C50C5B1EADF47100AD0B62 /* IDAuthViewController.m in Sources */,
+				84C4B0821EC00173001C685A /* CreditSesameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1386,6 +1454,19 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/haitian",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = (
+					"-l\"AFNetworking\"",
+					"-l\"RealReachability\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Admin.haitian;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1413,6 +1494,21 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/haitian",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-all_load",
+					"-l\"AFNetworking\"",
+					"-l\"RealReachability\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Admin.haitian;
 				PRODUCT_NAME = "$(TARGET_NAME)";

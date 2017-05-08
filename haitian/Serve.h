@@ -41,7 +41,7 @@
 #define USER_APPID           @"58fffe9f"
 
 //贷款
-#define code @"jiandanjiekuanmiaojieban"
+#define appcode @"jiandanjiekuanmiaojieban"
 
 
 #endif /* Serve_h */

@@ -13,7 +13,8 @@
 #import "PersonCenterViewController.h"
 #import "BaseNC.h"
 #import "iflyMSC/IFlyFaceSDK.h"
-
+#import <ZMCreditSDK/ALCreditService.h>
+#import "LMZXSDK.h"
 @interface AppDelegate ()
 
 @end
@@ -22,9 +23,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+
     [self.window makeKeyAndVisible];
-    
+    [[ALCreditService sharedService] resgisterApp];
+    [LMZXSDK registerLMZXSDK];
     self.window  = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     Context.idInfo = [NSKeyedUnarchiver unarchiveObjectWithFile:DOCUMENT_FOLDER(@"iDInfofile")];
     [self makeConfiguration];
