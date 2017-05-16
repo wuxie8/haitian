@@ -15,7 +15,6 @@
 #import "ReimbursementRemindVC.h"
 #import "iflyMSC/IFlyFaceSDK.h"
 #import <ZMCreditSDK/ALCreditService.h>
-#import "LMZXSDK.h"
 #import "UMessage.h"
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 100000
 #import <UserNotifications/UserNotifications.h>
@@ -34,8 +33,6 @@
     
     [self.window makeKeyAndVisible];
     [[ALCreditService sharedService] resgisterApp];
-    [LMZXSDK registerLMZXSDK];
-    [[LMZXSDK shared] unlockLog];
 
     self.window  = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     Context.idInfo = [NSKeyedUnarchiver unarchiveObjectWithFile:DOCUMENT_FOLDER(@"iDInfofile")];

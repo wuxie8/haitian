@@ -70,8 +70,6 @@
 		846856421EA0902D00C74F87 /* ASValueTrackingSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856401EA0902D00C74F87 /* ASValueTrackingSlider.m */; };
 		846856451EA0969E00C74F87 /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856441EA0969E00C74F87 /* ForgotPasswordViewController.m */; };
 		846856481EA09A8B00C74F87 /* UtilTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856471EA09A8B00C74F87 /* UtilTools.m */; };
-		846ED60D1EC154A400FE22BD /* lmzxResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 846ED60A1EC154A400FE22BD /* lmzxResource.bundle */; };
-		846ED60E1EC154A400FE22BD /* LMZXSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 846ED60B1EC154A400FE22BD /* LMZXSDK.a */; };
 		847A11501EA45F0C002D8832 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114D1EA45F0C002D8832 /* User.m */; };
 		847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114F1EA45F0C002D8832 /* UserInfoContext.m */; };
 		848F1F8B1EC0078D00720FB6 /* H5Service.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 848F1F891EC0078D00720FB6 /* H5Service.bundle */; };
@@ -281,9 +279,6 @@
 		846856441EA0969E00C74F87 /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
 		846856461EA09A8B00C74F87 /* UtilTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilTools.h; sourceTree = "<group>"; };
 		846856471EA09A8B00C74F87 /* UtilTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilTools.m; sourceTree = "<group>"; };
-		846ED60A1EC154A400FE22BD /* lmzxResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = lmzxResource.bundle; sourceTree = "<group>"; };
-		846ED60B1EC154A400FE22BD /* LMZXSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = LMZXSDK.a; sourceTree = "<group>"; };
-		846ED60C1EC154A400FE22BD /* LMZXSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMZXSDK.h; sourceTree = "<group>"; };
 		847A114C1EA45F0C002D8832 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		847A114D1EA45F0C002D8832 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		847A114E1EA45F0C002D8832 /* UserInfoContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoContext.h; sourceTree = "<group>"; };
@@ -432,7 +427,6 @@
 				848F1F961EC00D7400720FB6 /* MessageUI.framework in Frameworks */,
 				848F1F941EC00D6C00720FB6 /* CFNetwork.framework in Frameworks */,
 				848F1F921EC00D6300720FB6 /* MobileCoreServices.framework in Frameworks */,
-				846ED60E1EC154A400FE22BD /* LMZXSDK.a in Frameworks */,
 				842E61CF1EB08AB500BF91FB /* AVFoundation.framework in Frameworks */,
 				842E61DF1EB08B6600BF91FB /* libstdc++.tbd in Frameworks */,
 				842E61DD1EB08AF500BF91FB /* CoreGraphics.framework in Frameworks */,
@@ -1011,9 +1005,6 @@
 				843959881EC3FEC60093D906 /* UserNotifications.framework */,
 				843959851EC3FEAC0093D906 /* libUMessage_Sdk_1.5.0a.a */,
 				843959861EC3FEAC0093D906 /* UMessage.h */,
-				846ED60A1EC154A400FE22BD /* lmzxResource.bundle */,
-				846ED60B1EC154A400FE22BD /* LMZXSDK.a */,
-				846ED60C1EC154A400FE22BD /* LMZXSDK.h */,
 				848F1F9D1EC011DE00720FB6 /* LocalAuthentication.framework */,
 				848F1F9B1EC00D9400720FB6 /* CoreMotion.framework */,
 				848F1F991EC00D8300720FB6 /* AssetsLibrary.framework */,
@@ -1177,7 +1168,6 @@
 				84F5D4191EA7675E00EC8C9D /* TZAlbumCell.xib in Resources */,
 				848F1F8C1EC0078D00720FB6 /* Poseidon.bundle in Resources */,
 				8451AFBF1EA85E65002F04B6 /* MessageAlertView.xcassets in Resources */,
-				846ED60D1EC154A400FE22BD /* lmzxResource.bundle in Resources */,
 				84C50C5C1EADF47100AD0B62 /* IDAuthViewController.xib in Resources */,
 				8451AFBB1EA859FA002F04B6 /* PersonCenter.xcassets in Resources */,
 			);
@@ -1435,7 +1425,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
@@ -1481,7 +1471,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-all_load";
 				SDKROOT = iphoneos;
@@ -1508,14 +1498,14 @@
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREFIX_HEADER = /Users/admin/Desktop/haitian/haitian/Header.h;
 				INFOPLIST_FILE = haitian/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/haitian",
 					"$(PROJECT_DIR)",
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-l\"AFNetworking\"",
 					"-l\"RealReachability\"",
@@ -1553,13 +1543,14 @@
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREFIX_HEADER = /Users/admin/Desktop/haitian/haitian/Header.h;
 				INFOPLIST_FILE = haitian/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/haitian",
 					"$(PROJECT_DIR)",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-l\"AFNetworking\"",
