@@ -12,14 +12,15 @@
  * 状态栏状态枚举
  */
 typedef enum  {
-    LMZXStatusBarStyleDefault = 2,
+    LMZXStatusBarStyleDefault = 0,
     LMZXStatusBarStyleLightContent ,
-    
+
 } LMZXStatusBarStyle;
 
 /*
  * 功能的种类
  */
+
 typedef enum {
     /** 公积金0 */
     LMZXSDKFunctionHousingFund = 0,
@@ -44,7 +45,7 @@ typedef enum {
     
 }LMZXSDKFunction;
 
-typedef void(^LMZXResultBlock)(NSInteger code, LMZXSDKFunction function, id obj, NSString * taskId);
+typedef void(^LMZXResultBlock)(NSInteger code, LMZXSDKFunction function, id obj, NSString * token);
 typedef void(^LMZXAuthBlock)(NSString * authInfo);
 
 
@@ -52,28 +53,26 @@ typedef void(^LMZXAuthBlock)(NSString * authInfo);
 @interface LMZXSDK : NSObject
 
 
-@property (nonatomic,strong,readonly) NSString *LMZXSDKVersion;
-
-
 /**********************             *******************************/
 /********************** SDK 注册信息 *******************************/
 /**********************             *******************************/
 
 
-/*! @brief 调试地址
+/*! @brief 调试地址 
  *  用于商户在测试环境下调试用
  *  注意:生产环境下,不要设置 testServiceURL 否则会覆盖 SDK 中的生产 url.
+ *  格式为:http://host.com 无需拼接 path
  */
 @property (nonatomic,strong) NSString *lmzxTestURL;
 
 /*! @brief ApiKey
  */
-@property (nonatomic,strong,readonly) NSString *lmzxApiKey;
+@property (nonatomic,strong) NSString *lmzxApiKey;
 
 /*! @brief 用户 ID
  *  用于回调通知时商户进行用户区分，通常填入用户在商户系统的用户名、提交流水号或其他
  */
-@property (nonatomic,strong,readonly) NSString *lmzxUid;
+@property (nonatomic,strong) NSString *lmzxUid;
 
 /*! @brief 回调地址
  *  回调状态通知接口只通知查询的最终结果状态给商户，商户收到回调通知后，
@@ -90,14 +89,14 @@ typedef void(^LMZXAuthBlock)(NSString * authInfo);
 /*! @brief 任务模式
  *  1\设置为YES: 查询成功自动退出,此时立木服务器已经获取到全部的数据.商户可直接从立木服务器请求结果数据
  *              获取数据方式1:结果数据出来后,立木服务器会通知商户,此时商户服务器可从立木服务器请求数据
- *              获取数据方式2:APP 将 SDK 回调的 taskId 传至商户服务器,商户服务器根据 taskId 从立木服务器请求结果数据.
+ *              获取数据方式2:APP 将 SDK 回调的 token 传至商户服务器,商户服务器根据 token 从立木服务器请求结果数据.
  *
  *
  *  2\设置为 NO: 登录成功自动退出,不进入查询数据过程.
  *              优点:查询等待时间短,当登录成功后可继续查询其他数据.商户可在用户将其余各项数据查询完成后,再到立木服务器请求结果数据.
  *              注意:登录成功后,立木服务器仍在处理数据中,需要等待一段时间后,才能生成最终的结果数据.
  *              获取数据方式1:结果数据出来后,立木服务器会通知商户,此时商户服务器可从立木服务器请求数据
- *              获取数据方式2:APP 将 SDK 回调的 taskId 传至商户服务器,商户服务器根据 taskId 不定时从立木服务器请求结果数据.
+ *              获取数据方式2:APP 将 SDK 回调的 token 传至商户服务器,商户服务器根据 token 不定时从立木服务器请求结果数据.
  *
  * 3\默认 YES.
  */
@@ -118,7 +117,6 @@ typedef void(^LMZXAuthBlock)(NSString * authInfo);
  * -2 系统异常
  * -1 其他异常
  * 0 查询成功
- * 1 查询中
  * 2 登录成功
  */
 @property (nonatomic,strong) LMZXResultBlock lmzxResultBlock;
@@ -176,7 +174,7 @@ typedef void(^LMZXAuthBlock)(NSString * authInfo);
 @property (nonatomic,strong) NSString *lmzxProtocolTitle;
 
 /*! @brief 提交按钮标题颜色.默认白色
- */
+*/
 @property (nonatomic,strong) UIColor *lmzxSubmitBtnTitleColor;
 
 
@@ -201,7 +199,7 @@ typedef void(^LMZXAuthBlock)(NSString * authInfo);
  *  @param lmUid 用户 ID
  *  @param callBackUrl 回调地址
  */
-+(LMZXSDK *)initLMZXSDKWithApikey:(NSString *)lmApikey
++(LMZXSDK *)lmzxSDKWithApikey:(NSString *)lmApikey
                               uid:(NSString *)lmUid
                       callBackUrl:(NSString *)callBackUrl;
 

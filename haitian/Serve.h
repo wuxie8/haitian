@@ -37,8 +37,11 @@
 #define filter_para @"&m=business&a=filter_para"
 
 #define filter @"&m=business&a=filter"
-
+//讯飞id
 #define USER_APPID           @"58fffe9f"
+//芝麻信用公钥
+#define Credit_Sesame_Public_Key           @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCAQ0Lqucs4QEwgVDvAFLQy2GoMfYRQcpHkaNI8uOmbZQ8EILidbZEiEoThb+jKod3zPJJpuH/rUj/+ogXAyevawX7fA6A0DT/s0s1cVHNfr+9snWhWiPK+ZDqEhlK+wMUzeUWvquZ5M0hhOImGC6G5BSbGxGyuBseXWPjbPvrh9wIDAQAB"
+
 
 //贷款
 #define appcode @"jiandanjiekuanmiaojieban"

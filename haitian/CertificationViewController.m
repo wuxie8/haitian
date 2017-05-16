@@ -10,6 +10,7 @@
 #import "IdVerificationViewController.h"
 #import "BankCardAuthenticationViewController.h"
 #import "DataSubmittedViewController.h"
+#import "CreditSesameViewController.h"
 @interface CertificationViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(strong, nonatomic)UIView*headView;
@@ -131,6 +132,11 @@ dic=[NSDictionary dictionaryWithObjectsAndKeys:
         case 0:
         {
             [self.navigationController pushViewController:[IdVerificationViewController new] animated:YES];
+        }
+            break;
+        case 1:
+        {
+            [self.navigationController pushViewController:[CreditSesameViewController new] animated:YES];
         }
             break;
         case 2:

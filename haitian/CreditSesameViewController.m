@@ -7,6 +7,17 @@
 //
 
 #import "CreditSesameViewController.h"
+#import "LMZXSDK.h"
+#import <ZMCreditSDK/ALCreditService.h>
+
+#define  APIKEY         @"9073253582026649"
+#define  UID            @"u123456"
+#define  CALLBACKURL    @"http://192.168.117.239:8080/credit_callback.php"
+
+
+#define  APISECRET @"wTCzqpY30jF9DHd8saT3E2tQU0q7aUhK"
+#define  lm_url @"https://api.limuzhengxin.com/api/gateway"
+#define RGB(r,g,b)      [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]
 
 @interface CreditSesameViewController ()
 
@@ -16,32 +27,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"371102199303215716", @"IDCardNumber", @"吴公胜", @"userName",  nil];
+    
+    
+    self.title=@"芝麻信用";
 
-//    // 创建网络请求管理对象
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    // 申明返回的结果是json类型
-//    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-//    // 申明请求的数据是json类型
-//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-//    // 如果报接受类型不一致请替换一致text/html或别的
-//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
-//    
-//    [manager POST:URL parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-//        
-//    } progress:^(NSProgress * _Nonnull uploadProgress) {
-//        
-//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        
-//        // ②芝麻信用SDK提供的方法，就是这么简单，就一行代码，搞定。（APP ID由公司给你，这个是固定的，写死就行）
-//        // ②这里只要传三个参数就行，app id、sign、params，芝麻信用会返回给我们一个字典，在result中
-//        [[ALCreditService sharedService] queryUserAuthReq:@"APP ID" sign:responseObject[@"sign"] params:responseObject[@"param"] extParams:nil selector:@selector(result:) target:self];
-//        
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        
-//    }];
-    // Do any additional setup after loading the view.
+    [self launchSDK];
+
+
 }
+- (void)result:(NSMutableDictionary*)dic{
+    NSLog(@"result%@",dic);
+    
+    NSString* system  = [[UIDevice currentDevice] systemVersion];
+    if([system intValue]>=7){
+        self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    }
+    
+}
+
+- (void)launchSDK {
+    
+    // 商户需要从服务端获取
+    NSString* sign = @"XusqllQQjawQPF2pmFelPuWrS6zLwLpTzKG5HoSNDyYEshqdjjs1MgOAL7LP8RHceCLu5PPh5SbKAM0ghtR5e%2FvA25eeOY1V4WAVtQq%2FGer197sUNzJsXONAgGAT1ukwJ%2FTIGew384iqRXIf4nV%2BcUjCmlWTC7NXkwKgBE%2FrNdo%3D";
+    
+    NSString* params = @"ApO88WwMflzmDXYX1aTdnz0L3%2FUF8kHXtd5GF1tFJKzDSo2tmOcRmaoDYGiSNUpVyx4jqWl2HgM30v0hOXNDUlKA5ZGrExYmT5qMPbtplGFHpJe4k%2ByZHHIz6CJFuYcq8b2fGMg%2FXAH0Hq2XV2Yhu9ZOahx5W8ryJPnBh8kt1ks%3D";
+    NSString* appId = @"1000100";
+    
+    [[ALCreditService sharedService] queryUserAuthReq:appId sign:sign params:params extParams:nil selector:@selector(result:) target:self];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
