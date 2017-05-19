@@ -333,6 +333,7 @@
 + (NSString *) encode:(NSString *)str key:(NSString *)key;
 
 + (NSString *) decode:(NSString *)str key:(NSString *)key;
++ (NSMutableString *)urlEncode:(NSString*)str;
 
 #pragma mark 获取当前视图控制器
 + (UIViewController *)getCurrentVC;

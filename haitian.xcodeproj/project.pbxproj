@@ -70,6 +70,7 @@
 		846856421EA0902D00C74F87 /* ASValueTrackingSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856401EA0902D00C74F87 /* ASValueTrackingSlider.m */; };
 		846856451EA0969E00C74F87 /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856441EA0969E00C74F87 /* ForgotPasswordViewController.m */; };
 		846856481EA09A8B00C74F87 /* UtilTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856471EA09A8B00C74F87 /* UtilTools.m */; };
+		847944BB1ECED16200227EC8 /* WebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 847944BA1ECED16200227EC8 /* WebVC.m */; };
 		847A11501EA45F0C002D8832 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114D1EA45F0C002D8832 /* User.m */; };
 		847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114F1EA45F0C002D8832 /* UserInfoContext.m */; };
 		848F1F8B1EC0078D00720FB6 /* H5Service.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 848F1F891EC0078D00720FB6 /* H5Service.bundle */; };
@@ -279,6 +280,8 @@
 		846856441EA0969E00C74F87 /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
 		846856461EA09A8B00C74F87 /* UtilTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilTools.h; sourceTree = "<group>"; };
 		846856471EA09A8B00C74F87 /* UtilTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilTools.m; sourceTree = "<group>"; };
+		847944B91ECED16200227EC8 /* WebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebVC.h; sourceTree = "<group>"; };
+		847944BA1ECED16200227EC8 /* WebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebVC.m; sourceTree = "<group>"; };
 		847A114C1EA45F0C002D8832 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		847A114D1EA45F0C002D8832 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		847A114E1EA45F0C002D8832 /* UserInfoContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoContext.h; sourceTree = "<group>"; };
@@ -690,6 +693,8 @@
 				847A11521EA45F16002D8832 /* User */,
 				846856461EA09A8B00C74F87 /* UtilTools.h */,
 				846856471EA09A8B00C74F87 /* UtilTools.m */,
+				847944B91ECED16200227EC8 /* WebVC.h */,
+				847944BA1ECED16200227EC8 /* WebVC.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1299,6 +1304,7 @@
 				842E61F01EB08C4B00BF91FB /* CaptureManager.m in Sources */,
 				84F5D41F1EA7675E00EC8C9D /* TZPhotoPickerController.m in Sources */,
 				84B9DC431E9DCDF50066A92D /* FastHandleCardViewController.m in Sources */,
+				847944BB1ECED16200227EC8 /* WebVC.m in Sources */,
 				84ABC8ED1EC5533B00269C87 /* ReimbursementRemindVC.m in Sources */,
 				842A01691EC9464200143E4A /* NewRemindViewController.m in Sources */,
 				84F5D41C1EA7675E00EC8C9D /* TZAssetModel.m in Sources */,

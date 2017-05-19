@@ -490,6 +490,8 @@ forHTTPHeaderField:(NSString *)field
 
                 return nil;
             }
+            query = (NSString *)parameters;
+
         } else {
             switch (self.queryStringSerializationStyle) {
                 case AFHTTPRequestQueryStringDefaultStyle:
