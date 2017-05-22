@@ -11,6 +11,7 @@
 #import "AddBillViewController.h"
 @interface ReimbursementRemindVC()<UITableViewDelegate,UITableViewDataSource>
 
+@property(strong, nonatomic)UIView *footView;
 @end
 
 @implementation ReimbursementRemindVC
@@ -21,8 +22,25 @@
     UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0 , 0, WIDTH, HEIGHT)];
     tab.delegate=self;
     tab.dataSource=self;
+    tab.backgroundColor=AppButtonbackgroundColor;
+    tab.tableFooterView=self.footView;
     [self.view addSubview:tab];
     // Do any additional setup after loading the view.
+}
+-(UIView *)footView
+{
+    if (_footView==nil) {
+        _footView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 50)];
+        _footView.backgroundColor=[UIColor whiteColor];
+        UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 50)];
+        
+        [but setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [but setTitle:@"+添加账单提醒" forState:UIControlStateNormal];
+        but.titleLabel.textAlignment=NSTextAlignmentCenter;
+        [but addTarget:self action:@selector(addRemind) forControlEvents:UIControlEventTouchUpInside];
+        [_footView addSubview:but];
+    }
+    return _footView;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 
@@ -56,19 +74,21 @@
     if (cell==nil) {
         cell=[[RemindTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdenfer];
     }
-    if (indexPath.row==4) {
-        UITableViewCell*cell1=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell1"];
-        UILabel*label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 60)];
-        label.text=@"+ 添加账单提醒";
-        [cell1.contentView addSubview:label];
-    }
+    cell.accessoryType=UITableViewCellAccessoryNone;
+
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  
+}
+-(void)addRemind
+{
     AddBillViewController *addBill=[AddBillViewController new];
     addBill.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:addBill animated:YES];
+
 
 }
 - (void)didReceiveMemoryWarning {

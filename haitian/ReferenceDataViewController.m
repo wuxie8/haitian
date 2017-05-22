@@ -181,7 +181,6 @@
 {
     XHJAddressBook *_addBook=[XHJAddressBook new];
     NSArray *array=[_addBook getAllPerson];
-    DLog(@"%@",array);
     [_addTapView removeFromSuperview];
 
 }

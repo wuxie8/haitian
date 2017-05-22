@@ -88,6 +88,7 @@
         _textView=[[UITextView alloc]initWithFrame:CGRectMake(10, 10, WIDTH-20, 100)];
         _textView.text=@"备注...";
         _textView.delegate=self;
+        _textView.font=[UIFont systemFontOfSize:15];
         _textView.scrollEnabled=YES;
         _textView.backgroundColor=[UIColor whiteColor];
         [_footView addSubview:_textView];

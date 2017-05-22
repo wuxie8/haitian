@@ -11,6 +11,10 @@
 #import "LoadSupermarketCollectionViewCell.h"
 #import "WSPageView.h"
 #import "WSIndexBanner.h"
+
+#import <CoreTelephony/CTTelephonyNetworkInfo.h>
+
+#import <CoreTelephony/CTCarrier.h>
 #define kMargin 10
 #define pageHeight 150
 static NSString *const cellId = @"cellId1";
@@ -66,6 +70,8 @@ static NSString *const footerId = @"footerId1";
     [self.view addSubview:_LoadcollectionView];
     // Do any additional setup after loading the view.
 }
+
+
 -(void)loadBanner
 {
 

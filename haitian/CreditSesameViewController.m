@@ -16,7 +16,6 @@
 
 #define  APISECRET @"wTCzqpY30jF9DHd8saT3E2tQU0q7aUhK"
 #define  lm_url @"https://api.limuzhengxin.com/api/gateway"
-#define RGB(r,g,b)      [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]
 
 @interface CreditSesameViewController ()
 
@@ -34,22 +33,14 @@
 
 
 }
-- (void)result:(NSMutableDictionary*)dic{
-    NSLog(@"result%@",dic);
-    
-    NSString* system  = [[UIDevice currentDevice] systemVersion];
-    if([system intValue]>=7){
-        self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    }
-    [self.navigationController popViewControllerAnimated:NO];
-}
+
 
 - (void)launchSDK {
     NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:
-                        @"18763895506",@"mobileNo",
+                       Context.currentUser.username,@"mobileNo",
                         
                         nil];
-   
+
     NSString *string=[self convertToJsonData:dic1];
     NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:
                         string,@"identity_param",
@@ -66,7 +57,6 @@
 
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",nil];
     NSString *urlStr = [NSString stringWithFormat:@"http://app.jishiyu11.cn:81/api/alipay/encrypt"];
-    DLog(@"%@",manager.requestSerializer.HTTPRequestHeaders);
     [manager GET:urlStr parameters:dic2 progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject[@"code"]isEqualToString:@"0000"]) {
             WebVC *vc = [[WebVC alloc] init];
@@ -129,14 +119,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

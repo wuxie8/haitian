@@ -27,16 +27,17 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
+   //友盟推送
     [self umessageinit:launchOptions];
-
+   //讯飞人脸识别
+   [self makeConfiguration];
     
     [self.window makeKeyAndVisible];
     [[ALCreditService sharedService] resgisterApp];
 
     self.window  = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     Context.idInfo = [NSKeyedUnarchiver unarchiveObjectWithFile:DOCUMENT_FOLDER(@"iDInfofile")];
-    [self makeConfiguration];
+   
     self.window.rootViewController=[AppDelegate setTabBarController];
     [self.window  makeKeyAndVisible];
     // Override point for customization after application launch.
@@ -159,7 +160,6 @@
     //        [alertView show];
     //
     //    }
-    DLog(@"%@",userInfo);
 
     
 //    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];

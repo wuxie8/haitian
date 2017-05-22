@@ -122,7 +122,6 @@
        but=[[UIButton alloc]initWithFrame:CGRectMake(10, 20, WIDTH-20, 40 )];
         [but setTitle:@"下一步" forState:UIControlStateNormal];
         [but addTarget:self action:@selector(nextStep) forControlEvents:UIControlEventTouchUpInside];
-        but.enabled=NO;
         but.backgroundColor=AppPageColor;
         [_footView addSubview:but];
     }
