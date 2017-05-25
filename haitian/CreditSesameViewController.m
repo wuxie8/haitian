@@ -9,13 +9,7 @@
 #import "CreditSesameViewController.h"
 #import <ZMCreditSDK/ALCreditService.h>
 #import "WebVC.h"
-#define  APIKEY         @"9073253582026649"
-#define  UID            @"u123456"
-#define  CALLBACKURL    @"http://192.168.117.239:8080/credit_callback.php"
 
-
-#define  APISECRET @"wTCzqpY30jF9DHd8saT3E2tQU0q7aUhK"
-#define  lm_url @"https://api.limuzhengxin.com/api/gateway"
 
 @interface CreditSesameViewController ()
 

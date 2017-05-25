@@ -18,7 +18,7 @@
 {
     self.navigationItem.title = title;
     self.view.backgroundColor=BaseColor;
-[[UINavigationBar appearance] setBarTintColor:AppButtonbackgroundColor];
+[self.navigationController.navigationBar setBarTintColor:AppButtonbackgroundColor];
 }
 
 #ifdef __IPHONE_7_0
@@ -51,11 +51,26 @@
         UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
         self.navigationItem.leftBarButtonItem = backItem;
     }
-    
+    self.navigationController.navigationBar.barTintColor=AppButtonbackgroundColor;
+    self.navigationController.navigationBar.tintColor=AppButtonbackgroundColor;
+
     self.upSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(backAction)];
     [self.upSwipe setDirection: UISwipeGestureRecognizerDirectionRight];
     [self.upSwipe setNumberOfTouchesRequired:1];
     [self.view addGestureRecognizer:self.upSwipe];
+    
+    self.navigationController.navigationBar.alpha = 1.0;
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.tintColor = AppButtonbackgroundColor;
+    self.navigationController.navigationBar.barTintColor = AppButtonbackgroundColor;
+    
+    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+    textAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];
+    self.navigationController.navigationBar.titleTextAttributes =textAttrs;
+    
+    UINavigationBar *appearance = [UINavigationBar appearance];
+    
+    [appearance setBarTintColor:AppButtonbackgroundColor];
 }
 
 - (void)backAction

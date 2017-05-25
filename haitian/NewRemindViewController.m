@@ -40,7 +40,7 @@
 
     placeArray=@[placesectionArr1,placesectionArr2];
     array=@[sectionArr1,sectionArr2];
-    
+    [self getList];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getValue:) name:RemianType object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getValue:) name:RepeatType object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getValue:) name:RemianTime object:nil];
@@ -52,6 +52,17 @@
     [self.view addSubview:tab];
     
     // Do any additional setup after loading the view.
+}
+-(void)getList
+{
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/message/replist",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *dic=(NSDictionary *)responseObject;
+        DLog(@"%@",dic);
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+        
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
@@ -97,11 +108,38 @@
         but.backgroundColor=AppButtonbackgroundColor;
         but.layer.masksToBounds=YES;
         but.layer.cornerRadius=10;
+        [but addTarget:self action:@selector(addRemind) forControlEvents:UIControlEventTouchUpInside];
         [but setTitle:@"保存" forState:UIControlStateNormal];
         [_footView addSubview:but];
     }
     
     return _footView;
+}
+-(void)addRemind
+{
+    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
+                       @"624950",@"user_id",
+                       @"1",@"type_id",
+                       @"1",@"name",
+                       @"1",@"amount",
+                       @"1",@"date",
+                       @"1",@"rep_id",
+                       @"1",@"rem_id",
+                       @"1",@"remark",
+                       @"1",@"msg_name",
+
+                       nil];
+    NSString *url=@"http://app.jishiyu11.cn:82/api/message/add";
+    [[NetWorkManager sharedManager]postJSON:url parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *dic=(NSDictionary *)responseObject;
+        DLog(@"%@",dic);
+
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+
 }
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {

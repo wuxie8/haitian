@@ -15,12 +15,7 @@
 @end
 
 @implementation GestureNavBaseVC
-#ifdef __IPHONE_7_0
-- (UIRectEdge)edgesForExtendedLayout
-{
-    return UIRectEdgeNone;
-}
-#endif
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];

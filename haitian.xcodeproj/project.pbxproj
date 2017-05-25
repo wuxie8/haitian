@@ -47,11 +47,12 @@
 		844E16441EC97A2000F4EA80 /* MXSCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 844E16401EC97A2000F4EA80 /* MXSCycleScrollView.m */; };
 		844E16451EC97A2000F4EA80 /* UIColor+HcdCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 844E16421EC97A2000F4EA80 /* UIColor+HcdCustom.m */; };
 		844E16481EC99FB700F4EA80 /* AddBillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844E16471EC99FB700F4EA80 /* AddBillViewController.m */; };
-		844E164A1EC9A46400F4EA80 /* Remind.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 844E16491EC9A46400F4EA80 /* Remind.xcassets */; };
 		844FE79E1EB2D49000CFBE6B /* zocr0.lib in Resources */ = {isa = PBXBuildFile; fileRef = 844FE79D1EB2D49000CFBE6B /* zocr0.lib */; };
 		8451AFBB1EA859FA002F04B6 /* PersonCenter.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8451AFBA1EA859FA002F04B6 /* PersonCenter.xcassets */; };
 		8451AFBF1EA85E65002F04B6 /* MessageAlertView.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8451AFBE1EA85E65002F04B6 /* MessageAlertView.xcassets */; };
 		84546F4A1EA5E77B00AD0350 /* CertificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84546F491EA5E77B00AD0350 /* CertificationViewController.m */; };
+		845663F81ED5542D0075A971 /* AddBillVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 845663F71ED5542D0075A971 /* AddBillVC.m */; };
+		845663FB1ED57F6F0075A971 /* LMResultShowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 845663FA1ED57F6F0075A971 /* LMResultShowVC.m */; };
 		8466290E1EB34252003E7979 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = 846629071EB34252003E7979 /* Address.plist */; };
 		8466290F1EB34252003E7979 /* LZCityPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846629091EB34252003E7979 /* LZCityPickerController.m */; };
 		846629101EB34252003E7979 /* LZCityPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8466290B1EB34252003E7979 /* LZCityPickerView.m */; };
@@ -84,6 +85,11 @@
 		848F1F9A1EC00D8300720FB6 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F1F991EC00D8300720FB6 /* AssetsLibrary.framework */; };
 		848F1F9C1EC00D9400720FB6 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F1F9B1EC00D9400720FB6 /* CoreMotion.framework */; };
 		848F1F9E1EC011DE00720FB6 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F1F9D1EC011DE00720FB6 /* LocalAuthentication.framework */; };
+		848FBC151ED2E99000A1E1CD /* RemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848FBC141ED2E99000A1E1CD /* RemindViewController.m */; };
+		84A274211ED3CA35009462F4 /* lmzxResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84A2741F1ED3CA35009462F4 /* lmzxResource.bundle */; };
+		84A274241ED3DAAF009462F4 /* AccumulationFundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A274231ED3DAAF009462F4 /* AccumulationFundViewController.m */; };
+		84A274261ED427DC009462F4 /* LMZXSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A274251ED427DC009462F4 /* LMZXSDK.a */; };
+		84A2742A1ED44159009462F4 /* Remind.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84A274291ED44159009462F4 /* Remind.xcassets */; };
 		84A733301EB81934008ABB7E /* FamilyInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7332F1EB81934008ABB7E /* FamilyInformationViewController.m */; };
 		84A733331EB85FB1008ABB7E /* ContactInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A733321EB85FB1008ABB7E /* ContactInformationViewController.m */; };
 		84A733381EB86BA0008ABB7E /* AddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A733351EB86BA0008ABB7E /* AddressVC.m */; };
@@ -237,13 +243,16 @@
 		844E16421EC97A2000F4EA80 /* UIColor+HcdCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HcdCustom.m"; sourceTree = "<group>"; };
 		844E16461EC99FB700F4EA80 /* AddBillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBillViewController.h; sourceTree = "<group>"; };
 		844E16471EC99FB700F4EA80 /* AddBillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBillViewController.m; sourceTree = "<group>"; };
-		844E16491EC9A46400F4EA80 /* Remind.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Remind.xcassets; sourceTree = "<group>"; };
 		844FE79D1EB2D49000CFBE6B /* zocr0.lib */ = {isa = PBXFileReference; lastKnownFileType = file; path = zocr0.lib; sourceTree = "<group>"; };
 		8451AFBA1EA859FA002F04B6 /* PersonCenter.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PersonCenter.xcassets; sourceTree = "<group>"; };
 		8451AFBE1EA85E65002F04B6 /* MessageAlertView.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MessageAlertView.xcassets; sourceTree = "<group>"; };
 		84546F481EA5E77B00AD0350 /* CertificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificationViewController.h; sourceTree = "<group>"; };
 		84546F491EA5E77B00AD0350 /* CertificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificationViewController.m; sourceTree = "<group>"; };
 		84546F541EA6200900AD0350 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		845663F61ED5542D0075A971 /* AddBillVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBillVC.h; sourceTree = "<group>"; };
+		845663F71ED5542D0075A971 /* AddBillVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBillVC.m; sourceTree = "<group>"; };
+		845663F91ED57F6F0075A971 /* LMResultShowVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMResultShowVC.h; sourceTree = "<group>"; };
+		845663FA1ED57F6F0075A971 /* LMResultShowVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMResultShowVC.m; sourceTree = "<group>"; };
 		846629071EB34252003E7979 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
 		846629081EB34252003E7979 /* LZCityPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZCityPickerController.h; sourceTree = "<group>"; };
 		846629091EB34252003E7979 /* LZCityPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZCityPickerController.m; sourceTree = "<group>"; };
@@ -297,6 +306,14 @@
 		848F1F991EC00D8300720FB6 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		848F1F9B1EC00D9400720FB6 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		848F1F9D1EC011DE00720FB6 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		848FBC131ED2E99000A1E1CD /* RemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindViewController.h; sourceTree = "<group>"; };
+		848FBC141ED2E99000A1E1CD /* RemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindViewController.m; sourceTree = "<group>"; };
+		84A2741E1ED3CA35009462F4 /* LMZXSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMZXSDK.h; sourceTree = "<group>"; };
+		84A2741F1ED3CA35009462F4 /* lmzxResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = lmzxResource.bundle; sourceTree = "<group>"; };
+		84A274221ED3DAAF009462F4 /* AccumulationFundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccumulationFundViewController.h; sourceTree = "<group>"; };
+		84A274231ED3DAAF009462F4 /* AccumulationFundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccumulationFundViewController.m; sourceTree = "<group>"; };
+		84A274251ED427DC009462F4 /* LMZXSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = LMZXSDK.a; sourceTree = "<group>"; };
+		84A274291ED44159009462F4 /* Remind.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Remind.xcassets; sourceTree = "<group>"; };
 		84A7332E1EB81934008ABB7E /* FamilyInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FamilyInformationViewController.h; sourceTree = "<group>"; };
 		84A7332F1EB81934008ABB7E /* FamilyInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FamilyInformationViewController.m; sourceTree = "<group>"; };
 		84A733311EB85FB1008ABB7E /* ContactInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactInformationViewController.h; sourceTree = "<group>"; };
@@ -418,8 +435,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				843959891EC3FEC60093D906 /* UserNotifications.framework in Frameworks */,
 				848F1F9E1EC011DE00720FB6 /* LocalAuthentication.framework in Frameworks */,
+				843959891EC3FEC60093D906 /* UserNotifications.framework in Frameworks */,
 				842E61CB1EB08AA000BF91FB /* CoreLocation.framework in Frameworks */,
 				842E61CD1EB08AAD00BF91FB /* CoreTelephony.framework in Frameworks */,
 				842E61D51EB08AD100BF91FB /* SystemConfiguration.framework in Frameworks */,
@@ -443,6 +460,7 @@
 				842E61D31EB08AC500BF91FB /* AudioToolbox.framework in Frameworks */,
 				842E61D11EB08ABD00BF91FB /* AddressBook.framework in Frameworks */,
 				842E61C71EB08A5700BF91FB /* iflyMSC.framework in Frameworks */,
+				84A274261ED427DC009462F4 /* LMZXSDK.a in Frameworks */,
 				2E2193132720ACDF463B286D /* libPods-haitian.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -585,8 +603,16 @@
 				844E163C1EC979B900F4EA80 /* ThirdParty */,
 				84ABC8EB1EC5533B00269C87 /* ReimbursementRemindVC.h */,
 				84ABC8EC1EC5533B00269C87 /* ReimbursementRemindVC.m */,
+				848FBC131ED2E99000A1E1CD /* RemindViewController.h */,
+				845663F61ED5542D0075A971 /* AddBillVC.h */,
+				845663F71ED5542D0075A971 /* AddBillVC.m */,
+				848FBC141ED2E99000A1E1CD /* RemindViewController.m */,
 				844E16461EC99FB700F4EA80 /* AddBillViewController.h */,
 				844E16471EC99FB700F4EA80 /* AddBillViewController.m */,
+				845663F91ED57F6F0075A971 /* LMResultShowVC.h */,
+				845663FA1ED57F6F0075A971 /* LMResultShowVC.m */,
+				84A274221ED3DAAF009462F4 /* AccumulationFundViewController.h */,
+				84A274231ED3DAAF009462F4 /* AccumulationFundViewController.m */,
 				842A01671EC9464200143E4A /* NewRemindViewController.h */,
 				842A01681EC9464200143E4A /* NewRemindViewController.m */,
 				84ABC8EE1EC5556400269C87 /* RemindTableViewCell.h */,
@@ -614,7 +640,7 @@
 				8451AFBA1EA859FA002F04B6 /* PersonCenter.xcassets */,
 				8451AFBE1EA85E65002F04B6 /* MessageAlertView.xcassets */,
 				84C50C371EADA5BC00AD0B62 /* Authentication.xcassets */,
-				844E16491EC9A46400F4EA80 /* Remind.xcassets */,
+				84A274291ED44159009462F4 /* Remind.xcassets */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -1007,6 +1033,9 @@
 		E5D4A71C4E15B4A453FF3CA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84A274251ED427DC009462F4 /* LMZXSDK.a */,
+				84A2741E1ED3CA35009462F4 /* LMZXSDK.h */,
+				84A2741F1ED3CA35009462F4 /* lmzxResource.bundle */,
 				843959881EC3FEC60093D906 /* UserNotifications.framework */,
 				843959851EC3FEAC0093D906 /* libUMessage_Sdk_1.5.0a.a */,
 				843959861EC3FEAC0093D906 /* UMessage.h */,
@@ -1166,14 +1195,15 @@
 				8466290E1EB34252003E7979 /* Address.plist in Resources */,
 				84B9DBF91E9DC0990066A92D /* LaunchScreen.storyboard in Resources */,
 				84B9DBF61E9DC0990066A92D /* Assets.xcassets in Resources */,
+				84A2742A1ED44159009462F4 /* Remind.xcassets in Resources */,
 				84C50C381EADA5BC00AD0B62 /* Authentication.xcassets in Resources */,
 				84B9DBF41E9DC0990066A92D /* Main.storyboard in Resources */,
-				844E164A1EC9A46400F4EA80 /* Remind.xcassets in Resources */,
 				84C50C5E1EADF47100AD0B62 /* IDInfoViewController.xib in Resources */,
 				84F5D4191EA7675E00EC8C9D /* TZAlbumCell.xib in Resources */,
 				848F1F8C1EC0078D00720FB6 /* Poseidon.bundle in Resources */,
 				8451AFBF1EA85E65002F04B6 /* MessageAlertView.xcassets in Resources */,
 				84C50C5C1EADF47100AD0B62 /* IDAuthViewController.xib in Resources */,
+				84A274211ED3CA35009462F4 /* lmzxResource.bundle in Resources */,
 				8451AFBB1EA859FA002F04B6 /* PersonCenter.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1253,6 +1283,7 @@
 				842E61E51EB08BEF00BF91FB /* FaceStreamDetectorViewController.m in Sources */,
 				842C82C41EAEFDCB005D27A7 /* IdOpposite ViewController.m in Sources */,
 				84C50C481EADF40D00AD0B62 /* UIImage+Extend.m in Sources */,
+				84A274241ED3DAAF009462F4 /* AccumulationFundViewController.m in Sources */,
 				847A11501EA45F0C002D8832 /* User.m in Sources */,
 				844E16431EC97A2000F4EA80 /* HcdDateTimePickerView.m in Sources */,
 				844E16451EC97A2000F4EA80 /* UIColor+HcdCustom.m in Sources */,
@@ -1284,12 +1315,15 @@
 				84A733541EB86C82008ABB7E /* CDFInitialsAvatar.m in Sources */,
 				8402B9F91E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m in Sources */,
 				84A733391EB86BA0008ABB7E /* PersonModel.m in Sources */,
+				845663F81ED5542D0075A971 /* AddBillVC.m in Sources */,
 				8466290F1EB34252003E7979 /* LZCityPickerController.m in Sources */,
 				84C50C4E1EADF44A00AD0B62 /* IDInfo.m in Sources */,
 				84C50C5A1EADF47100AD0B62 /* AVCaptureViewController.m in Sources */,
 				8468563C1EA08FF900C74F87 /* NavBaseVC.m in Sources */,
 				846856421EA0902D00C74F87 /* ASValueTrackingSlider.m in Sources */,
 				842E62061EB08C9700BF91FB /* IFlyFaceResultKeys.m in Sources */,
+				845663FB1ED57F6F0075A971 /* LMResultShowVC.m in Sources */,
+				848FBC151ED2E99000A1E1CD /* RemindViewController.m in Sources */,
 				84B9DC401E9DCDBC0066A92D /* LoadSupermarketViewController.m in Sources */,
 				84F5D4201EA7675E00EC8C9D /* TZPhotoPreviewCell.m in Sources */,
 				84ABC8F01EC5556400269C87 /* RemindTableViewCell.m in Sources */,

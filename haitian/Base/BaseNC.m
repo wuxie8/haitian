@@ -18,10 +18,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-     [[UINavigationBar appearance] setBarTintColor:AppButtonbackgroundColor];
+     [self.navigationController.navigationBar setBarTintColor:AppButtonbackgroundColor];
 //    [[UINavigationBar appearance] setBarTintColor:kColorFromRGB(245, 245, 245)];
-    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
-    [[UINavigationBar appearance] setTitleTextAttributes:
+    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
+    [self.navigationController.navigationBar setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
       [UIColor blackColor], NSForegroundColorAttributeName,
       [UIFont fontWithName:@"微软雅黑" size:24], NSFontAttributeName, nil]];

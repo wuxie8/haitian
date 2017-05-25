@@ -17,8 +17,12 @@
 // *  @return 正式服务器
 // */
 #define SERVERE @"http://app.jishiyu11.cn/index.php?g=app"
-
+//http://app.jishiyu11.cn/index.php?g=app&m=register&a=send_code
 #define IMG_PATH  @"http://app.jishiyu11.cn/data/upload/"//品牌logo
+
+#define SERVEREURL @"http://app.jishiyu11.cn:82/api"
+
+
 //贷款
 #define loan @"&m=business&a=index"
 //换一批

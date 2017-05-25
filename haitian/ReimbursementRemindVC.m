@@ -9,7 +9,10 @@
 #import "ReimbursementRemindVC.h"
 #import "RemindTableViewCell.h"
 #import "AddBillViewController.h"
+#define  headViewHeight 80
 @interface ReimbursementRemindVC()<UITableViewDelegate,UITableViewDataSource>
+
+@property(strong, nonatomic)UIView *headView;
 
 @property(strong, nonatomic)UIView *footView;
 @end
@@ -18,14 +21,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title=@"还款提醒";
+    self.title=@"首页";
     UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0 , 0, WIDTH, HEIGHT)];
     tab.delegate=self;
     tab.dataSource=self;
     tab.backgroundColor=AppButtonbackgroundColor;
     tab.tableFooterView=self.footView;
+    tab.tableHeaderView=self.headView;
     [self.view addSubview:tab];
     // Do any additional setup after loading the view.
+}
+-(UIView *)headView
+{
+    
+    if (_headView==nil) {
+        _headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, headViewHeight)];
+        _headView.backgroundColor=[UIColor whiteColor];
+        UIImageView *image=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, headViewHeight)];
+        image.backgroundColor=[UIColor greenColor];
+        
+        UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(0, headViewHeight/2, WIDTH/2, headViewHeight/2)];
+        lab.text=@"4500";
+        lab.textAlignment=NSTextAlignmentCenter;
+        [image addSubview:lab];
+        [_headView addSubview:image];
+    }
+    return _headView;
 }
 -(UIView *)footView
 {

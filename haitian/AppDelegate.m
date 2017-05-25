@@ -12,10 +12,11 @@
 #import "FastHandleCardViewController.h"
 #import "PersonCenterViewController.h"
 #import "BaseNC.h"
-#import "ReimbursementRemindVC.h"
+#import "RemindViewController.h"
 #import "iflyMSC/IFlyFaceSDK.h"
 #import <ZMCreditSDK/ALCreditService.h>
 #import "UMessage.h"
+#import "LMZXSDK.h"
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 100000
 #import <UserNotifications/UserNotifications.h>
 #endif
@@ -27,6 +28,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    //立木正信
+    [LMZXSDK registerLMZXSDK];
+    [[LMZXSDK shared] unlockLog];
+
    //友盟推送
     [self umessageinit:launchOptions];
    //讯飞人脸识别
@@ -46,8 +51,12 @@
 
 -(void)umessageinit:(NSDictionary *)launchOptions
 {
+    //标签
+    [UMessage addTag:@"男"
+            response:^(id responseObject, NSInteger remain, NSError *error) {
+                //add your codes
+            }];
     [UMessage startWithAppkey:@"5913bac1cae7e74ebe000675" launchOptions:launchOptions httpsEnable:YES ];
-
     //注册通知，如果要使用category的自定义策略，可以参考demo中的代码。
     [UMessage registerForRemoteNotifications];
     
@@ -64,6 +73,8 @@
             //这里可以添加一些自己的逻辑
         }
     }];
+    
+    
 }
 +(UITabBarController *)setTabBarController
 {
@@ -72,11 +83,11 @@
     HomePageViewController *homepage = [[HomePageViewController alloc] init]; //未处理
     LoadSupermarketViewController *treatVC = [[LoadSupermarketViewController alloc] init]; //已处理
     FastHandleCardViewController *mine=[[FastHandleCardViewController alloc]init];
-    ReimbursementRemindVC *remind=[ReimbursementRemindVC new];
+    RemindViewController *remind=[RemindViewController new];
     PersonCenterViewController *person=[[PersonCenterViewController alloc]init];
     
     //步骤2：将视图控制器绑定到导航控制器上
-    BaseNC *nav1C = [[BaseNC alloc] initWithRootViewController:homepage];
+ __unused   BaseNC *nav1C = [[BaseNC alloc] initWithRootViewController:homepage];
     BaseNC *nav2C = [[BaseNC alloc] initWithRootViewController:treatVC];
     BaseNC *nav3C=[[BaseNC alloc]initWithRootViewController:mine];
     BaseNC *nav4C=[[BaseNC alloc]initWithRootViewController:person];
@@ -91,11 +102,11 @@
     [tabBarController.tabBar insertSubview:barBgView atIndex:0];
     tabBarController.tabBar.opaque = YES;
     
-    tabBarController.viewControllers=@[nav1C,nav2C,nav3C,nav5C,nav4C];
+    tabBarController.viewControllers=@[nav5C,nav2C,nav3C,nav4C];
     tabBarController.selectedIndex = 0; //默认选中第几个图标（此步操作在绑定viewControllers数据源之后）
-    NSArray *titles = @[@"首页",@"贷款超市",@"快速办卡",@"还款提醒",@"个人中心"];
-    NSArray *images=@[@"HomePage",@"LoadSupermarket",@"FastHandleCard",@"FastHandleCard",@"PersonCenter"];
-    NSArray *selectedImages=@[@"HomePageHeight",@"LoadSupermarketHeight",@"FastHandleCardHeight",@"FastHandleCardHeight",@"PersonCenterHeight"];
+    NSArray *titles = @[@"首页",@"贷款超市",@"快速办卡",@"个人中心"];
+    NSArray *images=@[@"HomePage",@"LoadSupermarket",@"FastHandleCard",@"PersonCenter"];
+    NSArray *selectedImages=@[@"HomePageHeight",@"LoadSupermarketHeight",@"FastHandleCardHeight",@"PersonCenterHeight"];
     //               NSArray *titles = @[@"简单借款秒借版",@"个人中心",@"设置"];
     //        NSArray *images=@[@"lending",@"Mineing"];
     //         NSArray *selectedImages=@[@"lendingBlue",@"MineingBlue"];
@@ -137,12 +148,13 @@
 {
     //1.2.7版本开始不需要用户再手动注册devicetoken，SDK会自动注册
     // [UMessage registerDeviceToken:deviceToken];
-    NSLog(@"%@",deviceToken);
+    
     //下面这句代码只是在demo中，供页面传值使用。
 //    [self postTestParams:[self stringDevicetoken:deviceToken] idfa:[self idfa] openudid:[self openUDID]];
 }
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"userInfoNotification" object:self userInfo:@{@"userinfo":[NSString stringWithFormat:@"%@",userInfo]}];
     //关闭友盟自带的弹出框
     [UMessage setAutoAlert:NO];
     [UMessage didReceiveRemoteNotification:userInfo];
@@ -161,10 +173,48 @@
     //
     //    }
 
-    
 //    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
 //    [ud setObject:[NSString stringWithFormat:@"%@",userInfo] forKey:@"UMPuserInfoNotification"];
 //    [[NSNotificationCenter defaultCenter] postNotificationName:@"userInfoNotification" object:self userInfo:@{@"userinfo":[NSString stringWithFormat:@"%@",userInfo]}];
+    
+}
+//iOS10新增：处理前台收到通知的代理方法
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
+    NSDictionary * userInfo = notification.request.content.userInfo;
+    if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        //应用处于前台时的远程推送接受
+        //关闭U-Push自带的弹出框
+        [UMessage setAutoAlert:NO];
+        //必须加这句代码
+        [UMessage didReceiveRemoteNotification:userInfo];
+        
+    }else{
+        //应用处于前台时的本地推送接受
+    }
+    //当应用处于前台时提示设置，需要哪个可以设置哪一个
+    completionHandler(UNNotificationPresentationOptionSound|UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionAlert);
+}
+//iOS10以后接收的方法
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler{
+    NSDictionary * userInfo = response.notification.request.content.userInfo;
+    if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        [UMessage didReceiveRemoteNotification:userInfo];
+        if([response.actionIdentifier isEqualToString:@"123"])
+        {
+            
+        }else
+        {
+            
+            
+        }
+        //这个方法用来做action点击的统计
+        [UMessage sendClickReportForRemoteNotification:userInfo];
+        
+        
+        
+    }else{
+        //应用处于后台时的本地推送接受
+    }
     
 }
 
