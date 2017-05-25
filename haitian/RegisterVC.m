@@ -119,7 +119,7 @@
                       registerDic[@"1"],@"password",
                        registerDic[@"3"],@"code",
                        nil];
-    [[NetWorkManager sharedManager]postJSON:doregister parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@%@",SERVERE,doregister] parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
         if ([dic[@"status"]boolValue]) {
             [MessageAlertView showSuccessMessage:@"注册成功"];
@@ -186,7 +186,7 @@
                        text1.text,@"mobile",
                        
                        nil];
-    [[NetWorkManager sharedManager]postJSON:verificationCoderegister parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@%@",SERVERE,verificationCoderegister] parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
         if ([dic[@"status"]boolValue]) {
             [MessageAlertView showSuccessMessage:@"发送成功"];

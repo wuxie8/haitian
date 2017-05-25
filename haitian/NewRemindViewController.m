@@ -1,3 +1,4 @@
+
 //
 //  NewRemindViewController.m
 //  haitian
@@ -9,6 +10,7 @@
 #import "NewRemindViewController.h"
 #import "YLSOPickerView.h"
 #import "HcdDateTimePickerView.h"
+#import "RemindModel.h"
 #define RemianType @"请选择类型"
 #define RepeatType @"请选择重复方式"
 
@@ -24,6 +26,13 @@
     NSArray *array;
     NSArray *placeArray;
     UITextView *_textView;
+    NSMutableArray *remindArray;
+    NSMutableArray *remindTimeArray;
+    NSMutableDictionary *remindDic;
+    NSMutableDictionary *remindTimeDic;
+    NSString *rep_id;
+      NSString *rem_id;
+ 
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -58,11 +67,49 @@
     [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/message/replist",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
         DLog(@"%@",dic);
+        NSDictionary *diction=dic[@"data"];
+        NSArray *arr=diction[@"data"];
+        remindArray=[NSMutableArray array];
+        remindDic=[NSMutableDictionary dictionary];
+        for (NSDictionary *dic1 in arr) {
+            RemindModel *remind=[RemindModel new];
+            [remind setValuesForKeysWithDictionary:dic1];
+            [remindArray addObject:remind];
+            [remindDic setValue:dic1[@"rep_id"] forKey:dic1[@"name"]];
+        }
+        DLog(@"%@",remindArray);
+
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/message/typelist",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *dic=(NSDictionary *)responseObject;
+        DLog(@"%@",dic);
+        
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
     }];
+    
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/message/remlist",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *dic=(NSDictionary *)responseObject;
+        NSDictionary *diction=dic[@"data"];
+        NSArray *arr=diction[@"data"];
+        remindTimeArray=[NSMutableArray array];
+        remindTimeDic=[NSMutableDictionary dictionary];
+        for (NSDictionary *dic1 in arr) {
+            ReminndTimeModel *remind=[ReminndTimeModel new];
+            [remind setValuesForKeysWithDictionary:dic1];
+            [remindTimeArray addObject:remind];
+            [remindTimeDic setValue:dic1[@"rem_id"] forKey:dic1[@"name"]];
+        }
+        DLog(@"%@",remindTimeArray);
         
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
@@ -117,15 +164,19 @@
 }
 -(void)addRemind
 {
+    NSString *remark;
+    if (![_textView.text isEqualToString:@"备注..."]) {
+        remark=_textView.text;
+    }
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
                        @"624950",@"user_id",
                        @"1",@"type_id",
-                       @"1",@"name",
-                       @"1",@"amount",
-                       @"1",@"date",
-                       @"1",@"rep_id",
-                       @"1",@"rem_id",
-                       @"1",@"remark",
+                       [(UITextField *) [self.view viewWithTag:1001] text],@"name",
+                        [(UITextField *) [self.view viewWithTag:1002] text],@"amount",
+                       [(UITextField *) [self.view viewWithTag:1010] text],@"date",
+                       rep_id,@"rep_id",
+                       rem_id,@"rem_id",
+                       remark,@"remark",
                        @"1",@"msg_name",
 
                        nil];
@@ -206,7 +257,8 @@
     }
     else if (textField.tag==1011) {
         YLSOPickerView *picker = [[YLSOPickerView alloc]init];
-        picker.array = @[@"只提醒一次",@"每周",@"每两周",@"每月",@"每半年"];
+        
+        picker.array =[remindDic allKeys];
         picker.title = RepeatType;
         
         [picker show];
@@ -215,7 +267,7 @@
     }
     else if (textField.tag==1012) {
         YLSOPickerView *picker = [[YLSOPickerView alloc]init];
-        picker.array = @[@"还款发生时",@"提前30分钟",@"提起1小时",@"提前1天",@"提前2天"];
+        picker.array = [remindTimeDic allKeys];
         picker.title = RemianTime;
         [picker show];
         return NO;
@@ -228,11 +280,15 @@
     if ([notification.name isEqualToString:RepeatType]) {
         UITextField *text=[self.view viewWithTag:1011];
         text.text=notification.object;
+        DLog(@"%@",[remindDic objectForKey:notification.object]);
+        rep_id=[remindDic objectForKey:notification.object];
     }
     else if([notification.name isEqualToString:RemianTime])
     {
         UITextField *text=[self.view viewWithTag:1012];
         text.text=notification.object;
+        DLog(@"%@",[remindTimeDic objectForKey:notification.object]);
+        rem_id=[remindTimeDic objectForKey:notification.object];
 
     }
         

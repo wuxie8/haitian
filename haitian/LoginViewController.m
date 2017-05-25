@@ -153,7 +153,7 @@
                        text1.text,@"mobile",
                        
                        nil];
-    [[NetWorkManager sharedManager]postJSON:verificationCoderegister parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@%@",SERVERE,verificationCoderegister] parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
         if ([dic[@"status"]boolValue]) {
             [MessageAlertView showSuccessMessage:@"发送成功"];
@@ -182,7 +182,7 @@
                        diction[@"1"],@"code",
                        @"2",@"logintype",
                        nil];
-    [[NetWorkManager sharedManager]postJSON:dologin parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@%@",SERVERE,dologin] parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *resultDic=(NSDictionary *)responseObject;
         if ([resultDic[@"status"]boolValue]) {
             User *user=[[User alloc]init];

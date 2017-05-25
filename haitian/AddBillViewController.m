@@ -270,36 +270,45 @@ NSArray *imageArr;
                                        };
                 
                 NSLog(@"%@",dict);
-                NSDictionary *dic = [weakSelf signdic:dict];
-                NSLog(@"%@",dic);
-                [weakSelf post:[lm_url stringByAppendingString:@"/api/gateway"] params:dic success:^(id obj) {
-                    
-                    if (obj) {
-                        NSString * txt = @"有数据";
-                        if ([obj isKindOfClass:[NSDictionary class]]) {
-                            NSData *data= [NSJSONSerialization dataWithJSONObject:obj options:NSJSONWritingPrettyPrinted error:nil];
-                            txt = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-                            LMResultShowVC *resultVc = [[LMResultShowVC alloc] init];
-                            resultVc.function = function;
-                            resultVc.token = token;
-                            [weakSelf.navigationController pushViewController:resultVc animated:YES];
+                [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/message/signature",SERVEREURL] parameters:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+                    NSDictionary *dic=(NSDictionary *)responseObject;
+                    DLog(@"%@",dic);
+                    NSString *sign=[dic[@"data"] objectForKey:@"sign"];
+                    DLog(@"%@",sign);
+                    NSMutableDictionary *restultDic = [NSMutableDictionary dictionaryWithDictionary:dict];
+
+                    [restultDic setObject:sign forKey:@"sign"];
+                    [weakSelf post:[lm_url stringByAppendingString:@"/api/gateway"] params:restultDic success:^(id obj) {
+                        
+                        if (obj) {
+                            NSString * txt = @"有数据";
+                            if ([obj isKindOfClass:[NSDictionary class]]) {
+                                NSData *data= [NSJSONSerialization dataWithJSONObject:obj options:NSJSONWritingPrettyPrinted error:nil];
+                                txt = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+                                LMResultShowVC *resultVc = [[LMResultShowVC alloc] init];
+                                resultVc.function = function;
+                                resultVc.token = token;
+                                [weakSelf.navigationController pushViewController:resultVc animated:YES];
+                            }
+                            DLog(@"%@",obj);
+                            
+                            DLog(@"%@",txt);
+                            [MessageAlertView showSuccessMessage:txt];
+                            
+                        } else{
+                            DLog(@"wushuju ");
+                            
                         }
-                        DLog(@"%@",obj);
                         
-                        DLog(@"%@",txt);
-                        [MessageAlertView showSuccessMessage:txt];
                         
-                    } else{
-                        DLog(@"wushuju ");
+                    } failure:^(NSError *error) {
+                        DLog(@"%@",error);
                         
-                    }
-                    
-                    
-                } failure:^(NSError *error) {
-                    DLog(@"%@",error);
-                    
-                }];
-                
+                    }];
+
+                } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                    NSLog(@"%@",error);
+                }];                
                 
             });
         }else{
@@ -356,6 +365,10 @@ NSArray *imageArr;
     }
     NSLog(@"====2.newsign:%@",newsign);
     [[LMZXSDK shared] sendReqWithSign:newsign];
+    
+}
+-(void)getResult:(NSDictionary *)dic
+{
     
 }
 //签名算法如下：

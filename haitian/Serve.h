@@ -16,13 +16,14 @@
 // *
 // *  @return 正式服务器
 // */
-#define SERVERE @"http://app.jishiyu11.cn/index.php?g=app"
+#define SERVERE @"http://101.201.41.93:82/index.php?g=app"
 //http://app.jishiyu11.cn/index.php?g=app&m=register&a=send_code
-#define IMG_PATH  @"http://app.jishiyu11.cn/data/upload/"//品牌logo
+//#define IMG_PATH  @"http://101.201.41.93:82/data/upload"//品牌logo
+#define IMG_PATH  @"http://app.jishiyu11.cn:82/data/upload"//品牌logo
 
-#define SERVEREURL @"http://app.jishiyu11.cn:82/api"
+#define SERVEREURL @"http://101.201.41.93:82/api"
 
-
+//http://app.jishiyu11.cn/data/upload/jishiyu/fangdai.png
 //贷款
 #define loan @"&m=business&a=index"
 //换一批

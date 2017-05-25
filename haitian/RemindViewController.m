@@ -10,6 +10,7 @@
 #import "RemindTableViewCell.h"
 #import "AddBillViewController.h"
 #import "AddBillVC.h"
+#import "RemindModel.h"
 #define  headViewHeight 180
 @interface RemindViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(strong, nonatomic)UIView *headView;
@@ -18,18 +19,47 @@
 @end
 
 @implementation RemindViewController
-
+{
+    UITableView *tab;
+    NSMutableArray *remindListArray;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"首页";
-    UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0 , 0, WIDTH, HEIGHT-50)];
+    [self getData];
+   tab=[[UITableView alloc]initWithFrame:CGRectMake(0 , 0, WIDTH, HEIGHT-50)];
     tab.delegate=self;
     tab.dataSource=self;
+    
     tab.backgroundColor=AppButtonbackgroundColor;
     tab.tableFooterView=self.footView;
     tab.tableHeaderView=self.headView;
     [self.view addSubview:tab];
+    
     // Do any additional setup after loading the view.
+}
+-(void)getData
+{
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/message/list",SERVEREURL] parameters:@{@"user_id":@"624950"} success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *dic=(NSDictionary *)responseObject;
+        DLog(@"%@",dic);
+       remindListArray=[NSMutableArray array];
+        if ([dic[@"code"] isEqualToString:@"0000"]) {
+            NSArray *dateArray=[dic[@"data"] objectForKey:@"data"];
+            for (NSDictionary *dic1 in dateArray) {
+                ReminndListModel *remindList=[ReminndListModel new];
+                [remindList setValuesForKeysWithDictionary:dic1];
+                [remindListArray addObject:remindList];
+            }
+        }
+        DLog(@"%@",remindListArray);
+        [tab reloadData];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+
+    
 }
 -(UIView *)headView
 {
@@ -75,7 +105,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 
 {
-    return  3;
+    return  remindListArray.count;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -98,15 +128,17 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdenfer=@"cell";
-    
-    RemindTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdenfer];
+    ReminndListModel *remindList= [remindListArray objectAtIndex:indexPath.section];
+    RemindTableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
     if (cell==nil) {
-        cell=[[RemindTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdenfer];
+        cell=[[RemindTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NSString stringWithFormat:@"%ld",(long)indexPath.section]];
     }
     cell.accessoryType=UITableViewCellAccessoryNone;
     
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    [cell setData:remindList];
+    DLog(@"%@",cell.image);
+
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -119,6 +151,16 @@
     addBill.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:addBill animated:YES];
     
+}
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        if (tableView == tab) {
+//            [self.dataArray removeObjectAtIndex:indexPath.row];
+            [remindListArray removeObjectAtIndex:indexPath.section];
+            [tab deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+
+        }
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

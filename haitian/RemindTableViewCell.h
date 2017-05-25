@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "RemindModel.h"
 @interface RemindTableViewCell : UITableViewCell
 
 @property(strong, nonatomic)UIImageView *image;
@@ -35,5 +35,7 @@
 
 //姓名
 @property(strong, nonatomic)UILabel *nameLabel;
+
+-(void)setData:(ReminndListModel*)remindList;
 
 @end

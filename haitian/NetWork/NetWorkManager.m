@@ -335,6 +335,31 @@
         }
       
     }
+    //获取验证码
+    else if ([name containsString:@"/message/add"])
+    {
+        if ([UtilTools isBlankString:[parameters objectForKey:@"name"]]) {
+            message = @"请输入名字";
+            isChecked = NO;
+        }
+        else if ([UtilTools isBlankString:[parameters objectForKey:@"amount"]]) {
+            message = @"请输入还款金额";
+            isChecked = NO;
+        }
+        else if ([UtilTools isBlankString:[parameters objectForKey:@"date"]]) {
+            message = @"请输入还款日期";
+            isChecked = NO;
+        }
+        else if ([UtilTools isBlankString:[parameters objectForKey:@"rep_id"]]) {
+            message = @"请选择重复方式";
+            isChecked = NO;
+        }
+        else if ([UtilTools isBlankString:[parameters objectForKey:@"rem_id"]]) {
+            message = @"请选择提醒方式";
+            isChecked = NO;
+        }
+    }
+    
     if (![UtilTools isBlankString:message]) {
         [MessageAlertView showErrorMessage:message];
     }

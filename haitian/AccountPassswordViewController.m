@@ -132,7 +132,7 @@
                        diction[@"1"],@"password",
                        @"1",@"logintype",
                        nil];
-    [[NetWorkManager sharedManager]postJSON:dologin parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@%@",SERVERE,dologin] parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *resultDic=(NSDictionary *)responseObject;
         if ([resultDic[@"status"]boolValue]) {
             User *user=[[User alloc]init];

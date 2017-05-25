@@ -90,6 +90,7 @@
 		84A274241ED3DAAF009462F4 /* AccumulationFundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A274231ED3DAAF009462F4 /* AccumulationFundViewController.m */; };
 		84A274261ED427DC009462F4 /* LMZXSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A274251ED427DC009462F4 /* LMZXSDK.a */; };
 		84A2742A1ED44159009462F4 /* Remind.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84A274291ED44159009462F4 /* Remind.xcassets */; };
+		84A350B71ED66B6500D9C1C7 /* RemindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A350B61ED66B6500D9C1C7 /* RemindModel.m */; };
 		84A733301EB81934008ABB7E /* FamilyInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7332F1EB81934008ABB7E /* FamilyInformationViewController.m */; };
 		84A733331EB85FB1008ABB7E /* ContactInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A733321EB85FB1008ABB7E /* ContactInformationViewController.m */; };
 		84A733381EB86BA0008ABB7E /* AddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A733351EB86BA0008ABB7E /* AddressVC.m */; };
@@ -314,6 +315,8 @@
 		84A274231ED3DAAF009462F4 /* AccumulationFundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccumulationFundViewController.m; sourceTree = "<group>"; };
 		84A274251ED427DC009462F4 /* LMZXSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = LMZXSDK.a; sourceTree = "<group>"; };
 		84A274291ED44159009462F4 /* Remind.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Remind.xcassets; sourceTree = "<group>"; };
+		84A350B51ED66B6500D9C1C7 /* RemindModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindModel.h; sourceTree = "<group>"; };
+		84A350B61ED66B6500D9C1C7 /* RemindModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindModel.m; sourceTree = "<group>"; };
 		84A7332E1EB81934008ABB7E /* FamilyInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FamilyInformationViewController.h; sourceTree = "<group>"; };
 		84A7332F1EB81934008ABB7E /* FamilyInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FamilyInformationViewController.m; sourceTree = "<group>"; };
 		84A733311EB85FB1008ABB7E /* ContactInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactInformationViewController.h; sourceTree = "<group>"; };
@@ -615,6 +618,8 @@
 				84A274231ED3DAAF009462F4 /* AccumulationFundViewController.m */,
 				842A01671EC9464200143E4A /* NewRemindViewController.h */,
 				842A01681EC9464200143E4A /* NewRemindViewController.m */,
+				84A350B51ED66B6500D9C1C7 /* RemindModel.h */,
+				84A350B61ED66B6500D9C1C7 /* RemindModel.m */,
 				84ABC8EE1EC5556400269C87 /* RemindTableViewCell.h */,
 				84ABC8EF1EC5556400269C87 /* RemindTableViewCell.m */,
 			);
@@ -1345,6 +1350,7 @@
 				84361FDC1EB1EFB9008595E7 /* YLSOPickerView.m in Sources */,
 				8468562C1EA0822900C74F87 /* MessageAlertView.m in Sources */,
 				84B36FCB1EB32820001FCD96 /* ProfessionalInformationViewController.m in Sources */,
+				84A350B71ED66B6500D9C1C7 /* RemindModel.m in Sources */,
 				847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */,
 				84F5D4271EA768EA00EC8C9D /* TZTestCell.m in Sources */,
 				84F5D4041EA7492A00EC8C9D /* FeedbackViewController.m in Sources */,
