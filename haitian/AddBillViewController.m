@@ -367,10 +367,7 @@ NSArray *imageArr;
     [[LMZXSDK shared] sendReqWithSign:newsign];
     
 }
--(void)getResult:(NSDictionary *)dic
-{
-    
-}
+
 //签名算法如下：
 //1. 对除sign以外的所有请求参数进行字典升序排列；
 //2. 将以上排序后的参数表进行字符串连接，如key1=value1&key2=value2&key3=value3...keyNvalueN；
