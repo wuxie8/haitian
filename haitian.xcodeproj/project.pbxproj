@@ -71,6 +71,10 @@
 		846856421EA0902D00C74F87 /* ASValueTrackingSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856401EA0902D00C74F87 /* ASValueTrackingSlider.m */; };
 		846856451EA0969E00C74F87 /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856441EA0969E00C74F87 /* ForgotPasswordViewController.m */; };
 		846856481EA09A8B00C74F87 /* UtilTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856471EA09A8B00C74F87 /* UtilTools.m */; };
+		846C9E991ED81D720099CC51 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 846C9E981ED81D720099CC51 /* libresolv.tbd */; };
+		846C9E9B1ED81EA60099CC51 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 846C9E9A1ED81EA60099CC51 /* CoreFoundation.framework */; };
+		846C9E9D1ED81EE00099CC51 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 846C9E9C1ED81EE00099CC51 /* Security.framework */; };
+		846C9EA01ED821A40099CC51 /* AppDelegate+JPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C9E9F1ED821A40099CC51 /* AppDelegate+JPush.m */; };
 		847944BB1ECED16200227EC8 /* WebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 847944BA1ECED16200227EC8 /* WebVC.m */; };
 		847A11501EA45F0C002D8832 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114D1EA45F0C002D8832 /* User.m */; };
 		847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114F1EA45F0C002D8832 /* UserInfoContext.m */; };
@@ -107,7 +111,7 @@
 		84ABC8F01EC5556400269C87 /* RemindTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABC8EF1EC5556400269C87 /* RemindTableViewCell.m */; };
 		84B36FCB1EB32820001FCD96 /* ProfessionalInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B36FCA1EB32820001FCD96 /* ProfessionalInformationViewController.m */; };
 		84B9DBEB1E9DC0990066A92D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DBEA1E9DC0990066A92D /* main.m */; };
-		84B9DBEE1E9DC0990066A92D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DBED1E9DC0990066A92D /* AppDelegate.m */; };
+		84B9DBEE1E9DC0990066A92D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DBED1E9DC0990066A92D /* AppDelegate.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		84B9DBF11E9DC0990066A92D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DBF01E9DC0990066A92D /* ViewController.m */; };
 		84B9DBF41E9DC0990066A92D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B9DBF21E9DC0990066A92D /* Main.storyboard */; };
 		84B9DBF61E9DC0990066A92D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B9DBF51E9DC0990066A92D /* Assets.xcassets */; };
@@ -290,6 +294,11 @@
 		846856441EA0969E00C74F87 /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
 		846856461EA09A8B00C74F87 /* UtilTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilTools.h; sourceTree = "<group>"; };
 		846856471EA09A8B00C74F87 /* UtilTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilTools.m; sourceTree = "<group>"; };
+		846C9E981ED81D720099CC51 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		846C9E9A1ED81EA60099CC51 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		846C9E9C1ED81EE00099CC51 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		846C9E9E1ED821A40099CC51 /* AppDelegate+JPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+JPush.h"; sourceTree = "<group>"; };
+		846C9E9F1ED821A40099CC51 /* AppDelegate+JPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+JPush.m"; sourceTree = "<group>"; };
 		847944B91ECED16200227EC8 /* WebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebVC.h; sourceTree = "<group>"; };
 		847944BA1ECED16200227EC8 /* WebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebVC.m; sourceTree = "<group>"; };
 		847A114C1EA45F0C002D8832 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -438,24 +447,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				848F1F9E1EC011DE00720FB6 /* LocalAuthentication.framework in Frameworks */,
+				846C9E991ED81D720099CC51 /* libresolv.tbd in Frameworks */,
 				843959891EC3FEC60093D906 /* UserNotifications.framework in Frameworks */,
-				842E61CB1EB08AA000BF91FB /* CoreLocation.framework in Frameworks */,
-				842E61CD1EB08AAD00BF91FB /* CoreTelephony.framework in Frameworks */,
-				842E61D51EB08AD100BF91FB /* SystemConfiguration.framework in Frameworks */,
 				842E61C91EB08A9300BF91FB /* libz.tbd in Frameworks */,
+				846C9E9D1ED81EE00099CC51 /* Security.framework in Frameworks */,
+				842E61D91EB08AE300BF91FB /* UIKit.framework in Frameworks */,
+				842E61DB1EB08AED00BF91FB /* Foundation.framework in Frameworks */,
+				842E61DD1EB08AF500BF91FB /* CoreGraphics.framework in Frameworks */,
+				842E61D51EB08AD100BF91FB /* SystemConfiguration.framework in Frameworks */,
+				842E61CD1EB08AAD00BF91FB /* CoreTelephony.framework in Frameworks */,
+				846C9E9B1ED81EA60099CC51 /* CoreFoundation.framework in Frameworks */,
+				848F1F941EC00D6C00720FB6 /* CFNetwork.framework in Frameworks */,
+				848F1F9E1EC011DE00720FB6 /* LocalAuthentication.framework in Frameworks */,
+				842E61CB1EB08AA000BF91FB /* CoreLocation.framework in Frameworks */,
 				848F1F9C1EC00D9400720FB6 /* CoreMotion.framework in Frameworks */,
 				848F1F9A1EC00D8300720FB6 /* AssetsLibrary.framework in Frameworks */,
 				848F1F981EC00D7D00720FB6 /* EventKit.framework in Frameworks */,
 				848F1F961EC00D7400720FB6 /* MessageUI.framework in Frameworks */,
-				848F1F941EC00D6C00720FB6 /* CFNetwork.framework in Frameworks */,
 				848F1F921EC00D6300720FB6 /* MobileCoreServices.framework in Frameworks */,
 				842E61CF1EB08AB500BF91FB /* AVFoundation.framework in Frameworks */,
 				842E61DF1EB08B6600BF91FB /* libstdc++.tbd in Frameworks */,
-				842E61DD1EB08AF500BF91FB /* CoreGraphics.framework in Frameworks */,
 				843959871EC3FEAC0093D906 /* libUMessage_Sdk_1.5.0a.a in Frameworks */,
-				842E61DB1EB08AED00BF91FB /* Foundation.framework in Frameworks */,
-				842E61D91EB08AE300BF91FB /* UIKit.framework in Frameworks */,
 				848F1F901EC0089000720FB6 /* ZMDependUponSDK.framework in Frameworks */,
 				848F1F8F1EC0089000720FB6 /* ZMCreditSDK.framework in Frameworks */,
 				843DD77B1EB2E10F0014E283 /* libexidcardios.a in Frameworks */,
@@ -983,6 +995,8 @@
 				84B9DBFA1E9DC0990066A92D /* Info.plist */,
 				84B9DBEC1E9DC0990066A92D /* AppDelegate.h */,
 				84B9DBED1E9DC0990066A92D /* AppDelegate.m */,
+				846C9E9E1ED821A40099CC51 /* AppDelegate+JPush.h */,
+				846C9E9F1ED821A40099CC51 /* AppDelegate+JPush.m */,
 				84B9DBEF1E9DC0990066A92D /* ViewController.h */,
 				84B9DBF01E9DC0990066A92D /* ViewController.m */,
 				84B9DBF21E9DC0990066A92D /* Main.storyboard */,
@@ -1038,6 +1052,9 @@
 		E5D4A71C4E15B4A453FF3CA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				846C9E9C1ED81EE00099CC51 /* Security.framework */,
+				846C9E9A1ED81EA60099CC51 /* CoreFoundation.framework */,
+				846C9E981ED81D720099CC51 /* libresolv.tbd */,
 				84A274251ED427DC009462F4 /* LMZXSDK.a */,
 				84A2741E1ED3CA35009462F4 /* LMZXSDK.h */,
 				84A2741F1ED3CA35009462F4 /* lmzxResource.bundle */,
@@ -1325,6 +1342,7 @@
 				84C50C4E1EADF44A00AD0B62 /* IDInfo.m in Sources */,
 				84C50C5A1EADF47100AD0B62 /* AVCaptureViewController.m in Sources */,
 				8468563C1EA08FF900C74F87 /* NavBaseVC.m in Sources */,
+				846C9EA01ED821A40099CC51 /* AppDelegate+JPush.m in Sources */,
 				846856421EA0902D00C74F87 /* ASValueTrackingSlider.m in Sources */,
 				842E62061EB08C9700BF91FB /* IFlyFaceResultKeys.m in Sources */,
 				845663FB1ED57F6F0075A971 /* LMResultShowVC.m in Sources */,
@@ -1433,7 +1451,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1474,7 +1491,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1486,7 +1503,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1554,20 +1570,8 @@
 					"$(PROJECT_DIR)/haitian",
 					"$(PROJECT_DIR)",
 				);
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = (
-					"-l\"AFNetworking\"",
-					"-l\"RealReachability\"",
-					"-framework",
-					"\"CoreGraphics\"",
-					"-framework",
-					"\"MobileCoreServices\"",
-					"-framework",
-					"\"Security\"",
-					"-framework",
-					"\"SystemConfiguration\"",
-					"-ObjC",
-				);
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.haitian.jishiyudaikuan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "arm64 armv7";
@@ -1600,19 +1604,7 @@
 					"$(PROJECT_DIR)",
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-l\"AFNetworking\"",
-					"-l\"RealReachability\"",
-					"-framework",
-					"\"CoreGraphics\"",
-					"-framework",
-					"\"MobileCoreServices\"",
-					"-framework",
-					"\"Security\"",
-					"-framework",
-					"\"SystemConfiguration\"",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.haitian.jishiyudaikuan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "arm64 armv7";

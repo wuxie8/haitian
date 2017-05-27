@@ -20,6 +20,9 @@
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 100000
 #import <UserNotifications/UserNotifications.h>
 #endif
+
+#import "AppDelegate+JPush.h"
+
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
 @end
@@ -28,6 +31,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    //激光推送
+    [self registerJPush:application options:launchOptions];
+    
     //立木正信
     [LMZXSDK registerLMZXSDK];
     [[LMZXSDK shared] unlockLog];

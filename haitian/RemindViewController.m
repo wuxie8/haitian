@@ -11,6 +11,8 @@
 #import "AddBillViewController.h"
 #import "AddBillVC.h"
 #import "RemindModel.h"
+#import <JPUSHService.h>
+
 #define  headViewHeight 180
 @interface RemindViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(strong, nonatomic)UIView *headView;
@@ -40,6 +42,9 @@
 }
 -(void)getData
 {
+    
+    [JPUSHService setAlias:@"13691458151" callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];
+
     [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/message/list",SERVEREURL] parameters:@{@"user_id":@"624950"} success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
         DLog(@"%@",dic);
@@ -59,6 +64,12 @@
     }];
     
 
+    
+}
+- (void)tagsAliasCallback:(int)iResCode
+                     tags:(NSSet *)tags
+                    alias:(NSString *)alias {
+    
     
 }
 -(UIView *)headView
