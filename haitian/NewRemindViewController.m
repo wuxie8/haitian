@@ -59,9 +59,16 @@
     tab.dataSource=self;
     tab.tableFooterView=self.footView;
     [self.view addSubview:tab];
-    
+//    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardHide:)];
+//    //设置成NO表示当前控件响应后会传播到其他控件上，默认为YES。
+//    tapGestureRecognizer.cancelsTouchesInView = NO;
+//    //将触摸事件添加到当前view
+//    [tab addGestureRecognizer:tapGestureRecognizer];
     // Do any additional setup after loading the view.
 }
+//-(void)keyboardHide:(UITapGestureRecognizer*)tap{
+//    [self.view endEditing:YES];
+//}
 -(void)getList
 {
     [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/message/replist",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -168,20 +175,50 @@
     if (![_textView.text isEqualToString:@"备注..."]) {
         remark=_textView.text;
     }
+    int type = 0 ;
+    if ([self.remindTitle isEqualToString:@"房贷"]) {
+       type=0;
+    }
+    else if ([self.remindTitle isEqualToString:@"车贷"])
+    {
+type=1;
+    }
+    else if ([self.remindTitle isEqualToString:@"水电费"])
+    {
+type=2;
+    }
+    else if ([self.remindTitle isEqualToString:@"燃气费"])
+    {
+type=3;
+    }
+    else if ([self.remindTitle isEqualToString:@"物业费"])
+    {
+type=4;
+    }
+   else if ([self.remindTitle isEqualToString:@"自定义"])
+    {
+type=5;
+    }
+   
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
-                       @"624950",@"user_id",
-                       @"1",@"type_id",
+                       Context.currentUser.uid,@"user_id",
+                       [NSString stringWithFormat:@"%d",type],@"type_id",
                        [(UITextField *) [self.view viewWithTag:1001] text],@"name",
                         [(UITextField *) [self.view viewWithTag:1002] text],@"amount",
                        [(UITextField *) [self.view viewWithTag:1010] text],@"date",
                        rep_id,@"rep_id",
                        rem_id,@"rem_id",
                        remark,@"remark",
-                       @"1",@"msg_name",
+                      
 
                        nil];
+    NSMutableDictionary *dic1=[NSMutableDictionary dictionaryWithDictionary:dic];
+    if ([self.remindTitle isEqualToString:@"自定义"]) {
+      
+        [dic1 setObject:[(UITextField *) [self.view viewWithTag:1000] text] forKey:@"msg_name"];
+    }
     NSString *url=@"http://app.jishiyu11.cn:82/api/message/add";
-    [[NetWorkManager sharedManager]postJSON:url parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postJSON:url parameters:dic1  success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
         DLog(@"%@",dic);
 
@@ -204,6 +241,9 @@
         textView.text = @"备注...";
 
     }
+}
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -239,6 +279,8 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    
+    [self.view endEditing:YES];
     if (textField.tag==1000) {
         if (![self.remindTitle isEqualToString:@"自定义"]) {
             return NO;

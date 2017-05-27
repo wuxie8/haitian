@@ -10,6 +10,8 @@
 #import "ForgotPasswordViewController.h"
 #import "User.h"
 #import "RegisterVC.h"
+#import <JPUSHService.h>
+
 #define ViewHeight 50
 #define ButtonWeight 150
 @interface AccountPassswordViewController ()
@@ -144,7 +146,8 @@
                 //保存用户登录状态以及登录成功通知
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"kIsLogin"];
                 UIViewController *viewCtl = self.navigationController.viewControllers[self.navigationController.viewControllers.count-3];
-                
+                [JPUSHService setAlias:diction[@"0"] callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];
+
                 [self.navigationController popToViewController:viewCtl animated:YES];
             }
         }
@@ -159,7 +162,12 @@
     
     
 }
-
+- (void)tagsAliasCallback:(int)iResCode
+                     tags:(NSSet *)tags
+                    alias:(NSString *)alias {
+    
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -72,8 +72,12 @@
             [image setImage:[UIImage imageNamed:@"avatar"]];
             [cell.contentView addSubview:image];
             UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(image.frame)+10, 20, 150, 40)];
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"]) {
+                [but setTitle:Context.currentUser.username forState:UIControlStateNormal];
+            }
+            else{
             [but setTitle:@"点击登陆" forState: UIControlStateNormal ];
-            [but addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
+                [but addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];}
             [cell.contentView addSubview:but];
         }
             break;
@@ -164,10 +168,19 @@
         }
             break;
         case 5:
-        {FeedbackViewController *feedback=[[FeedbackViewController alloc]init];
-            feedback.hidesBottomBarWhenPushed=YES;
+        {
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"]) {
 
-            [self.navigationController pushViewController:feedback animated:YES];
+                FeedbackViewController *feedback=[[FeedbackViewController alloc]init];
+                feedback.hidesBottomBarWhenPushed=YES;
+                
+                [self.navigationController pushViewController:feedback animated:YES];
+            }
+            else{
+                [self.navigationController pushViewController:[LoginViewController new] animated:YES];
+
+            }
+           
         }
             break;
             

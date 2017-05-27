@@ -48,7 +48,8 @@
 
     self.window  = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     Context.idInfo = [NSKeyedUnarchiver unarchiveObjectWithFile:DOCUMENT_FOLDER(@"iDInfofile")];
-   
+    Context.currentUser = [NSKeyedUnarchiver unarchiveObjectWithFile:DOCUMENT_FOLDER(@"loginedUser")];
+
     self.window.rootViewController=[AppDelegate setTabBarController];
     [self.window  makeKeyAndVisible];
     // Override point for customization after application launch.

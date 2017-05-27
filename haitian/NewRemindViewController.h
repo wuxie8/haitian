@@ -8,6 +8,8 @@
 
 #import "GestureNavBaseVC.h"
 
+
+
 @interface NewRemindViewController : GestureNavBaseVC
 
 @property(strong, nonatomic)NSString*remindTitle;

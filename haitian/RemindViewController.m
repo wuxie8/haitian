@@ -11,8 +11,7 @@
 #import "AddBillViewController.h"
 #import "AddBillVC.h"
 #import "RemindModel.h"
-#import <JPUSHService.h>
-
+#import "LoginViewController.h"
 #define  headViewHeight 180
 @interface RemindViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(strong, nonatomic)UIView *headView;
@@ -28,7 +27,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"首页";
-    [self getData];
    tab=[[UITableView alloc]initWithFrame:CGRectMake(0 , 0, WIDTH, HEIGHT-50)];
     tab.delegate=self;
     tab.dataSource=self;
@@ -40,15 +38,19 @@
     
     // Do any additional setup after loading the view.
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self getData];
+}
 -(void)getData
 {
-    
-    [JPUSHService setAlias:@"13691458151" callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];
+    remindListArray=[NSMutableArray array];
 
-    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/message/list",SERVEREURL] parameters:@{@"user_id":@"624950"} success:^(NSURLSessionDataTask *task, id responseObject) {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"]) {
+
+    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@/message/list",SERVEREURL] parameters:@{@"user_id":Context.currentUser.uid} success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
-        DLog(@"%@",dic);
-       remindListArray=[NSMutableArray array];
         if ([dic[@"code"] isEqualToString:@"0000"]) {
             NSArray *dateArray=[dic[@"data"] objectForKey:@"data"];
             for (NSDictionary *dic1 in dateArray) {
@@ -57,21 +59,16 @@
                 [remindListArray addObject:remindList];
             }
         }
-        DLog(@"%@",remindListArray);
         [tab reloadData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
     }];
-    
+    }
+   
 
     
 }
-- (void)tagsAliasCallback:(int)iResCode
-                     tags:(NSSet *)tags
-                    alias:(NSString *)alias {
-    
-    
-}
+
 -(UIView *)headView
 {
     
@@ -79,13 +76,11 @@
         _headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, headViewHeight)];
         _headView.backgroundColor=[UIColor whiteColor];
         UIImageView *headimage=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, headViewHeight)];
-        headimage.backgroundColor=[UIColor greenColor];
         headimage.image =[UIImage imageNamed:@"RemindHeadImage"];
         [_headView addSubview:headimage];
 
         UIImageView *image=[[UIImageView alloc]initWithFrame:CGRectMake(10, 120, 50, 50)];
-        image.backgroundColor=[UIColor redColor];
-        
+        image.image=[UIImage imageNamed:@"Reimbursement"];
         UILabel *balancelab=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(image.frame)+10,  130, 64, 15)];
         balancelab.text=@"余额";
         balancelab.textColor=[UIColor whiteColor];
@@ -148,7 +143,6 @@
     
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     [cell setData:remindList];
-    DLog(@"%@",cell.image);
 
     return cell;
 }
@@ -158,18 +152,44 @@
 }
 -(void)addRemind
 {
-    AddBillViewController *addBill=[AddBillViewController new];
-    addBill.hidesBottomBarWhenPushed=YES;
-    [self.navigationController pushViewController:addBill animated:YES];
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"]) {
+        AddBillViewController *addBill=[AddBillViewController new];
+        addBill.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:addBill animated:YES];
+    }
+    else{
+        [self.navigationController pushViewController:[LoginViewController new] animated:YES];
+        
+    }
     
 }
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         if (tableView == tab) {
-//            [self.dataArray removeObjectAtIndex:indexPath.row];
+          ReminndListModel *remindList=  [remindListArray objectAtIndex:indexPath.section];
+            NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
+                               remindList.msg_id,@"id",
+                               
+                               nil];
+            
+            [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@/message/delete",SERVEREURL] parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
+                NSDictionary *dic=(NSDictionary *)responseObject;
+                if ([dic[@"code"]isEqualToString:@"0000"]) {
+                    
+                    
+                }
+                else
+                {
+                    [MessageAlertView showErrorMessage:[NSString stringWithFormat:@"%@",dic[@"msg"]]];
+                }
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                
+                
+            }];
             [remindListArray removeObjectAtIndex:indexPath.section];
-            [tab deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
-
+//            [tab deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+            [tab reloadData];
         }
     }
 }

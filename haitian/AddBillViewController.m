@@ -48,7 +48,7 @@ NSArray *imageArr;
     self.title=@"添加我的账单";
     NSArray *arr1=@[@"支付宝",@"京东白条",@"信用卡",@"公积金"];
     NSArray *arr2=@[@"宜人贷",@"我来贷",@"现金贷",@"简单借款"];
-    NSArray *arr3=@[@"水电费",@"车贷",@"房贷",@"社保",@"房租",@"自定义"];
+    NSArray *arr3=@[@"房贷",@"车贷",@"水电费",@"燃气费",@"房租",@"自定义"];
 
     arr=@[arr1,arr2,arr3];
  imageArr=@[@[@"PayTreasure",@"JD",@"CreditCard",@"AccumulationFund"],@[@"PayTreasure",@"JD",@"CreditCard",@"AccumulationFund"],@[@"mortgage",@"CarLoans",@"ElectricityAndWater",@"CreditCard"

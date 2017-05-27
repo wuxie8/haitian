@@ -359,6 +359,23 @@
             isChecked = NO;
         }
     }
+    if ([name containsString:@"/feedback/add"]) {
+        if ([UtilTools isBlankString:[parameters objectForKey:@"problem"]])
+        {
+            message = @"请输入问题";
+            isChecked = NO;
+        }
+    }
+    if ([name containsString:@"/message/add"]) {
+        if ([[parameters objectForKey:@"type_id"] isEqualToString:@"5"])
+        {
+            if ([UtilTools isBlankString:[parameters objectForKey:@"msg_name"]]) {
+                message = @"请输入自定义类型";
+                isChecked = NO;
+            }
+           
+        }
+    }
     
     if (![UtilTools isBlankString:message]) {
         [MessageAlertView showErrorMessage:message];

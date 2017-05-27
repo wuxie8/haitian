@@ -21,7 +21,8 @@
     CGFloat _itemWH;
     UICollectionView *_collectionView;
 //    NSMutableArray *_selectedPhotos;//图片数据源
-    UITextView *text;
+    UITextView *text1;
+    UITextField *textField;
 
 }
 - (void)viewDidLoad {
@@ -29,14 +30,15 @@
     self.title=@"意见反馈";
     
     
-  text=[[UITextView alloc]initWithFrame:CGRectMake(10, 10, WIDTH-20, 300)];
-    text.backgroundColor=[UIColor whiteColor];
-    text.delegate=self;
-    
-    UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(text.frame)-60, 40, 40)];
+  text1=[[UITextView alloc]initWithFrame:CGRectMake(10, 10, WIDTH-20, 300)];
+    text1.backgroundColor=[UIColor whiteColor];
+    text1.delegate=self;
     
     
-    [text addSubview:imageView];
+    UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(text1.frame)-60, 40, 40)];
+    
+    
+    [text1 addSubview:imageView];
     
     
     NSString *textplaceholder=@"请详细描述您的问题或建议，我们将及时跟进解决。（可以添加相关问题的截图）";
@@ -47,15 +49,15 @@
     label.numberOfLines=0;
     label.font=[UIFont systemFontOfSize:12];
     label.textColor=kColorFromRGBHex(0xb6b6b6);
-    [text addSubview:label];
+    [text1 addSubview:label];
     
     
-    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(text.frame)+20, WIDTH-20, 60 )];
+    textField=[[UITextField alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(text1.frame)+20, WIDTH-20, 60 )];
     textField.backgroundColor=[UIColor whiteColor];
     textField.placeholder=@"请填写手机号/邮箱(选填,方便我们联系您)";
     [self.view addSubview:textField];
     
-    [self.view addSubview:text];
+    [self.view addSubview:text1];
     
     [self configCollectionView];
     
@@ -76,7 +78,7 @@
     layout.itemSize = CGSizeMake(_itemWH, _itemWH);
     layout.minimumInteritemSpacing = _margin;
     layout.minimumLineSpacing = _margin;
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(_margin, CGRectGetMaxY(text.frame)-(_itemWH+20)-5, WIDTH- 4 * _margin, _itemWH+20) collectionViewLayout:layout];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(_margin, CGRectGetMaxY(text1.frame)-(_itemWH+20)-5, WIDTH- 4 * _margin, _itemWH+20) collectionViewLayout:layout];
     CGFloat rgb = 255 / 255.0;
     _collectionView.backgroundColor = [UIColor colorWithRed:rgb green:rgb blue:rgb alpha:1.0];
     _collectionView.contentInset = UIEdgeInsetsMake(4, 0, 0, 2);
@@ -86,18 +88,21 @@
     _collectionView.delegate = self;
     _collectionView.alpha = 1;
     _collectionView.scrollEnabled=NO;
-        [text addSubview:_collectionView];
+        [text1 addSubview:_collectionView];
     [_collectionView registerClass:[TZTestCell class] forCellWithReuseIdentifier:@"TZTestCell"];
 }
 #pragma mark UICollectionView
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    if (self.selectedPhotos.count>=3) {
+        return self.selectedPhotos.count;
+    }
     return self.selectedPhotos.count + 1;
     
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     TZTestCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TZTestCell" forIndexPath:indexPath];
-    if (indexPath.row == _selectedPhotos.count&&_selectedPhotos.count!=3) {
+    if (indexPath.row == (_selectedPhotos.count)&&_selectedPhotos.count!=3) {
         
         cell.imageView.image = [UIImage imageNamed:@"UploadPhotos"];
     } else {
@@ -154,7 +159,62 @@
 }
 -(void)submit
 {
+   
+    if ([UtilTools isBlankString:text1.text]) {
+        [MessageAlertView showErrorMessage:@"请输入问题"];
+        return;
+    }
+   
+    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
+                       Context.currentUser.uid,@"user_id",
+                       text1.text,@"problem",
+                       nil];
+    NSMutableDictionary *dic1=[NSMutableDictionary dictionaryWithDictionary:dic];
+    if (![UtilTools isBlankString:textField.text]) {
+        if ([textField.text containsString:@"@"]) {
+            [dic1 setObject:textField.text forKey:@"email"];
+        }
+        else{
+            [dic1 setObject:textField.text forKey:@"mobile"];
 
+        }
+    }
+    
+ 
+    AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
+    manager.responseSerializer=[AFHTTPResponseSerializer serializer];
+    [manager POST:[NSString stringWithFormat:@"%@/feedback/add",SERVEREURL]parameters:dic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        for (UIImage *image in _selectedPhotos) {
+            //根据当前系统时间生成图片名称
+            NSDate *date = [NSDate date];
+            NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+            [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+            NSString *dateString = [formatter stringFromDate:date];
+            NSString *  _headfileName = [NSString stringWithFormat:@"%@.png",dateString];
+       NSData *     _headImageData = UIImageJPEGRepresentation(image, 1);
+            [formData appendPartWithFileData:_headImageData name:@"photo" fileName:_headfileName mimeType:@"image/jpg/png/jpeg"];
+
+        }
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSDictionary *resultDic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        DLog(@"%@",resultDic);
+
+        if ([resultDic[@"code"]isEqualToString:@"0000"]) {
+            [MessageAlertView showSuccessMessage:@"提交成功"];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else
+        {
+            [MessageAlertView showErrorMessage:resultDic[@"msg"]];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        DLog(@"%@",error);
+
+    }];
+
+   
 }
 -(void)textViewDidChange:(UITextView *)textView{
     if (textView.text.length == 0) {
@@ -163,6 +223,25 @@
         label.hidden = YES;
     }
 }
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    
+    if ([text isEqualToString:@"\n"]) {
+        
+        [textView resignFirstResponder];
+        
+        return NO;
+        
+    }
+    
+    return YES;    
+    
+}
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    [self.view endEditing:YES];
+}
+
 #pragma mark 懒加载
 -(NSMutableArray *)selectedPhotos
 {

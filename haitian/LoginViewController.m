@@ -10,6 +10,8 @@
 #import "AccountPassswordViewController.h"
 #import "User.h"
 #import "RegisterVC.h"
+#import <JPUSHService.h>
+
 #define ViewHeight 50
 #define ButtonWeight 150
 @interface LoginViewController ()
@@ -192,6 +194,8 @@
             Context.currentUser=user;
             if ( [NSKeyedArchiver archiveRootObject:Context.currentUser toFile:DOCUMENT_FOLDER(@"loginedUser")]) {
                 //保存用户登录状态以及登录成功通知
+                [JPUSHService setAlias:diction[@"0"] callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];
+
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"kIsLogin"];
                 [self.navigationController popViewControllerAnimated:YES];
             }
@@ -207,7 +211,12 @@
     
     
 }
-
+- (void)tagsAliasCallback:(int)iResCode
+                     tags:(NSSet *)tags
+                    alias:(NSString *)alias {
+    
+    
+}
 -(void)accountPasswordClick
 {
     AccountPassswordViewController *AccountPasssword=[[AccountPassswordViewController alloc]init];
