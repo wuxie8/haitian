@@ -403,14 +403,22 @@ static SystemSoundID shake_sound_enter_id = 0;
 {
     NSArray *timeArray=[theDate componentsSeparatedByString:@"."];
     theDate=[timeArray objectAtIndex:0];
-    
+   theDate= [theDate stringByReplacingCharactersInRange:NSMakeRange(theDate.length-8, 8) withString:@"00:00:00"];
+
     NSDateFormatter *date=[[NSDateFormatter alloc] init];
     [date setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate *d=[date dateFromString:theDate];
     
     NSTimeInterval late=[d timeIntervalSince1970]*1;
     
-    NSDate* dat = [NSDate date];
+//    NSDate* dat = [NSDate date];
+    NSString *dateString = [date stringFromDate:[NSDate date]];
+    
+    // 打印结果：dateString = 年月日 2013/10/16 时间 05:15:43
+    dateString= [dateString stringByReplacingCharactersInRange:NSMakeRange(dateString.length-8, 8) withString:@"00:00:00"];
+    DLog(@"%@",dateString);
+    NSDate *dat=[date dateFromString:dateString];
+
     NSTimeInterval now=[dat timeIntervalSince1970]*1;
     NSString *timeString=@"";
     

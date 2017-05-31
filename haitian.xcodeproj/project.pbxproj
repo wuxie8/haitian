@@ -10,6 +10,7 @@
 		2E2193132720ACDF463B286D /* libPods-haitian.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C281EA8F719D2415E82CC71C /* libPods-haitian.a */; };
 		8402B9DA1E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402B9D91E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m */; };
 		8402B9F91E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402B9F81E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m */; };
+		84174D691EDEC3FA00A815B3 /* PersonalDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84174D681EDEC3FA00A815B3 /* PersonalDataViewController.m */; };
 		842A01691EC9464200143E4A /* NewRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842A01681EC9464200143E4A /* NewRemindViewController.m */; };
 		842C82C41EAEFDCB005D27A7 /* IdOpposite ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842C82C31EAEFDCB005D27A7 /* IdOpposite ViewController.m */; };
 		842E61C71EB08A5700BF91FB /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61C61EB08A5700BF91FB /* iflyMSC.framework */; };
@@ -193,6 +194,8 @@
 		8402B9D91E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadSupermarketCollectionViewCell.m; sourceTree = "<group>"; };
 		8402B9F71E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastHandleCardCollectionViewCell.h; sourceTree = "<group>"; };
 		8402B9F81E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastHandleCardCollectionViewCell.m; sourceTree = "<group>"; };
+		84174D671EDEC3FA00A815B3 /* PersonalDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalDataViewController.h; sourceTree = "<group>"; };
+		84174D681EDEC3FA00A815B3 /* PersonalDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalDataViewController.m; sourceTree = "<group>"; };
 		842A01671EC9464200143E4A /* NewRemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRemindViewController.h; sourceTree = "<group>"; };
 		842A01681EC9464200143E4A /* NewRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRemindViewController.m; sourceTree = "<group>"; };
 		842C82C21EAEFDCB005D27A7 /* IdOpposite ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IdOpposite ViewController.h"; sourceTree = "<group>"; };
@@ -624,9 +627,9 @@
 				844E163C1EC979B900F4EA80 /* ThirdParty */,
 				84ABC8EB1EC5533B00269C87 /* ReimbursementRemindVC.h */,
 				84ABC8EC1EC5533B00269C87 /* ReimbursementRemindVC.m */,
-				848FBC131ED2E99000A1E1CD /* RemindViewController.h */,
 				845663F61ED5542D0075A971 /* AddBillVC.h */,
 				845663F71ED5542D0075A971 /* AddBillVC.m */,
+				848FBC131ED2E99000A1E1CD /* RemindViewController.h */,
 				848FBC141ED2E99000A1E1CD /* RemindViewController.m */,
 				844E16461EC99FB700F4EA80 /* AddBillViewController.h */,
 				844E16471EC99FB700F4EA80 /* AddBillViewController.m */,
@@ -1015,6 +1018,8 @@
 			children = (
 				84B9DC441E9DCE240066A92D /* PersonCenterViewController.h */,
 				84B9DC451E9DCE240066A92D /* PersonCenterViewController.m */,
+				84174D671EDEC3FA00A815B3 /* PersonalDataViewController.h */,
+				84174D681EDEC3FA00A815B3 /* PersonalDataViewController.m */,
 				847B171E1EDE8F2B003A4D98 /* SetUpViewController.h */,
 				847B171F1EDE8F2B003A4D98 /* SetUpViewController.m */,
 				847B17211EDE91B2003A4D98 /* AboutUsViewController.h */,
@@ -1359,6 +1364,7 @@
 				845663FB1ED57F6F0075A971 /* LMResultShowVC.m in Sources */,
 				848FBC151ED2E99000A1E1CD /* RemindViewController.m in Sources */,
 				84B9DC401E9DCDBC0066A92D /* LoadSupermarketViewController.m in Sources */,
+				84174D691EDEC3FA00A815B3 /* PersonalDataViewController.m in Sources */,
 				84F5D4201EA7675E00EC8C9D /* TZPhotoPreviewCell.m in Sources */,
 				84ABC8F01EC5556400269C87 /* RemindTableViewCell.m in Sources */,
 				84A733381EB86BA0008ABB7E /* AddressVC.m in Sources */,

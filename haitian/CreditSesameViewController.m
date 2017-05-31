@@ -38,9 +38,7 @@
     NSString *string=[self convertToJsonData:dic1];
     NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:
                         string,@"identity_param",
-                        
                         @"1",@"identity_type",
-                        
                         nil];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];

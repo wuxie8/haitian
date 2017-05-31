@@ -35,7 +35,7 @@
     tab.tableFooterView=self.footView;
     tab.tableHeaderView=self.headView;
     [self.view addSubview:tab];
-    
+
     // Do any additional setup after loading the view.
 }
 -(void)viewWillAppear:(BOOL)animated
