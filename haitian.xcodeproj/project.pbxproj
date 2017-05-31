@@ -78,6 +78,8 @@
 		847944BB1ECED16200227EC8 /* WebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 847944BA1ECED16200227EC8 /* WebVC.m */; };
 		847A11501EA45F0C002D8832 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114D1EA45F0C002D8832 /* User.m */; };
 		847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114F1EA45F0C002D8832 /* UserInfoContext.m */; };
+		847B17201EDE8F2B003A4D98 /* SetUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B171F1EDE8F2B003A4D98 /* SetUpViewController.m */; };
+		847B17231EDE91B2003A4D98 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B17221EDE91B2003A4D98 /* AboutUsViewController.m */; };
 		848F1F8B1EC0078D00720FB6 /* H5Service.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 848F1F891EC0078D00720FB6 /* H5Service.bundle */; };
 		848F1F8C1EC0078D00720FB6 /* Poseidon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 848F1F8A1EC0078D00720FB6 /* Poseidon.bundle */; };
 		848F1F8F1EC0089000720FB6 /* ZMCreditSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F1F8D1EC0088F00720FB6 /* ZMCreditSDK.framework */; };
@@ -305,6 +307,10 @@
 		847A114D1EA45F0C002D8832 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		847A114E1EA45F0C002D8832 /* UserInfoContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoContext.h; sourceTree = "<group>"; };
 		847A114F1EA45F0C002D8832 /* UserInfoContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoContext.m; sourceTree = "<group>"; };
+		847B171E1EDE8F2B003A4D98 /* SetUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetUpViewController.h; sourceTree = "<group>"; };
+		847B171F1EDE8F2B003A4D98 /* SetUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetUpViewController.m; sourceTree = "<group>"; };
+		847B17211EDE91B2003A4D98 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
+		847B17221EDE91B2003A4D98 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
 		848F1F891EC0078D00720FB6 /* H5Service.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = H5Service.bundle; sourceTree = "<group>"; };
 		848F1F8A1EC0078D00720FB6 /* Poseidon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Poseidon.bundle; sourceTree = "<group>"; };
 		848F1F8D1EC0088F00720FB6 /* ZMCreditSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZMCreditSDK.framework; sourceTree = "<group>"; };
@@ -1009,6 +1015,10 @@
 			children = (
 				84B9DC441E9DCE240066A92D /* PersonCenterViewController.h */,
 				84B9DC451E9DCE240066A92D /* PersonCenterViewController.m */,
+				847B171E1EDE8F2B003A4D98 /* SetUpViewController.h */,
+				847B171F1EDE8F2B003A4D98 /* SetUpViewController.m */,
+				847B17211EDE91B2003A4D98 /* AboutUsViewController.h */,
+				847B17221EDE91B2003A4D98 /* AboutUsViewController.m */,
 				84F5D3FB1EA7039D00EC8C9D /* HelpCenterViewController.h */,
 				84F5D3FC1EA7039D00EC8C9D /* HelpCenterViewController.m */,
 				84F5D3FE1EA703D100EC8C9D /* XDMultTableView.h */,
@@ -1319,6 +1329,7 @@
 				84F5D41E1EA7675E00EC8C9D /* TZImagePickerController.m in Sources */,
 				84A733561EB86C82008ABB7E /* PersonCell.m in Sources */,
 				846856391EA08FF900C74F87 /* BaseVC.m in Sources */,
+				847B17231EDE91B2003A4D98 /* AboutUsViewController.m in Sources */,
 				84C50C3B1EADD49C00AD0B62 /* IdVerificationViewController.m in Sources */,
 				84F5D41D1EA7675E00EC8C9D /* TZImageManager.m in Sources */,
 				842E61FD1EB08C8300BF91FB /* CalculatorTools.m in Sources */,
@@ -1365,6 +1376,7 @@
 				84ABC8ED1EC5533B00269C87 /* ReimbursementRemindVC.m in Sources */,
 				842A01691EC9464200143E4A /* NewRemindViewController.m in Sources */,
 				84F5D41C1EA7675E00EC8C9D /* TZAssetModel.m in Sources */,
+				847B17201EDE8F2B003A4D98 /* SetUpViewController.m in Sources */,
 				84361FDC1EB1EFB9008595E7 /* YLSOPickerView.m in Sources */,
 				8468562C1EA0822900C74F87 /* MessageAlertView.m in Sources */,
 				84B36FCB1EB32820001FCD96 /* ProfessionalInformationViewController.m in Sources */,

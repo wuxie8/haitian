@@ -193,11 +193,11 @@
         if ([elements count] <= 1) {
             return nil;
         }
-        
-        NSString *key = [[elements objectAtIndex:0] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSString *val = [[elements objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
-        [dict setObject:val forKey:key];
+//        
+//        NSString *key = [[elements objectAtIndex:0] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//        NSString *val = [[elements objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//        
+//        [dict setObject:val forKey:key];
     }
     return dict;
 }

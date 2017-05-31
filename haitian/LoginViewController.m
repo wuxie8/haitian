@@ -49,21 +49,20 @@
         [loginView addSubview:view];
         
         UIImageView *image1=[[UIImageView alloc]initWithFrame:CGRectMake(20, 15,20,  20)];
-//        [image1 setImage:[UIImage imageNamed:@"LoginBackGround"]];
         image1.contentMode=UIViewContentModeScaleAspectFill;
         [image1 setImage:[UIImage imageNamed:arr[i]]];
         [view addSubview:image1];
         
         UITextField *text=[[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(image1.frame)+10, 0, view.frame.size.width-CGRectGetMaxX(image1.frame)+20,  ViewHeight)];
         text.placeholder=arr1[i];
+        if (i==1) {
+            text.secureTextEntry = YES;
+        }
         text.keyboardType= UIKeyboardTypeNumberPad;
         text.delegate=self;
         text.tag=1000+i;
         [view addSubview:text];
         
-//        UIView *backView=[[UIView alloc]initWithFrame:CGRectMake(5, 39, WIDTH-10, 1)];
-//        backView.backgroundColor=PageColor;
-//        [view addSubview:backView];
         if (i==arr.count-1) {
             but=[[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(text.frame)+10, 20+i*(ViewHeight+10), WIDTH-20*2-CGRectGetMaxX(text.frame), ViewHeight)];
             but.backgroundColor=AppButtonbackgroundColor;

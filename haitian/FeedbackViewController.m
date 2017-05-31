@@ -63,7 +63,7 @@
     
     UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(textField.frame)+20, WIDTH-20, 40)];
     [but setTitle:@"提交" forState:UIControlStateNormal];
-    but.backgroundColor=[UIColor grayColor];
+    but.backgroundColor=AppButtonbackgroundColor;
      but.clipsToBounds=YES;
      but.layer.cornerRadius=10;
     [but addTarget:self action:@selector(submit) forControlEvents:UIControlEventTouchUpInside];

@@ -57,26 +57,13 @@
         UITextField *text=[[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(image1.frame)+10, 0, view.frame.size.width-CGRectGetMaxX(image1.frame)+20,  ViewHeight)];
         text.placeholder=arr1[i];
         text.keyboardType= UIKeyboardTypeNumberPad;
-//        text.delegate=self;
         text.tag=1000+i;
+        if (i==1) {
+            text.secureTextEntry = YES;
+        }
         [view addSubview:text];
-        
-//        //        UIView *backView=[[UIView alloc]initWithFrame:CGRectMake(5, 39, WIDTH-10, 1)];
-//        //        backView.backgroundColor=PageColor;
-//        //        [view addSubview:backView];
-//        if (i==arr.count-1) {
-//            but=[[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(text.frame)+10, 20+i*(ViewHeight+10), WIDTH-20*2-CGRectGetMaxX(text.frame), ViewHeight)];
-//            but.backgroundColor=AppBackColor;
-//            [but addTarget:self action:@selector(verificationCode) forControlEvents:UIControlEventTouchUpInside];
-//            [but setTitle:@"获取验证码" forState:UIControlStateNormal];
-//            but.titleLabel.font    = [UIFont systemFontOfSize:  14];
-//            but.layer.cornerRadius =  20;
-//            //将多余的部分切掉
-//            but.layer.masksToBounds = YES;
-//            but.layer.borderWidth = 1;
-//            but.layer.borderColor = [[UIColor grayColor] CGColor];
-//            [loginView  addSubview:but];
-//        }
+       
+
         [loginView addSubview:view];
     }
     UIButton *loginButton=[[UIButton alloc]initWithFrame:CGRectMake(20, 20+2*(ViewHeight+10)+20, WIDTH-20*2, 50)];

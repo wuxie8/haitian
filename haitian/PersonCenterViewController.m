@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import "HelpCenterViewController.h"
 #import "FeedbackViewController.h"
+#import "SetUpViewController.h"
 @interface PersonCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(strong, nonatomic)UIView *headView;
 @end
@@ -30,8 +31,8 @@
     [self.view addSubview:tab];
    
    
-   arr1=@[@"",@"",@"PersonalData",@"InviteFriends",@"HelpCenter",@"feedback"];
-    arr=@[@"",@"",@"个人资料",@"邀请好友",@"帮助中心",@"意见反馈"];
+   arr1=@[@"",@"",@"PersonalData",@"InviteFriends",@"HelpCenter",@"feedback",@"SetUp"];
+    arr=@[@"",@"",@"个人资料",@"邀请好友",@"帮助中心",@"意见反馈",@"设置"];
     
     // Do any additional setup after loading the view.
 }
@@ -135,10 +136,11 @@
           
             break;
         case 2:
-             case 3:
-             case 4:
-             case 5:
-            [cell.imageView setImage:[UIImage imageNamed:arr1[indexPath.section]]];
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        [cell.imageView setImage:[UIImage imageNamed:arr1[indexPath.section]]];
             cell.textLabel.text=arr[indexPath.section];
            cell.accessoryType =UITableViewCellAccessoryDisclosureIndicator;
             break;
@@ -183,6 +185,13 @@
            
         }
             break;
+            case 6:
+        {
+            SetUpViewController *setup=[SetUpViewController new];
+            setup.hidesBottomBarWhenPushed=YES;
+            [self.navigationController pushViewController:setup animated:YES];
+
+        }
             
         default:
             break;
