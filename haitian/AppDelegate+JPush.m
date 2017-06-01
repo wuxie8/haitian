@@ -174,9 +174,9 @@ fetchCompletionHandler:
 -(void)didRecevieNotification :(NSDictionary *)receiveNotifi
 {
 
-    NSDictionary *apsDic=receiveNotifi[@"aps"];
-    NSString *badge = apsDic[@"badge"];
-    NSString *type =receiveNotifi[@"type"];
+//    NSDictionary *apsDic=receiveNotifi[@"aps"];
+//    NSString *badge = apsDic[@"badge"];
+//    NSString *type =receiveNotifi[@"type"];
 
  
 }

@@ -107,7 +107,7 @@ typedef void (^UMPlaunchFinishBlock)();
 
 
 /** 解除RemoteNotification的注册（关闭消息推送，实际调用：[[UIApplication sharedApplication] unregisterForRemoteNotifications]）
- @param types 消息类型，参见`UIRemoteNotificationType`
+ types 消息类型，参见`UIRemoteNotificationType`
  */
 + (void)unregisterForRemoteNotifications;
 
@@ -227,7 +227,7 @@ typedef void (^UMPlaunchFinishBlock)();
 
 /** 添加一个启动页的开屏通知
  @param window 当前window
- @param window 结束后要显示的ViewController
+ @param ViewController 结束后要显示的ViewController
  */
 +(void)addLaunchMessageWithWindow:(UIWindow *__nonnull)window finishViewController:(UIViewController *__nonnull)ViewController;
 

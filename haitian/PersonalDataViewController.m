@@ -45,6 +45,22 @@
 -(void)complete
 {
     DLog(@"%@",[(UITextField *)[self.view viewWithTag:1001] text]);
+//    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
+//                       @"shoujidaikuanjieqiankuai",@"code",
+//                       @"1.0.0",@"version",
+//                       @"1",@"page",
+//                       nil];
+//    [[NetWorkManager sharedManager]postJSON:<##> parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
+//        NSDictionary *dic=(NSDictionary *)responseObject;
+//        if ([dic[@"status"]boolValue]) {
+//            
+//            
+//        }
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//        NSLog(@"%@",error);
+//        
+//        
+//    }];
 
 
 }
