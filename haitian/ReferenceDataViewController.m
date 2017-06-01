@@ -179,9 +179,9 @@
 }
 -(void)click
 {
-    XHJAddressBook *_addBook=[XHJAddressBook new];
-    NSArray *array=[_addBook getAllPerson];
-    [_addTapView removeFromSuperview];
+//    XHJAddressBook *_addBook=[XHJAddressBook new];
+//    NSArray *array=[_addBook getAllPerson];
+//    [_addTapView removeFromSuperview];
 
 }
 #pragma mark 懒加载 
