@@ -239,7 +239,6 @@
 		84361FDA1EB1EFB9008595E7 /* YLSOPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLSOPickerView.h; sourceTree = "<group>"; };
 		84361FDB1EB1EFB9008595E7 /* YLSOPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLSOPickerView.m; sourceTree = "<group>"; };
 		843959851EC3FEAC0093D906 /* libUMessage_Sdk_1.5.0a.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.5.0a.a; sourceTree = "<group>"; };
-		843959861EC3FEAC0093D906 /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
 		843959881EC3FEC60093D906 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		8439598A1EC3FEF60093D906 /* haitian.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = haitian.entitlements; sourceTree = "<group>"; };
 		843DD77A1EB2E10F0014E283 /* libexidcardios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libexidcardios.a; sourceTree = "<group>"; };
@@ -1075,7 +1074,6 @@
 				84A2741F1ED3CA35009462F4 /* lmzxResource.bundle */,
 				843959881EC3FEC60093D906 /* UserNotifications.framework */,
 				843959851EC3FEAC0093D906 /* libUMessage_Sdk_1.5.0a.a */,
-				843959861EC3FEAC0093D906 /* UMessage.h */,
 				848F1F9D1EC011DE00720FB6 /* LocalAuthentication.framework */,
 				848F1F9B1EC00D9400720FB6 /* CoreMotion.framework */,
 				848F1F991EC00D8300720FB6 /* AssetsLibrary.framework */,
@@ -1182,6 +1180,9 @@
 						DevelopmentTeam = NUH99A3LBD;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};

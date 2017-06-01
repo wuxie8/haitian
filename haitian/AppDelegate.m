@@ -15,7 +15,6 @@
 #import "RemindViewController.h"
 #import "iflyMSC/IFlyFaceSDK.h"
 #import <ZMCreditSDK/ALCreditService.h>
-#import "UMessage.h"
 #import "LMZXSDK.h"
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 100000
 #import <UserNotifications/UserNotifications.h>
@@ -38,8 +37,7 @@
     [LMZXSDK registerLMZXSDK];
     [[LMZXSDK shared] unlockLog];
 
-   //友盟推送
-    [self umessageinit:launchOptions];
+ 
    //讯飞人脸识别
    [self makeConfiguration];
     
@@ -56,33 +54,6 @@
     return YES;
 }
 
--(void)umessageinit:(NSDictionary *)launchOptions
-{
-    //标签
-    [UMessage addTag:@"男"
-            response:^(id responseObject, NSInteger remain, NSError *error) {
-                //add your codes
-            }];
-    [UMessage startWithAppkey:@"5913bac1cae7e74ebe000675" launchOptions:launchOptions httpsEnable:YES ];
-    //注册通知，如果要使用category的自定义策略，可以参考demo中的代码。
-    [UMessage registerForRemoteNotifications];
-    
-    //iOS10必须加下面这段代码。
-    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-    center.delegate=self;
-    UNAuthorizationOptions types10=UNAuthorizationOptionBadge|  UNAuthorizationOptionAlert|UNAuthorizationOptionSound;
-    [center requestAuthorizationWithOptions:types10     completionHandler:^(BOOL granted, NSError * _Nullable error) {
-        if (granted) {
-            //点击允许
-            //这里可以添加一些自己的逻辑
-        } else {
-            //点击不允许
-            //这里可以添加一些自己的逻辑
-        }
-    }];
-    
-    
-}
 +(UITabBarController *)setTabBarController
 {
     
@@ -134,10 +105,10 @@
 -(void)makeConfiguration
 {
     //设置log等级，此处log为默认在app沙盒目录下的msc.log文件
-    [IFlySetting setLogFile:LVL_ALL];
+    [IFlySetting setLogFile:LVL_NONE];
     
     //输出在console的log开关
-    [IFlySetting showLogcat:YES];
+    [IFlySetting showLogcat:NO];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *cachePath = [paths objectAtIndex:0];
@@ -151,79 +122,7 @@
     [IFlySpeechUtility createUtility:initString];
 }
 
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-{
-    //1.2.7版本开始不需要用户再手动注册devicetoken，SDK会自动注册
-    // [UMessage registerDeviceToken:deviceToken];
-    
-    //下面这句代码只是在demo中，供页面传值使用。
-//    [self postTestParams:[self stringDevicetoken:deviceToken] idfa:[self idfa] openudid:[self openUDID]];
-}
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
-{
-     [[NSNotificationCenter defaultCenter] postNotificationName:@"userInfoNotification" object:self userInfo:@{@"userinfo":[NSString stringWithFormat:@"%@",userInfo]}];
-    //关闭友盟自带的弹出框
-    [UMessage setAutoAlert:NO];
-    [UMessage didReceiveRemoteNotification:userInfo];
-    
-    //    self.userInfo = userInfo;
-    //    //定制自定的的弹出框
-    //    if([UIApplication sharedApplication].applicationState == UIApplicationStateActive)
-    //    {
-    //        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"标题"
-    //                                                            message:@"Test On ApplicationStateActive"
-    //                                                           delegate:self
-    //                                                  cancelButtonTitle:@"确定"
-    //                                                  otherButtonTitles:nil];
-    //
-    //        [alertView show];
-    //
-    //    }
 
-//    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-//    [ud setObject:[NSString stringWithFormat:@"%@",userInfo] forKey:@"UMPuserInfoNotification"];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"userInfoNotification" object:self userInfo:@{@"userinfo":[NSString stringWithFormat:@"%@",userInfo]}];
-    
-}
-//iOS10新增：处理前台收到通知的代理方法
--(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
-    NSDictionary * userInfo = notification.request.content.userInfo;
-    if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
-        //应用处于前台时的远程推送接受
-        //关闭U-Push自带的弹出框
-        [UMessage setAutoAlert:NO];
-        //必须加这句代码
-        [UMessage didReceiveRemoteNotification:userInfo];
-        
-    }else{
-        //应用处于前台时的本地推送接受
-    }
-    //当应用处于前台时提示设置，需要哪个可以设置哪一个
-    completionHandler(UNNotificationPresentationOptionSound|UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionAlert);
-}
-//iOS10以后接收的方法
--(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler{
-    NSDictionary * userInfo = response.notification.request.content.userInfo;
-    if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
-        [UMessage didReceiveRemoteNotification:userInfo];
-        if([response.actionIdentifier isEqualToString:@"123"])
-        {
-            
-        }else
-        {
-            
-            
-        }
-        //这个方法用来做action点击的统计
-        [UMessage sendClickReportForRemoteNotification:userInfo];
-        
-        
-        
-    }else{
-        //应用处于后台时的本地推送接受
-    }
-    
-}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
