@@ -211,7 +211,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
     
     IFlyFaceImage* faceImage=[[IFlyFaceImage alloc] init];
     if(!faceImage){
-        return nil;
+        return faceImage;
     }
 
     CGDataProviderRef provider = CGImageGetDataProvider(cgImage);

@@ -63,9 +63,9 @@ CGRect rects[64];
     
     //字符解析，包含空格
     i = 0;
-    hic = pbBuf[i++]; lwc = pbBuf[i++]; codeInt = (hic<<8)+lwc;
-    hic = pbBuf[i++]; lwc = pbBuf[i++]; codeInt = (hic<<8)+lwc;
-    
+//    hic = pbBuf[i++]; lwc = pbBuf[i++]; codeInt = (hic<<8)+lwc;
+//    hic = pbBuf[i++]; lwc = pbBuf[i++]; codeInt = (hic<<8)+lwc;
+//    
     //bank name, GBK CharSet;
     for(j = 0; j < 64; ++j) { szBankName[j] = pbBuf[i++]; }
     

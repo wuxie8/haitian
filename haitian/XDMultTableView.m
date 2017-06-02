@@ -20,7 +20,8 @@ static const CGFloat CELLHEIGHT = 44.0f;
 @implementation XDMultTableView
 
 - (instancetype)initWithFrame:(CGRect)frame{
-    if ([super initWithFrame:frame]) {
+    self=[super initWithFrame:frame];
+    if (self) {
         _multopenSectionArray = [NSMutableArray arrayWithCapacity:10];
         
         _tableView = [[UITableView alloc] initWithFrame:self.bounds];

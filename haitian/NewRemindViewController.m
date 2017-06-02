@@ -43,8 +43,7 @@
     NSDate *date = [NSDate date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"yyyy年MM月dd日 HH:mm"];
-    NSString  *string = [[NSString alloc]init];
-    string = [dateFormatter stringFromDate:date];
+    NSString  *string   = [dateFormatter stringFromDate:date];
     NSArray *placesectionArr2=@[string,@"每月",@"提前30分钟"];
 
     placeArray=@[placesectionArr1,placesectionArr2];

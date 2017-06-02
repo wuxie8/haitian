@@ -98,10 +98,10 @@ static NSString *const headerId = @"headerId1";
 // 和UITableView类似，UICollectionView也可设置段头段尾
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    
+    UICollectionReusableView *headerView;
     if([kind isEqualToString:UICollectionElementKindSectionHeader])
     {
-        UICollectionReusableView *headerView = [collectionView  dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:headerId forIndexPath:indexPath];
+        headerView = [collectionView  dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:headerId forIndexPath:indexPath];
         if(headerView == nil)
         {
             headerView = [[UICollectionReusableView alloc] init];
@@ -112,10 +112,9 @@ static NSString *const headerId = @"headerId1";
         UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(20, 10, 100, 20)];
         lab.text=titleArr[indexPath.section];
         [headerView addSubview:lab];
-        return headerView;
     }
     
-    return nil;
+    return headerView;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
