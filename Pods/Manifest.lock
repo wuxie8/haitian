@@ -14,7 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - JPush-iOS-SDK (3.0.2)
+  - JPush-iOS-SDK (3.0.5)
   - RealReachability (1.1.8):
     - RealReachability/Connection (= 1.1.8)
     - RealReachability/Ping (= 1.1.8)
@@ -23,14 +23,14 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
-  - JPush-iOS-SDK
+  - JPush-iOS-SDK (~> 3.0.5)
   - RealReachability
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  JPush-iOS-SDK: 6f070894b3ac3b1c6523e0740bbf3ab323e1c11d
+  JPush-iOS-SDK: f80e435b524449fd5101e247b044d4e48174ef5f
   RealReachability: e6c8a2bbffa316006e8c282efc1ee2567d61a920
 
-PODFILE CHECKSUM: a22d1efb7b0741d65503381cd17b57b8b95fbf87
+PODFILE CHECKSUM: 0780ab9f0ee1b18132e266753a42df09564bbd0a
 
 COCOAPODS: 1.2.0

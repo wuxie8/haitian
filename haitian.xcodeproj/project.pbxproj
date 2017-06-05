@@ -11,6 +11,7 @@
 		8402B9DA1E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402B9D91E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m */; };
 		8402B9F91E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402B9F81E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m */; };
 		84174D691EDEC3FA00A815B3 /* PersonalDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84174D681EDEC3FA00A815B3 /* PersonalDataViewController.m */; };
+		8420A4DA1EE4E808001C5EAC /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8420A4D91EE4E808001C5EAC /* libc++.tbd */; };
 		842A01691EC9464200143E4A /* NewRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842A01681EC9464200143E4A /* NewRemindViewController.m */; };
 		842C82C41EAEFDCB005D27A7 /* IdOpposite ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842C82C31EAEFDCB005D27A7 /* IdOpposite ViewController.m */; };
 		842E61C71EB08A5700BF91FB /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61C61EB08A5700BF91FB /* iflyMSC.framework */; };
@@ -73,7 +74,6 @@
 		846C9E991ED81D720099CC51 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 846C9E981ED81D720099CC51 /* libresolv.tbd */; };
 		846C9E9B1ED81EA60099CC51 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 846C9E9A1ED81EA60099CC51 /* CoreFoundation.framework */; };
 		846C9E9D1ED81EE00099CC51 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 846C9E9C1ED81EE00099CC51 /* Security.framework */; };
-		846C9EA01ED821A40099CC51 /* AppDelegate+JPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C9E9F1ED821A40099CC51 /* AppDelegate+JPush.m */; };
 		847944BB1ECED16200227EC8 /* WebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 847944BA1ECED16200227EC8 /* WebVC.m */; };
 		847A11501EA45F0C002D8832 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114D1EA45F0C002D8832 /* User.m */; };
 		847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114F1EA45F0C002D8832 /* UserInfoContext.m */; };
@@ -137,7 +137,10 @@
 		84C50C5D1EADF47100AD0B62 /* IDInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50C581EADF47100AD0B62 /* IDInfoViewController.m */; };
 		84C50C5E1EADF47100AD0B62 /* IDInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C50C591EADF47100AD0B62 /* IDInfoViewController.xib */; };
 		84CD81F51EA48F30009B786F /* RegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD81F41EA48F30009B786F /* RegisterVC.m */; };
-		84F5D3FD1EA7039D00EC8C9D /* HelpCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FC1EA7039D00EC8C9D /* HelpCenterViewController.m */; };
+		84EAEAD21EE118F9007D3CCA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61CE1EB08AB500BF91FB /* AVFoundation.framework */; };
+		84EAEAD31EE118F9007D3CCA /* AVFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61CE1EB08AB500BF91FB /* AVFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		84EAEAD71EE17683007D3CCA /* HelpCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FC1EA7039D00EC8C9D /* HelpCenterViewController.m */; };
+		84EAEAD81EE176A9007D3CCA /* AppDelegate+JPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C9E9F1ED821A40099CC51 /* AppDelegate+JPush.m */; };
 		84F5D4001EA703D100EC8C9D /* XDMultTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FF1EA703D100EC8C9D /* XDMultTableView.m */; };
 		84F5D4041EA7492A00EC8C9D /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D4031EA7492A00EC8C9D /* FeedbackViewController.m */; };
 		84F5D4191EA7675E00EC8C9D /* TZAlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F5D4051EA7675E00EC8C9D /* TZAlbumCell.xib */; };
@@ -178,6 +181,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				84EAEAD31EE118F9007D3CCA /* AVFoundation.framework in Embed Frameworks */,
 				843DD7791EB2DE960014E283 /* iflyMSC.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -193,6 +197,7 @@
 		8402B9F81E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastHandleCardCollectionViewCell.m; sourceTree = "<group>"; };
 		84174D671EDEC3FA00A815B3 /* PersonalDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalDataViewController.h; sourceTree = "<group>"; };
 		84174D681EDEC3FA00A815B3 /* PersonalDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalDataViewController.m; sourceTree = "<group>"; };
+		8420A4D91EE4E808001C5EAC /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		842A01671EC9464200143E4A /* NewRemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRemindViewController.h; sourceTree = "<group>"; };
 		842A01681EC9464200143E4A /* NewRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRemindViewController.m; sourceTree = "<group>"; };
 		842C82C21EAEFDCB005D27A7 /* IdOpposite ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IdOpposite ViewController.h"; sourceTree = "<group>"; };
@@ -451,17 +456,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8420A4DA1EE4E808001C5EAC /* libc++.tbd in Frameworks */,
 				846C9E991ED81D720099CC51 /* libresolv.tbd in Frameworks */,
 				843959891EC3FEC60093D906 /* UserNotifications.framework in Frameworks */,
-				842E61C91EB08A9300BF91FB /* libz.tbd in Frameworks */,
-				846C9E9D1ED81EE00099CC51 /* Security.framework in Frameworks */,
 				842E61D91EB08AE300BF91FB /* UIKit.framework in Frameworks */,
 				842E61DB1EB08AED00BF91FB /* Foundation.framework in Frameworks */,
+				842E61C91EB08A9300BF91FB /* libz.tbd in Frameworks */,
+				846C9E9D1ED81EE00099CC51 /* Security.framework in Frameworks */,
 				842E61DD1EB08AF500BF91FB /* CoreGraphics.framework in Frameworks */,
 				842E61D51EB08AD100BF91FB /* SystemConfiguration.framework in Frameworks */,
 				842E61CD1EB08AAD00BF91FB /* CoreTelephony.framework in Frameworks */,
 				846C9E9B1ED81EA60099CC51 /* CoreFoundation.framework in Frameworks */,
 				848F1F941EC00D6C00720FB6 /* CFNetwork.framework in Frameworks */,
+				84EAEAD21EE118F9007D3CCA /* AVFoundation.framework in Frameworks */,
 				848F1F9E1EC011DE00720FB6 /* LocalAuthentication.framework in Frameworks */,
 				842E61CB1EB08AA000BF91FB /* CoreLocation.framework in Frameworks */,
 				848F1F9C1EC00D9400720FB6 /* CoreMotion.framework in Frameworks */,
@@ -1061,6 +1068,7 @@
 		E5D4A71C4E15B4A453FF3CA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8420A4D91EE4E808001C5EAC /* libc++.tbd */,
 				846C9E9C1ED81EE00099CC51 /* Security.framework */,
 				846C9E9A1ED81EA60099CC51 /* CoreFoundation.framework */,
 				846C9E981ED81D720099CC51 /* libresolv.tbd */,
@@ -1308,7 +1316,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84F5D3FD1EA7039D00EC8C9D /* HelpCenterViewController.m in Sources */,
+				84EAEAD81EE176A9007D3CCA /* AppDelegate+JPush.m in Sources */,
+				84EAEAD71EE17683007D3CCA /* HelpCenterViewController.m in Sources */,
 				842E61FE1EB08C8300BF91FB /* IFlyFaceImage.m in Sources */,
 				842E62161EB0915D00BF91FB /* DetectionSuccessfulViewController.m in Sources */,
 				842E61E51EB08BEF00BF91FB /* FaceStreamDetectorViewController.m in Sources */,
@@ -1352,7 +1361,6 @@
 				84C50C4E1EADF44A00AD0B62 /* IDInfo.m in Sources */,
 				84C50C5A1EADF47100AD0B62 /* AVCaptureViewController.m in Sources */,
 				8468563C1EA08FF900C74F87 /* NavBaseVC.m in Sources */,
-				846C9EA01ED821A40099CC51 /* AppDelegate+JPush.m in Sources */,
 				846856421EA0902D00C74F87 /* ASValueTrackingSlider.m in Sources */,
 				842E62061EB08C9700BF91FB /* IFlyFaceResultKeys.m in Sources */,
 				845663FB1ED57F6F0075A971 /* LMResultShowVC.m in Sources */,
@@ -1568,6 +1576,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CODE_SIGN_ENTITLEMENTS = haitian/haitian.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = NUH99A3LBD;
@@ -1606,6 +1615,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CODE_SIGN_ENTITLEMENTS = haitian/haitian.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = NUH99A3LBD;

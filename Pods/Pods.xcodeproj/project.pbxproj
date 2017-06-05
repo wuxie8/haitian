@@ -108,8 +108,10 @@
 		1CA01B33132DA0FFEBEB758B6390BEB8 /* UIKit+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIKit+AFNetworking.h"; path = "UIKit+AFNetworking/UIKit+AFNetworking.h"; sourceTree = "<group>"; };
 		1D4232EADCA95C967A8C3B6F70ED7A3C /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLRequestSerialization.m; path = AFNetworking/AFURLRequestSerialization.m; sourceTree = "<group>"; };
 		1E736EBDFD9327D31A752E6760AF8D88 /* AFURLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
+		1E935854B94EDE94F5E4A5239E477BEA /* libjpush-ios-3.0.3.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "libjpush-ios-3.0.3.a"; path = "Lib/libjpush-ios-3.0.3.a"; sourceTree = "<group>"; };
 		20CB4FD24578B35484925C4D9A27FC62 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		268F47AC608D1CB011B9CAEAEA7B8824 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		28B23FBF8EC9708FDA033057F28D7053 /* libjcore-ios-1.1.1.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "libjcore-ios-1.1.1.a"; path = "Lib/libjcore-ios-1.1.1.a"; sourceTree = "<group>"; };
 		3112A949F900F3D41377A075B3D5F489 /* UIRefreshControl+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIRefreshControl+AFNetworking.h"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.h"; sourceTree = "<group>"; };
 		3136B8D0F845784A870CD516EB34AD56 /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libAFNetworking.a; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3238B1E86B7A505E2E765940B0B8A028 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.m"; sourceTree = "<group>"; };
@@ -122,7 +124,6 @@
 		41692FB3247534123AE4F23D4D180987 /* FSMStateUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FSMStateUtil.m; path = RealReachability/FSM/FSMStateUtil.m; sourceTree = "<group>"; };
 		4DA657C87464AF635D9D3E4832E0149D /* FSMStateUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSMStateUtil.h; path = RealReachability/FSM/FSMStateUtil.h; sourceTree = "<group>"; };
 		564DA029A8EDCAA2B83E15C8FE8F1AAC /* PingHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PingHelper.h; path = RealReachability/Ping/PingHelper.h; sourceTree = "<group>"; };
-		5740885B5D65D0F3EF9AD78C3BEBB294 /* libjpush-ios-3.0.2.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "libjpush-ios-3.0.2.a"; path = "Lib/libjpush-ios-3.0.2.a"; sourceTree = "<group>"; };
 		594B5189439FC107353B4AD0B4C2E81F /* Pods-haitian-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-haitian-acknowledgements.plist"; sourceTree = "<group>"; };
 		59D84A4F7A1C1C97BA13225FA674A525 /* PingFoundation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PingFoundation.h; path = RealReachability/Ping/PingFoundation.h; sourceTree = "<group>"; };
 		5C3076143126055C32B4622C7091B768 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
@@ -166,7 +167,6 @@
 		D09E47319B634A3AD153AEF04FF40B20 /* ReachStateUnloaded.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ReachStateUnloaded.h; path = RealReachability/FSM/ReachStateUnloaded.h; sourceTree = "<group>"; };
 		D0CDEAF9A7B094320750DE7B89E4EC5B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		D38142D4AA9DB0E2BA0EFB34E206F53B /* AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.xcconfig; sourceTree = "<group>"; };
-		E0C11551D0696EF57A479DD0A4084500 /* libjcore-ios-1.1.1.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "libjcore-ios-1.1.1.a"; path = "Lib/libjcore-ios-1.1.1.a"; sourceTree = "<group>"; };
 		E4859A5B1B7F7582B39733CD9C8C0B59 /* FSMEngine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSMEngine.h; path = RealReachability/FSM/FSMEngine.h; sourceTree = "<group>"; };
 		E557A9801ADD214CB138DCCFD7484D93 /* Pods-haitian-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-haitian-resources.sh"; sourceTree = "<group>"; };
 		E62F4512C815244F0D58B8DC4967A275 /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
@@ -245,19 +245,19 @@
 			path = "../Target Support Files/AFNetworking";
 			sourceTree = "<group>";
 		};
-		1D87EEC010272C95970AF3A4061ADCF4 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E0C11551D0696EF57A479DD0A4084500 /* libjcore-ios-1.1.1.a */,
-				5740885B5D65D0F3EF9AD78C3BEBB294 /* libjpush-ios-3.0.2.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		20B56609144CE204DFA8221F742B2D76 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				05B55DFFACCD9F333E86E2EF446DD015 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		24C6E49C8DE0ABF92CE5BFB1272C0A56 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				28B23FBF8EC9708FDA033057F28D7053 /* libjcore-ios-1.1.1.a */,
+				1E935854B94EDE94F5E4A5239E477BEA /* libjpush-ios-3.0.3.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -442,7 +442,7 @@
 			isa = PBXGroup;
 			children = (
 				5F3ED828AD5451C0699435D85335E26D /* JPUSHService.h */,
-				1D87EEC010272C95970AF3A4061ADCF4 /* Frameworks */,
+				24C6E49C8DE0ABF92CE5BFB1272C0A56 /* Frameworks */,
 			);
 			name = "JPush-iOS-SDK";
 			path = "JPush-iOS-SDK";
