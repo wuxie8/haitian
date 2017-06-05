@@ -10,7 +10,7 @@
 #import "ForgotPasswordViewController.h"
 #import "User.h"
 #import "RegisterVC.h"
-#import <JPUSHService.h>
+#import "JPUSHService.h"
 
 #define ViewHeight 50
 #define ButtonWeight 150

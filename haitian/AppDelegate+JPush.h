@@ -7,8 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <JPush-iOS-SDK/JPUSHService.h>
-//#import <JPUSHService.h>
+#import "JPUSHService.h"
 
 static NSString *pushAppKey = @"fa0d81922f79360b1f440714";
 static NSString *pushChannel = @"xiaopangqianbao";

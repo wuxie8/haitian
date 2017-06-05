@@ -456,18 +456,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8420A4DA1EE4E808001C5EAC /* libc++.tbd in Frameworks */,
-				846C9E991ED81D720099CC51 /* libresolv.tbd in Frameworks */,
-				843959891EC3FEC60093D906 /* UserNotifications.framework in Frameworks */,
-				842E61D91EB08AE300BF91FB /* UIKit.framework in Frameworks */,
+				842E61DD1EB08AF500BF91FB /* CoreGraphics.framework in Frameworks */,
 				842E61DB1EB08AED00BF91FB /* Foundation.framework in Frameworks */,
+				842E61D91EB08AE300BF91FB /* UIKit.framework in Frameworks */,
+				848F1F941EC00D6C00720FB6 /* CFNetwork.framework in Frameworks */,
+				846C9E9B1ED81EA60099CC51 /* CoreFoundation.framework in Frameworks */,
+				842E61CD1EB08AAD00BF91FB /* CoreTelephony.framework in Frameworks */,
+				842E61D51EB08AD100BF91FB /* SystemConfiguration.framework in Frameworks */,
 				842E61C91EB08A9300BF91FB /* libz.tbd in Frameworks */,
 				846C9E9D1ED81EE00099CC51 /* Security.framework in Frameworks */,
-				842E61DD1EB08AF500BF91FB /* CoreGraphics.framework in Frameworks */,
-				842E61D51EB08AD100BF91FB /* SystemConfiguration.framework in Frameworks */,
-				842E61CD1EB08AAD00BF91FB /* CoreTelephony.framework in Frameworks */,
-				846C9E9B1ED81EA60099CC51 /* CoreFoundation.framework in Frameworks */,
-				848F1F941EC00D6C00720FB6 /* CFNetwork.framework in Frameworks */,
+				846C9E991ED81D720099CC51 /* libresolv.tbd in Frameworks */,
+				8420A4DA1EE4E808001C5EAC /* libc++.tbd in Frameworks */,
+				843959891EC3FEC60093D906 /* UserNotifications.framework in Frameworks */,
 				84EAEAD21EE118F9007D3CCA /* AVFoundation.framework in Frameworks */,
 				848F1F9E1EC011DE00720FB6 /* LocalAuthentication.framework in Frameworks */,
 				842E61CB1EB08AA000BF91FB /* CoreLocation.framework in Frameworks */,
@@ -1589,6 +1589,13 @@
 				);
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREFIX_HEADER = /Users/admin/Desktop/haitian/haitian/Header.h;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/RealReachability\"",
+					"$(SRCROOT)//Users/admin/Desktop/haitian/jcore-ios-1.1.3.a",
+				);
 				INFOPLIST_FILE = haitian/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1628,6 +1635,13 @@
 				);
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_PREFIX_HEADER = /Users/admin/Desktop/haitian/haitian/Header.h;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/RealReachability\"",
+					"$(SRCROOT)//Users/admin/Desktop/haitian/jcore-ios-1.1.3.a",
+				);
 				INFOPLIST_FILE = haitian/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
