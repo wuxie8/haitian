@@ -30,7 +30,7 @@
     tab=[[UITableView alloc]initWithFrame:CGRectMake(0 , 0, WIDTH, HEIGHT-50)];
     tab.delegate=self;
     tab.dataSource=self;
-    
+    [self getList];
     tab.backgroundColor=AppPageColor;
     [self.view addSubview:tab];
     // Do any additional setup after loading the view.
@@ -42,25 +42,53 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = backItem;
 }
+-(void)getList
+{
+    NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:
+                        
+                        @"624654",@"uid",
+                        nil];
+    
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/userinfo/detail",SERVEREURL] parameters:dic1 success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *dic=(NSDictionary *)responseObject;
+        if ([dic[@"code"] isEqualToString:@"0000"]) {
+            NSDictionary *diction=[dic[@"data"] objectForKey:@"data"];
+            UITextField *text1=    [self.view viewWithTag:1001];
+            [text1 setText:[diction objectForKey:@"realname"]];
+            UITextField *text2=    [self.view viewWithTag:1002];
+            [text2 setText:[diction objectForKey:@"idcard"]];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+
+
+}
 -(void)complete
 {
     DLog(@"%@",[(UITextField *)[self.view viewWithTag:1001] text]);
-//    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
-//                       @"shoujidaikuanjieqiankuai",@"code",
-//                       @"1.0.0",@"version",
-//                       @"1",@"page",
-//                       nil];
-//    [[NetWorkManager sharedManager]postJSON:<##> parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
-//        NSDictionary *dic=(NSDictionary *)responseObject;
-//        if ([dic[@"status"]boolValue]) {
-//            
-//            
-//        }
-//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//        NSLog(@"%@",error);
-//        
-//        
-//    }];
+    NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:
+
+                     @"624654",@"uid",
+                       [(UITextField *)[self.view viewWithTag:1001] text],@"realname",
+                       [(UITextField *)[self.view viewWithTag:1002] text],@"idcard",
+
+                       nil];
+
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/userinfo/add",SERVEREURL] parameters:dic1 success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *dic=(NSDictionary *)responseObject;
+        if ([dic[@"code"] isEqualToString:@"0000"]) {
+            [MessageAlertView showSuccessMessage:@"保存成功"];
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
 
 
 }

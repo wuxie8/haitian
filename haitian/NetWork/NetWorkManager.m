@@ -115,7 +115,8 @@
     }
     
 //    [self configNetManager:name];
-    
+    DLog(@"%@",parameters );
+
     if (! [self checkSomething:name andParameters:parameters]) {
         return nil;
     }
@@ -376,7 +377,27 @@
            
         }
     }
-    
+    if ([name containsString:@"/userinfo/add"]) {
+        DLog(@"%@",parameters);
+
+        if ([UtilTools isBlankString:[parameters objectForKey:@"realname"]])
+        {
+                message = @"请输入姓名";
+                isChecked = NO;
+           
+        }
+        else if ([UtilTools isBlankString:[parameters objectForKey:@"idcard"]]) {
+            
+            message = @"请输入身份证";
+            isChecked = NO;
+        }
+        else if (![UtilTools validateIdentityCard:[parameters objectForKey:@"idcard"]]) {
+            
+            message = @"请输入正确的身份证";
+            isChecked = NO;
+        }
+        
+    }
     if (![UtilTools isBlankString:message]) {
         [MessageAlertView showErrorMessage:message];
     }

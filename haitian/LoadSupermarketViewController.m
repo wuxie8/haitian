@@ -11,8 +11,9 @@
 #import "LoadSupermarketCollectionViewCell.h"
 #import "WSPageView.h"
 #import "WSIndexBanner.h"
-
+#import "BannerModel.h"
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
+#import "UIImageView+AFNetworking.h"
 
 #import <CoreTelephony/CTCarrier.h>
 #define kMargin 10
@@ -33,6 +34,7 @@ static NSString *const footerId = @"footerId1";
      NSArray *arr2;
      NSArray *arr3;
      NSArray *arr4;
+    NSMutableArray *bannerMutableArray;
 }
 #ifdef __IPHONE_7_0
 - (UIRectEdge)edgesForExtendedLayout
@@ -53,10 +55,9 @@ static NSString *const footerId = @"footerId1";
     NSArray *detailTitleArray=@[@"有身份证可借5000元\n最快三分钟下款",@"借款只需三分钟\n30秒极速放款",@"有手机就能贷\n最快三分钟放款"];
      NSArray *detailTitleArray1=@[@"额度高\n最快三分钟下款",@"有身份证就能贷\n1分钟审核，56秒到账"];
     arr2=@[titleArray,titleArray1];
-   
+    [self getBannerList];
     arr3=@[detailTitleArray,detailTitleArray1];
     arr4=@[imageArray,imageArray1];
-    [self loadBanner];
     _LoadcollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, pageHeight, WIDTH, HEIGHT-64-44-pageHeight) collectionViewLayout:[UICollectionViewFlowLayout new]];
     [_LoadcollectionView setBackgroundColor:kColorFromRGBHex(0xEBEBEB)];
      _LoadcollectionView.delegate = self;
@@ -70,7 +71,28 @@ static NSString *const footerId = @"footerId1";
     [self.view addSubview:_LoadcollectionView];
     // Do any additional setup after loading the view.
 }
+-(void)getBannerList
+{
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/banner/list",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *dic=(NSDictionary *)responseObject;
+        DLog(@"%@",dic);
+        NSDictionary *diction=dic[@"data"];
+        NSArray *array=diction[@"data"];
+        bannerMutableArray=[NSMutableArray array];
+        for (NSDictionary *dic1 in array) {
+            BannerModel *remind=[BannerModel new];
+            [remind setValuesForKeysWithDictionary:dic1];
+            [bannerMutableArray addObject:remind];
+        }
+        [self loadBanner];
 
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+
+
+}
 
 -(void)loadBanner
 {
@@ -99,7 +121,7 @@ static NSString *const footerId = @"footerId1";
 }
 #pragma mark NewPagedFlowView Datasource
 - (NSInteger)numberOfPagesInFlowView:(WSPageView *)flowView {
-    return 3;
+    return bannerMutableArray.count;
 }
 
 - (UIView *)flowView:(WSPageView *)flowView cellForPageAtIndex:(NSInteger)index{
@@ -112,7 +134,16 @@ static NSString *const footerId = @"footerId1";
     }
     [bannerView.mainImageView setImage:[UIImage imageNamed:@"WechatIMG2"]];
     //    bannerView.mainImageView.image = self.imageArray[index];
-    //    [bannerView.mainImageView sd_setImageWithURL:[NSURL URLWithString:ImgURLArray[index]]];
+    BannerModel *banner=[bannerMutableArray objectAtIndex:index];
+    DLog(@"%@",[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,banner.img]]);
+
+    NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,banner.img]];
+    UIImage * result;
+    NSData * data = [NSData dataWithContentsOfURL:url];
+    
+    result = [UIImage imageWithData:data];
+    
+    [bannerView.mainImageView setImage:result];
     
     return bannerView;
 }
@@ -159,9 +190,8 @@ static NSString *const footerId = @"footerId1";
         UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(image.frame)+10, 10, 100, 20)];
         lab.text=arr[indexPath.section];
         [headerView addSubview:lab];
-        return headerView;
-    }
         
+        }
     return headerView;
 }
 #pragma mark UICollectionViewDelegateFlowLayout

@@ -10,6 +10,7 @@
 #import "WSPageView.h"
 #import "WSIndexBanner.h"
 #import "FastHandleCardCollectionViewCell.h"
+#import "ProductModel.h"
 #define pageHeight 150
 #define kMargin 10
 
@@ -28,7 +29,7 @@ static NSString *const footerId = @"footerId";
     NSArray *imageArray;
        NSArray *titleArray;
      NSArray *describeArray;
-    
+    NSMutableArray *bankMutableArray;
 }
 #ifdef __IPHONE_7_0
 - (UIRectEdge)edgesForExtendedLayout
@@ -38,7 +39,8 @@ static NSString *const footerId = @"footerId";
 #endif
 - (void)viewDidLoad {
     [super viewDidLoad];
-   imageArray=@[@"pudongBank",@"everBrighBank",@"MinshengBank",@"zhaoshangBank",@"zhongxinbank",@"peaceBank",@"xingyeBank",@"zheshangBank",@"jiaotongbank"];
+    [self getList];
+    imageArray=@[@"pudongBank",@"everBrighBank",@"MinshengBank",@"zhaoshangBank",@"zhongxinbank",@"peaceBank",@"xingyeBank",@"zheshangBank",@"jiaotongbank"];
     titleArray=@[@"浦发银行",@"光大银行",@"民生银行",@"招商银行",@"中信银行",@"平安银行",@"兴业银行",@"浙商银行",@"交通银行"];
     describeArray=@[@"刷卡得3888元大奖",@"10元吃哈根达斯",@"最快3秒核发",@"玩卡必备 优惠多",@"1元带你看大片",@"周三享5折",@"最快当天下卡",@"5元看电影",@"日日刷 日日返"];
     self.title=@"快速办卡";
@@ -71,6 +73,28 @@ static NSString *const footerId = @"footerId";
     
     [self.view addSubview:_collectionView];
     // Do any additional setup after loading the view.
+}
+-(void)getList
+{
+
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/bank/list",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *dic=(NSDictionary *)responseObject;
+        DLog(@"%@",dic);
+        NSDictionary *diction=dic[@"data"];
+        NSArray *arr=diction[@"data"];
+        bankMutableArray=[NSMutableArray array];
+        for (NSDictionary *dic1 in arr) {
+            ProductModel *remind=[ProductModel new];
+            [remind setValuesForKeysWithDictionary:dic1];
+            [bankMutableArray addObject:remind];
+        }
+        DLog(@"%@",bankMutableArray);
+        [_collectionView reloadData];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+
 }
 #pragma mark NewPagedFlowView Delegate
 - (CGSize)sizeForPageInFlowView:(WSPageView *)flowView {
@@ -107,17 +131,25 @@ static NSString *const footerId = @"footerId";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 9;
+    return bankMutableArray.count;
 }
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    ProductModel *pro=[bankMutableArray objectAtIndex:indexPath.row];
     FastHandleCardCollectionViewCell *cell = (FastHandleCardCollectionViewCell *)[_collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
-    [cell.bankimageView setImage:[UIImage imageNamed:imageArray[indexPath.row]]];
-    [cell.titleLabel setText:titleArray[indexPath.row]];
-    [cell.detailLabel setText:describeArray[indexPath.row]];
+    NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,pro.icon]];
+    UIImage * result;
+    NSData * data = [NSData dataWithContentsOfURL:url];
+    
+    result = [UIImage imageWithData:data];
+    
+    [cell.bankimageView setImage:result];
+    [cell.bankimageView setContentMode:UIViewContentModeScaleToFill];
+    [cell.titleLabel setText:pro.name];
+    [cell.detailLabel setText:pro.describe];
     return cell;
 }
 // 和UITableView类似，UICollectionView也可设置段头段尾

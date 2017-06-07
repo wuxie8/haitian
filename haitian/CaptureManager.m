@@ -210,9 +210,7 @@ static void * SessionRunningAndDeviceAuthorizedContext = &SessionRunningAndDevic
     IFlyFaceDirectionType faceOrientation=[self faceImageOrientation];
     
     IFlyFaceImage* faceImage=[[IFlyFaceImage alloc] init];
-    if(!faceImage){
-        return faceImage;
-    }
+    
 
     CGDataProviderRef provider = CGImageGetDataProvider(cgImage);
     
