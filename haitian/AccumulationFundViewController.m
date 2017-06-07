@@ -136,7 +136,6 @@
         newsign =[digestString lowercaseString];
         
     }
-    NSLog(@"====2.newsign:%@",newsign);
     [[LMZXSDK shared] sendReqWithSign:newsign];
     
 }
@@ -146,7 +145,6 @@
     __block typeof(self) weakSelf = self;
     _lmzxSDK.lmzxResultBlock = ^(NSInteger code, LMZXSDKFunction function, id obj, NSString * token){
         
-        NSLog(@"SDK回调结果==%ld,%d,%@,%@",(long)code,function,obj,token);
         
         if (code >=0) {
             // 结果获取建议放在商户服务端,不建议在 APP 端直接获取立木服务器数据!
@@ -195,9 +193,7 @@
                                        @"bizType":bizType
                                        };
                 
-                NSLog(@"%@",dict);
                 NSDictionary *dic = [weakSelf signdic:dict];
-                NSLog(@"%@",dic);
                 [weakSelf post:[lm_url stringByAppendingString:@"/api/gateway"] params:dic success:^(id obj) {
                     
                     if (obj) {
@@ -207,19 +203,15 @@
                             txt = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
                             
                         }
-                        DLog(@"%@",obj);
 
-                        DLog(@"%@",txt);
                         [MessageAlertView showSuccessMessage:txt];
 
                     } else{
-                        DLog(@"wushuju ");
 
                     }
                 
                     
                 } failure:^(NSError *error) {
-                    DLog(@"%@",error);
 
                 }];
                 

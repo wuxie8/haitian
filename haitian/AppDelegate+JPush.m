@@ -62,7 +62,6 @@
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
-//        NSLog(@"%@", [NSString stringWithFormat:@"Device Token: %@", deviceToken]);
     /// Required - 注册 DeviceToken
     [JPUSHService registerDeviceToken:deviceToken];
 }
@@ -146,7 +145,6 @@ fetchCompletionHandler:
     }
     else {
         // 判断为本地通知
-//        NSLog(@"iOS10 前台收到本地通知:{\nbody:%@，\ntitle:%@,\nsubtitle:%@,\nbadge：%@，\nsound：%@，\nuserInfo：%@\n}",body,title,subtitle,badge,sound,userInfo);
     }
     completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以设置
 }
@@ -157,12 +155,10 @@ fetchCompletionHandler:
     
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
-//        NSLog(@"iOS10 收到远程通知:%@", [self logDic:userInfo]);
         [self didRecevieNotification:userInfo];
     }
     else {
         // 判断为本地通知
-//        NSLog(@"iOS10 收到本地通知:{\nbody:%@，\ntitle:%@,\nsubtitle:%@,\nbadge：%@，\nsound：%@，\nuserInfo：%@\n}",body,title,subtitle,badge,sound,userInfo);
     }
     
     completionHandler();  // 系统要求执行这个方法

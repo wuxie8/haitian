@@ -416,7 +416,6 @@ static SystemSoundID shake_sound_enter_id = 0;
     
     // 打印结果：dateString = 年月日 2013/10/16 时间 05:15:43
     dateString= [dateString stringByReplacingCharactersInRange:NSMakeRange(dateString.length-8, 8) withString:@"00:00:00"];
-    DLog(@"%@",dateString);
     NSDate *dat=[date dateFromString:dateString];
 
     NSTimeInterval now=[dat timeIntervalSince1970]*1;
@@ -491,41 +490,6 @@ static SystemSoundID shake_sound_enter_id = 0;
     return  callWebView;
 }
 
-//确定昵称
-
-////好友头像
-//+(NSString *)headImageFromPhone:(NSString *)phone
-//{
-//    if (Context.subUsers.count>0) {
-//        for (int i = 0; i<Context.subUsers.count; i++) {
-//            SubUser *user = Context.subUsers[i];
-//            if ([user.account isEqualToString:phone]) {
-//                return user.md5Photo;
-//            }
-//        }
-//        return @"";
-//    } else {
-//        return @"";
-//    }
-//}
-//
-////好友名字
-//+(NSString *)nameFromPhone:(NSString *)phone
-//{
-//    if (Context.subUsers.count>0) {
-//        for (int i = 0; i<Context.subUsers.count; i++) {
-//            SubUser *user = Context.subUsers[i];
-//            
-//            if ([user.account isEqualToString:phone]) {
-//                
-//                return [self stringFrom:user];
-//            }
-//        }
-//        return phone;
-//    } else {
-//        return phone;
-//    }
-//}
 
 //获取视频封面，本地视频，网络视频都可以用
 

@@ -72,7 +72,6 @@
 {
     [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/message/replist",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
-        DLog(@"%@",dic);
         NSDictionary *diction=dic[@"data"];
         NSArray *arr=diction[@"data"];
         remindArray=[NSMutableArray array];
@@ -83,7 +82,6 @@
             [remindArray addObject:remind];
             [remindDic setValue:dic1[@"rep_id"] forKey:dic1[@"name"]];
         }
-        DLog(@"%@",remindArray);
 
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
@@ -91,11 +89,9 @@
     
     [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/message/typelist",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
-        DLog(@"%@",dic);
         
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"%@",error);
     }];
     
     [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/message/remlist",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -110,10 +106,8 @@
             [remindTimeArray addObject:remind];
             [remindTimeDic setValue:dic1[@"rem_id"] forKey:dic1[@"name"]];
         }
-        DLog(@"%@",remindTimeArray);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"%@",error);
     }];
     
 }
@@ -219,10 +213,8 @@ type=5;
     NSString *url=@"http://app.jishiyu11.cn:82/api/message/add";
     [[NetWorkManager sharedManager]postJSON:url parameters:dic1  success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
-        DLog(@"%@",dic);
 
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"%@",error);
         
         
     }];
@@ -321,14 +313,12 @@ type=5;
     if ([notification.name isEqualToString:RepeatType]) {
         UITextField *text=[self.view viewWithTag:1011];
         text.text=notification.object;
-        DLog(@"%@",[remindDic objectForKey:notification.object]);
         rep_id=[remindDic objectForKey:notification.object];
     }
     else if([notification.name isEqualToString:RemianTime])
     {
         UITextField *text=[self.view viewWithTag:1012];
         text.text=notification.object;
-        DLog(@"%@",[remindTimeDic objectForKey:notification.object]);
         rem_id=[remindTimeDic objectForKey:notification.object];
 
     }

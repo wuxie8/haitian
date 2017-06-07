@@ -11,6 +11,7 @@
 #import "WSIndexBanner.h"
 #import "FastHandleCardCollectionViewCell.h"
 #import "ProductModel.h"
+#import "BannerModel.h"
 #define pageHeight 150
 #define kMargin 10
 
@@ -30,6 +31,7 @@ static NSString *const footerId = @"footerId";
        NSArray *titleArray;
      NSArray *describeArray;
     NSMutableArray *bankMutableArray;
+    NSMutableArray *bannerMutableArray;
 }
 #ifdef __IPHONE_7_0
 - (UIRectEdge)edgesForExtendedLayout
@@ -40,10 +42,28 @@ static NSString *const footerId = @"footerId";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self getList];
-    imageArray=@[@"pudongBank",@"everBrighBank",@"MinshengBank",@"zhaoshangBank",@"zhongxinbank",@"peaceBank",@"xingyeBank",@"zheshangBank",@"jiaotongbank"];
+    [self getBannerList];
+imageArray=@[@"pudongBank",@"everBrighBank",@"MinshengBank",@"zhaoshangBank",@"zhongxinbank",@"peaceBank",@"xingyeBank",@"zheshangBank",@"jiaotongbank"];
     titleArray=@[@"浦发银行",@"光大银行",@"民生银行",@"招商银行",@"中信银行",@"平安银行",@"兴业银行",@"浙商银行",@"交通银行"];
     describeArray=@[@"刷卡得3888元大奖",@"10元吃哈根达斯",@"最快3秒核发",@"玩卡必备 优惠多",@"1元带你看大片",@"周三享5折",@"最快当天下卡",@"5元看电影",@"日日刷 日日返"];
     self.title=@"快速办卡";
+   
+    
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0,pageHeight, WIDTH, HEIGHT-64-44-pageHeight) collectionViewLayout:[UICollectionViewFlowLayout new]];
+    [_collectionView setBackgroundColor:kColorFromRGBHex(0xEBEBEB)];
+    _collectionView.delegate = self;
+    _collectionView.dataSource = self;
+    self.collectionView.alwaysBounceVertical = YES;
+    // 注册cell、sectionHeader、sectionFooter
+    [_collectionView registerClass:[FastHandleCardCollectionViewCell class] forCellWithReuseIdentifier:cellId];
+    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerId];
+    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerId];
+    
+    [self.view addSubview:_collectionView];
+    // Do any additional setup after loading the view.
+}
+-(void)loadBanner
+{
     WSPageView *pageView = [[WSPageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH,pageHeight)];
     pageView.delegate = self;
     pageView.dataSource = self;
@@ -60,26 +80,34 @@ static NSString *const footerId = @"footerId";
     [pageView addSubview:pageControl];
     [pageView stopTimer];
     [self.view addSubview:pageView];
-    
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0,CGRectGetMaxY(pageView.frame)+10, WIDTH, HEIGHT-64-44-pageHeight) collectionViewLayout:[UICollectionViewFlowLayout new]];
-    [_collectionView setBackgroundColor:kColorFromRGBHex(0xEBEBEB)];
-    _collectionView.delegate = self;
-    _collectionView.dataSource = self;
-    self.collectionView.alwaysBounceVertical = YES;
-    // 注册cell、sectionHeader、sectionFooter
-    [_collectionView registerClass:[FastHandleCardCollectionViewCell class] forCellWithReuseIdentifier:cellId];
-    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerId];
-    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerId];
-    
-    [self.view addSubview:_collectionView];
-    // Do any additional setup after loading the view.
 }
+-(void)getBannerList
+{
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/banner/list",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *dic=(NSDictionary *)responseObject;
+        NSDictionary *diction=dic[@"data"];
+        NSArray *array=diction[@"data"];
+        bannerMutableArray=[NSMutableArray array];
+        for (NSDictionary *dic1 in array) {
+            BannerModel *remind=[BannerModel new];
+            [remind setValuesForKeysWithDictionary:dic1];
+            [bannerMutableArray addObject:remind];
+        }
+        [self loadBanner];
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+    
+    
+}
+
 -(void)getList
 {
 
     [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/bank/list",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
-        DLog(@"%@",dic);
         NSDictionary *diction=dic[@"data"];
         NSArray *arr=diction[@"data"];
         bankMutableArray=[NSMutableArray array];
@@ -88,7 +116,6 @@ static NSString *const footerId = @"footerId";
             [remind setValuesForKeysWithDictionary:dic1];
             [bankMutableArray addObject:remind];
         }
-        DLog(@"%@",bankMutableArray);
         [_collectionView reloadData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
@@ -102,7 +129,7 @@ static NSString *const footerId = @"footerId";
 }
 #pragma mark NewPagedFlowView Datasource
 - (NSInteger)numberOfPagesInFlowView:(WSPageView *)flowView {
-    return 3;
+    return bannerMutableArray.count;
 }
 
 - (UIView *)flowView:(WSPageView *)flowView cellForPageAtIndex:(NSInteger)index{
@@ -113,7 +140,15 @@ static NSString *const footerId = @"footerId";
         bannerView.layer.cornerRadius = 4;
         bannerView.layer.masksToBounds = YES;
     }
-    [bannerView.mainImageView setImage:[UIImage imageNamed:@"WechatIMG2"]];
+    BannerModel *banner=[bannerMutableArray objectAtIndex:index];
+    
+    NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,banner.img]];
+    UIImage * result;
+    NSData * data = [NSData dataWithContentsOfURL:url];
+    
+    result = [UIImage imageWithData:data];
+    
+    [bannerView.mainImageView setImage:result];
     //    bannerView.mainImageView.image = self.imageArray[index];
     //    [bannerView.mainImageView sd_setImageWithURL:[NSURL URLWithString:ImgURLArray[index]]];
     

@@ -131,7 +131,6 @@
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
-        DLog(@"%@",error);
     }];
 
 }

@@ -75,7 +75,6 @@ static NSString *const footerId = @"footerId1";
 {
     [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/banner/list",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
-        DLog(@"%@",dic);
         NSDictionary *diction=dic[@"data"];
         NSArray *array=diction[@"data"];
         bannerMutableArray=[NSMutableArray array];
@@ -133,9 +132,7 @@ static NSString *const footerId = @"footerId1";
         bannerView.layer.masksToBounds = YES;
     }
     [bannerView.mainImageView setImage:[UIImage imageNamed:@"WechatIMG2"]];
-    //    bannerView.mainImageView.image = self.imageArray[index];
     BannerModel *banner=[bannerMutableArray objectAtIndex:index];
-    DLog(@"%@",[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,banner.img]]);
 
     NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,banner.img]];
     UIImage * result;

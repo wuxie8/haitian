@@ -98,9 +98,7 @@
                            @"token":token,
                            @"bizType":bizType
                            };
-    NSLog(@"%@",dict);
     NSDictionary *dic = [self sign:dict];
-    NSLog(@"%@",dic);
     [self post:[lm_url stringByAppendingString:@"/api/gateway"] params:dic success:^(id obj) {
         
         if (obj) {

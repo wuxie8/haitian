@@ -68,7 +68,6 @@
 }
 -(void)complete
 {
-    DLog(@"%@",[(UITextField *)[self.view viewWithTag:1001] text]);
     NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:
 
                      @"624654",@"uid",

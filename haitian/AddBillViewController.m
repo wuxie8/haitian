@@ -219,7 +219,6 @@ NSArray *imageArr;
     __block typeof(self) weakSelf = self;
     _lmzxSDK.lmzxResultBlock = ^(NSInteger code, LMZXSDKFunction function, id obj, NSString * token){
         
-        NSLog(@"SDK回调结果==%ld,%d,%@,%@",(long)code,function,obj,token);
         
         if (code >=0) {
             // 结果获取建议放在商户服务端,不建议在 APP 端直接获取立木服务器数据!
@@ -268,12 +267,9 @@ NSArray *imageArr;
                                        @"bizType":bizType
                                        };
                 
-                NSLog(@"%@",dict);
                 [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/message/signature",SERVEREURL] parameters:dict success:^(NSURLSessionDataTask *task, id responseObject) {
                     NSDictionary *dic=(NSDictionary *)responseObject;
-                    DLog(@"%@",dic);
                     NSString *sign=[dic[@"data"] objectForKey:@"sign"];
-                    DLog(@"%@",sign);
                     NSMutableDictionary *restultDic = [NSMutableDictionary dictionaryWithDictionary:dict];
 
                     [restultDic setObject:sign forKey:@"sign"];
@@ -289,25 +285,20 @@ NSArray *imageArr;
                                 resultVc.token = token;
                                 [weakSelf.navigationController pushViewController:resultVc animated:YES];
                             }
-                            DLog(@"%@",obj);
                             
-                            DLog(@"%@",txt);
                             [MessageAlertView showSuccessMessage:txt];
                             
                         } else{
-                            DLog(@"wushuju ");
                             
                         }
                         
                         
                     } failure:^(NSError *error) {
-                        DLog(@"%@",error);
                         
                     }];
 
                 } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                    NSLog(@"%@",error);
-                }];                
+                }];
                 
             });
         }else{
@@ -362,7 +353,6 @@ NSArray *imageArr;
         newsign =[digestString lowercaseString];
         
     }
-    NSLog(@"====2.newsign:%@",newsign);
     [[LMZXSDK shared] sendReqWithSign:newsign];
     
 }

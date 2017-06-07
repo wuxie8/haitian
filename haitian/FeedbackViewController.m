@@ -199,8 +199,6 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         NSDictionary *resultDic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        DLog(@"%@",resultDic);
-
         if ([resultDic[@"code"]isEqualToString:@"0000"]) {
             [MessageAlertView showSuccessMessage:@"提交成功"];
             [self.navigationController popViewControllerAnimated:YES];
@@ -210,7 +208,6 @@
             [MessageAlertView showErrorMessage:resultDic[@"msg"]];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        DLog(@"%@",error);
 
     }];
 

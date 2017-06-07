@@ -62,7 +62,6 @@
             [MessageAlertView showErrorMessage:responseObject[@"msg"]];
             }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        DLog(@"%@",error);
 
     }];
 
@@ -80,7 +79,6 @@
     
     if (!jsonData) {
         
-        NSLog(@"%@",error);
         
     }else{
         

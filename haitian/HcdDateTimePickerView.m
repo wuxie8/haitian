@@ -535,7 +535,6 @@
 -(void)dismiss:(UITapGestureRecognizer *)tap{
     
     if( CGRectContainsPoint(self.frame, [tap locationInView:timeBroadcastView])) {
-        NSLog(@"tap");
     } else{
         
         [self dismissBlock:^(BOOL Complete) {
