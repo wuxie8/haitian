@@ -9,7 +9,6 @@
 #import "RemindViewController.h"
 #import "RemindTableViewCell.h"
 #import "AddBillViewController.h"
-#import "AddBillVC.h"
 #import "RemindModel.h"
 #import "LoginViewController.h"
 #define  headViewHeight 180

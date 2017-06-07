@@ -88,7 +88,6 @@
     }];
     
     [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/message/typelist",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSDictionary *dic=(NSDictionary *)responseObject;
         
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

@@ -51,7 +51,6 @@
 		8451AFBB1EA859FA002F04B6 /* PersonCenter.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8451AFBA1EA859FA002F04B6 /* PersonCenter.xcassets */; };
 		8451AFBF1EA85E65002F04B6 /* MessageAlertView.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8451AFBE1EA85E65002F04B6 /* MessageAlertView.xcassets */; };
 		84546F4A1EA5E77B00AD0350 /* CertificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84546F491EA5E77B00AD0350 /* CertificationViewController.m */; };
-		845663F81ED5542D0075A971 /* AddBillVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 845663F71ED5542D0075A971 /* AddBillVC.m */; };
 		845663FB1ED57F6F0075A971 /* LMResultShowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 845663FA1ED57F6F0075A971 /* LMResultShowVC.m */; };
 		8466290E1EB34252003E7979 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = 846629071EB34252003E7979 /* Address.plist */; };
 		8466290F1EB34252003E7979 /* LZCityPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846629091EB34252003E7979 /* LZCityPickerController.m */; };
@@ -108,7 +107,6 @@
 		84A7335B1EB88660008ABB7E /* ReferenceDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7335A1EB88660008ABB7E /* ReferenceDataViewController.m */; };
 		84A7398B1E9E25B700A42502 /* WSIndexBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A739881E9E25B700A42502 /* WSIndexBanner.m */; };
 		84A7398C1E9E25B700A42502 /* WSPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A7398A1E9E25B700A42502 /* WSPageView.m */; };
-		84ABC8ED1EC5533B00269C87 /* ReimbursementRemindVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABC8EC1EC5533B00269C87 /* ReimbursementRemindVC.m */; };
 		84ABC8F01EC5556400269C87 /* RemindTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ABC8EF1EC5556400269C87 /* RemindTableViewCell.m */; };
 		84B36FCB1EB32820001FCD96 /* ProfessionalInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B36FCA1EB32820001FCD96 /* ProfessionalInformationViewController.m */; };
 		84B9DBEB1E9DC0990066A92D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DBEA1E9DC0990066A92D /* main.m */; };
@@ -262,8 +260,6 @@
 		84546F481EA5E77B00AD0350 /* CertificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificationViewController.h; sourceTree = "<group>"; };
 		84546F491EA5E77B00AD0350 /* CertificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificationViewController.m; sourceTree = "<group>"; };
 		84546F541EA6200900AD0350 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		845663F61ED5542D0075A971 /* AddBillVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBillVC.h; sourceTree = "<group>"; };
-		845663F71ED5542D0075A971 /* AddBillVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBillVC.m; sourceTree = "<group>"; };
 		845663F91ED57F6F0075A971 /* LMResultShowVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMResultShowVC.h; sourceTree = "<group>"; };
 		845663FA1ED57F6F0075A971 /* LMResultShowVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMResultShowVC.m; sourceTree = "<group>"; };
 		846629071EB34252003E7979 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
@@ -362,8 +358,6 @@
 		84A739881E9E25B700A42502 /* WSIndexBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WSIndexBanner.m; path = "第三方轮播/WSIndexBanner.m"; sourceTree = "<group>"; };
 		84A739891E9E25B700A42502 /* WSPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WSPageView.h; path = "第三方轮播/WSPageView.h"; sourceTree = "<group>"; };
 		84A7398A1E9E25B700A42502 /* WSPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WSPageView.m; path = "第三方轮播/WSPageView.m"; sourceTree = "<group>"; };
-		84ABC8EB1EC5533B00269C87 /* ReimbursementRemindVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReimbursementRemindVC.h; sourceTree = "<group>"; };
-		84ABC8EC1EC5533B00269C87 /* ReimbursementRemindVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReimbursementRemindVC.m; sourceTree = "<group>"; };
 		84ABC8EE1EC5556400269C87 /* RemindTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindTableViewCell.h; sourceTree = "<group>"; };
 		84ABC8EF1EC5556400269C87 /* RemindTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindTableViewCell.m; sourceTree = "<group>"; };
 		84B36FC91EB32820001FCD96 /* ProfessionalInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalInformationViewController.h; sourceTree = "<group>"; };
@@ -632,10 +626,6 @@
 			isa = PBXGroup;
 			children = (
 				844E163C1EC979B900F4EA80 /* ThirdParty */,
-				84ABC8EB1EC5533B00269C87 /* ReimbursementRemindVC.h */,
-				84ABC8EC1EC5533B00269C87 /* ReimbursementRemindVC.m */,
-				845663F61ED5542D0075A971 /* AddBillVC.h */,
-				845663F71ED5542D0075A971 /* AddBillVC.m */,
 				848FBC131ED2E99000A1E1CD /* RemindViewController.h */,
 				848FBC141ED2E99000A1E1CD /* RemindViewController.m */,
 				844E16461EC99FB700F4EA80 /* AddBillViewController.h */,
@@ -855,9 +845,9 @@
 				84B9DC3E1E9DCDBC0066A92D /* LoadSupermarketViewController.h */,
 				84B9DC3F1E9DCDBC0066A92D /* LoadSupermarketViewController.m */,
 				8402B9D81E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.h */,
+				8402B9D91E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m */,
 				84FD17241EE7EB3100EB79A3 /* BannerModel.h */,
 				84FD17251EE7EB3100EB79A3 /* BannerModel.m */,
-				8402B9D91E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m */,
 				84FD17211EE7D6A600EB79A3 /* ProductModel.h */,
 				84FD17221EE7D6A600EB79A3 /* ProductModel.m */,
 				84B9DC411E9DCDF50066A92D /* FastHandleCardViewController.h */,
@@ -1367,7 +1357,6 @@
 				84A733541EB86C82008ABB7E /* CDFInitialsAvatar.m in Sources */,
 				8402B9F91E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m in Sources */,
 				84A733391EB86BA0008ABB7E /* PersonModel.m in Sources */,
-				845663F81ED5542D0075A971 /* AddBillVC.m in Sources */,
 				8466290F1EB34252003E7979 /* LZCityPickerController.m in Sources */,
 				84C50C4E1EADF44A00AD0B62 /* IDInfo.m in Sources */,
 				84C50C5A1EADF47100AD0B62 /* AVCaptureViewController.m in Sources */,
@@ -1393,7 +1382,6 @@
 				84F5D41F1EA7675E00EC8C9D /* TZPhotoPickerController.m in Sources */,
 				84B9DC431E9DCDF50066A92D /* FastHandleCardViewController.m in Sources */,
 				847944BB1ECED16200227EC8 /* WebVC.m in Sources */,
-				84ABC8ED1EC5533B00269C87 /* ReimbursementRemindVC.m in Sources */,
 				842A01691EC9464200143E4A /* NewRemindViewController.m in Sources */,
 				84F5D41C1EA7675E00EC8C9D /* TZAssetModel.m in Sources */,
 				847B17201EDE8F2B003A4D98 /* SetUpViewController.m in Sources */,
