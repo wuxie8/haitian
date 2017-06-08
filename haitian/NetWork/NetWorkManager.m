@@ -263,8 +263,6 @@
 //    [self.requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
 //    self.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"]) {
-//        [self.requestSerializer setValue:Context.currentUser.Token forHTTPHeaderField:@"X-EEXUU-Token"];
-//        DLog(@"X-EEXUU-Token==%@",Context.currentUser.Token);
 
     }
 }
@@ -378,7 +376,6 @@
         }
     }
     if ([name containsString:@"/userinfo/add"]) {
-        DLog(@"%@",parameters);
 
         if ([UtilTools isBlankString:[parameters objectForKey:@"realname"]])
         {

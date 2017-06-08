@@ -15,6 +15,7 @@
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import "UIImageView+AFNetworking.h"
 #import "WebVC.h"
+#import <UIKit+AFNetworking.h>
 #import <CoreTelephony/CTCarrier.h>
 #define kMargin 10
 #define pageHeight 150
@@ -73,7 +74,7 @@ static NSString *const footerId = @"footerId1";
 }
 -(void)getBannerList
 {
-    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/banner/list",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@/banner/list",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
         NSDictionary *diction=dic[@"data"];
         NSArray *array=diction[@"data"];
@@ -131,17 +132,10 @@ static NSString *const footerId = @"footerId1";
         bannerView.layer.cornerRadius = 4;
         bannerView.layer.masksToBounds = YES;
     }
-    [bannerView.mainImageView setImage:[UIImage imageNamed:@"WechatIMG2"]];
     BannerModel *banner=[bannerMutableArray objectAtIndex:index];
+   NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,banner.img]];
+    [bannerView.mainImageView setImageWithURL:url placeholderImage:[UIImage imageNamed:@"BannerList"]];
 
-    NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,banner.img]];
-    UIImage * result;
-    NSData * data = [NSData dataWithContentsOfURL:url];
-    
-    result = [UIImage imageWithData:data];
-    
-    [bannerView.mainImageView setImage:result];
-    
     return bannerView;
 }
 - (void)didSelectCell:(UIView *)subView withSubViewIndex:(NSInteger)subIndex {
@@ -229,17 +223,7 @@ static NSString *const footerId = @"footerId1";
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

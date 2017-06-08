@@ -65,13 +65,13 @@
 //    [tab addGestureRecognizer:tapGestureRecognizer];
     // Do any additional setup after loading the view.
 }
-//-(void)keyboardHide:(UITapGestureRecognizer*)tap{
-//    [self.view endEditing:YES];
-//}
+
 -(void)getList
 {
     [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/message/replist",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
+        if ([dic[@"code"] isEqualToString:@"0000"]) {
+
         NSDictionary *diction=dic[@"data"];
         NSArray *arr=diction[@"data"];
         remindArray=[NSMutableArray array];
@@ -82,29 +82,31 @@
             [remindArray addObject:remind];
             [remindDic setValue:dic1[@"rep_id"] forKey:dic1[@"name"]];
         }
-
+        }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"%@",error);
     }];
     
-    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/message/typelist",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-    }];
+//    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/message/typelist",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+//        
+//        
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//    }];
     
     [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/message/remlist",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
-        NSDictionary *diction=dic[@"data"];
-        NSArray *arr=diction[@"data"];
-        remindTimeArray=[NSMutableArray array];
-        remindTimeDic=[NSMutableDictionary dictionary];
-        for (NSDictionary *dic1 in arr) {
-            ReminndTimeModel *remind=[ReminndTimeModel new];
-            [remind setValuesForKeysWithDictionary:dic1];
-            [remindTimeArray addObject:remind];
-            [remindTimeDic setValue:dic1[@"rem_id"] forKey:dic1[@"name"]];
+        if ([dic[@"code"] isEqualToString:@"0000"]) {
+            NSDictionary *diction=dic[@"data"];
+            NSArray *arr=diction[@"data"];
+            remindTimeArray=[NSMutableArray array];
+            remindTimeDic=[NSMutableDictionary dictionary];
+            for (NSDictionary *dic1 in arr) {
+                ReminndTimeModel *remind=[ReminndTimeModel new];
+                [remind setValuesForKeysWithDictionary:dic1];
+                [remindTimeArray addObject:remind];
+                [remindTimeDic setValue:dic1[@"rem_id"] forKey:dic1[@"name"]];
+            }
         }
+       
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
     }];
@@ -210,8 +212,7 @@ type=5;
         [dic1 setObject:[(UITextField *) [self.view viewWithTag:1000] text] forKey:@"msg_name"];
     }
     NSString *url=@"http://app.jishiyu11.cn:82/api/message/add";
-    [[NetWorkManager sharedManager]postJSON:url parameters:dic1  success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSDictionary *dic=(NSDictionary *)responseObject;
+    [[NetWorkManager sharedManager]postNoTipJSON:url parameters:dic1  success:^(NSURLSessionDataTask *task, id responseObject) {
 
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         

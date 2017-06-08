@@ -13,6 +13,8 @@
 #import "ProductModel.h"
 #import "BannerModel.h"
 #import "WebVC.h"
+#import "UIImageView+AFNetworking.h"
+
 #define pageHeight 150
 #define kMargin 10
 
@@ -28,9 +30,6 @@ static NSString *const footerId = @"footerId";
 @implementation FastHandleCardViewController
 
 {
-    NSArray *imageArray;
-       NSArray *titleArray;
-     NSArray *describeArray;
     NSMutableArray *bankMutableArray;
     NSMutableArray *bannerMutableArray;
 }
@@ -44,12 +43,7 @@ static NSString *const footerId = @"footerId";
     [super viewDidLoad];
     [self getList];
     [self getBannerList];
-imageArray=@[@"pudongBank",@"everBrighBank",@"MinshengBank",@"zhaoshangBank",@"zhongxinbank",@"peaceBank",@"xingyeBank",@"zheshangBank",@"jiaotongbank"];
-    titleArray=@[@"浦发银行",@"光大银行",@"民生银行",@"招商银行",@"中信银行",@"平安银行",@"兴业银行",@"浙商银行",@"交通银行"];
-    describeArray=@[@"刷卡得3888元大奖",@"10元吃哈根达斯",@"最快3秒核发",@"玩卡必备 优惠多",@"1元带你看大片",@"周三享5折",@"最快当天下卡",@"5元看电影",@"日日刷 日日返"];
     self.title=@"快速办卡";
-   
-    
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0,pageHeight, WIDTH, HEIGHT-64-44-pageHeight) collectionViewLayout:[UICollectionViewFlowLayout new]];
     [_collectionView setBackgroundColor:kColorFromRGBHex(0xEBEBEB)];
     _collectionView.delegate = self;
@@ -84,24 +78,24 @@ imageArray=@[@"pudongBank",@"everBrighBank",@"MinshengBank",@"zhaoshangBank",@"z
 }
 -(void)getBannerList
 {
-    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/banner/list",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@/banner/list",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
-        NSDictionary *diction=dic[@"data"];
-        NSArray *array=diction[@"data"];
-        bannerMutableArray=[NSMutableArray array];
-        for (NSDictionary *dic1 in array) {
-            BannerModel *remind=[BannerModel new];
-            [remind setValuesForKeysWithDictionary:dic1];
-            [bannerMutableArray addObject:remind];
+        if ([dic[@"code"] isEqualToString:@"0000"]) {
+            NSDictionary *diction=dic[@"data"];
+            NSArray *array=diction[@"data"];
+            bannerMutableArray=[NSMutableArray array];
+            for (NSDictionary *dic1 in array) {
+                BannerModel *remind=[BannerModel new];
+                [remind setValuesForKeysWithDictionary:dic1];
+                [bannerMutableArray addObject:remind];
+            }
+            [self loadBanner];
+
         }
-        [self loadBanner];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
     }];
-    
-    
-    
 }
 - (void)didSelectCell:(UIView *)subView withSubViewIndex:(NSInteger)subIndex {
     BannerModel *banner=[bannerMutableArray objectAtIndex:subIndex];
@@ -110,13 +104,11 @@ imageArray=@[@"pudongBank",@"everBrighBank",@"MinshengBank",@"zhaoshangBank",@"z
     [vc loadFromURLStr:banner.img_url];
     vc.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:vc animated:NO];
-    
 }
 
 -(void)getList
 {
-
-    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/bank/list",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@/bank/list",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
         NSDictionary *diction=dic[@"data"];
         NSArray *arr=diction[@"data"];
@@ -131,7 +123,7 @@ imageArray=@[@"pudongBank",@"everBrighBank",@"MinshengBank",@"zhaoshangBank",@"z
         NSLog(@"%@",error);
     }];
     
-
+    
 }
 #pragma mark NewPagedFlowView Delegate
 - (CGSize)sizeForPageInFlowView:(WSPageView *)flowView {
@@ -153,18 +145,9 @@ imageArray=@[@"pudongBank",@"everBrighBank",@"MinshengBank",@"zhaoshangBank",@"z
     BannerModel *banner=[bannerMutableArray objectAtIndex:index];
     
     NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,banner.img]];
-    UIImage * result;
-    NSData * data = [NSData dataWithContentsOfURL:url];
-    
-    result = [UIImage imageWithData:data];
-    
-    [bannerView.mainImageView setImage:result];
-    //    bannerView.mainImageView.image = self.imageArray[index];
-    //    [bannerView.mainImageView sd_setImageWithURL:[NSURL URLWithString:ImgURLArray[index]]];
-    
+    [bannerView.mainImageView setImageWithURL:url placeholderImage:[UIImage imageNamed:@"BannerList"]];
     return bannerView;
 }
-
 
 #pragma mark ---- UICollectionViewDataSource
 
@@ -172,8 +155,6 @@ imageArray=@[@"pudongBank",@"everBrighBank",@"MinshengBank",@"zhaoshangBank",@"z
 {
     return 1;
 }
-
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return bankMutableArray.count;
@@ -181,7 +162,7 @@ imageArray=@[@"pudongBank",@"everBrighBank",@"MinshengBank",@"zhaoshangBank",@"z
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ProductModel *pro=[bankMutableArray objectAtIndex:indexPath.row];
-
+    
     WebVC *vc = [[WebVC alloc] init];
     [vc setNavTitle:pro.name];
     [vc loadFromURLStr:pro.link];
@@ -219,13 +200,12 @@ imageArray=@[@"pudongBank",@"everBrighBank",@"MinshengBank",@"zhaoshangBank",@"z
             headerView = [[UICollectionReusableView alloc] init];
         }
         headerView.backgroundColor = [UIColor whiteColor];
-    
+        
         UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(10, 10, 100, 20)];
         lab.text=@"快速办卡";
         [headerView addSubview:lab];
         return headerView;
     }
-        
     return headerView;
 }
 #pragma mark UICollectionViewDelegateFlowLayout
@@ -252,22 +232,10 @@ imageArray=@[@"pudongBank",@"everBrighBank",@"MinshengBank",@"zhaoshangBank",@"z
 {
     return (CGSize){WIDTH,44};
 }
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end
 
