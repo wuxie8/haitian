@@ -61,7 +61,7 @@
     
     self.navigationController.navigationBar.alpha = 1.0;
     self.navigationController.navigationBar.translucent = NO;
-    self.navigationController.navigationBar.tintColor = AppButtonbackgroundColor;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = AppButtonbackgroundColor;
     
     NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];

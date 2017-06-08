@@ -77,7 +77,7 @@
         [self.view addSubview:view];
     }
         UIButton *loginButton=[[UIButton alloc]initWithFrame:CGRectMake(3, 20+arr.count*ViewHeight+20, WIDTH-3*2, 50)];
-        loginButton.backgroundColor=AppBackColor;
+        loginButton.backgroundColor=AppButtonbackgroundColor;
         [loginButton setTitle:@"注册" forState:UIControlStateNormal];
         loginButton.clipsToBounds=YES;
     [loginButton addTarget:self action:@selector(registerClick) forControlEvents:UIControlEventTouchUpInside];
@@ -175,7 +175,7 @@
                 [but setTitle:@"获取验证码" forState:UIControlStateNormal];
                 [but setEnabled:YES];
                 but.alpha=1;
-                but.backgroundColor=AppBackColor;
+                but.backgroundColor=AppButtonbackgroundColor;
             }
         });
     });

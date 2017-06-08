@@ -14,7 +14,7 @@
 #import "BannerModel.h"
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import "UIImageView+AFNetworking.h"
-
+#import "WebVC.h"
 #import <CoreTelephony/CTCarrier.h>
 #define kMargin 10
 #define pageHeight 150
@@ -144,6 +144,16 @@ static NSString *const footerId = @"footerId1";
     
     return bannerView;
 }
+- (void)didSelectCell:(UIView *)subView withSubViewIndex:(NSInteger)subIndex {
+    BannerModel *banner=[bannerMutableArray objectAtIndex:subIndex];
+    WebVC *vc = [[WebVC alloc] init];
+    [vc setNavTitle:banner.title];
+    [vc loadFromURLStr:banner.img_url];
+    vc.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:vc animated:NO];
+    
+}
+
 
 #pragma mark ---- UICollectionViewDataSource
 

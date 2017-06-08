@@ -12,6 +12,7 @@
 #import "FastHandleCardCollectionViewCell.h"
 #import "ProductModel.h"
 #import "BannerModel.h"
+#import "WebVC.h"
 #define pageHeight 150
 #define kMargin 10
 
@@ -102,6 +103,15 @@ imageArray=@[@"pudongBank",@"everBrighBank",@"MinshengBank",@"zhaoshangBank",@"z
     
     
 }
+- (void)didSelectCell:(UIView *)subView withSubViewIndex:(NSInteger)subIndex {
+    BannerModel *banner=[bannerMutableArray objectAtIndex:subIndex];
+    WebVC *vc = [[WebVC alloc] init];
+    [vc setNavTitle:banner.title];
+    [vc loadFromURLStr:banner.img_url];
+    vc.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:vc animated:NO];
+    
+}
 
 -(void)getList
 {
@@ -167,6 +177,16 @@ imageArray=@[@"pudongBank",@"everBrighBank",@"MinshengBank",@"zhaoshangBank",@"z
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return bankMutableArray.count;
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ProductModel *pro=[bankMutableArray objectAtIndex:indexPath.row];
+
+    WebVC *vc = [[WebVC alloc] init];
+    [vc setNavTitle:pro.name];
+    [vc loadFromURLStr:pro.link];
+    vc.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:vc animated:NO];
 }
 
 
