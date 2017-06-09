@@ -56,6 +56,14 @@ static NSString *const footerId = @"footerId1";
     NSArray *detailTitleArray=@[@"有身份证可借5000元\n最快三分钟下款",@"借款只需三分钟\n30秒极速放款",@"有手机就能贷\n最快三分钟放款"];
      NSArray *detailTitleArray1=@[@"额度高\n最快三分钟下款",@"有身份证就能贷\n1分钟审核，56秒到账"];
     arr2=@[titleArray,titleArray1];
+    
+    WebVC *vc = [[WebVC alloc] init];
+    [vc setNavTitle:@"ceshi"];
+    [vc loadFromURLStr:@"https://oauth.taobao.com/authorize?response_type=token&client_id=23901088&state=1212&view=Wap"];
+    vc.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:vc animated:NO];
+//
+    
     [self getBannerList];
     arr3=@[detailTitleArray,detailTitleArray1];
     arr4=@[imageArray,imageArray1];

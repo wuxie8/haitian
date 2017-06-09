@@ -11,6 +11,8 @@
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
+#import "UIAlertController+Extend.h"
+
 @implementation AppDelegate (Push)
 -(void)registerJPush:(UIApplication *)application options:(NSDictionary *)launchOptions
 {
@@ -170,11 +172,14 @@ fetchCompletionHandler:
 -(void)didRecevieNotification :(NSDictionary *)receiveNotifi
 {
 
-//    NSDictionary *apsDic=receiveNotifi[@"aps"];
-//    NSString *badge = apsDic[@"badge"];
-//    NSString *type =receiveNotifi[@"type"];
+    NSDictionary *apsDic=receiveNotifi[@"aps"];
+    
 
- 
+    
+    
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:apsDic[@"alert"] message:receiveNotifi[@"content"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+    [alert show];
+    [JPUSHService resetBadge];
 }
 
 

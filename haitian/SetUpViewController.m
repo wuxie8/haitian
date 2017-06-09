@@ -10,6 +10,7 @@
 #import "AboutUsViewController.h"
 #import "ForgotPasswordViewController.h"
 #import "LoginViewController.h"
+#import <JPUSHService.h>
 @interface SetUpViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
@@ -80,11 +81,20 @@
             Context.currentUser = nil;
             //用户信息归档
             [NSKeyedArchiver archiveRootObject:Context.currentUser toFile:DOCUMENT_FOLDER(@"loginedUser")];
+            
+            [JPUSHService setAlias:@"" callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];
+
         }
             break;
         default:
             break;
     }
+}
+- (void)tagsAliasCallback:(int)iResCode
+                     tags:(NSSet *)tags
+                    alias:(NSString *)alias {
+    
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

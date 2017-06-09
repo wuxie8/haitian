@@ -66,9 +66,37 @@
 {
     [MessageAlertView showErrorMessage:error.localizedDescription];
 }
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    
+    NSLog(@"URL ： %@", [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
+    
+    // click event
+    if ([request.URL.host isEqualToString:@"call_close"])
+    {// notify click close
+      
+        DLog(@"%@%@",webView,request.URL.absoluteString);
 
+        return NO;
+    }
+    
+    if ([request.URL.host isEqualToString:@"on_click"])
+    {
+        NSString *URL_String = [request.URL.path substringFromIndex:1];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:URL_String]];
+               
+        DLog(@"%@%@",webView,URL_String);
+
+        return NO;
+    }
+    
+    return YES;
+}
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    
+    
+    
+
     //定义JS字符串
 //    NSString *script = [NSString stringWithFormat: @"var script = document.createElement('script');"
 //                        "script.type = 'text/javascript';"
