@@ -17,6 +17,7 @@
 #import "WebVC.h"
 #import <UIKit+AFNetworking.h>
 #import <CoreTelephony/CTCarrier.h>
+#import "ProductModel.h"
 #define kMargin 10
 #define pageHeight 150
 static NSString *const cellId = @"cellId1";
@@ -36,6 +37,7 @@ static NSString *const footerId = @"footerId1";
      NSArray *arr3;
      NSArray *arr4;
     NSMutableArray *bannerMutableArray;
+    NSMutableArray *productMutableArray;
 }
 #ifdef __IPHONE_7_0
 - (UIRectEdge)edgesForExtendedLayout
@@ -57,14 +59,15 @@ static NSString *const footerId = @"footerId1";
      NSArray *detailTitleArray1=@[@"额度高\n最快三分钟下款",@"有身份证就能贷\n1分钟审核，56秒到账"];
     arr2=@[titleArray,titleArray1];
     
-    WebVC *vc = [[WebVC alloc] init];
-    [vc setNavTitle:@"ceshi"];
-    [vc loadFromURLStr:@"https://oauth.taobao.com/authorize?response_type=token&client_id=23901088&state=1212&view=Wap"];
-    vc.hidesBottomBarWhenPushed=YES;
-    [self.navigationController pushViewController:vc animated:NO];
+//    WebVC *vc = [[WebVC alloc] init];
+//    [vc setNavTitle:@"ceshi"];
+//    [vc loadFromURLStr:@"https://oauth.taobao.com/authorize?response_type=token&client_id=23901088&state=1212&view=web"];
+//    vc.hidesBottomBarWhenPushed=YES;
+//    [self.navigationController pushViewController:vc animated:NO];
 //
     
     [self getBannerList];
+    [self getList];
     arr3=@[detailTitleArray,detailTitleArray1];
     arr4=@[imageArray,imageArray1];
     _LoadcollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, pageHeight, WIDTH, HEIGHT-64-44-pageHeight) collectionViewLayout:[UICollectionViewFlowLayout new]];
@@ -79,6 +82,37 @@ static NSString *const footerId = @"footerId1";
     
     [self.view addSubview:_LoadcollectionView];
     // Do any additional setup after loading the view.
+}
+-(void)getList
+{
+    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@/product/list",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *dic=(NSDictionary *)responseObject;
+        NSDictionary *diction=dic[@"data"];
+        NSArray *recommendarr=diction[@"recommend"];
+        NSArray *quickarr=diction[@"recommend"];
+
+        productMutableArray=[NSMutableArray array];
+        NSMutableArray *recommendMutableArray=[NSMutableArray array];
+        NSMutableArray *quickMutableArray=[NSMutableArray array];
+
+        for (NSDictionary *dic1 in recommendarr) {
+            ProductListModel *remind=[ProductListModel new];
+            [remind setValuesForKeysWithDictionary:dic1];
+            [recommendMutableArray addObject:remind];
+        }
+        for (NSDictionary *dic1 in quickarr) {
+            ProductListModel *remind=[ProductListModel new];
+            [remind setValuesForKeysWithDictionary:dic1];
+            [quickMutableArray addObject:remind];
+        }
+        productMutableArray =[NSMutableArray arrayWithObjects:recommendMutableArray,quickMutableArray, nil];
+        DLog(@"%@",productMutableArray);
+        [_LoadcollectionView reloadData];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+    
 }
 -(void)getBannerList
 {
@@ -161,23 +195,29 @@ static NSString *const footerId = @"footerId1";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return arr2.count;
+    return productMutableArray.count;
 }
 
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-   return [[arr2 objectAtIndex:section] count];
+   return [[productMutableArray objectAtIndex:section] count];
 }
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    ProductListModel *productList=[[productMutableArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,productList.img]];
+    UIImage * result;
+    NSData * data = [NSData dataWithContentsOfURL:url];
+    
+    result = [UIImage imageWithData:data];
    LoadSupermarketCollectionViewCell *cell =(LoadSupermarketCollectionViewCell *) [_LoadcollectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
-    [cell.imageView setImage:[UIImage imageNamed:[[arr4 objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]]];
-    [cell.titleLabel setText:[[arr2 objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]];
-    [cell.detailLabel setText:[[arr3 objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]];
+    [cell.imageView setImage:result];
+    [cell.titleLabel setText:productList.pro_name];
+    [cell.detailLabel setText:productList.pro_describe];
     return cell;
 }
 // 和UITableView类似，UICollectionView也可设置段头段尾
@@ -218,7 +258,15 @@ static NSString *const footerId = @"footerId1";
 {
     return kMargin;
 }
-
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ProductListModel *productList=[[productMutableArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    WebVC *vc = [[WebVC alloc] init];
+    [vc setNavTitle:productList.pro_name];
+    [vc loadFromURLStr:productList.pro_link];
+    vc.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:vc animated:NO];
+}
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
     return kMargin;

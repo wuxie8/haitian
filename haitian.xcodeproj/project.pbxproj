@@ -834,7 +834,6 @@
 				8439598A1EC3FEF60093D906 /* haitian.entitlements */,
 				846856491EA09AA400C74F87 /* Utils */,
 				84CD81F61EA4909F009B786F /* Appdeledate */,
-				8451AFB81EA8599F002F04B6 /* Resource */,
 				84B9DC3A1E9DCCC90066A92D /* Base */,
 				846856291EA0820900C74F87 /* MessageAlertView */,
 				8468561F1EA0810700C74F87 /* NetWork */,
@@ -1009,6 +1008,7 @@
 				846C9E9F1ED821A40099CC51 /* AppDelegate+JPush.m */,
 				84B9DBEF1E9DC0990066A92D /* ViewController.h */,
 				84B9DBF01E9DC0990066A92D /* ViewController.m */,
+				8451AFB81EA8599F002F04B6 /* Resource */,
 				84B9DBF21E9DC0990066A92D /* Main.storyboard */,
 			);
 			name = Appdeledate;

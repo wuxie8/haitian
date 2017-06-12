@@ -46,7 +46,7 @@
 {
     NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:
                         
-                        @"624654",@"uid",
+                        @"624950",@"uid",
                         nil];
     
     [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/userinfo/detail",SERVEREURL] parameters:dic1 success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -70,7 +70,7 @@
 {
     NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:
 
-                     @"624654",@"uid",
+                     @"624950",@"uid",
                        [(UITextField *)[self.view viewWithTag:1001] text],@"realname",
                        [(UITextField *)[self.view viewWithTag:1002] text],@"idcard",
 

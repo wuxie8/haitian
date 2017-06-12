@@ -195,7 +195,7 @@ type=5;
     }
    
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
-                       Context.currentUser.uid,@"user_id",
+                      @"624950",@"user_id",
                        [NSString stringWithFormat:@"%d",type],@"type_id",
                        [(UITextField *) [self.view viewWithTag:1001] text],@"name",
                         [(UITextField *) [self.view viewWithTag:1002] text],@"amount",
@@ -211,11 +211,13 @@ type=5;
       
         [dic1 setObject:[(UITextField *) [self.view viewWithTag:1000] text] forKey:@"msg_name"];
     }
-    NSString *url=@"http://app.jishiyu11.cn:82/api/message/add";
+    NSString *url=[NSString stringWithFormat:@"%@/message/add",SERVEREURL];
     [[NetWorkManager sharedManager]postNoTipJSON:url parameters:dic1  success:^(NSURLSessionDataTask *task, id responseObject) {
+        DLog(@"%@",responseObject);
 
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
+        DLog(@"%@",error);
+
         
     }];
 

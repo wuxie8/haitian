@@ -46,9 +46,9 @@
 {
     remindListArray=[NSMutableArray array];
 
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"]) {
+//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"]) {
 
-    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@/message/list",SERVEREURL] parameters:@{@"user_id":Context.currentUser.uid} success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@/message/list",SERVEREURL] parameters:@{@"user_id":@"624950"} success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
         if ([dic[@"code"] isEqualToString:@"0000"]) {
             NSArray *dateArray=[dic[@"data"] objectForKey:@"data"];
@@ -62,7 +62,7 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
     }];
-    }
+//    }
    
 
     
@@ -152,15 +152,15 @@
 -(void)addRemind
 {
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"]) {
+//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"]) {
         AddBillViewController *addBill=[AddBillViewController new];
         addBill.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:addBill animated:YES];
-    }
-    else{
-        [self.navigationController pushViewController:[LoginViewController new] animated:YES];
-        
-    }
+//    }
+//    else{
+//        [self.navigationController pushViewController:[LoginViewController new] animated:YES];
+//        
+//    }
     
 }
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
