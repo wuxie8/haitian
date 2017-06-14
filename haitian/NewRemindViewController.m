@@ -213,7 +213,6 @@ type=5;
     }
     NSString *url=[NSString stringWithFormat:@"%@/message/add",SERVEREURL];
     [[NetWorkManager sharedManager]postNoTipJSON:url parameters:dic1  success:^(NSURLSessionDataTask *task, id responseObject) {
-        DLog(@"%@",responseObject);
         if ([responseObject[@"code"] isEqualToString:@"0000"]) {
             [MessageAlertView showSuccessMessage:@"添加成功"];
               UIViewController *viewCtl = self.navigationController.viewControllers[self.navigationController.viewControllers.count-3];

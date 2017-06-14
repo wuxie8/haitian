@@ -70,13 +70,11 @@
 }
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
-    NSLog(@"URL ： %@", [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
     
     // click event
     if ([request.URL.host isEqualToString:@"call_close"])
     {// notify click close
       
-        DLog(@"%@%@",webView,request.URL.absoluteString);
 
         return NO;
     }
@@ -86,7 +84,6 @@
         NSString *URL_String = [request.URL.path substringFromIndex:1];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:URL_String]];
                
-        DLog(@"%@%@",webView,URL_String);
 
         return NO;
     }

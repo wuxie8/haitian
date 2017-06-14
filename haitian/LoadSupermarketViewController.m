@@ -101,7 +101,6 @@ static NSString *const footerId = @"footerId1";
             [quickMutableArray addObject:remind];
         }
         productMutableArray =[NSMutableArray arrayWithObjects:recommendMutableArray,quickMutableArray, nil];
-        DLog(@"%@",productMutableArray);
         [_LoadcollectionView reloadData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);

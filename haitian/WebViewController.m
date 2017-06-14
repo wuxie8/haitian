@@ -28,19 +28,15 @@
 }
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
-    NSLog(@"URL ： %@", [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
     if ( [[request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] containsString:@"access_token"]) {
         NSArray* array = [[request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] componentsSeparatedByString:@"&"];
-        DLog(@"%@",array);
         NSRange range = [array[0] rangeOfString:@"access_token="]; //现获取要截取的字符串位置
         NSString * result = [array[0] substringFromIndex:range.location+range.length]; //截取字符串
-        DLog(@"%@",result);
     }
     // click event
     if ([request.URL.host isEqualToString:@"call_close"])
     {// notify click close
         
-        DLog(@"%@%@",webView,request.URL.absoluteString);
         
         return NO;
     }
@@ -50,7 +46,6 @@
         NSString *URL_String = [request.URL.path substringFromIndex:1];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:URL_String]];
         
-        DLog(@"%@%@",webView,URL_String);
         
         return NO;
     }
