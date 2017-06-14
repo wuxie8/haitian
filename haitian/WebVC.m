@@ -25,6 +25,7 @@
         _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
         _webView.dataDetectorTypes = UIDataDetectorTypeAll;
         _webView.delegate = self;
+        
     }
     return _webView;
 }
@@ -58,7 +59,8 @@
 {
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
     [self.webView loadRequest:request];
-    self.webView.scalesPageToFit=YES;
+    [self.webView setScalesPageToFit:YES];
+
 }
 
 #pragma mark -WebViewDelegate
@@ -117,7 +119,7 @@
 //    //添加调用JS执行的语句
 //    [webView stringByEvaluatingJavaScriptFromString:@"ResizeImages();"];
 //    
-//    [webView setScalesPageToFit:YES];
+    [webView setScalesPageToFit:YES];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [MessageAlertView dismissHud];
     });

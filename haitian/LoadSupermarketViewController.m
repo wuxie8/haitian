@@ -59,12 +59,7 @@ static NSString *const footerId = @"footerId1";
      NSArray *detailTitleArray1=@[@"额度高\n最快三分钟下款",@"有身份证就能贷\n1分钟审核，56秒到账"];
     arr2=@[titleArray,titleArray1];
     
-//    WebVC *vc = [[WebVC alloc] init];
-//    [vc setNavTitle:@"ceshi"];
-//    [vc loadFromURLStr:@"https://oauth.taobao.com/authorize?response_type=token&client_id=23901088&state=1212&view=web"];
-//    vc.hidesBottomBarWhenPushed=YES;
-//    [self.navigationController pushViewController:vc animated:NO];
-//
+
     
     [self getBannerList];
     [self getList];
@@ -176,7 +171,13 @@ static NSString *const footerId = @"footerId1";
     }
     BannerModel *banner=[bannerMutableArray objectAtIndex:index];
    NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,banner.img]];
-    [bannerView.mainImageView setImageWithURL:url placeholderImage:[UIImage imageNamed:@"BannerList"]];
+    [bannerView.mainImageView setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
+//    [bannerView.mainImageView setImageWithURL:url];
+//    UIImage * result;
+//    NSData * data = [NSData dataWithContentsOfURL:url];
+//    
+//    result = [UIImage imageWithData:data];
+//    [bannerView.mainImageView setImage:result];
 
     return bannerView;
 }

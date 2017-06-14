@@ -115,7 +115,6 @@
     }
     
 //    [self configNetManager:name];
-    DLog(@"%@",parameters );
 
     if (! [self checkSomething:name andParameters:parameters]) {
         return nil;

@@ -79,7 +79,7 @@
         for (NSDictionary *dic1 in arr) {
             RemindModel *remind=[RemindModel new];
             [remind setValuesForKeysWithDictionary:dic1];
-            [remindArray addObject:remind];
+            [remindArray addObject:remind.name];
             [remindDic setValue:dic1[@"rep_id"] forKey:dic1[@"name"]];
         }
         }
@@ -102,7 +102,7 @@
             for (NSDictionary *dic1 in arr) {
                 ReminndTimeModel *remind=[ReminndTimeModel new];
                 [remind setValuesForKeysWithDictionary:dic1];
-                [remindTimeArray addObject:remind];
+                [remindTimeArray addObject:remind.name];
                 [remindTimeDic setValue:dic1[@"rem_id"] forKey:dic1[@"name"]];
             }
         }
@@ -214,7 +214,15 @@ type=5;
     NSString *url=[NSString stringWithFormat:@"%@/message/add",SERVEREURL];
     [[NetWorkManager sharedManager]postNoTipJSON:url parameters:dic1  success:^(NSURLSessionDataTask *task, id responseObject) {
         DLog(@"%@",responseObject);
-
+        if ([responseObject[@"code"] isEqualToString:@"0000"]) {
+            [MessageAlertView showSuccessMessage:@"添加成功"];
+              UIViewController *viewCtl = self.navigationController.viewControllers[self.navigationController.viewControllers.count-3];
+            [self.navigationController popToViewController:viewCtl animated:NO];
+        }
+        else
+        {
+            [MessageAlertView showErrorMessage:responseObject[@"msg"]];
+        }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         DLog(@"%@",error);
 
@@ -293,7 +301,7 @@ type=5;
     else if (textField.tag==1011) {
         YLSOPickerView *picker = [[YLSOPickerView alloc]init];
         
-        picker.array =[remindDic allKeys];
+        picker.array =remindArray;
         picker.title = RepeatType;
         
         [picker show];
@@ -302,7 +310,7 @@ type=5;
     }
     else if (textField.tag==1012) {
         YLSOPickerView *picker = [[YLSOPickerView alloc]init];
-        picker.array = [remindTimeDic allKeys];
+        picker.array = remindTimeArray;
         picker.title = RemianTime;
         [picker show];
         return NO;

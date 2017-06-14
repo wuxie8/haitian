@@ -20,12 +20,14 @@
 {
     NSArray *arr;
     NSArray  *arr1;
+    UITableView *tab;
+    UIButton *but;
    }
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"个人中心";
    
-    UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+    tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
     tab.delegate=self;
     tab.dataSource=self;
     tab.tableFooterView=[[UIView alloc]init];
@@ -36,6 +38,16 @@
     arr=@[@"",@"个人资料",@"邀请好友",@"帮助中心",@"意见反馈",@"设置"];
     
     // Do any additional setup after loading the view.
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"]) {
+        [but setTitle:Context.currentUser.username forState:UIControlStateNormal];
+    }
+    else{
+        [but setTitle:@"点击登陆" forState: UIControlStateNormal ];
+        [but addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];}
 }
 
 //几个  section
@@ -73,7 +85,7 @@
             UIImageView *image=[[UIImageView alloc]initWithFrame:CGRectMake( 20 , 20, 40, 40)];
             [image setImage:[UIImage imageNamed:@"avatar"]];
             [cell.contentView addSubview:image];
-            UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(image.frame)+10, 20, 150, 40)];
+            but=[[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(image.frame)+10, 20, 150, 40)];
             if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"]) {
                 [but setTitle:Context.currentUser.username forState:UIControlStateNormal];
             }
