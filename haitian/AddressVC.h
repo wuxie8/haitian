@@ -11,7 +11,7 @@
 #import "XHJAddressBook.h"
 #import "PersonCell.h"
 
-typedef void(^telBlock)(NSString * tel);
+typedef void(^telBlock)(PersonModel *person);
 
 @interface AddressVC : NavBaseVC<UITableViewDataSource,UITableViewDelegate>
 

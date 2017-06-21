@@ -45,7 +45,7 @@
 {
     [super layoutSubviews];
     
-    self.topView = [[UIView alloc]initWithFrame:YLSRect(0, 667/667, 1, 250/667)];
+    self.topView = [[UIView alloc]initWithFrame:YLSRect(0, 667/667, 1, 225/667)];
     self.topView.backgroundColor = [UIColor whiteColor];
     [self addSubview:self.topView];
     

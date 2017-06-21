@@ -91,6 +91,13 @@
 		848F1F9C1EC00D9400720FB6 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F1F9B1EC00D9400720FB6 /* CoreMotion.framework */; };
 		848F1F9E1EC011DE00720FB6 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F1F9D1EC011DE00720FB6 /* LocalAuthentication.framework */; };
 		848FBC151ED2E99000A1E1CD /* RemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848FBC141ED2E99000A1E1CD /* RemindViewController.m */; };
+		84939E191EFA0C1200152EAF /* PersonalCreditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84939E181EFA0C1200152EAF /* PersonalCreditViewController.m */; };
+		84939E1C1EFA0FAD00152EAF /* EnterpriseManagementSituationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84939E1B1EFA0FAD00152EAF /* EnterpriseManagementSituationViewController.m */; };
+		84939E201EFA120200152EAF /* FamilyAndLivingConditionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84939E1F1EFA120200152EAF /* FamilyAndLivingConditionsViewController.m */; };
+		84939E231EFA133100152EAF /* OtherContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84939E221EFA133100152EAF /* OtherContactsViewController.m */; };
+		84939E261EFA147D00152EAF /* RealEstateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84939E251EFA147D00152EAF /* RealEstateViewController.m */; };
+		84939E291EFA16A000152EAF /* CarProductionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84939E281EFA16A000152EAF /* CarProductionViewController.m */; };
+		84939E2C1EFA698900152EAF /* UploadDocumentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84939E2B1EFA698900152EAF /* UploadDocumentsViewController.m */; };
 		84A274211ED3CA35009462F4 /* lmzxResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84A2741F1ED3CA35009462F4 /* lmzxResource.bundle */; };
 		84A274241ED3DAAF009462F4 /* AccumulationFundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A274231ED3DAAF009462F4 /* AccumulationFundViewController.m */; };
 		84A274261ED427DC009462F4 /* LMZXSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A274251ED427DC009462F4 /* LMZXSDK.a */; };
@@ -329,6 +336,20 @@
 		848F1F9D1EC011DE00720FB6 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		848FBC131ED2E99000A1E1CD /* RemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindViewController.h; sourceTree = "<group>"; };
 		848FBC141ED2E99000A1E1CD /* RemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindViewController.m; sourceTree = "<group>"; };
+		84939E171EFA0C1200152EAF /* PersonalCreditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalCreditViewController.h; sourceTree = "<group>"; };
+		84939E181EFA0C1200152EAF /* PersonalCreditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalCreditViewController.m; sourceTree = "<group>"; };
+		84939E1A1EFA0FAD00152EAF /* EnterpriseManagementSituationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterpriseManagementSituationViewController.h; sourceTree = "<group>"; };
+		84939E1B1EFA0FAD00152EAF /* EnterpriseManagementSituationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterpriseManagementSituationViewController.m; sourceTree = "<group>"; };
+		84939E1E1EFA120200152EAF /* FamilyAndLivingConditionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FamilyAndLivingConditionsViewController.h; sourceTree = "<group>"; };
+		84939E1F1EFA120200152EAF /* FamilyAndLivingConditionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FamilyAndLivingConditionsViewController.m; sourceTree = "<group>"; };
+		84939E211EFA133100152EAF /* OtherContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherContactsViewController.h; sourceTree = "<group>"; };
+		84939E221EFA133100152EAF /* OtherContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherContactsViewController.m; sourceTree = "<group>"; };
+		84939E241EFA147D00152EAF /* RealEstateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealEstateViewController.h; sourceTree = "<group>"; };
+		84939E251EFA147D00152EAF /* RealEstateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealEstateViewController.m; sourceTree = "<group>"; };
+		84939E271EFA16A000152EAF /* CarProductionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarProductionViewController.h; sourceTree = "<group>"; };
+		84939E281EFA16A000152EAF /* CarProductionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarProductionViewController.m; sourceTree = "<group>"; };
+		84939E2A1EFA698900152EAF /* UploadDocumentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadDocumentsViewController.h; sourceTree = "<group>"; };
+		84939E2B1EFA698900152EAF /* UploadDocumentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadDocumentsViewController.m; sourceTree = "<group>"; };
 		84A2741E1ED3CA35009462F4 /* LMZXSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMZXSDK.h; sourceTree = "<group>"; };
 		84A2741F1ED3CA35009462F4 /* lmzxResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = lmzxResource.bundle; sourceTree = "<group>"; };
 		84A274221ED3DAAF009462F4 /* AccumulationFundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccumulationFundViewController.h; sourceTree = "<group>"; };
@@ -764,6 +785,27 @@
 			name = User;
 			sourceTree = "<group>";
 		};
+		84939E1D1EFA113000152EAF /* PersonalDetails */ = {
+			isa = PBXGroup;
+			children = (
+				84939E171EFA0C1200152EAF /* PersonalCreditViewController.h */,
+				84939E181EFA0C1200152EAF /* PersonalCreditViewController.m */,
+				84939E1A1EFA0FAD00152EAF /* EnterpriseManagementSituationViewController.h */,
+				84939E1B1EFA0FAD00152EAF /* EnterpriseManagementSituationViewController.m */,
+				84939E1E1EFA120200152EAF /* FamilyAndLivingConditionsViewController.h */,
+				84939E1F1EFA120200152EAF /* FamilyAndLivingConditionsViewController.m */,
+				84939E211EFA133100152EAF /* OtherContactsViewController.h */,
+				84939E221EFA133100152EAF /* OtherContactsViewController.m */,
+				84939E241EFA147D00152EAF /* RealEstateViewController.h */,
+				84939E251EFA147D00152EAF /* RealEstateViewController.m */,
+				84939E271EFA16A000152EAF /* CarProductionViewController.h */,
+				84939E281EFA16A000152EAF /* CarProductionViewController.m */,
+				84939E2A1EFA698900152EAF /* UploadDocumentsViewController.h */,
+				84939E2B1EFA698900152EAF /* UploadDocumentsViewController.m */,
+			);
+			name = PersonalDetails;
+			sourceTree = "<group>";
+		};
 		84A733581EB86C97008ABB7E /* Addressbook */ = {
 			isa = PBXGroup;
 			children = (
@@ -1026,6 +1068,7 @@
 				84B9DC451E9DCE240066A92D /* PersonCenterViewController.m */,
 				84174D671EDEC3FA00A815B3 /* PersonalDataViewController.h */,
 				84174D681EDEC3FA00A815B3 /* PersonalDataViewController.m */,
+				84939E1D1EFA113000152EAF /* PersonalDetails */,
 				847B171E1EDE8F2B003A4D98 /* SetUpViewController.h */,
 				847B171F1EDE8F2B003A4D98 /* SetUpViewController.m */,
 				847B17211EDE91B2003A4D98 /* AboutUsViewController.h */,
@@ -1338,6 +1381,7 @@
 				84A7398B1E9E25B700A42502 /* WSIndexBanner.m in Sources */,
 				84C50C5D1EADF47100AD0B62 /* IDInfoViewController.m in Sources */,
 				8402B9DA1E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m in Sources */,
+				84939E1C1EFA0FAD00152EAF /* EnterpriseManagementSituationViewController.m in Sources */,
 				84FD17261EE7EB3100EB79A3 /* BannerModel.m in Sources */,
 				846856251EA0813C00C74F87 /* NetWorkUtil.m in Sources */,
 				8468563A1EA08FF900C74F87 /* GestureBaseVC.m in Sources */,
@@ -1351,14 +1395,17 @@
 				846856411EA0902D00C74F87 /* ASValuePopUpView.m in Sources */,
 				84A733531EB86C82008ABB7E /* AddressBookVC.m in Sources */,
 				84B9DBF11E9DC0990066A92D /* ViewController.m in Sources */,
+				84939E201EFA120200152EAF /* FamilyAndLivingConditionsViewController.m in Sources */,
 				84C50C401EADF3DE00AD0B62 /* RectManager.m in Sources */,
 				844E16481EC99FB700F4EA80 /* AddBillViewController.m in Sources */,
 				84A733551EB86C82008ABB7E /* NSString+TKUtilities.m in Sources */,
 				84546F4A1EA5E77B00AD0350 /* CertificationViewController.m in Sources */,
 				842E62001EB08C8300BF91FB /* UIImage+Extensions.m in Sources */,
 				84B9DBEE1E9DC0990066A92D /* AppDelegate.m in Sources */,
+				84939E231EFA133100152EAF /* OtherContactsViewController.m in Sources */,
 				84CD81F51EA48F30009B786F /* RegisterVC.m in Sources */,
 				842E61FF1EB08C8300BF91FB /* UIImage+compress.m in Sources */,
+				84939E2C1EFA698900152EAF /* UploadDocumentsViewController.m in Sources */,
 				843DD77E1EB2F14A0014E283 /* DataSubmittedViewController.m in Sources */,
 				84A733541EB86C82008ABB7E /* CDFInitialsAvatar.m in Sources */,
 				8402B9F91E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m in Sources */,
@@ -1368,6 +1415,7 @@
 				84C50C5A1EADF47100AD0B62 /* AVCaptureViewController.m in Sources */,
 				8468563C1EA08FF900C74F87 /* NavBaseVC.m in Sources */,
 				846856421EA0902D00C74F87 /* ASValueTrackingSlider.m in Sources */,
+				84939E191EFA0C1200152EAF /* PersonalCreditViewController.m in Sources */,
 				842E62061EB08C9700BF91FB /* IFlyFaceResultKeys.m in Sources */,
 				845663FB1ED57F6F0075A971 /* LMResultShowVC.m in Sources */,
 				848FBC151ED2E99000A1E1CD /* RemindViewController.m in Sources */,
@@ -1377,6 +1425,7 @@
 				84ABC8F01EC5556400269C87 /* RemindTableViewCell.m in Sources */,
 				84A733381EB86BA0008ABB7E /* AddressVC.m in Sources */,
 				846856451EA0969E00C74F87 /* ForgotPasswordViewController.m in Sources */,
+				84939E291EFA16A000152EAF /* CarProductionViewController.m in Sources */,
 				84FD17231EE7D6A600EB79A3 /* ProductModel.m in Sources */,
 				846856181EA0764900C74F87 /* AccountPassswordViewController.m in Sources */,
 				84F5D4001EA703D100EC8C9D /* XDMultTableView.m in Sources */,
@@ -1402,6 +1451,7 @@
 				84B9DBEB1E9DC0990066A92D /* main.m in Sources */,
 				84C50C471EADF40D00AD0B62 /* UIAlertController+Extend.m in Sources */,
 				84A7398C1E9E25B700A42502 /* WSPageView.m in Sources */,
+				84939E261EFA147D00152EAF /* RealEstateViewController.m in Sources */,
 				84A733571EB86C82008ABB7E /* XHJAddressBook.m in Sources */,
 				84B9DC4B1E9DD9CE0066A92D /* HomePageViewController.m in Sources */,
 				846856151EA059F400C74F87 /* LoginViewController.m in Sources */,

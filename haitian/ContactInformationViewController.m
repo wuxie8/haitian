@@ -109,10 +109,10 @@
 {
     if (textField.tag==1002) {
         AddressVC *address=[[AddressVC alloc]init];
-        [address setClickBlock:^(NSString *tel){
+        [address setClickBlock:^(PersonModel *person){
             // remove the transform animation if the animation finished and wasn't interrupted
             UITextField *textField=(UITextField *)[self.view viewWithTag:1002];
-            textField.text=tel;
+            textField.text=person.tel;
             
         }];
         [self.navigationController pushViewController:address animated:YES];

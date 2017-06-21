@@ -195,7 +195,7 @@ type=5;
     }
    
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
-                      @"624950",@"user_id",
+                      Context.currentUser.uid,@"user_id",
                        [NSString stringWithFormat:@"%d",type],@"type_id",
                        [(UITextField *) [self.view viewWithTag:1001] text],@"name",
                         [(UITextField *) [self.view viewWithTag:1002] text],@"amount",

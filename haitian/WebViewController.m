@@ -31,7 +31,7 @@
     if ( [[request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] containsString:@"access_token"]) {
         NSArray* array = [[request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] componentsSeparatedByString:@"&"];
         NSRange range = [array[0] rangeOfString:@"access_token="]; //现获取要截取的字符串位置
-        NSString * result = [array[0] substringFromIndex:range.location+range.length]; //截取字符串
+    __unused    NSString * result = [array[0] substringFromIndex:range.location+range.length]; //截取字符串
     }
     // click event
     if ([request.URL.host isEqualToString:@"call_close"])

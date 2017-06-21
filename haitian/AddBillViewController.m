@@ -136,15 +136,13 @@ NSArray *imageArr;
     switch (indexPath.section) {
         case 0:
         {
-//                WebVC *vc = [[WebVC alloc] init];
-//                [vc setNavTitle:@"ceshi"];
-//                [vc loadFromURLStr:@"https://oauth.taobao.com/authorize?response_type=token&client_id=23901088&state=1212&view=web"];
-//                vc.hidesBottomBarWhenPushed=YES;
-//                [self.navigationController pushViewController:vc animated:NO];
-            [self.navigationController pushViewController:[WebViewController new] animated:YES];
+////                WebVC *vc = [[WebVC alloc] init];
+////                [vc setNavTitle:@"ceshi"];
+////                [vc loadFromURLStr:@"https://oauth.taobao.com/authorize?response_type=token&client_id=23901088&state=1212&view=web"];
+////                vc.hidesBottomBarWhenPushed=YES;
+////                [self.navigationController pushViewController:vc animated:NO];
+//            [self.navigationController pushViewController:[WebViewController new] animated:YES];
 
-//            [self initSDK];
-//            [self startFunction:indexPath.row];
         }
             break;
         case 2:

@@ -157,7 +157,7 @@
     NSArray *sectionArr=[_listContent objectAtIndex:indexPath.section];
     self.people = (PersonModel *)[sectionArr objectAtIndex:indexPath.row];
     if (self.clickBlock) {
-        self.clickBlock(self.people.tel);
+        self.clickBlock(self.people);
     }
     [self.navigationController popViewControllerAnimated:NO];
 }
