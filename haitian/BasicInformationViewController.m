@@ -47,17 +47,17 @@
         
     }
     
-    UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+    UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-40)];
     tab.delegate=self;
     tab.dataSource=self;
-    tab.tableFooterView=self.footView;
     [self.view addSubview:tab];
+    [self.view addSubview:self.footView];
     // Do any additional setup after loading the view.
 }
 -(UIView *)footView
 {
     if (_footView==nil) {
-        _footView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 40)];
+        _footView=[[UIView alloc]initWithFrame:CGRectMake(0,HEIGHT-40-64, WIDTH, 40)];
         UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 40 )];
         [but setTitle:@"提交" forState:UIControlStateNormal];
         [but addTarget:self action:@selector(nextStep) forControlEvents:UIControlEventTouchUpInside];

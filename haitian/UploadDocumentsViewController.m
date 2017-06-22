@@ -20,6 +20,7 @@
     NSArray *arr;
     NSArray *array;
     NSInteger integer;
+    NSMutableDictionary *mutableDictionary;
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -32,8 +33,8 @@
     [super viewDidLoad];
     
     arr=@[@"身份证正面照",@"手持身份证照片",@"房产证",@"机动车驾驶证"];
- 
-    
+    mutableDictionary=[NSMutableDictionary dictionary];
+    [self getList];
     UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
     tab.delegate=self;
     tab.dataSource=self;
@@ -41,6 +42,53 @@
     [self.view addSubview:tab];
     // Do any additional setup after loading the view.
 }
+-(void)getList
+{
+    NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:
+                        Context.currentUser.uid,@"uid",
+                        nil];
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=parpers_list",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        if ([responseObject[@"code"]isEqualToString:@"0000"]) {
+//            NSArray *array1=[[responseObject objectForKey:@"data"]objectForKey:@"data"];
+//            NSDictionary *dictionary=[array1 firstObject];
+//            if (![UtilTools isBlankString:dictionary[@"car"]]) {
+//                UITextField *text=[self.view viewWithTag:1000];
+//                text.text=dictionary[@"car"];
+//            }
+//            if (![UtilTools isBlankString:dictionary[@"car_price"]]) {
+//                UITextField *text=[self.view viewWithTag:1001];
+//                text.text=dictionary[@"car_price"];
+//            }
+//            if (![UtilTools isBlankString:dictionary[@"use_time"]]) {
+//                UITextField *text=[self.view viewWithTag:1002];
+//                text.text=dictionary[@"use_time"];
+//            }
+//            if (![UtilTools isBlankString:dictionary[@"installment"]]) {
+//                UITextField *text=[self.view viewWithTag:1003];
+//                text.text=dictionary[@"installment"];
+//            }
+//            if (![UtilTools isBlankString:dictionary[@"installment"]]) {
+//                UITextField *text=[self.view viewWithTag:1004];
+//                text.text=dictionary[@"installment"];
+//            }
+//            if (![UtilTools isBlankString:dictionary[@"mortgage"]]) {
+//                UITextField *text=[self.view viewWithTag:1005];
+//                text.text=dictionary[@"mortgage"];
+//            }
+        }
+        else
+        {
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+    
+    
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return arr.count;
@@ -111,10 +159,71 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
 
     UIImage *uploadImage                                     = [info objectForKey:UIImagePickerControllerOriginalImage];
-    
+    [mutableDictionary setObject:uploadImage forKey:[NSString stringWithFormat:@"%ld",(long)integer]];
     UIImageView *imageView=[self.view viewWithTag:integer];
     imageView.image=[UIImage imageNamed:@"UploadedSuccess"];
 }
+-(void)complete
+{
+    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
+                       @"656454",@"uid",
+                       nil];
+    
+    DLog(@"%@",mutableDictionary);
+
+//    http://app.jishiyu11.cn/index.php?g=app&m=userdetail&a=parpers_add
+    AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
+    manager.responseSerializer=[AFHTTPResponseSerializer serializer];
+    [manager POST:[NSString stringWithFormat:@"%@&m=userdetail&a=parpers_add",UploadPath]parameters:dic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+//        for (UIImage *image in _selectedPhotos) {
+//            //根据当前系统时间生成图片名称
+//            NSDate *date = [NSDate date];
+//            NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+//            [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+//            NSString *dateString = [formatter stringFromDate:date];
+//            NSString *  _headfileName = [NSString stringWithFormat:@"%@.png",dateString];
+//            NSData *     _headImageData = UIImageJPEGRepresentation(image, 1);
+//            [formData appendPartWithFileData:_headImageData name:@"photo" fileName:_headfileName mimeType:@"image/jpg/png/jpeg"];
+//            
+//        }
+        for (NSString *string in [mutableDictionary allKeys]) {
+        NSDate *date = [NSDate date];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+        [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+        NSString *dateString = [formatter stringFromDate:date];
+        NSString *  _headfileName = [NSString stringWithFormat:@"%@.png",dateString];
+            UIImage *image=[mutableDictionary objectForKey:string];
+            DLog(@"%@",image);
+
+            NSData * _headImageData = UIImageJPEGRepresentation(image, 0.1);
+        [formData appendPartWithFileData:_headImageData name:[NSString stringWithFormat:@"photot%d",[string intValue]-999] fileName:_headfileName mimeType:@"image/jpg/png/jpeg"];
+        }
+       
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        DLog(@"%@",responseObject);
+
+        NSDictionary *resultDic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        DLog(@"%@",resultDic);
+
+        if ([resultDic[@"code"]isEqualToString:@"0000"]) {
+            [MessageAlertView showSuccessMessage:@"提交成功"];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else
+        {
+            [MessageAlertView showErrorMessage:resultDic[@"msg"]];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        DLog(@"%@",error);
+
+    }];
+    
+
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

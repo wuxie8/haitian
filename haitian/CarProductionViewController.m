@@ -40,7 +40,7 @@
         
     }
     array=@[arr1,arr2,arr3,arr4,arr5];
-
+    [self getList];
     UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
     tab.delegate=self;
     tab.dataSource=self;
@@ -48,6 +48,53 @@
     [self.view addSubview:tab];
     // Do any additional setup after loading the view.
 }
+-(void)getList
+{
+    NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:
+                        Context.currentUser.uid,@"uid",
+                        nil];
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=car_list",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        if ([responseObject[@"code"]isEqualToString:@"0000"]) {
+            NSArray *array1=[[responseObject objectForKey:@"data"]objectForKey:@"data"];
+            NSDictionary *dictionary=[array1 firstObject];
+            if (![UtilTools isBlankString:dictionary[@"car"]]) {
+                UITextField *text=[self.view viewWithTag:1000];
+                text.text=dictionary[@"car"];
+            }
+            if (![UtilTools isBlankString:dictionary[@"car_price"]]) {
+                UITextField *text=[self.view viewWithTag:1001];
+                text.text=dictionary[@"car_price"];
+            }
+            if (![UtilTools isBlankString:dictionary[@"use_time"]]) {
+                UITextField *text=[self.view viewWithTag:1002];
+                text.text=dictionary[@"use_time"];
+            }
+            if (![UtilTools isBlankString:dictionary[@"installment"]]) {
+                UITextField *text=[self.view viewWithTag:1003];
+                text.text=dictionary[@"installment"];
+            }
+            if (![UtilTools isBlankString:dictionary[@"installment"]]) {
+                UITextField *text=[self.view viewWithTag:1004];
+                text.text=dictionary[@"installment"];
+            }
+            if (![UtilTools isBlankString:dictionary[@"mortgage"]]) {
+                UITextField *text=[self.view viewWithTag:1005];
+                text.text=dictionary[@"mortgage"];
+            }
+        }
+        else
+        {
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+    
+    
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return arr.count;
@@ -82,7 +129,7 @@
         case 0:
         case 2:
         case 4:
-            
+         case 3:
         case 5:
             
         {  YLSOPickerView *picker = [[YLSOPickerView alloc]init];
@@ -106,6 +153,32 @@
     text.text=notification.object;
     
     //    [self.dic setObject:notification.object forKey:@"10"];
+    
+}
+-(void)complete
+{
+    NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:
+                        Context.currentUser.uid,@"uid",
+                        [(UITextField *) [self.view viewWithTag:1000] text],@"car",
+                        [(UITextField *) [self.view viewWithTag:1001] text],@"car_price",
+                        [(UITextField *) [self.view viewWithTag:1002] text],@"use_time",
+                        [(UITextField *) [self.view viewWithTag:1003] text],@"installment",
+                        [(UITextField *) [self.view viewWithTag:1004] text],@"mortgage",
+                        nil];
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=car_add",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"code"]isEqualToString:@"0000"]) {
+            [MessageAlertView showSuccessMessage:@"上传成功"];
+        }
+        else
+        {
+            [MessageAlertView showErrorMessage:responseObject[@"msg"]];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+    
     
 }
 - (void)didReceiveMemoryWarning {

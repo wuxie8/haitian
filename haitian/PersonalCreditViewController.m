@@ -41,15 +41,65 @@
     for (int i=0; i<arr.count; i++) {
         [dic setObject:array[i] forKey:arr[i]];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getValue:) name:arr[i] object:nil];
-
+        
     }
-
+    [self getList];
     UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
     tab.delegate=self;
     tab.dataSource=self;
     
     [self.view addSubview:tab];
     // Do any additional setup after loading the view.
+}
+-(void)getList
+{
+    NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:
+                        Context.currentUser.uid,@"uid",
+                        nil];
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=credit_list",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        if ([responseObject[@"code"]isEqualToString:@"0000"]) {
+            NSArray *array1=[[responseObject objectForKey:@"data"]objectForKey:@"data"];
+            NSDictionary *dictionary=[array1 firstObject];
+            if (![UtilTools isBlankString:dictionary[@"edu"]]) {
+                    UITextField *text=[self.view viewWithTag:1000];
+                text.text=dictionary[@"edu"];
+            }
+            if (![UtilTools isBlankString:dictionary[@"creditcard"]]) {
+                UITextField *text=[self.view viewWithTag:1001];
+                text.text=dictionary[@"creditcard"];
+            }
+            if (![UtilTools isBlankString:dictionary[@"credit_record"]]) {
+                UITextField *text=[self.view viewWithTag:1002];
+                text.text=dictionary[@"credit_record"];
+            }
+            if (![UtilTools isBlankString:dictionary[@"liabilities_status"]]) {
+                UITextField *text=[self.view viewWithTag:1003];
+                text.text=dictionary[@"liabilities_status"];
+            }
+            if (![UtilTools isBlankString:dictionary[@"loan_record"]]) {
+                UITextField *text=[self.view viewWithTag:1004];
+                text.text=dictionary[@"loan_record"];
+            }
+            if (![UtilTools isBlankString:dictionary[@"taobao_id"]]) {
+                UITextField *text=[self.view viewWithTag:1005];
+                text.text=dictionary[@"taobao_id"];
+            }
+            if (![UtilTools isBlankString:dictionary[@"loan_use"]]) {
+                UITextField *text=[self.view viewWithTag:1006];
+                text.text=dictionary[@"loan_use"];
+            }
+        }
+        else
+        {
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+    
+    
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -73,7 +123,7 @@
     textField.delegate=self;
     textField.tag=1000+indexPath.row;
     [cell.contentView addSubview:textField];
-
+    
     return cell;
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -83,7 +133,7 @@
     YLSOPickerView *picker = [[YLSOPickerView alloc]init];
     picker.array=[array objectAtIndex:textField.tag-1000];
     picker.title=[arr objectAtIndex:textField.tag-1000];
- 
+    
     
     [picker show];
     return NO;
@@ -91,26 +141,54 @@
 -(void)getValue:(NSNotification *)notification
 {
     
-   
+    
     UITextField *text=[self.view viewWithTag:1000+[arr indexOfObject:notification.name]];
     text.text=notification.object;
     //    [self.dic setObject:notification.object forKey:@"10"];
     
 }
-
+-(void)complete
+{
+    NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:
+                        Context.currentUser.uid,@"uid",
+                        [(UITextField *) [self.view viewWithTag:1000] text],@"edu",
+                        [(UITextField *) [self.view viewWithTag:1001] text],@"creditcard",
+                        [(UITextField *) [self.view viewWithTag:1002] text],@"credit_record",
+                        [(UITextField *) [self.view viewWithTag:1003] text],@"liabilities_status",
+                        [(UITextField *) [self.view viewWithTag:1004] text],@"loan_record",
+                        [(UITextField *) [self.view viewWithTag:1005] text],@"taobao_id",
+                        [(UITextField *) [self.view viewWithTag:1006] text],@"loan_use",
+                        
+                        nil];
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=credit_add",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"code"]isEqualToString:@"0000"]) {
+            [MessageAlertView showSuccessMessage:@"上传成功"];
+        }
+        else
+        {
+            [MessageAlertView showErrorMessage:responseObject[@"msg"]];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+    
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

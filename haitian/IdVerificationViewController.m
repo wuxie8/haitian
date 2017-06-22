@@ -27,7 +27,11 @@
 
     [super viewWillAppear:animated];
 
-
+    
+        UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(complete)];
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        self.navigationItem.rightBarButtonItem = backItem;
+   
     if (Context.idInfo.IDPositiveImage) {
         UIImageView *imageView1=[self.view viewWithTag:1000];
         imageView1.image=Context.idInfo.IDPositiveImage;
@@ -53,7 +57,7 @@
     tab.dataSource=self;
     tab.scrollEnabled=NO;
     tab.tableHeaderView=self.headView;
-    tab.tableFooterView=self.footView;
+//    tab.tableFooterView=self.footView;
     [self.view addSubview:tab];
     // Do any additional setup after loading the view.
 }
@@ -115,18 +119,18 @@
     }
     return _headView;
 }
--(UIView *)footView
-{
-    if (!_footView) {
-        _footView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 80)];
-       but=[[UIButton alloc]initWithFrame:CGRectMake(10, 20, WIDTH-20, 40 )];
-        [but setTitle:@"下一步" forState:UIControlStateNormal];
-        [but addTarget:self action:@selector(nextStep) forControlEvents:UIControlEventTouchUpInside];
-        but.backgroundColor=AppPageColor;
-        [_footView addSubview:but];
-    }
-    return _footView;
-}
+//-(UIView *)footView
+//{
+//    if (!_footView) {
+//        _footView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 80)];
+//       but=[[UIButton alloc]initWithFrame:CGRectMake(10, 20, WIDTH-20, 40 )];
+//        [but setTitle:@"完成" forState:UIControlStateNormal];
+//        [but addTarget:self action:@selector(nextStep) forControlEvents:UIControlEventTouchUpInside];
+//        but.backgroundColor=AppPageColor;
+//        [_footView addSubview:but];
+//    }
+//    return _footView;
+//}
 
 #pragma mark 实现的方法
 -(void)nextStep

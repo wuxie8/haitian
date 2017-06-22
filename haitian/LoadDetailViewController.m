@@ -8,6 +8,9 @@
 
 #import "LoadDetailViewController.h"
 #import "WebVC.h"
+#import "BasicInformationViewController.h"
+#import "CreditSesameViewController.h"
+#import "IdVerificationViewController.h"
 #define margen 30
 
 @interface LoadDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -25,10 +28,13 @@
 {
     int edu;
     int qixian;
+    NSArray *textArray;
 }
 -(UIView *)headView
 {
-    if (_headView==nil) {
+    if (!_headView) {
+        
+        _headView =[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 250)];
         UIView *yellowView=[[UIView alloc]initWithFrame:CGRectMake(0, 10, WIDTH, 100)];
         yellowView.backgroundColor=kColorFromRGBHex(0xfffcf5);
         [_headView addSubview:yellowView];
@@ -36,6 +42,7 @@
         UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(margen, 20, WIDTH/2-margen*2, margen)];
         textField.delegate=self;
         textField.tag=500;
+        textField.text=@"1000";
         textField.borderStyle = UITextBorderStyleRoundedRect;
         textField.keyboardType = UIKeyboardTypeNumberPad;
         NSString *maxString;
@@ -50,7 +57,7 @@
         //    }
         
         
-        textField.text=maxString;
+//        textField.text=maxString;
         edu=[maxString intValue];
         UILabel *unitLabel=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(textField.frame)-30, 0, 30, 20)];
         unitLabel.text=@"元";
@@ -73,36 +80,38 @@
         //        maxString1=[self.product.qixianfanwei substringFromIndex:(range1.location+1)];
         //    }
         maxString1=[maxString1 substringToIndex:maxString1.length-1];
-        textField1.text=maxString1;
+        textField1.text=@"30";
         qixian=[maxString1 intValue];
         //    if ([self.product.post_title isEqualToString:@"平安i贷"]) {
         //        qixian=20;
         //        textField1.text=@"20";
         //
         //    }
-        //    textField1.borderStyle = UITextBorderStyleRoundedRect;
-        //    textField1.keyboardType = UIKeyboardTypeNumberPad;
-        //    UILabel *unitLabel1=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(textField1.frame)-30, 0, 30, 20)];
-        //    unitLabel1.text=[self.product.fv_unit isEqualToString:@"1"]?@"天":@"月";
-        //    if ([self.product.post_title isEqualToString:@"平安i贷"]) {
-        //        unitLabel1.text=@"月";
-        //    }
-        //    unitLabel1.textColor=[UIColor grayColor];
-        //    [textField1 setRightView:unitLabel1];
-        //    [textField1 setRightViewMode:UITextFieldViewModeAlways];
-        //    [yellowView addSubview:textField1];
-        //
-        //
-        //    UILabel *label3=[[UILabel alloc]initWithFrame:CGRectMake(margen, CGRectGetMaxY(textField.frame)+20, WIDTH/2-margen*2, 30)];
-        //    label3.text=[NSString stringWithFormat:@"额度范围：%@元",self.product.edufanwei];
-        //    label3.adjustsFontSizeToFitWidth=YES;
-        //    [yellowView addSubview:label3];
-        //
-        //
-        //    UILabel *label4=[[UILabel alloc]initWithFrame:CGRectMake(margen+WIDTH/2, CGRectGetMaxY(textField.frame)+20, WIDTH/2-margen*2, 30)];
-        //    label4.text=[NSString stringWithFormat:@"期限范围：%@",self.product.qixianfanwei];
-        //    label4.adjustsFontSizeToFitWidth=YES;
-        //    [yellowView addSubview:label4];
+            textField1.borderStyle = UITextBorderStyleRoundedRect;
+            textField1.keyboardType = UIKeyboardTypeNumberPad;
+            UILabel *unitLabel1=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(textField1.frame)-30, 0, 30, 20)];
+//            unitLabel1.text=[self.product.fv_unit isEqualToString:@"1"]?@"天":@"月";
+//            if ([self.product.post_title isEqualToString:@"平安i贷"]) {
+//                unitLabel1.text=@"月";
+//            }
+            unitLabel1.textColor=[UIColor grayColor];
+            [textField1 setRightView:unitLabel1];
+            [textField1 setRightViewMode:UITextFieldViewModeAlways];
+            [yellowView addSubview:textField1];
+        
+        
+            UILabel *label3=[[UILabel alloc]initWithFrame:CGRectMake(margen, CGRectGetMaxY(textField.frame)+20, WIDTH/2-margen*2, 30)];
+//            label3.text=[NSString stringWithFormat:@"额度范围：%@元",self.product.edufanwei];
+        label3.text=@"50000";
+            label3.adjustsFontSizeToFitWidth=YES;
+            [yellowView addSubview:label3];
+        
+        
+            UILabel *label4=[[UILabel alloc]initWithFrame:CGRectMake(margen+WIDTH/2, CGRectGetMaxY(textField.frame)+20, WIDTH/2-margen*2, 30)];
+//            label4.text=[NSString stringWithFormat:@"期限范围：%@",self.product.qixianfanwei];
+        label4.text=@"7-30";
+            label4.adjustsFontSizeToFitWidth=YES;
+            [yellowView addSubview:label4];
         
         UIView *view4=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(yellowView.frame), WIDTH, 100)];
         view4.backgroundColor=[UIColor whiteColor];
@@ -126,8 +135,9 @@
             switch (i) {
                 case 0:
                 {
-                    //                label.text=self.product.feilv;
-                    //                label1.text=[self.product.fv_unit isEqualToString:@"1"]?@"参考日利率":@"参考月利率";
+                                    label.text=@"0.04";
+//                                    label1.text=[self.product.fv_unit isEqualToString:@"1"]?@"参考日利率":@"参考月利率";
+                    label1.text=@"参考月利率";
                     
                 }
                     break;
@@ -179,22 +189,22 @@
         [view5 addSubview:label5];
         view5.layer.borderWidth=1;
         
-        UIView *view6=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(view5.frame)+20, WIDTH, HEIGHT-CGRectGetMaxY(view5.frame)-20)];
-        view6.backgroundColor=[UIColor whiteColor];
-        [_headView addSubview:view6];
-        UILabel *label6=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, WIDTH-20, 30)];
-        label6.textAlignment=NSTextAlignmentCenter;
-        label6.text=@"申请条件";
-        //    label6.textColor=AppBlue;
-        [view6 addSubview:label6];
-        UILabel *_feliv_Label=[[UILabel alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(label6.frame)+20, WIDTH-40, 70)];
-        //    [_feliv_Label setText:self.product.shenqingtiaojian];
-        [_feliv_Label setTextColor:[UIColor grayColor]];
-        _feliv_Label.lineBreakMode = NSLineBreakByCharWrapping;//换行模式，与上面的计算保持一致。
-        _feliv_Label.numberOfLines=0;
-        _feliv_Label.textAlignment=NSTextAlignmentLeft;
-        _feliv_Label.font=[UIFont systemFontOfSize:16];
-        [view6 addSubview:_feliv_Label];
+//        UIView *view6=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(view5.frame)+20, WIDTH, HEIGHT-CGRectGetMaxY(view5.frame)-20)];
+//        view6.backgroundColor=[UIColor whiteColor];
+//        [_headView addSubview:view6];
+//        UILabel *label6=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, WIDTH-20, 30)];
+//        label6.textAlignment=NSTextAlignmentCenter;
+//        label6.text=@"申请条件";
+//        //    label6.textColor=AppBlue;
+//        [view6 addSubview:label6];
+//        UILabel *_feliv_Label=[[UILabel alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(label6.frame)+20, WIDTH-40, 70)];
+//        //    [_feliv_Label setText:self.product.shenqingtiaojian];
+//        [_feliv_Label setTextColor:[UIColor grayColor]];
+//        _feliv_Label.lineBreakMode = NSLineBreakByCharWrapping;//换行模式，与上面的计算保持一致。
+//        _feliv_Label.numberOfLines=0;
+//        _feliv_Label.textAlignment=NSTextAlignmentLeft;
+//        _feliv_Label.font=[UIFont systemFontOfSize:16];
+//        [view6 addSubview:_feliv_Label];
         
         if (![[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
             
@@ -209,21 +219,52 @@
     }
     return _headView;
 }
+-(UIView *)footView
+{
+    if (_footView==nil) {
+        _footView=[[UIView alloc]initWithFrame:CGRectMake(0,HEIGHT-40-64, WIDTH, 40)];
+        UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 40 )];
+        [but setTitle:@"提交" forState:UIControlStateNormal];
+        [but addTarget:self action:@selector(nextStep) forControlEvents:UIControlEventTouchUpInside];
+        
+        //        but.enabled=NO;
+        but.backgroundColor=[UIColor redColor];
+        [_footView addSubview:but];
+    }
+    return _footView;
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"贷款详情";
     self.view.backgroundColor=AppPageColor;
-    
-    UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+    textArray=@[@"基本信息认证",@"手机运营商",@"身份证",@"其他信息认证"];
+    UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-50)];
     tab.delegate=self;
     tab.tableHeaderView=self.headView;
     tab.dataSource=self;
     [self.view addSubview:tab];
+    [self.view addSubview:self.footView];
        // Do any additional setup after loading the view.
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section;
+{
+    return 50;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 50)];
+    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(30, 10, 100, 30)];
+    label.textAlignment=NSTextAlignmentCenter;
+    label.text=@"认证资料";
+    label.textColor=[UIColor blackColor];
+    [view addSubview:label];
+    return view;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return textArray.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -236,9 +277,30 @@
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     cell.backgroundColor=[UIColor whiteColor];
-    cell.textLabel.text=@"基本信息";
-
+    cell.textLabel.text=[textArray objectAtIndex:indexPath.row];
+    UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(WIDTH-100, 5, 80, cell.frame.size.height-10)];
+    [but setTitle:@"去认证" forState:UIControlStateNormal];
+    
+    [cell.contentView addSubview:but];
     return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    switch (indexPath.row) {
+        case 0:
+             [self.navigationController pushViewController:[BasicInformationViewController new] animated:YES];
+            break;
+         case 1:
+            [self.navigationController pushViewController:[IdVerificationViewController new] animated:YES];
+
+            break;
+        default:
+            break;
+    }
+   
+
+
 }
 -(void)keyboardHide:(UITapGestureRecognizer*)tap{
     [self.view endEditing:YES];

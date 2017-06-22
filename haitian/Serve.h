@@ -19,6 +19,8 @@
 #define SERVERE @"http://app.jishiyu11.cn/index.php?g=app"
 #define IMG_PATH  @"http://101.201.41.93:82/data/upload"//品牌logo
 
+
+#define UploadPath @"http://47.93.122.140:8001/index.php?g=app"
 #define SERVEREURL SERVERE
 //贷款
 #define loan @"&m=business&a=index"

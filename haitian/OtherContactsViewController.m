@@ -25,7 +25,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self getList];
     arr=@[@"亲属／配偶姓名",@"手机号码",@"紧急联系人",@"手机号码"];
     
     UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
@@ -35,6 +35,45 @@
     [self.view addSubview:tab];
     // Do any additional setup after loading the view.
 }
+-(void)getList
+{
+    NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:
+                        Context.currentUser.uid,@"uid",
+                        nil];
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=other_list",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        if ([responseObject[@"code"]isEqualToString:@"0000"]) {
+            NSArray *array1=[[responseObject objectForKey:@"data"]objectForKey:@"data"];
+            NSDictionary *dictionary=[array1 firstObject];
+            if (![UtilTools isBlankString:dictionary[@"kinsfolk_name"]]) {
+                UILabel *label=[self.view viewWithTag:100];
+                label.text=dictionary[@"kinsfolk_name"];
+            }
+            if (![UtilTools isBlankString:dictionary[@"kinsfolk_mobile"]]) {
+                UILabel *label=[self.view viewWithTag:101];
+                label.text=dictionary[@"kinsfolk_mobile"];
+            }
+            if (![UtilTools isBlankString:dictionary[@"urgency_name"]]) {
+                UILabel *label=[self.view viewWithTag:102];
+                label.text=dictionary[@"urgency_name"];
+            }
+            if (![UtilTools isBlankString:dictionary[@"urgency_mobile"]]) {
+                UILabel *label=[self.view viewWithTag:103];
+                label.text=dictionary[@"urgency_mobile"];
+            }
+                   }
+        else
+        {
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+    
+    
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return arr.count;
@@ -52,7 +91,6 @@
     cell.textLabel.text=arr[indexPath.row];
     UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(WIDTH-100, 10, 100, cell.frame.size.height-20)];
     label.tag=100+indexPath.row;
-    label.text=@"sdjns";
     label.font=[UIFont systemFontOfSize:14];
     [cell.contentView addSubview:label];
 
@@ -109,6 +147,32 @@
   
 
 
+}
+-(void)complete
+{
+    NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:
+                        Context.currentUser.uid,@"uid",
+                        [(UILabel *) [self.view viewWithTag:100] text],@"kinsfolk_name",
+                        [(UILabel *) [self.view viewWithTag:101] text],@"kinsfolk_mobile",
+                        [(UILabel *) [self.view viewWithTag:102] text],@"urgency_name",
+                        [(UILabel *) [self.view viewWithTag:103] text],@"urgency_mobile",
+                        
+                        nil];
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=other_add",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"code"]isEqualToString:@"0000"]) {
+            [MessageAlertView showSuccessMessage:@"上传成功"];
+        }
+        else
+        {
+            [MessageAlertView showErrorMessage:responseObject[@"msg"]];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+    
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

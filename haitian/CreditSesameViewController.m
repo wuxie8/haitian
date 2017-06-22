@@ -48,7 +48,7 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
 
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",nil];
-    NSString *urlStr = [NSString stringWithFormat:@"http://app.jishiyu11.cn:81/api/alipay/encrypt"];
+    NSString *urlStr = [NSString stringWithFormat:@"http://app.jishiyu11.cn/index.php?g=app&m=alipay&a=anyEncrypt"];
     [manager GET:urlStr parameters:dic2 progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject[@"code"]isEqualToString:@"0000"]) {
             WebVC *vc = [[WebVC alloc] init];

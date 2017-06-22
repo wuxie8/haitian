@@ -27,7 +27,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self getList];
     arr=@[@"名下房产",@"房产所在地",@"房产类型",@"房产当前市价",@"目前该房是否存在按揭",@"目前该房是否抵押"];
     NSArray *arr1=@[@"无房产",@"商品房",@"商住连用",@"经济适用房",@"宅基地",@"军产房",@"商铺",@"写字楼",@"其他"];
     NSArray *arr2=[NSArray array];
@@ -46,6 +46,53 @@
     
     [self.view addSubview:tab];
     // Do any additional setup after loading the view.
+}
+
+-(void)getList
+{
+    NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:
+                        Context.currentUser.uid,@"uid",
+                        nil];
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=house_list",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        if ([responseObject[@"code"]isEqualToString:@"0000"]) {
+            NSArray *array1=[[responseObject objectForKey:@"data"]objectForKey:@"data"];
+            NSDictionary *dictionary=[array1 firstObject];
+            if (![UtilTools isBlankString:dictionary[@"house"]]) {
+                UITextField *text=[self.view viewWithTag:1000];
+                text.text=dictionary[@"house"];
+            }
+            if (![UtilTools isBlankString:dictionary[@"house_address"]]) {
+                UITextField *text=[self.view viewWithTag:1001];
+                text.text=dictionary[@"house_address"];
+            }
+            if (![UtilTools isBlankString:dictionary[@"house_type"]]) {
+                UITextField *text=[self.view viewWithTag:1002];
+                text.text=dictionary[@"house_type"];
+            }
+            if (![UtilTools isBlankString:dictionary[@"house_price"]]) {
+                UITextField *text=[self.view viewWithTag:1003];
+                text.text=dictionary[@"house_price"];
+            }
+            if (![UtilTools isBlankString:dictionary[@"installment"]]) {
+                UITextField *text=[self.view viewWithTag:1004];
+                text.text=dictionary[@"installment"];
+            }
+            if (![UtilTools isBlankString:dictionary[@"mortgage"]]) {
+                UITextField *text=[self.view viewWithTag:1005];
+                text.text=dictionary[@"mortgage"];
+            }
+        }
+        else
+        {
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+    
+    
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -95,7 +142,7 @@
         {
             
             [LZCityPickerController showPickerInViewController:self selectBlock:^(NSString *address, NSString *province, NSString *city, NSString *area) {
-                UITextField *text=[self.view viewWithTag:1002];
+                UITextField *text=[self.view viewWithTag:1001];
                 text.text=address;
                 
             }];
@@ -118,7 +165,34 @@
     //    [self.dic setObject:notification.object forKey:@"10"];
     
 }
-
+-(void)complete
+{
+    NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:
+                        Context.currentUser.uid,@"uid",
+                        [(UITextField *) [self.view viewWithTag:1000] text],@"house",
+                        [(UITextField *) [self.view viewWithTag:1001] text],@"house_address",
+                        [(UITextField *) [self.view viewWithTag:1002] text],@"house_type",
+                        [(UITextField *) [self.view viewWithTag:1003] text],@"house_price",
+                        [(UITextField *) [self.view viewWithTag:1004] text],@"installment",
+                        [(UITextField *) [self.view viewWithTag:1005] text],@"mortgage",
+                        
+                        nil];
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=house_add",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"code"]isEqualToString:@"0000"]) {
+            [MessageAlertView showSuccessMessage:@"上传成功"];
+        }
+        else
+        {
+            [MessageAlertView showErrorMessage:responseObject[@"msg"]];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+    
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
