@@ -80,7 +80,7 @@ static NSString *const footerId = @"footerId1";
 }
 -(void)getList
 {
-    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@/product/list",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@&m=product&a=postList",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
         NSDictionary *diction=dic[@"data"];
         NSArray *recommendarr=diction[@"recommend"];
@@ -110,7 +110,7 @@ static NSString *const footerId = @"footerId1";
 }
 -(void)getBannerList
 {
-    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@/banner/list",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@&m=banner&a=postList",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
         NSDictionary *diction=dic[@"data"];
         NSArray *array=diction[@"data"];

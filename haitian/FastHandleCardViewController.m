@@ -78,7 +78,7 @@ static NSString *const footerId = @"footerId";
 }
 -(void)getBannerList
 {
-    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@/banner/list",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@&m=banner&a=postList",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
         if ([dic[@"code"] isEqualToString:@"0000"]) {
             NSDictionary *diction=dic[@"data"];
@@ -108,7 +108,7 @@ static NSString *const footerId = @"footerId";
 
 -(void)getList
 {
-    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@/bank/list",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@&m=bank&a=postList",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
         NSDictionary *diction=dic[@"data"];
         NSArray *arr=diction[@"data"];

@@ -183,7 +183,7 @@
  
     AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
     manager.responseSerializer=[AFHTTPResponseSerializer serializer];
-    [manager POST:[NSString stringWithFormat:@"%@/feedback/add",SERVEREURL]parameters:dic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    [manager POST:[NSString stringWithFormat:@"%@&m=feedback&a=postAdd",SERVEREURL]parameters:dic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for (UIImage *image in _selectedPhotos) {
             //根据当前系统时间生成图片名称
             NSDate *date = [NSDate date];

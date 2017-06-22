@@ -68,7 +68,7 @@
 
 -(void)getList
 {
-    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/message/replist",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=message&a=postReplist",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
         if ([dic[@"code"] isEqualToString:@"0000"]) {
 
@@ -92,7 +92,7 @@
 //    } failure:^(NSURLSessionDataTask *task, NSError *error) {
 //    }];
     
-    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/message/remlist",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=message&a=postRemlist",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
         if ([dic[@"code"] isEqualToString:@"0000"]) {
             NSDictionary *diction=dic[@"data"];
@@ -211,7 +211,7 @@ type=5;
       
         [dic1 setObject:[(UITextField *) [self.view viewWithTag:1000] text] forKey:@"msg_name"];
     }
-    NSString *url=[NSString stringWithFormat:@"%@/message/add",SERVEREURL];
+    NSString *url=[NSString stringWithFormat:@"%@&m=message&a=postAdd",SERVEREURL];
     [[NetWorkManager sharedManager]postNoTipJSON:url parameters:dic1  success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject[@"code"] isEqualToString:@"0000"]) {
             [MessageAlertView showSuccessMessage:@"添加成功"];

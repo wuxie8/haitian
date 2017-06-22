@@ -14,6 +14,8 @@
 #import "RealEstateViewController.h"
 #import "CarProductionViewController.h"
 #import "UploadDocumentsViewController.h"
+#import "BasicInformationViewController.h"
+#import "LoadDetailViewController.h"
 @interface PersonalDataViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 
@@ -57,7 +59,7 @@
                         Context.currentUser.uid,@"uid",
                         nil];
     
-    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/userinfo/detail",SERVEREURL] parameters:dic1 success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/&m=userinfo&a=postDetail",SERVEREURL] parameters:dic1 success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
         if ([dic[@"code"] isEqualToString:@"0000"]) {
             NSDictionary *diction=[dic[@"data"] objectForKey:@"data"];
@@ -84,7 +86,7 @@
 
                        nil];
 
-    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/userinfo/add",SERVEREURL] parameters:dic1 success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userinfo&a=postAdd",SERVEREURL] parameters:dic1 success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
         if ([dic[@"code"] isEqualToString:@"0000"]) {
             [MessageAlertView showSuccessMessage:@"保存成功"];
@@ -171,8 +173,16 @@
                 [self.navigationController pushViewController:[CarProductionViewController new] animated:YES];
                 
                 break;
+            case 6:
+                [self.navigationController pushViewController:[LoadDetailViewController new] animated:YES];
+                
+                break;
             case 8:
                 [self.navigationController pushViewController:[UploadDocumentsViewController new] animated:YES];
+                
+                break;
+            case 9:
+                [self.navigationController pushViewController:[BasicInformationViewController new] animated:YES];
                 
                 break;
                 
