@@ -11,7 +11,6 @@
 
 @interface BasicInformationViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property(strong, nonatomic)UIView *footView;
 @end
 
 @implementation BasicInformationViewController
@@ -51,23 +50,39 @@
     tab.delegate=self;
     tab.dataSource=self;
     [self.view addSubview:tab];
-    [self.view addSubview:self.footView];
     // Do any additional setup after loading the view.
 }
--(UIView *)footView
-{
-    if (_footView==nil) {
-        _footView=[[UIView alloc]initWithFrame:CGRectMake(0,HEIGHT-40-64, WIDTH, 40)];
-        UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 40 )];
-        [but setTitle:@"提交" forState:UIControlStateNormal];
-        [but addTarget:self action:@selector(nextStep) forControlEvents:UIControlEventTouchUpInside];
-      
-        //        but.enabled=NO;
-        but.backgroundColor=[UIColor redColor];
-        [_footView addSubview:but];
-    }
-    return _footView;
 
+
+-(void)complete
+{
+    NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:
+                        Context.currentUser.uid,@"uid",
+                        [(UITextField *) [self.view viewWithTag:1000] text],@"name",
+                        [(UITextField *) [self.view viewWithTag:1001] text],@"idcard",
+                        [(UITextField *) [self.view viewWithTag:1002] text],@"money",
+                        [(UITextField *) [self.view viewWithTag:1003] text],@"limit",
+                        [(UITextField *) [self.view viewWithTag:1004] text],@"edu",
+                        [(UITextField *) [self.view viewWithTag:1005] text],@"insurance",
+                        [(UITextField *) [self.view viewWithTag:1006] text],@"car_status",
+                        [(UITextField *) [self.view viewWithTag:1006] text],@"profession",
+                        [(UITextField *) [self.view viewWithTag:1006] text],@"salary",
+                        nil];
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=credit_add",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"code"]isEqualToString:@"0000"]) {
+            [MessageAlertView showSuccessMessage:@"上传成功"];
+        }
+        else
+        {
+            [MessageAlertView showErrorMessage:responseObject[@"msg"]];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+    
+    
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

@@ -31,11 +31,24 @@
 
 @property (nonatomic, copy) NSString *updated_at;
 
+@property (nonatomic, copy) NSString *data_id;
+
+@property (nonatomic, copy) NSString *data_name;
+
+@property (nonatomic, copy) NSString *zuikuaifangkuan;
+
+@property (nonatomic, copy) NSString *edufanwei;
+@property (nonatomic, copy) NSString *feilv;
+
+@property (nonatomic, copy) NSString *fv_unit;
+
 @property (nonatomic, copy) NSString *order;
 
 @property (nonatomic, copy) NSString *img;
 
 @property (nonatomic, copy) NSString *pro_link;
+
+@property (nonatomic, copy) NSString *pro_describe;
 
 @property (nonatomic, copy) NSString *pro_hits;
 
@@ -43,10 +56,13 @@
 
 @property (nonatomic, copy) NSString *type;
 
+@property (nonatomic, copy) NSString *qx_unit;
 
-@property (nonatomic, copy) NSString *pro_describe;
+@property (nonatomic, copy) NSString *qixianfanwei;
 
 @property (nonatomic, copy) NSString *pro_name;
+
+
 
 @property (nonatomic, copy) NSString *id;
 

@@ -74,6 +74,7 @@
 		846C9E991ED81D720099CC51 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 846C9E981ED81D720099CC51 /* libresolv.tbd */; };
 		846C9E9B1ED81EA60099CC51 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 846C9E9A1ED81EA60099CC51 /* CoreFoundation.framework */; };
 		846C9E9D1ED81EE00099CC51 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 846C9E9C1ED81EE00099CC51 /* Security.framework */; };
+		84747CCE1EFBDB55006AF462 /* OtherInformationAuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84747CCD1EFBDB55006AF462 /* OtherInformationAuthenticationViewController.m */; };
 		847944BB1ECED16200227EC8 /* WebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 847944BA1ECED16200227EC8 /* WebVC.m */; };
 		847A11501EA45F0C002D8832 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114D1EA45F0C002D8832 /* User.m */; };
 		847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114F1EA45F0C002D8832 /* UserInfoContext.m */; };
@@ -315,6 +316,8 @@
 		846C9E9C1ED81EE00099CC51 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		846C9E9E1ED821A40099CC51 /* AppDelegate+JPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+JPush.h"; sourceTree = "<group>"; };
 		846C9E9F1ED821A40099CC51 /* AppDelegate+JPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+JPush.m"; sourceTree = "<group>"; };
+		84747CCC1EFBDB55006AF462 /* OtherInformationAuthenticationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherInformationAuthenticationViewController.h; sourceTree = "<group>"; };
+		84747CCD1EFBDB55006AF462 /* OtherInformationAuthenticationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherInformationAuthenticationViewController.m; sourceTree = "<group>"; };
 		847944B91ECED16200227EC8 /* WebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebVC.h; sourceTree = "<group>"; };
 		847944BA1ECED16200227EC8 /* WebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebVC.m; sourceTree = "<group>"; };
 		847A114C1EA45F0C002D8832 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -900,6 +903,8 @@
 				84939E311EFAA48600152EAF /* LoadDetailViewController.m */,
 				84939E2D1EFA90DA00152EAF /* BasicInformationViewController.h */,
 				84939E2E1EFA90DA00152EAF /* BasicInformationViewController.m */,
+				84747CCC1EFBDB55006AF462 /* OtherInformationAuthenticationViewController.h */,
+				84747CCD1EFBDB55006AF462 /* OtherInformationAuthenticationViewController.m */,
 				8402B9D81E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.h */,
 				8402B9D91E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m */,
 				84FD17241EE7EB3100EB79A3 /* BannerModel.h */,
@@ -1454,6 +1459,7 @@
 				847B17201EDE8F2B003A4D98 /* SetUpViewController.m in Sources */,
 				84361FDC1EB1EFB9008595E7 /* YLSOPickerView.m in Sources */,
 				8468562C1EA0822900C74F87 /* MessageAlertView.m in Sources */,
+				84747CCE1EFBDB55006AF462 /* OtherInformationAuthenticationViewController.m in Sources */,
 				84B36FCB1EB32820001FCD96 /* ProfessionalInformationViewController.m in Sources */,
 				84A350B71ED66B6500D9C1C7 /* RemindModel.m in Sources */,
 				847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */,

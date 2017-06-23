@@ -11,6 +11,8 @@
 #import "BasicInformationViewController.h"
 #import "CreditSesameViewController.h"
 #import "IdVerificationViewController.h"
+#import "OtherInformationAuthenticationViewController.h"
+#import "CreditSesameViewController.h"
 #define margen 30
 
 @interface LoadDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -46,18 +48,18 @@
         textField.borderStyle = UITextBorderStyleRoundedRect;
         textField.keyboardType = UIKeyboardTypeNumberPad;
         NSString *maxString;
-        //    if ([self.product.edufanwei rangeOfString:@"-"].location == NSNotFound) {
-        //        NSArray *arr=   [self.product.edufanwei   componentsSeparatedByString:@","];
-        //        maxString=[arr lastObject];
-        //    }
-        //    else
-        //    {
-        //        NSRange range=[self.product.edufanwei rangeOfString:@"-"];
-        //        maxString=[self.product.edufanwei substringFromIndex:(range.location+1)];
-        //    }
+            if ([self.product.edufanwei rangeOfString:@"-"].location == NSNotFound) {
+                NSArray *arr=   [self.product.edufanwei   componentsSeparatedByString:@","];
+                maxString=[arr lastObject];
+            }
+            else
+            {
+                NSRange range=[self.product.edufanwei rangeOfString:@"-"];
+                maxString=[self.product.edufanwei substringFromIndex:(range.location+1)];
+            }
         
         
-//        textField.text=maxString;
+        textField.text=maxString;
         edu=[maxString intValue];
         UILabel *unitLabel=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(textField.frame)-30, 0, 30, 20)];
         unitLabel.text=@"元";
@@ -70,15 +72,15 @@
         textField1.delegate=self;
         textField1.tag=501;
         NSString *maxString1;
-        //    if ([self.product.qixianfanwei rangeOfString:@"-"].location == NSNotFound) {
-        //        NSArray *arr=   [self.product.qixianfanwei   componentsSeparatedByString:@","];
-        //        maxString1=[arr lastObject];
-        //    }
-        //    else
-        //    {
-        //        NSRange range1=[self.product.qixianfanwei rangeOfString:@"-"];
-        //        maxString1=[self.product.qixianfanwei substringFromIndex:(range1.location+1)];
-        //    }
+            if ([self.product.qixianfanwei rangeOfString:@"-"].location == NSNotFound) {
+                NSArray *arr=   [self.product.qixianfanwei   componentsSeparatedByString:@","];
+                maxString1=[arr lastObject];
+            }
+            else
+            {
+                NSRange range1=[self.product.qixianfanwei rangeOfString:@"-"];
+                maxString1=[self.product.qixianfanwei substringFromIndex:(range1.location+1)];
+            }
         maxString1=[maxString1 substringToIndex:maxString1.length-1];
         textField1.text=@"30";
         qixian=[maxString1 intValue];
@@ -90,7 +92,7 @@
             textField1.borderStyle = UITextBorderStyleRoundedRect;
             textField1.keyboardType = UIKeyboardTypeNumberPad;
             UILabel *unitLabel1=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(textField1.frame)-30, 0, 30, 20)];
-//            unitLabel1.text=[self.product.fv_unit isEqualToString:@"1"]?@"天":@"月";
+            unitLabel1.text=[self.product.fv_unit isEqualToString:@"1"]?@"天":@"月";
 //            if ([self.product.post_title isEqualToString:@"平安i贷"]) {
 //                unitLabel1.text=@"月";
 //            }
@@ -101,15 +103,15 @@
         
         
             UILabel *label3=[[UILabel alloc]initWithFrame:CGRectMake(margen, CGRectGetMaxY(textField.frame)+20, WIDTH/2-margen*2, 30)];
-//            label3.text=[NSString stringWithFormat:@"额度范围：%@元",self.product.edufanwei];
-        label3.text=@"50000";
+            label3.text=[NSString stringWithFormat:@"额度范围：%@元",self.product.edufanwei];
+//        label3.text=@"50000";
             label3.adjustsFontSizeToFitWidth=YES;
             [yellowView addSubview:label3];
         
         
             UILabel *label4=[[UILabel alloc]initWithFrame:CGRectMake(margen+WIDTH/2, CGRectGetMaxY(textField.frame)+20, WIDTH/2-margen*2, 30)];
-//            label4.text=[NSString stringWithFormat:@"期限范围：%@",self.product.qixianfanwei];
-        label4.text=@"7-30";
+            label4.text=[NSString stringWithFormat:@"期限范围：%@%@",self.product.qixianfanwei,[self.product.fv_unit isEqualToString:@"1"]?@"天":@"月"];
+//        label4.text=@"7-30";
             label4.adjustsFontSizeToFitWidth=YES;
             [yellowView addSubview:label4];
         
@@ -135,40 +137,41 @@
             switch (i) {
                 case 0:
                 {
-                                    label.text=@"0.04";
-//                                    label1.text=[self.product.fv_unit isEqualToString:@"1"]?@"参考日利率":@"参考月利率";
-                    label1.text=@"参考月利率";
+                    label.text=self.product.feilv;
+//                                    label.text=@"0.04";
+                                    label1.text=[self.product.fv_unit isEqualToString:@"1"]?@"参考日利率":@"参考月利率";
+//                    label1.text=@"参考月利率";
                     
                 }
                     break;
                 case 1:
                 {
                     
-                    //                if([self.product.feilv containsString:@"-"])
-                    //                {
-                    //                    NSArray *array = [self.product.feilv componentsSeparatedByString:@"-"]; //从字符A中分隔成2个元素的数组
-                    //
-                    //                    float feilv1=edu/qixian+edu*[[array firstObject] floatValue]/100;
-                    //
-                    //                    float feilv2=edu/qixian+edu*[[array lastObject] floatValue]/100;
-                    //
-                    //                    label.text=[NSString stringWithFormat:@"%d-%d",(int)feilv1,(int)feilv2];
-                    //                }
-                    //                else{
-                    //
-                    //                    float feilv=edu/qixian+edu*[self.product.feilv floatValue]/100;
-                    //
-                    //                    label.text=[NSString stringWithFormat:@"%d",(int)feilv];
-                    //                }
+                                    if([self.product.feilv containsString:@"-"])
+                                    {
+                                        NSArray *array = [self.product.feilv componentsSeparatedByString:@"-"]; //从字符A中分隔成2个元素的数组
                     
-                    //
-                    //                label1.text=[self.product.fv_unit isEqualToString:@"1"]?@"每日还款":@"每月还款";
-                    //
+                                        float feilv1=edu/qixian+edu*[[array firstObject] floatValue]/100;
+                    
+                                        float feilv2=edu/qixian+edu*[[array lastObject] floatValue]/100;
+                    
+                                        label.text=[NSString stringWithFormat:@"%d-%d",(int)feilv1,(int)feilv2];
+                                    }
+                                    else{
+                    
+                                        float feilv=edu/qixian+edu*[self.product.feilv floatValue]/100;
+                    
+                                        label.text=[NSString stringWithFormat:@"%d",(int)feilv];
+                                    }
+                    
+                    
+                                    label1.text=[self.product.fv_unit isEqualToString:@"1"]?@"每日还款":@"每月还款";
+                    
                 }
                     break;
                 case 2:
                 {
-                    //                label.text=self.product.zuikuaifangkuan;
+                                    label.text=self.product.zuikuaifangkuan;
                     label1.text=@"最快放款时间";
                     
                 }
@@ -184,7 +187,7 @@
         [_headView addSubview:view5];
         
         UILabel *label5=[[UILabel alloc]initWithFrame:CGRectMake(0, 5, WIDTH, 30)];
-        //    label5.text=[self.product.fv_unit isEqualToString:@"1"]?@"按日计息，随借随还":@"参考月利率";
+            label5.text=[self.product.fv_unit isEqualToString:@"1"]?@"按日计息，随借随还":@"参考月利率";
         label5.textAlignment=NSTextAlignmentCenter;
         [view5 addSubview:label5];
         view5.layer.borderWidth=1;
@@ -219,33 +222,33 @@
     }
     return _headView;
 }
--(UIView *)footView
-{
-    if (_footView==nil) {
-        _footView=[[UIView alloc]initWithFrame:CGRectMake(0,HEIGHT-40-64, WIDTH, 40)];
-        UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 40 )];
-        [but setTitle:@"提交" forState:UIControlStateNormal];
-        [but addTarget:self action:@selector(nextStep) forControlEvents:UIControlEventTouchUpInside];
-        
-        //        but.enabled=NO;
-        but.backgroundColor=[UIColor redColor];
-        [_footView addSubview:but];
-    }
-    return _footView;
-    
-}
+//-(UIView *)footView
+//{
+//    if (_footView==nil) {
+//        _footView=[[UIView alloc]initWithFrame:CGRectMake(0,HEIGHT-40-64, WIDTH, 40)];
+//        UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 40 )];
+//        [but setTitle:@"提交" forState:UIControlStateNormal];
+//        [but addTarget:self action:@selector(nextStep) forControlEvents:UIControlEventTouchUpInside];
+//        
+//        //        but.enabled=NO;
+//        but.backgroundColor=[UIColor redColor];
+//        [_footView addSubview:but];
+//    }
+//    return _footView;
+//    
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"贷款详情";
     self.view.backgroundColor=AppPageColor;
-    textArray=@[@"基本信息认证",@"手机运营商",@"身份证",@"其他信息认证"];
+    textArray=@[@"基本信息认证",@"手机运营商",@"芝麻信用",@"身份证",@"其他信息认证"];
     UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-50)];
     tab.delegate=self;
     tab.tableHeaderView=self.headView;
     tab.dataSource=self;
     [self.view addSubview:tab];
-    [self.view addSubview:self.footView];
+//    [self.view addSubview:self.footView];
        // Do any additional setup after loading the view.
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section;
@@ -255,7 +258,7 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 50)];
-    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(30, 10, 100, 30)];
+    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(10, 10, 100, 30)];
     label.textAlignment=NSTextAlignmentCenter;
     label.text=@"认证资料";
     label.textColor=[UIColor blackColor];
@@ -291,9 +294,16 @@
         case 0:
              [self.navigationController pushViewController:[BasicInformationViewController new] animated:YES];
             break;
-         case 1:
+        case 2:
+            [self.navigationController pushViewController:[CreditSesameViewController new] animated:YES];
+            break;
+         case 3:
             [self.navigationController pushViewController:[IdVerificationViewController new] animated:YES];
 
+            break;
+        case 4:
+            [self.navigationController pushViewController:[OtherInformationAuthenticationViewController new] animated:YES];
+            
             break;
         default:
             break;

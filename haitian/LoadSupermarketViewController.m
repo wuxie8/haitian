@@ -18,6 +18,7 @@
 #import <UIKit+AFNetworking.h>
 #import <CoreTelephony/CTCarrier.h>
 #import "ProductModel.h"
+#import "LoadDetailViewController.h"
 #define kMargin 10
 #define pageHeight 150
 static NSString *const cellId = @"cellId1";
@@ -181,6 +182,8 @@ static NSString *const footerId = @"footerId1";
     return bannerView;
 }
 - (void)didSelectCell:(UIView *)subView withSubViewIndex:(NSInteger)subIndex {
+  
+
     BannerModel *banner=[bannerMutableArray objectAtIndex:subIndex];
     WebVC *vc = [[WebVC alloc] init];
     [vc setNavTitle:banner.title];
@@ -261,11 +264,15 @@ static NSString *const footerId = @"footerId1";
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ProductListModel *productList=[[productMutableArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    WebVC *vc = [[WebVC alloc] init];
-    [vc setNavTitle:productList.pro_name];
-    [vc loadFromURLStr:productList.pro_link];
-    vc.hidesBottomBarWhenPushed=YES;
-    [self.navigationController pushViewController:vc animated:NO];
+    LoadDetailViewController *detail=[[LoadDetailViewController alloc]init];
+    detail.product=productList;
+    detail.hidesBottomBarWhenPushed=YES;
+      [self.navigationController pushViewController:detail animated:YES];
+//    WebVC *vc = [[WebVC alloc] init];
+//    [vc setNavTitle:productList.pro_name];
+//    [vc loadFromURLStr:productList.pro_link];
+//    vc.hidesBottomBarWhenPushed=YES;
+//    [self.navigationController pushViewController:vc animated:NO];
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
