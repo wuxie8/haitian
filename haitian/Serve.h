@@ -18,7 +18,6 @@
 // */
 #define SERVERE @"http://app.jishiyu11.cn/index.php?g=app"
 #define IMG_PATH  @"http://101.201.41.93:82/data/upload"//品牌logo
-//http://101.201.41.93:82/data/upload/products/ddc0c0dfe0f19d35f179f84642a43d5b.jpg
 
 #define UploadPath @"http://47.93.122.140:8001/index.php?g=app"
 #define SERVEREURL SERVERE

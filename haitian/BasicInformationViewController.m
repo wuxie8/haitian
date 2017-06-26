@@ -56,19 +56,21 @@
 
 -(void)complete
 {
+    
     NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:
                         Context.currentUser.uid,@"uid",
                         [(UITextField *) [self.view viewWithTag:1000] text],@"name",
                         [(UITextField *) [self.view viewWithTag:1001] text],@"idcard",
                         [(UITextField *) [self.view viewWithTag:1002] text],@"money",
-                        [(UITextField *) [self.view viewWithTag:1003] text],@"limit",
-                        [(UITextField *) [self.view viewWithTag:1004] text],@"edu",
-                        [(UITextField *) [self.view viewWithTag:1005] text],@"insurance",
-                        [(UITextField *) [self.view viewWithTag:1006] text],@"car_status",
-                        [(UITextField *) [self.view viewWithTag:1006] text],@"profession",
-                        [(UITextField *) [self.view viewWithTag:1006] text],@"salary",
+                          [(UITextField *) [self.view viewWithTag:1003] text],@"money",
+                        [(UITextField *) [self.view viewWithTag:1004] text],@"limit",
+                        [(UITextField *) [self.view viewWithTag:1005] text],@"edu",
+                        [(UITextField *) [self.view viewWithTag:1006] text],@"insurance",
+                        [(UITextField *) [self.view viewWithTag:1007] text],@"car_status",
+                        [(UITextField *) [self.view viewWithTag:1008] text],@"profession",
                         nil];
-    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=credit_add",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
+    
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=base_add",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject[@"code"]isEqualToString:@"0000"]) {
             [MessageAlertView showSuccessMessage:@"上传成功"];
         }

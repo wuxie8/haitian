@@ -7,7 +7,10 @@
 //
 
 #import "GestureNavBaseVC.h"
-
+#import "ProductModel.h"
 @interface OtherInformationAuthenticationViewController : GestureNavBaseVC
 
+@property(strong, nonatomic)ProductListModel*product;
+
+@property(strong, nonatomic)NSArray *dataArray;
 @end

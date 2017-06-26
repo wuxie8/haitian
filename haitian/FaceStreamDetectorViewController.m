@@ -441,6 +441,7 @@
         if (isJudgeMouth != YES) {
             self.textLabel.text = @"请重复张嘴动作...";
             [self tomAnimationWithName:@"openMouth" count:2];
+            
 #pragma mark --- 限定脸部位置为中间位置
             if (left < 100 || top < 100 || right > 460 || bottom > 400) {
                 isCrossBorder = YES;
@@ -671,10 +672,10 @@
     for (int i = 0; i < count; i++) {
         // 图像名称
         NSString *imageName = [NSString stringWithFormat:@"%@%d.png", name, i];
-        //        UIImage *image = [UIImage imageNamed:imageName];
+                UIImage *image = [UIImage imageNamed:imageName];
         // ContentsOfFile需要全路径
-        NSString *path = [[NSBundle mainBundle] pathForResource:imageName ofType:nil];
-        UIImage *image = [UIImage imageWithContentsOfFile:path];
+//        NSString *path = [[NSBundle mainBundle] pathForResource:imageName ofType:nil];
+//        UIImage *image = [UIImage imageWithContentsOfFile:path];
         
         [arrayM addObject:image];
     }

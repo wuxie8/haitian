@@ -50,6 +50,8 @@
 
 @property (nonatomic, copy) NSString *pro_describe;
 
+@property (nonatomic, copy) NSString *other_id;
+
 @property (nonatomic, copy) NSString *pro_hits;
 
 @property (nonatomic, copy) NSString *status;

@@ -21,6 +21,7 @@
 {
     NSArray *arr;
     UIButton *but;
+    NSArray *titleArray;
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -51,21 +52,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"身份认证";
-    arr=@[@"IdPositive",@"IdOpposite"];
-    UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+    arr=@[@"IdPositive",@"IdOpposite",@"FaceRecognition"];
+   titleArray=@[@"第一步：请拍摄身份证正面照",@"第二步:请拍摄身份证反面照",@"第三步:请根据指示完成人脸识别"];
+    UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-44) style:UITableViewStyleGrouped ];
     tab.delegate=self;
     tab.dataSource=self;
-    tab.scrollEnabled=NO;
+//    tab.scrollEnabled=NO;
     tab.tableHeaderView=self.headView;
 //    tab.tableFooterView=self.footView;
     [self.view addSubview:tab];
     // Do any additional setup after loading the view.
 }
-
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 3;
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
-    return 2;
+    return 1;
+}
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+return [titleArray objectAtIndex:section];
+
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 20;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -76,17 +90,22 @@
     UITableViewCell *cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     
     UIImageView *cellImageView=[[UIImageView alloc]initWithFrame:CGRectMake(30, 20, WIDTH-30*2, 200)];
-    cellImageView.tag=indexPath.row+1000;
+    cellImageView.tag=indexPath.section+1000;
     cellImageView.userInteractionEnabled=YES;
     UITapGestureRecognizer *cellImageTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cellImageClick:)];
     [cellImageView addGestureRecognizer:cellImageTap];
-    if (indexPath.row==0) {
-        cellImageView.image=Context.idInfo.IDPositiveImage?Context.idInfo.IDPositiveImage:[UIImage imageNamed:arr[indexPath.row]];
+    if (indexPath.section==0) {
+        cellImageView.image=Context.idInfo.IDPositiveImage?Context.idInfo.IDPositiveImage:[UIImage imageNamed:arr[indexPath.section]];
     }
-    if (indexPath.row==1) {
-        cellImageView.image=Context.idInfo.IDOppositeImage?Context.idInfo.IDOppositeImage:[UIImage imageNamed:arr[indexPath.row]];
+    if (indexPath.section==1) {
+        cellImageView.image=Context.idInfo.IDOppositeImage?Context.idInfo.IDOppositeImage:[UIImage imageNamed:arr[indexPath.section]];
     }
-
+    else
+    {
+         cellImageView.image=[UIImage imageNamed:arr[indexPath.section]];
+    
+    }
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     [cell.contentView addSubview:cellImageView];
 
 
@@ -95,14 +114,30 @@
 -(void)cellImageClick:(UITapGestureRecognizer *)tap
 {
     NSInteger row = tap.view.tag;
-    if (row==1000) {
-        AVCaptureViewController *AVCaptureVC = [[AVCaptureViewController alloc] init];
-        AVCaptureVC.direction=@"Positive";
-        [self.navigationController pushViewController:AVCaptureVC animated:YES];
-    }
-    else
-    {
-        [self.navigationController pushViewController:[IdOpposite_ViewController new] animated:YES];
+    switch (row) {
+        case 1000:
+        {
+            AVCaptureViewController *AVCaptureVC = [[AVCaptureViewController alloc] init];
+            AVCaptureVC.direction=@"Positive";
+            [self.navigationController pushViewController:AVCaptureVC animated:YES];
+        }
+
+            break;
+        case 1001:
+        {
+            [self.navigationController pushViewController:[IdOpposite_ViewController new] animated:YES];
+        }
+            
+            break;
+        case 1002:
+        {
+            FaceStreamDetectorViewController *face=[[FaceStreamDetectorViewController alloc]init];
+            [self.navigationController pushViewController:face animated:YES];
+        }
+            
+            break;
+        default:
+            break;
     }
 }
 
@@ -110,7 +145,7 @@
 -(UIView *)headView
 {
     if (_headView==nil) {
-        _headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 30)];
+        _headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 40)];
         UILabel *headLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 10, WIDTH, 20 )];
         headLabel.text=@"*温馨提示： 请填写真实有效信息以便通过认证";
         headLabel.textAlignment=NSTextAlignmentCenter;
@@ -135,8 +170,7 @@
 #pragma mark 实现的方法
 -(void)nextStep
 {
-    FaceStreamDetectorViewController *face=[[FaceStreamDetectorViewController alloc]init];
-    [self.navigationController pushViewController:face animated:YES];
+   
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

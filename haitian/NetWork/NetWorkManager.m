@@ -123,7 +123,11 @@
     [MessageAlertView showLoading:@""];
     
     NSString *url = [NSString stringWithFormat:@"%@",name];
-        self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json", @"text/json", nil];    
+        self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json", @"text/json", nil];
+    if ([name containsString:@"&m=userdetail&a=other_info_add"]) {
+             [self.requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    }
+   
 
     return [self POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 
@@ -395,6 +399,55 @@
             isChecked = NO;
         }
         
+    }
+   else if ([name containsString:@"&m=userdetail&a=base_add"]) {
+        
+        if ([UtilTools isBlankString:[parameters objectForKey:@"name"]])
+        {
+            message = @"请输入姓名";
+            isChecked = NO;
+            
+        }
+        else if ([UtilTools isBlankString:[parameters objectForKey:@"idcard"]]) {
+            
+            message = @"请输入身份证";
+            isChecked = NO;
+        }
+        else if (![UtilTools validateIdentityCard:[parameters objectForKey:@"idcard"]]) {
+            
+            message = @"请输入正确的身份证";
+            isChecked = NO;
+        }
+        else if ([UtilTools isBlankString:[parameters objectForKey:@"money"]]) {
+            
+            message = @"请输入申请金额";
+            isChecked = NO;
+        }
+        else if ([UtilTools isBlankString:[parameters objectForKey:@"limit"]]) {
+            
+            message = @"请输入可接受最高月还款";
+            isChecked = NO;
+        }
+        else if ([UtilTools isBlankString:[parameters objectForKey:@"edu"]]) {
+            
+            message = @"请输入教育程度";
+            isChecked = NO;
+        }
+        else if ([UtilTools isBlankString:[parameters objectForKey:@"insurance"]]) {
+            
+            message = @"请输入是否缴纳社保";
+            isChecked = NO;
+        }
+        else if ([UtilTools isBlankString:[parameters objectForKey:@"car_status"]]) {
+            
+            message = @"车辆情况";
+            isChecked = NO;
+        }
+        else if ([UtilTools isBlankString:[parameters objectForKey:@"profession"]]) {
+            
+            message = @"请输入职业类别";
+            isChecked = NO;
+        }
     }
     if (![UtilTools isBlankString:message]) {
         [MessageAlertView showErrorMessage:message];

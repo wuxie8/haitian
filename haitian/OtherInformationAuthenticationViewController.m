@@ -48,18 +48,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    arr=@[@"个人邮箱",@"配偶",@"居住地址",@"居住方式",@"公司名称",@"公司地址",@"公司电话",@"紧急联系人",@"关系",@"手机号码",@"紧急联系人",@"关系",@"手机号码"];
-  placeArray=@[@"请填写邮箱",@"请选择",@"请填写详细地址",@"请选择",@"请输入公司名称",@"请输入公司地址",@"请输入电话",@"姓名",@"关系",@"手机号码",@"姓名",@"关系",@"手机号码"];
+    arr=@[@"个人邮箱",@"配偶",@"居住地址",@"居住方式",@"公司名称",@"公司地址",@"公司电话",@"紧急联系人A",@"关系A",@"手机号码A",@"紧急联系人B",@"关系B",@"手机号码B"];
+  placeArray=@[@"请填写邮箱",@"请选择",@"请填写详细地址",@"请选择",@"请输入公司名称",@"请输入公司地址",@"请输入电话",@"姓名A",@"关系A",@"手机号码A",@"姓名B",@"关系B",@"手机号码B"];
     dataMutableArray=[NSMutableArray array];
     placeMutableArray =[NSMutableArray array];
-    NSArray *dataArr=@[@"1",@"2",@"3",@"4"];
-    for (int i=0; i<dataArr.count; i++) {
+  
+    for (int i=0; i<self.dataArray.count; i++) {
 
       
 
-       [dataMutableArray addObject: [arr objectAtIndex:[dataArr[i] integerValue]]];
-        [placeMutableArray addObject:[placeArray objectAtIndex:[dataArr[i] integerValue] ]];
+       [dataMutableArray addObject: [arr objectAtIndex:[self.dataArray[i] integerValue]-1]];
+        
+        [placeMutableArray addObject:[placeArray objectAtIndex:[self.dataArray[i] integerValue]-1 ]];
     }
+    for (int i=0; i<dataMutableArray.count; i++) {
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getValue:) name:dataMutableArray[i] object:nil];
+        
+    }
+    dic=[NSMutableDictionary dictionary];
 //    [self getList];
     UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
     tab.delegate=self;
@@ -168,7 +174,7 @@
         return NO;
         
     }
-   else if ([[dataMutableArray objectAtIndex:textField.tag-1000] isEqualToString:@"关系"]) {
+   else if ([[dataMutableArray objectAtIndex:textField.tag-1000] isEqualToString:@"关系A"]) {
        YLSOPickerView *picker = [[YLSOPickerView alloc]init];
        picker.array=@[@"父母",@"配偶",@"兄弟",@"姐妹"];
        picker.title=@"关系";
@@ -178,29 +184,101 @@
        return NO;
        
    }
+   else if ([[dataMutableArray objectAtIndex:textField.tag-1000] isEqualToString:@"关系B"]) {
+       YLSOPickerView *picker = [[YLSOPickerView alloc]init];
+       picker.array=@[@"父母",@"配偶",@"兄弟",@"姐妹"];
+       picker.title=@"关系";
+       
+       
+       [picker show];
+       return NO;
+       
+   }
+
     return YES;
    }
 -(void)getValue:(NSNotification *)notification
 {
-    
     UITextField *text=[self.view viewWithTag:1000+[dataMutableArray indexOfObject:notification.name]];
     text.text=notification.object;
     
 }
 -(void)complete
 {
+
     NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:
                         Context.currentUser.uid,@"uid",
-                        [(UITextField *) [self.view viewWithTag:1000] text],@"edu",
-                        [(UITextField *) [self.view viewWithTag:1001] text],@"creditcard",
-                        [(UITextField *) [self.view viewWithTag:1002] text],@"credit_record",
-                        [(UITextField *) [self.view viewWithTag:1003] text],@"liabilities_status",
-                        [(UITextField *) [self.view viewWithTag:1004] text],@"loan_record",
-                        [(UITextField *) [self.view viewWithTag:1005] text],@"taobao_id",
-                        [(UITextField *) [self.view viewWithTag:1006] text],@"loan_use",
-                        
+                        self.product.id,@"pid",
+
                         nil];
-    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=credit_add",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSMutableDictionary * mutDic2 = [[NSMutableDictionary alloc]initWithDictionary:dic2];
+    
+
+    if (![UtilTools isBlankString: [(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"个人邮箱"]] text]]) {
+        [mutDic2 setObject:[(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"个人邮箱"]] text] forKey:@"email"];
+    }
+    else if (![UtilTools isBlankString: [(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"配偶"]] text]])
+        
+    {
+     [mutDic2 setObject:[(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"配偶"]] text] forKey:@"mate"];
+    }
+    else if (![UtilTools isBlankString: [(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"居住地址"]] text]])
+        
+    {
+        [mutDic2 setObject:[(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"居住地址"]] text] forKey:@"dwell_address"];
+    }
+    else if (![UtilTools isBlankString: [(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"居住方式"]] text]])
+        
+    {
+        [mutDic2 setObject:[(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"居住方式"]] text] forKey:@"dwell_typ"];
+    }
+    else if (![UtilTools isBlankString: [(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"公司名称"]] text]])
+        
+    {
+        [mutDic2 setObject:[(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"公司名称"]] text] forKey:@"company_name"];
+    }
+    else if (![UtilTools isBlankString: [(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"公司地址"]] text]])
+        
+    {
+        [mutDic2 setObject:[(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"公司地址"]] text] forKey:@"company_addr"];
+    }
+    else if (![UtilTools isBlankString: [(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"公司电话"]] text]])
+        
+    {
+        [mutDic2 setObject:[(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"公司电话"]] text] forKey:@"company_te"];
+    }
+    else if (![UtilTools isBlankString: [(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"紧急联系人A"]] text]])
+        
+    {
+        [mutDic2 setObject:[(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"紧急联系人A"]] text] forKey:@"user_a"];
+    }
+    else if (![UtilTools isBlankString: [(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"关系A"]] text]])
+        
+    {
+        [mutDic2 setObject:[(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"关系A"]] text] forKey:@"relation_a"];
+    }
+    else if (![UtilTools isBlankString: [(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"手机号码A"]] text]])
+        
+    {
+        [mutDic2 setObject:[(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"手机号码A"]] text] forKey:@"mobile_a"];
+    }
+    else if (![UtilTools isBlankString: [(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"紧急联系人B"]] text]])
+        
+    {
+        [mutDic2 setObject:[(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"紧急联系人B"]] text] forKey:@"user_b"];
+    }
+    else if (![UtilTools isBlankString: [(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"关系B"]] text]])
+        
+    {
+        [mutDic2 setObject:[(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"关系B"]] text] forKey:@"relation_b"];
+    }
+    else if (![UtilTools isBlankString: [(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"手机号码B"]] text]])
+        
+    {
+        [mutDic2 setObject:[(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"手机号码B"]] text] forKey:@"mobile_b"];
+    }
+    
+    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=other_info_add",SERVERE] parameters:mutDic2 success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject[@"code"]isEqualToString:@"0000"]) {
             [MessageAlertView showSuccessMessage:@"上传成功"];
         }
