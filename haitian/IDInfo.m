@@ -23,6 +23,8 @@
     [aCoder encodeObject:self.valid forKey:@"valid"];
     [aCoder encodeObject:self.IDPositiveImage forKey:@"IDPositiveImage"];
     [aCoder encodeObject:self.IDOppositeImage forKey:@"IDOppositeImage"];
+    [aCoder encodeObject:self.is_Face forKey:@"is_Face"];
+
   
 }
 
@@ -40,6 +42,8 @@
         self.valid = [aDecoder decodeObjectForKey:@"valid"];
         self.IDPositiveImage = [aDecoder decodeObjectForKey:@"IDPositiveImage"];
         self.IDOppositeImage = [aDecoder decodeObjectForKey:@"IDOppositeImage"];
+        self.IDOppositeImage = [aDecoder decodeObjectForKey:@"is_Face"];
+
       
     }
     return self;

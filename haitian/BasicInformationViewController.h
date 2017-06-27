@@ -7,8 +7,10 @@
 //
 
 #import "GestureNavBaseVC.h"
-
+#import "ProductModel.h"
 @interface BasicInformationViewController : GestureNavBaseVC
+
+@property(strong, nonatomic)ProductListModel*product;
 
 
 @end

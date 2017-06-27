@@ -49,11 +49,69 @@
     }
     
 }
+-(void)getList
+{
+    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
+                      Context.currentUser.uid,@"uid",
+                       nil];
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=idcard_list",UploadPath] parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        if ([responseObject[@"code"]isEqualToString:@"0000"]) {
+            DLog(@"%@",responseObject);
+            NSArray *idcardArr=[responseObject[@"data"]objectForKey:@"data"];
+            NSDictionary *diction=[idcardArr firstObject];
+            NSString *front_img=diction[@"front_img"];
+            NSString *back_img=diction[@"back_img"];
+            UIImageView *imageView=[self.view viewWithTag:1000];
+            NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMG_PATH,front_img]];
+            UIImage * result;
+            NSData * data = [NSData dataWithContentsOfURL:url];
+            
+            result = [UIImage imageWithData:data];
+            Context.idInfo.IDPositiveImage=result;
+            IDInfo *idInfo=[IDInfo new];
+            idInfo.IDPositiveImage=result;
+
+            [imageView setImage:result];
+            NSURL *url1=[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMG_PATH,back_img]];
+            UIImage * result1;
+            NSData * data1 = [NSData dataWithContentsOfURL:url1];
+            
+            result1 = [UIImage imageWithData:data1];
+            UIImageView *imageView1=[self.view viewWithTag:1001];
+
+            [imageView1 setImage:result1];
+            idInfo.IDOppositeImage=result1;
+            Context.idInfo=idInfo;
+            [NSKeyedArchiver archiveRootObject:Context.idInfo toFile:DOCUMENT_FOLDER(@"iDInfofile")];
+            DLog(@"%@",Context.idInfo.IDPositiveImage);
+            Context.idInfo.IDOppositeImage=result1;
+            [NSKeyedArchiver archiveRootObject:Context.idInfo toFile:DOCUMENT_FOLDER(@"iDInfofile")];
+            if (Context.currentUser.idcard_auth) {
+                UIImageView *imageView2=[self.view viewWithTag:1002];
+                [imageView2 setImage:[UIImage imageNamed:@"IdentifySuccessful"]];
+            }
+
+
+
+         }
+        else
+        {}
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+
+
+
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"身份认证";
     arr=@[@"IdPositive",@"IdOpposite",@"FaceRecognition"];
    titleArray=@[@"第一步：请拍摄身份证正面照",@"第二步:请拍摄身份证反面照",@"第三步:请根据指示完成人脸识别"];
+    [self getList];
     UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-44) style:UITableViewStyleGrouped ];
     tab.delegate=self;
     tab.dataSource=self;
@@ -140,7 +198,68 @@ return [titleArray objectAtIndex:section];
             break;
     }
 }
+-(void)complete
+{
+    DLog(@"%@",Context.idInfo.IDOppositeImage);
+    DLog(@"%@",Context.idInfo.IDPositiveImage);
+    DLog(@"%@",Context.idInfo.is_Face);
 
+    if (!Context.idInfo.IDPositiveImage) {
+        return ;
+    }
+    if (!Context.idInfo.IDOppositeImage) {
+        return ;
+    }
+    if (!Context.currentUser.idcard_auth) {
+        return;
+    }
+
+    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
+                       Context.currentUser.uid,@"uid",
+                      nil];
+    
+    AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
+    manager.responseSerializer=[AFHTTPResponseSerializer serializer];
+    [manager POST:[NSString stringWithFormat:@"%@&m=userdetail&a=idcard_add",UploadPath]parameters:dic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+            //根据当前系统时间生成图片名称
+        
+            NSDate *date = [NSDate date];
+            NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+            [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+            NSString *dateString = [formatter stringFromDate:date];
+            NSString *  _headfileName = [NSString stringWithFormat:@"%@.png",dateString];
+            NSData *     _headImageData = UIImageJPEGRepresentation(Context.idInfo.IDPositiveImage, 1);
+            [formData appendPartWithFileData:_headImageData name:@"photo1" fileName:_headfileName mimeType:@"image/jpg/png/jpeg"];
+        NSDate *date2 = [NSDate date];
+        NSDateFormatter *formatter2 = [[NSDateFormatter alloc]init];
+        [formatter2 setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+        NSString *dateString2 = [formatter2 stringFromDate:date2];
+        NSString *  _headfileName2 = [NSString stringWithFormat:@"%@.png",dateString2];
+        NSData *     _headImageData2 = UIImageJPEGRepresentation(Context.idInfo.IDOppositeImage, 1);
+        [formData appendPartWithFileData:_headImageData2 name:@"photo2" fileName:_headfileName2 mimeType:@"image/jpg/png/jpeg"];
+        
+       
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSDictionary *resultDic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        DLog(@"%@",resultDic);
+
+        if ([resultDic[@"code"]isEqualToString:@"0000"]) {
+            [MessageAlertView showSuccessMessage:@"提交成功"];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else
+        {
+            [MessageAlertView showErrorMessage:resultDic[@"msg"]];
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+    
+
+}
 #pragma mark 懒加载
 -(UIView *)headView
 {

@@ -20,5 +20,14 @@
 
 @property(strong, nonatomic)NSString*IDNum;
 
+@property(assign, nonatomic)BOOL base_auth;
+
+@property(assign, nonatomic)BOOL idcard_auth;
+
+@property(assign, nonatomic)BOOL mobile_auth;
+
+@property(assign, nonatomic)BOOL zhima_auth;
+@property(assign, nonatomic)BOOL other_auth;
+
 
 @end

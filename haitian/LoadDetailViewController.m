@@ -37,25 +37,11 @@
     NSArray * jsonObject2;
     NSArray *imageArray;
 }
-//-(UIView *)footView
-//{
-//    if (_footView==nil) {
-//        _footView=[[UIView alloc]initWithFrame:CGRectMake(0,HEIGHT-40-64, WIDTH, 40)];
-//        UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 40 )];
-//        [but setTitle:@"提交" forState:UIControlStateNormal];
-//        [but addTarget:self action:@selector(nextStep) forControlEvents:UIControlEventTouchUpInside];
-//        
-//        //        but.enabled=NO;
-//        but.backgroundColor=[UIColor redColor];
-//        [_footView addSubview:but];
-//    }
-//    return _footView;
-//    
-//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"贷款详情";
+    
     self.view.backgroundColor=AppPageColor;
     textArray=@[@"基本信息认证",@"手机运营商",@"芝麻信用",@"身份证",@"其他信息认证"];
     imageArray=@[@"BasicInformationAboutTheCertification",@"Operator",@"Credit_Sesame",@"IdCertification",@"OtherInformationAuthentication"];
@@ -95,7 +81,15 @@
             jsonObject2 = [NSJSONSerialization JSONObjectWithData:jsondata
                                                             options:NSJSONReadingAllowFragments
                                                               error:nil];
-          
+            Context.currentUser.other_auth=[dic[@"other_auth"] boolValue];
+            NSDictionary *user_auth=dic[@"user_auth"];
+            Context.currentUser.base_auth=[user_auth[@"base_auth"] boolValue];
+            Context.currentUser.idcard_auth=[user_auth[@"idcard_auth"] boolValue];
+
+            Context.currentUser.mobile_auth=[user_auth[@"mobile_auth"] boolValue];
+         
+            Context.currentUser.zhima_auth=[user_auth[@"zhima_auth"] boolValue];
+            [NSKeyedArchiver archiveRootObject:Context.currentUser toFile:DOCUMENT_FOLDER(@"loginedUser")];
             [tab reloadData];
 
         }
@@ -135,20 +129,36 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     [cell.imageView setImage:[UIImage imageNamed:imageArray[indexPath.row]]];
-    cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     cell.backgroundColor=[UIColor whiteColor];
     cell.textLabel.text=[mutableArray1 objectAtIndex:indexPath.row];
+
     UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(WIDTH-100, 5, 80, cell.frame.size.height-10)];
-    [but setTitle:@"去认证" forState:UIControlStateNormal];
-    
+    if ([cell.textLabel.text isEqualToString:@"基本信息认证"]) {
+        [but setImage:[UIImage imageNamed:Context.currentUser.base_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
+    }
+    if ([cell.textLabel.text isEqualToString:@"手机运营商"]) {
+        [but setImage:[UIImage imageNamed:Context.currentUser.mobile_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
+    }
+    if ([cell.textLabel.text isEqualToString:@"芝麻信用"]) {
+        [but setImage:[UIImage imageNamed:Context.currentUser.zhima_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
+    }
+    if ([cell.textLabel.text isEqualToString:@"身份证"]) {
+        [but setImage:[UIImage imageNamed:Context.currentUser.idcard_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
+    }
+    if ([cell.textLabel.text isEqualToString:@"其他信息认证"]) {
+        [but setImage:[UIImage imageNamed:Context.currentUser.other_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
+    }
     [cell.contentView addSubview:but];
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([[mutableArray1 objectAtIndex:indexPath.row]isEqualToString:@"基本信息认证"]) {
-         [self.navigationController pushViewController:[BasicInformationViewController new] animated:YES];
+        BasicInformationViewController *basic=[[BasicInformationViewController alloc]init];
+        basic.product=self.product;
+        [self.navigationController pushViewController:basic animated:YES];
+        
     }
     else if ([[mutableArray1 objectAtIndex:indexPath.row]isEqualToString:@"手机运营商"])
     {
@@ -388,14 +398,14 @@
             NSRange range1=[self.product.qixianfanwei rangeOfString:@"-"];
             maxString1=[self.product.qixianfanwei substringFromIndex:(range1.location+1)];
         }
-        maxString1=[maxString1 substringToIndex:maxString1.length-1];
-        textField1.text=@"30";
+//        maxString1=[maxString1 substringToIndex:maxString1.length-1];
         qixian=[maxString1 intValue];
         //    if ([self.product.post_title isEqualToString:@"平安i贷"]) {
         //        qixian=20;
         //        textField1.text=@"20";
         //
         //    }
+        textField1.text=maxString1;
         textField1.borderStyle = UITextBorderStyleRoundedRect;
         textField1.keyboardType = UIKeyboardTypeNumberPad;
         UILabel *unitLabel1=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(textField1.frame)-30, 0, 30, 20)];

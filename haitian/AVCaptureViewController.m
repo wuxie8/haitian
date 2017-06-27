@@ -530,8 +530,8 @@
                 UIImage *image = [UIImage getImageStream:imageBuffer];
                 UIImage *subImage = [UIImage getSubImage:rect inImage:image];
                 iDInfo.IDPositiveImage=subImage;
-                Context.idInfo=iDInfo;
-//                Context.idInfo.IDPositiveImage=subImage;
+//                Context.idInfo=iDInfo;
+                Context.idInfo.IDPositiveImage=subImage;
                 [NSKeyedArchiver archiveRootObject:Context.idInfo toFile:DOCUMENT_FOLDER(@"iDInfofile")];
 
                 // 推出IDInfoVC（展示身份证信息的控制器）

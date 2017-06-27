@@ -35,7 +35,9 @@
 -(void)nextClick
 {
     UIViewController *viewCtl = self.navigationController.viewControllers[self.navigationController.viewControllers.count-4];
-    
+    Context.idInfo.is_Face=@"1";
+    [NSKeyedArchiver archiveRootObject:Context.idInfo toFile:DOCUMENT_FOLDER(@"iDInfofile")];
+
     [self.navigationController popToViewController:viewCtl animated:NO];
 }
 - (void)didReceiveMemoryWarning {

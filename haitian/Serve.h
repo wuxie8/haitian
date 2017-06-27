@@ -17,7 +17,7 @@
 // *  @return 正式服务器
 // */
 #define SERVERE @"http://app.jishiyu11.cn/index.php?g=app"
-#define IMG_PATH  @"http://101.201.41.93:82/data/upload"//品牌logo
+#define IMG_PATH  @"http://app.jishiyu11.cn/data/upload"//品牌logo
 
 #define UploadPath @"http://47.93.122.140:8001/index.php?g=app"
 #define SERVEREURL SERVERE

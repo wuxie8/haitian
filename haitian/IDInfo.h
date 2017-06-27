@@ -23,4 +23,6 @@
 
 @property(copy, nonatomic)UIImage *IDOppositeImage;
 
+@property(copy, nonatomic)NSString*is_Face;
+
 @end
