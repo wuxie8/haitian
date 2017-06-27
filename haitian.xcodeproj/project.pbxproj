@@ -92,6 +92,16 @@
 		848F1F9C1EC00D9400720FB6 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F1F9B1EC00D9400720FB6 /* CoreMotion.framework */; };
 		848F1F9E1EC011DE00720FB6 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F1F9D1EC011DE00720FB6 /* LocalAuthentication.framework */; };
 		848FBC151ED2E99000A1E1CD /* RemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848FBC141ED2E99000A1E1CD /* RemindViewController.m */; };
+		849012B11F02477B00E3D62A /* JishiyuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849012B01F02477B00E3D62A /* JishiyuViewController.m */; };
+		849012B51F02481F00E3D62A /* JishiyuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849012B41F02481F00E3D62A /* JishiyuTableViewCell.m */; };
+		849012B81F0248F200E3D62A /* LoanClasssificationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 849012B71F0248F200E3D62A /* LoanClasssificationVC.m */; };
+		849012BB1F0249AA00E3D62A /* LoanClassification.m in Sources */ = {isa = PBXBuildFile; fileRef = 849012BA1F0249AA00E3D62A /* LoanClassification.m */; };
+		849012BE1F0249D600E3D62A /* LoanDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849012BD1F0249D600E3D62A /* LoanDetailsViewController.m */; };
+		849012C11F024A2500E3D62A /* AmountClassificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849012C01F024A2500E3D62A /* AmountClassificationViewController.m */; };
+		849012C41F024A9400E3D62A /* AmountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849012C31F024A9400E3D62A /* AmountTableViewCell.m */; };
+		849012C71F024B0100E3D62A /* LoanClickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849012C61F024B0100E3D62A /* LoanClickViewController.m */; };
+		849012CA1F024B3F00E3D62A /* BtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849012C91F024B3F00E3D62A /* BtnView.m */; };
+		849012CD1F024C3000E3D62A /* HomeProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 849012CC1F024C3000E3D62A /* HomeProductModel.m */; };
 		84939E191EFA0C1200152EAF /* PersonalCreditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84939E181EFA0C1200152EAF /* PersonalCreditViewController.m */; };
 		84939E1C1EFA0FAD00152EAF /* EnterpriseManagementSituationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84939E1B1EFA0FAD00152EAF /* EnterpriseManagementSituationViewController.m */; };
 		84939E201EFA120200152EAF /* FamilyAndLivingConditionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84939E1F1EFA120200152EAF /* FamilyAndLivingConditionsViewController.m */; };
@@ -146,8 +156,6 @@
 		84C50C5D1EADF47100AD0B62 /* IDInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50C581EADF47100AD0B62 /* IDInfoViewController.m */; };
 		84C50C5E1EADF47100AD0B62 /* IDInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C50C591EADF47100AD0B62 /* IDInfoViewController.xib */; };
 		84CD81F51EA48F30009B786F /* RegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD81F41EA48F30009B786F /* RegisterVC.m */; };
-		84EAEAD21EE118F9007D3CCA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61CE1EB08AB500BF91FB /* AVFoundation.framework */; };
-		84EAEAD31EE118F9007D3CCA /* AVFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61CE1EB08AB500BF91FB /* AVFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		84EAEAD71EE17683007D3CCA /* HelpCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FC1EA7039D00EC8C9D /* HelpCenterViewController.m */; };
 		84EAEAD81EE176A9007D3CCA /* AppDelegate+JPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C9E9F1ED821A40099CC51 /* AppDelegate+JPush.m */; };
 		84F5D4001EA703D100EC8C9D /* XDMultTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FF1EA703D100EC8C9D /* XDMultTableView.m */; };
@@ -192,7 +200,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				84EAEAD31EE118F9007D3CCA /* AVFoundation.framework in Embed Frameworks */,
 				843DD7791EB2DE960014E283 /* iflyMSC.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -341,6 +348,26 @@
 		848F1F9D1EC011DE00720FB6 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		848FBC131ED2E99000A1E1CD /* RemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindViewController.h; sourceTree = "<group>"; };
 		848FBC141ED2E99000A1E1CD /* RemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindViewController.m; sourceTree = "<group>"; };
+		849012AF1F02477B00E3D62A /* JishiyuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JishiyuViewController.h; sourceTree = "<group>"; };
+		849012B01F02477B00E3D62A /* JishiyuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JishiyuViewController.m; sourceTree = "<group>"; };
+		849012B31F02481F00E3D62A /* JishiyuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JishiyuTableViewCell.h; sourceTree = "<group>"; };
+		849012B41F02481F00E3D62A /* JishiyuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JishiyuTableViewCell.m; sourceTree = "<group>"; };
+		849012B61F0248F200E3D62A /* LoanClasssificationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoanClasssificationVC.h; sourceTree = "<group>"; };
+		849012B71F0248F200E3D62A /* LoanClasssificationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoanClasssificationVC.m; sourceTree = "<group>"; };
+		849012B91F0249AA00E3D62A /* LoanClassification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoanClassification.h; sourceTree = "<group>"; };
+		849012BA1F0249AA00E3D62A /* LoanClassification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoanClassification.m; sourceTree = "<group>"; };
+		849012BC1F0249D600E3D62A /* LoanDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoanDetailsViewController.h; sourceTree = "<group>"; };
+		849012BD1F0249D600E3D62A /* LoanDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoanDetailsViewController.m; sourceTree = "<group>"; };
+		849012BF1F024A2500E3D62A /* AmountClassificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmountClassificationViewController.h; sourceTree = "<group>"; };
+		849012C01F024A2500E3D62A /* AmountClassificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmountClassificationViewController.m; sourceTree = "<group>"; };
+		849012C21F024A9400E3D62A /* AmountTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmountTableViewCell.h; sourceTree = "<group>"; };
+		849012C31F024A9400E3D62A /* AmountTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmountTableViewCell.m; sourceTree = "<group>"; };
+		849012C51F024B0100E3D62A /* LoanClickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoanClickViewController.h; sourceTree = "<group>"; };
+		849012C61F024B0100E3D62A /* LoanClickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoanClickViewController.m; sourceTree = "<group>"; };
+		849012C81F024B3F00E3D62A /* BtnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BtnView.h; sourceTree = "<group>"; };
+		849012C91F024B3F00E3D62A /* BtnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BtnView.m; sourceTree = "<group>"; };
+		849012CB1F024C3000E3D62A /* HomeProductModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeProductModel.h; sourceTree = "<group>"; };
+		849012CC1F024C3000E3D62A /* HomeProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeProductModel.m; sourceTree = "<group>"; };
 		84939E171EFA0C1200152EAF /* PersonalCreditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalCreditViewController.h; sourceTree = "<group>"; };
 		84939E181EFA0C1200152EAF /* PersonalCreditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalCreditViewController.m; sourceTree = "<group>"; };
 		84939E1A1EFA0FAD00152EAF /* EnterpriseManagementSituationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterpriseManagementSituationViewController.h; sourceTree = "<group>"; };
@@ -501,7 +528,6 @@
 				846C9E991ED81D720099CC51 /* libresolv.tbd in Frameworks */,
 				8420A4DA1EE4E808001C5EAC /* libc++.tbd in Frameworks */,
 				843959891EC3FEC60093D906 /* UserNotifications.framework in Frameworks */,
-				84EAEAD21EE118F9007D3CCA /* AVFoundation.framework in Frameworks */,
 				848F1F9E1EC011DE00720FB6 /* LocalAuthentication.framework in Frameworks */,
 				842E61CB1EB08AA000BF91FB /* CoreLocation.framework in Frameworks */,
 				848F1F9C1EC00D9400720FB6 /* CoreMotion.framework in Frameworks */,
@@ -794,6 +820,33 @@
 			name = User;
 			sourceTree = "<group>";
 		};
+		849012B21F02477F00E3D62A /* Jishiyu-HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				849012CB1F024C3000E3D62A /* HomeProductModel.h */,
+				849012CC1F024C3000E3D62A /* HomeProductModel.m */,
+				849012BF1F024A2500E3D62A /* AmountClassificationViewController.h */,
+				849012C01F024A2500E3D62A /* AmountClassificationViewController.m */,
+				849012C21F024A9400E3D62A /* AmountTableViewCell.h */,
+				849012C51F024B0100E3D62A /* LoanClickViewController.h */,
+				849012C61F024B0100E3D62A /* LoanClickViewController.m */,
+				849012C81F024B3F00E3D62A /* BtnView.h */,
+				849012C91F024B3F00E3D62A /* BtnView.m */,
+				849012C31F024A9400E3D62A /* AmountTableViewCell.m */,
+				849012BC1F0249D600E3D62A /* LoanDetailsViewController.h */,
+				849012BD1F0249D600E3D62A /* LoanDetailsViewController.m */,
+				849012B01F02477B00E3D62A /* JishiyuViewController.m */,
+				849012B91F0249AA00E3D62A /* LoanClassification.h */,
+				849012BA1F0249AA00E3D62A /* LoanClassification.m */,
+				849012B61F0248F200E3D62A /* LoanClasssificationVC.h */,
+				849012B71F0248F200E3D62A /* LoanClasssificationVC.m */,
+				849012AF1F02477B00E3D62A /* JishiyuViewController.h */,
+				849012B31F02481F00E3D62A /* JishiyuTableViewCell.h */,
+				849012B41F02481F00E3D62A /* JishiyuTableViewCell.m */,
+			);
+			name = "Jishiyu-HomePage";
+			sourceTree = "<group>";
+		};
 		84939E1D1EFA113000152EAF /* PersonalDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -915,6 +968,7 @@
 				84B9DC421E9DCDF50066A92D /* FastHandleCardViewController.m */,
 				8402B9F71E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.h */,
 				8402B9F81E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m */,
+				849012B21F02477F00E3D62A /* Jishiyu-HomePage */,
 				84F5D4011EA7461000EC8C9D /* Person */,
 				846856121EA0597200C74F87 /* Login */,
 				84B9DBE91E9DC0990066A92D /* Supporting Files */,
@@ -1391,10 +1445,12 @@
 				84A274241ED3DAAF009462F4 /* AccumulationFundViewController.m in Sources */,
 				847A11501EA45F0C002D8832 /* User.m in Sources */,
 				844E16431EC97A2000F4EA80 /* HcdDateTimePickerView.m in Sources */,
+				849012C41F024A9400E3D62A /* AmountTableViewCell.m in Sources */,
 				844E16451EC97A2000F4EA80 /* UIColor+HcdCustom.m in Sources */,
 				842E62031EB08C9000BF91FB /* PermissionDetector.m in Sources */,
 				84F5D41A1EA7675E00EC8C9D /* TZAssetCell.m in Sources */,
 				84A7398B1E9E25B700A42502 /* WSIndexBanner.m in Sources */,
+				849012BE1F0249D600E3D62A /* LoanDetailsViewController.m in Sources */,
 				84C50C5D1EADF47100AD0B62 /* IDInfoViewController.m in Sources */,
 				8402B9DA1E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m in Sources */,
 				84939E1C1EFA0FAD00152EAF /* EnterpriseManagementSituationViewController.m in Sources */,
@@ -1407,11 +1463,13 @@
 				847B17231EDE91B2003A4D98 /* AboutUsViewController.m in Sources */,
 				84C50C3B1EADD49C00AD0B62 /* IdVerificationViewController.m in Sources */,
 				84F5D41D1EA7675E00EC8C9D /* TZImageManager.m in Sources */,
+				849012B81F0248F200E3D62A /* LoanClasssificationVC.m in Sources */,
 				842E61FD1EB08C8300BF91FB /* CalculatorTools.m in Sources */,
 				846856411EA0902D00C74F87 /* ASValuePopUpView.m in Sources */,
 				84A733531EB86C82008ABB7E /* AddressBookVC.m in Sources */,
 				84B9DBF11E9DC0990066A92D /* ViewController.m in Sources */,
 				84939E321EFAA48600152EAF /* LoadDetailViewController.m in Sources */,
+				849012CA1F024B3F00E3D62A /* BtnView.m in Sources */,
 				84939E201EFA120200152EAF /* FamilyAndLivingConditionsViewController.m in Sources */,
 				84C50C401EADF3DE00AD0B62 /* RectManager.m in Sources */,
 				844E16481EC99FB700F4EA80 /* AddBillViewController.m in Sources */,
@@ -1435,6 +1493,7 @@
 				84939E191EFA0C1200152EAF /* PersonalCreditViewController.m in Sources */,
 				842E62061EB08C9700BF91FB /* IFlyFaceResultKeys.m in Sources */,
 				845663FB1ED57F6F0075A971 /* LMResultShowVC.m in Sources */,
+				849012C11F024A2500E3D62A /* AmountClassificationViewController.m in Sources */,
 				848FBC151ED2E99000A1E1CD /* RemindViewController.m in Sources */,
 				84B9DC401E9DCDBC0066A92D /* LoadSupermarketViewController.m in Sources */,
 				84174D691EDEC3FA00A815B3 /* PersonalDataViewController.m in Sources */,
@@ -1444,6 +1503,7 @@
 				846856451EA0969E00C74F87 /* ForgotPasswordViewController.m in Sources */,
 				84939E291EFA16A000152EAF /* CarProductionViewController.m in Sources */,
 				84FD17231EE7D6A600EB79A3 /* ProductModel.m in Sources */,
+				849012CD1F024C3000E3D62A /* HomeProductModel.m in Sources */,
 				846856181EA0764900C74F87 /* AccountPassswordViewController.m in Sources */,
 				84F5D4001EA703D100EC8C9D /* XDMultTableView.m in Sources */,
 				84A733331EB85FB1008ABB7E /* ContactInformationViewController.m in Sources */,
@@ -1456,17 +1516,20 @@
 				847944BB1ECED16200227EC8 /* WebVC.m in Sources */,
 				842A01691EC9464200143E4A /* NewRemindViewController.m in Sources */,
 				84F5D41C1EA7675E00EC8C9D /* TZAssetModel.m in Sources */,
+				849012B11F02477B00E3D62A /* JishiyuViewController.m in Sources */,
 				847B17201EDE8F2B003A4D98 /* SetUpViewController.m in Sources */,
 				84361FDC1EB1EFB9008595E7 /* YLSOPickerView.m in Sources */,
 				8468562C1EA0822900C74F87 /* MessageAlertView.m in Sources */,
 				84747CCE1EFBDB55006AF462 /* OtherInformationAuthenticationViewController.m in Sources */,
 				84B36FCB1EB32820001FCD96 /* ProfessionalInformationViewController.m in Sources */,
 				84A350B71ED66B6500D9C1C7 /* RemindModel.m in Sources */,
+				849012BB1F0249AA00E3D62A /* LoanClassification.m in Sources */,
 				847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */,
 				84F5D4271EA768EA00EC8C9D /* TZTestCell.m in Sources */,
 				84F5D4041EA7492A00EC8C9D /* FeedbackViewController.m in Sources */,
 				844E16441EC97A2000F4EA80 /* MXSCycleScrollView.m in Sources */,
 				84B9DBEB1E9DC0990066A92D /* main.m in Sources */,
+				849012B51F02481F00E3D62A /* JishiyuTableViewCell.m in Sources */,
 				84C50C471EADF40D00AD0B62 /* UIAlertController+Extend.m in Sources */,
 				84A7398C1E9E25B700A42502 /* WSPageView.m in Sources */,
 				84939E261EFA147D00152EAF /* RealEstateViewController.m in Sources */,
@@ -1483,6 +1546,7 @@
 				84C50C511EADF45700AD0B62 /* LHSIDCardScaningView.m in Sources */,
 				842E61EC1EB08C2E00BF91FB /* CanvasView.m in Sources */,
 				84F5D4211EA7675E00EC8C9D /* TZPhotoPreviewController.m in Sources */,
+				849012C71F024B0100E3D62A /* LoanClickViewController.m in Sources */,
 				84A733301EB81934008ABB7E /* FamilyInformationViewController.m in Sources */,
 				84B9DC461E9DCE240066A92D /* PersonCenterViewController.m in Sources */,
 				84C50C5B1EADF47100AD0B62 /* IDAuthViewController.m in Sources */,

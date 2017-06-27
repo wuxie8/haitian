@@ -19,6 +19,7 @@
 #import <CoreTelephony/CTCarrier.h>
 #import "ProductModel.h"
 #import "LoadDetailViewController.h"
+#import "LoginViewController.h"
 #define kMargin 10
 #define pageHeight 150
 static NSString *const cellId = @"cellId1";
@@ -263,16 +264,18 @@ static NSString *const footerId = @"footerId1";
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"]) {
+        [self.navigationController pushViewController:[LoginViewController new] animated:YES];
+
+    
+    }
+    else{
     ProductListModel *productList=[[productMutableArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     LoadDetailViewController *detail=[[LoadDetailViewController alloc]init];
     detail.product=productList;
     detail.hidesBottomBarWhenPushed=YES;
       [self.navigationController pushViewController:detail animated:YES];
-//    WebVC *vc = [[WebVC alloc] init];
-//    [vc setNavTitle:productList.pro_name];
-//    [vc loadFromURLStr:productList.pro_link];
-//    vc.hidesBottomBarWhenPushed=YES;
-//    [self.navigationController pushViewController:vc animated:NO];
+    }
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {

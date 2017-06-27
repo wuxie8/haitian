@@ -209,6 +209,8 @@
     NSString *urlStr = [NSString stringWithFormat:@"http://app.jishiyu11.cn/index.php?g=app&m=alipay&a=anyEncrypt"];
     [manager GET:urlStr parameters:dic2 progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject[@"code"]isEqualToString:@"0000"]) {
+            DLog(@"%@",responseObject);
+
             WebVC *vc = [[WebVC alloc] init];
             [vc setNavTitle:@"芝麻信用"];
             [vc loadFromURLStr:[NSString stringWithFormat:@"%@",[responseObject[@"data"]objectForKey:@"url"]]];

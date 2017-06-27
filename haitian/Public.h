@@ -51,14 +51,7 @@
 #define TableViewBGcolor kColorFromRGBHex(0xECECEC)
 #define FontBlack kColorFromRGBHex(0x646464)
 #define RedBackGround kColorFromRGBHex(0xFF4D4D)
-
-#define SettlementButtonColor kColorFromRGBHex(0xFA822E)//结算栏按钮
-#define SettlementBackgroundColor kColorFromRGBHex(0xF8F8F8)//结算栏背景
-
-#define CouponBackgroundColor kColorFromRGBHex(0xBA0711)//优惠券背景
-#define CouponTitleFontColor kColorFromRGBHex(0x363636) //优惠券标题
-#define CouponContentFontColor kColorFromRGBHex(0x959595)//优惠券内容
-#define CouponAmountFontColor kColorFromRGBHex(0xD9112E)//优惠券金额
+#define AppBlue kColorFromRGBHex(0x1786e2)
 
 #pragma mark 系统文件位置
 

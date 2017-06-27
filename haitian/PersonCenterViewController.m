@@ -169,10 +169,17 @@
     switch (indexPath.section) {
         case 1:
         {
+            
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"]) {
+                [self.navigationController pushViewController:[LoginViewController new] animated:YES];
+                
+                
+            }
+            else{
             PersonalDataViewController *setup=[PersonalDataViewController new];
             setup.hidesBottomBarWhenPushed=YES;
             [self.navigationController pushViewController:setup animated:YES];
-            
+            }
         }
             break;
         case 3:

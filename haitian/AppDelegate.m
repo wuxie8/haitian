@@ -16,6 +16,7 @@
 #import "iflyMSC/IFlyFaceSDK.h"
 #import <ZMCreditSDK/ALCreditService.h>
 #import "LMZXSDK.h"
+#import "JishiyuViewController.h"
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 100000
 #import <UserNotifications/UserNotifications.h>
 #endif
@@ -63,13 +64,14 @@
     FastHandleCardViewController *mine=[[FastHandleCardViewController alloc]init];
     RemindViewController *remind=[RemindViewController new];
     PersonCenterViewController *person=[[PersonCenterViewController alloc]init];
-    
+    JishiyuViewController *jishiyu=[JishiyuViewController new];
     //步骤2：将视图控制器绑定到导航控制器上
  __unused   BaseNC *nav1C = [[BaseNC alloc] initWithRootViewController:homepage];
     BaseNC *nav2C = [[BaseNC alloc] initWithRootViewController:treatVC];
     BaseNC *nav3C=[[BaseNC alloc]initWithRootViewController:mine];
     BaseNC *nav4C=[[BaseNC alloc]initWithRootViewController:person];
-    BaseNC *nav5C=[[BaseNC alloc]initWithRootViewController:remind];
+  __unused   BaseNC *nav5C=[[BaseNC alloc]initWithRootViewController:remind];
+    BaseNC *nav6C=[[BaseNC alloc]initWithRootViewController:jishiyu];
 
     
     
@@ -80,7 +82,7 @@
     [tabBarController.tabBar insertSubview:barBgView atIndex:0];
     tabBarController.tabBar.opaque = YES;
     
-    tabBarController.viewControllers=@[nav5C,nav2C,nav3C,nav4C];
+    tabBarController.viewControllers=@[nav6C,nav2C,nav3C,nav4C];
     tabBarController.selectedIndex = 0; //默认选中第几个图标（此步操作在绑定viewControllers数据源之后）
     NSArray *titles = @[@"首页",@"贷款超市",@"快速办卡",@"个人中心"];
     NSArray *images=@[@"HomePage",@"LoadSupermarket",@"FastHandleCard",@"PersonCenter"];
