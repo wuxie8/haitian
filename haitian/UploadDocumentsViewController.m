@@ -150,7 +150,6 @@
     [alertController addAction:cancelAction];
     [alertController addAction:albumAction];
     [self presentViewController:alertController animated:NO completion:nil];
-    DLog(@"%ld",tap.view.tag);
     integer=tap.view.tag;
 
 }
@@ -166,10 +165,9 @@
 -(void)complete
 {
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
-                       @"656454",@"uid",
+                       Context.currentUser.uid,@"uid",
                        nil];
     
-    DLog(@"%@",mutableDictionary);
 
 //    http://app.jishiyu11.cn/index.php?g=app&m=userdetail&a=parpers_add
     AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
@@ -194,7 +192,6 @@
         NSString *dateString = [formatter stringFromDate:date];
         NSString *  _headfileName = [NSString stringWithFormat:@"%@.png",dateString];
             UIImage *image=[mutableDictionary objectForKey:string];
-            DLog(@"%@",image);
 
             NSData * _headImageData = UIImageJPEGRepresentation(image, 0.1);
         [formData appendPartWithFileData:_headImageData name:[NSString stringWithFormat:@"photot%d",[string intValue]-999] fileName:_headfileName mimeType:@"image/jpg/png/jpeg"];
@@ -203,10 +200,8 @@
     } progress:^(NSProgress * _Nonnull uploadProgress) {
 
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        DLog(@"%@",responseObject);
 
         NSDictionary *resultDic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        DLog(@"%@",resultDic);
 
         if ([resultDic[@"code"]isEqualToString:@"0000"]) {
             [MessageAlertView showSuccessMessage:@"提交成功"];

@@ -34,7 +34,6 @@
     arr=@[@"本人姓名",@"本人身份证号码",@"申请金额",@"贷款申请期限",@"可接受最高还款额度",@"教育程度",@"现单位是否缴纳社保",@"车辆情况",@"职业类别"];
     NSArray *arr1=[NSArray array];
     NSArray *arr2=[NSArray array];
-    DLog(@"%@",self.product.qixianfanwei);
     
     
     NSArray *arr3=[self.product.edufanwei containsString:@"-"]?[NSArray array]:[self.product.edufanwei componentsSeparatedByString:@","];
@@ -67,7 +66,6 @@
     [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=base_list",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
         
         if ([responseObject[@"code"]isEqualToString:@"0000"]) {
-            DLog(@"%@",responseObject);
             NSArray *array1=[responseObject[@"data"] objectForKey:@"data"];
             diction=[array1 firstObject];
             

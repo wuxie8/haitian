@@ -123,11 +123,7 @@
 {
     AddressVC *address=[[AddressVC alloc]init];
     [address setClickBlock:^(PersonModel *person){
-        // remove the transform animation if the animation finished and wasn't interrupted
-//        UITextField *textField=(UITextField *)[self.view viewWithTag:1002];
-//        textField.text=tel;
-        DLog(@"%@",person.name1);
-        DLog(@"%@",person.tel);
+
         if (click.tag==1000) {
                     UILabel *label=(UILabel *)[self.view viewWithTag:100];
             label.text=person.name1;

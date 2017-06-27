@@ -57,7 +57,6 @@
     [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=idcard_list",UploadPath] parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         
         if ([responseObject[@"code"]isEqualToString:@"0000"]) {
-            DLog(@"%@",responseObject);
             NSArray *idcardArr=[responseObject[@"data"]objectForKey:@"data"];
             NSDictionary *diction=[idcardArr firstObject];
             NSString *front_img=diction[@"front_img"];
@@ -84,7 +83,6 @@
             idInfo.IDOppositeImage=result1;
             Context.idInfo=idInfo;
             [NSKeyedArchiver archiveRootObject:Context.idInfo toFile:DOCUMENT_FOLDER(@"iDInfofile")];
-            DLog(@"%@",Context.idInfo.IDPositiveImage);
             Context.idInfo.IDOppositeImage=result1;
             [NSKeyedArchiver archiveRootObject:Context.idInfo toFile:DOCUMENT_FOLDER(@"iDInfofile")];
             if (Context.currentUser.idcard_auth) {
@@ -200,9 +198,7 @@ return [titleArray objectAtIndex:section];
 }
 -(void)complete
 {
-    DLog(@"%@",Context.idInfo.IDOppositeImage);
-    DLog(@"%@",Context.idInfo.IDPositiveImage);
-    DLog(@"%@",Context.idInfo.is_Face);
+
 
     if (!Context.idInfo.IDPositiveImage) {
         return ;
@@ -243,7 +239,6 @@ return [titleArray objectAtIndex:section];
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         NSDictionary *resultDic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        DLog(@"%@",resultDic);
 
         if ([resultDic[@"code"]isEqualToString:@"0000"]) {
             [MessageAlertView showSuccessMessage:@"提交成功"];
