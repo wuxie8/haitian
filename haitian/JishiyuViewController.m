@@ -28,119 +28,118 @@
 
 @implementation JishiyuViewController
 {
-   UITableView*tab;
+    UITableView*tab;
     int page;
     int page_count;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
- 
- 
-
-    self.title=@"小胖钱包";
-
     
-     page=1;
+    
+    
+    self.title=@"及时雨贷款";
+    
+    
+    page=1;
     
     self.view.backgroundColor=[UIColor grayColor];
     
     [self getList];
-
-  tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-64-40)];
-tab.delegate=self;
-tab.dataSource=self;
+    
+    tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-64-40)];
+    tab.delegate=self;
+    tab.dataSource=self;
     tab.backgroundColor=AppPageColor;
     tab.tableHeaderView=[self creatUI];
     
-[self.view addSubview:tab];
-// Do any additional setup after loading the view.
+    [self.view addSubview:tab];
+    // Do any additional setup after loading the view.
 }
 
 -(void)getList
 {
-     self.productArray=nil;
-  
-
+    self.productArray=nil;
+    
+    
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
-                       appcode,@"code",
-                       @"1.0.0",@"version",
-                      [NSString stringWithFormat:@"%d",page],@"page",
+                       @"ios",@"os",
+                       [NSString stringWithFormat:@"%d",page],@"page",
                        nil];
     NSArray *array=@[@"小胖-社保贷",@"小胖-公积金贷",@"小胖-保单贷",@"小胖-供房贷",@"小胖-税金贷",@"小胖-学信贷"];
-[[NetWorkManager sharedManager]postNoTipJSON:exchange parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
-    NSDictionary *dic=(NSDictionary *)responseObject;
-    if ([dic[@"status"]boolValue]) {
-      
-        NSArray *arr=dic[@"list"];
-        page_count=[dic[@"page_count"] intValue];
-        ++page;
-        if (page>page_count) {
-            page=1;
-        }
-        if ([UtilTools isBlankString:dic[@"review"]]) {
-             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"review"];
-        }else
-        {
-            [[NSUserDefaults standardUserDefaults] setBool:[dic[@"review"]boolValue] forKey:@"review"];
-
-
-        }
-        
-                 if (![UtilTools isBlankArray:arr]) {
-            for (int i=0; i<arr.count; i++) {
-                NSDictionary *diction=arr[i];
-                HomeProductModel *pro=[[HomeProductModel alloc]init];
-                if ([[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
-                    pro.smeta=@"icon";
-                    
-                    int location=i%array.count;
-                    pro.post_title=array[location];
-                }
-                else
-                {
-                    NSString *jsonString=diction[@"smeta"];
-                    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-                    NSError *err;
-                    NSDictionary *imagedic = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                                             options:NSJSONReadingMutableContainers
-                                                                               error:&err];
-                    pro.smeta=imagedic[@"thumb"];
-                    pro.post_title=diction[@"post_title"];
-                }
-                pro.link=diction[@"link"];
-                pro.edufanwei=diction[@"edufanwei"];
-                pro.qixianfanwei=diction[@"qixianfanwei"];
-                pro.shenqingtiaojian=diction[@"shenqingtiaojian"];
-                pro.zuikuaifangkuan=diction[@"zuikuaifangkuan"];
-              
-                pro.post_hits=diction[@"post_hits"];
-                pro.feilv=diction[@"feilv"];
-                pro.productID=diction[@"id"];
-                pro.post_excerpt=diction[@"post_excerpt"];
-                NSArray *tags=diction[@"tags"];
-                NSMutableArray *tagsArray=[NSMutableArray array];
-                for (NSDictionary *dic in tags) {
-                    [tagsArray addObject:dic[@"tag_name"]];
-                }
-                pro.tagsArray=tagsArray;
-                pro.fv_unit=diction[@"fv_unit"];
-
-                pro.qx_unit=diction[@"qx_unit"];
-
-                [self.productArray addObject:pro];
+    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@&m=product&a=change_list",SERVEREURL] parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *dic=(NSDictionary *)responseObject;
+        if ([dic[@"code"]isEqualToString:@"0000"]) {
+            
+            NSArray *arr=[dic[@"data"] objectForKey:@"list"];
+            page_count=[[dic[@"data"] objectForKey:@"page_count"] intValue];
+            ++page;
+            if (page>page_count) {
+                page=1;
+            }
+            if ([UtilTools isBlankString:dic[@"review"]]) {
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"review"];
+            }else
+            {
+                [[NSUserDefaults standardUserDefaults] setBool:[dic[@"review"]boolValue] forKey:@"review"];
+                
                 
             }
-
+            
+            if (![UtilTools isBlankArray:arr]) {
+                for (int i=0; i<arr.count; i++) {
+                    NSDictionary *diction=arr[i];
+                    HomeProductModel *pro=[[HomeProductModel alloc]init];
+                    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
+                        pro.smeta=@"icon";
+                        
+                        int location=i%array.count;
+                        pro.post_title=array[location];
+                    }
+                    else
+                    {
+                        NSString *jsonString=diction[@"smeta"];
+                        NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+                        NSError *err;
+                        NSDictionary *imagedic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                                                 options:NSJSONReadingMutableContainers
+                                                                                   error:&err];
+                        pro.smeta=imagedic[@"thumb"];
+                        pro.post_title=diction[@"post_title"];
+                    }
+                    pro.link=diction[@"link"];
+                    pro.edufanwei=diction[@"edufanwei"];
+                    pro.qixianfanwei=diction[@"qixianfanwei"];
+                    pro.shenqingtiaojian=diction[@"shenqingtiaojian"];
+                    pro.zuikuaifangkuan=diction[@"zuikuaifangkuan"];
+                    
+                    pro.post_hits=diction[@"post_hits"];
+                    pro.feilv=diction[@"feilv"];
+                    pro.productID=diction[@"id"];
+                    pro.post_excerpt=diction[@"post_excerpt"];
+                    NSArray *tags=diction[@"tags"];
+                    NSMutableArray *tagsArray=[NSMutableArray array];
+                    for (NSDictionary *dic in tags) {
+                        [tagsArray addObject:dic[@"tag_name"]];
+                    }
+                    pro.tagsArray=tagsArray;
+                    pro.fv_unit=diction[@"fv_unit"];
+                    
+                    pro.qx_unit=diction[@"qx_unit"];
+                    
+                    [self.productArray addObject:pro];
+                    
+                }
+                
+            }
+            
+            [tab reloadData];
+            
         }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
-        [tab reloadData];
         
-    }
-} failure:^(NSURLSessionDataTask *task, NSError *error) {
+    }];
     
-
-}];
-  
     
 }
 - (UIView *)creatUI {
@@ -151,15 +150,15 @@ tab.dataSource=self;
     pageView.minimumPageAlpha = 0.4;   //非当前页的透明比例
     pageView.minimumPageScale = 0.85;  //非当前页的缩放比例
     pageView.orginPageCount = 1; //原始页数
-
+    
     pageView.backgroundColor=[UIColor grayColor];
     //初始化pageControl
-//    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, pageView.frame.size.height - 8 - 10, WIDTH, 8)];
-//    pageControl.pageIndicatorTintColor = [UIColor grayColor];
-//    pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
-//    pageView.pageControl = pageControl;
-//    [pageView addSubview:pageControl];
-//    [pageView stopTimer];
+    //    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, pageView.frame.size.height - 8 - 10, WIDTH, 8)];
+    //    pageControl.pageIndicatorTintColor = [UIColor grayColor];
+    //    pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+    //    pageView.pageControl = pageControl;
+    //    [pageView addSubview:pageControl];
+    //    [pageView stopTimer];
     [self.view addSubview:pageView];
     
     return pageView;
@@ -172,7 +171,7 @@ tab.dataSource=self;
 
 - (void)didSelectCell:(UIView *)subView withSubViewIndex:(NSInteger)subIndex {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
-  
+        
         switch (subIndex) {
             case 0:
             {
@@ -206,7 +205,7 @@ tab.dataSource=self;
                 break;
         }
     }
-   
+    
 }
 
 #pragma mark NewPagedFlowView Datasource
@@ -219,14 +218,14 @@ tab.dataSource=self;
 - (UIView *)flowView:(WSPageView *)flowView cellForPageAtIndex:(NSInteger)index{
     WSIndexBanner *bannerView = (WSIndexBanner *)[flowView dequeueReusableCell];
     if (!bannerView) {
-       
+        
         bannerView = [[WSIndexBanner alloc] initWithFrame:CGRectMake(0, 0,  WIDTH , ScrollviewHeight)];
         bannerView.layer.cornerRadius = 4;
         bannerView.layer.masksToBounds = YES;
     }
     [bannerView.mainImageView setImage:[UIImage imageNamed:@"WechatIMG2"]];
     //    bannerView.mainImageView.image = self.imageArray[index];
-//    [bannerView.mainImageView sd_setImageWithURL:[NSURL URLWithString:ImgURLArray[index]]];
+    //    [bannerView.mainImageView sd_setImageWithURL:[NSURL URLWithString:ImgURLArray[index]]];
     
     return bannerView;
 }
@@ -267,11 +266,11 @@ tab.dataSource=self;
             
         default:
             
-            return 0;  
+            return 0;
             
-            break;  
+            break;
             
-    }  
+    }
     
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -290,14 +289,14 @@ tab.dataSource=self;
     
     UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(WIDTH-60, 30, 50, 25)];
     [but setImage:[UIImage imageNamed:@"change"] forState:UIControlStateNormal];
-   
+    
     [but.imageView setContentMode:UIViewContentModeScaleAspectFit];
     [but.imageView setClipsToBounds:YES];
     
     but.contentHorizontalAlignment= UIControlContentHorizontalAlignmentFill;
     
     but.contentVerticalAlignment = UIControlContentVerticalAlignmentFill;
-
+    
     [but addTarget:self action:@selector(getList) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:but];
     
@@ -318,19 +317,19 @@ tab.dataSource=self;
     {
         return 0;
     }
-   
+    
     
 }
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     
     if (indexPath.section==0 ) {
         return SectionHeight;
     }
     else
-    return 80;
+        return 80;
 }
 -(void)viewDidLayoutSubviews
 {
@@ -371,7 +370,7 @@ tab.dataSource=self;
         
         [jishiyu setModel:pro];
         return jishiyu;
-
+        
     }
     else
     {
@@ -383,72 +382,72 @@ tab.dataSource=self;
         NSArray *images=@[@"Fastloan",@"recommend",@"Creditcardreport"];
         for (int i=0; i<images.count; i++) {
             UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(WIDTH/images.count*i, 10, WIDTH/images.count, SectionHeight-20)];
-               [but setImage:[UIImage imageNamed:images[i]] forState:UIControlStateNormal];
-
+            [but setImage:[UIImage imageNamed:images[i]] forState:UIControlStateNormal];
+            
             [but.imageView setContentMode:UIViewContentModeScaleAspectFit];
             [but.imageView setClipsToBounds:YES];
-         
-             but.contentHorizontalAlignment= UIControlContentHorizontalAlignmentFill;
+            
+            but.contentHorizontalAlignment= UIControlContentHorizontalAlignmentFill;
             
             but.contentVerticalAlignment = UIControlContentVerticalAlignmentFill;
             [but addTarget:self action:@selector(butClick:) forControlEvents:UIControlEventTouchUpInside];
             but.tag=i;
-
+            
             [cell.contentView addSubview:but];
         }
-//        UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, SectionHeight-10, WIDTH, 10)];
-//        view.backgroundColor=kColorFromRGB(245, 245, 243);
-//        [cell.contentView addSubview:view];
+        //        UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, SectionHeight-10, WIDTH, 10)];
+        //        view.backgroundColor=kColorFromRGB(245, 245, 243);
+        //        [cell.contentView addSubview:view];
         return cell;
     }
 }
 -(void)butClick:(UIButton *)sender
 {
     
-//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"]) {
-        switch (sender.tag) {
-            case 0:
-            {
-                AmountClassificationViewController *amount=[[AmountClassificationViewController alloc]init];
-                amount.hidesBottomBarWhenPushed=YES;
-                [self.navigationController pushViewController:amount animated:YES];
-            }
-                break;
-            case 1:
-               
-            { LoanClasssificationVC *loanClass=[[ LoanClasssificationVC alloc]init];
-                    loanClass.hidesBottomBarWhenPushed=YES;
-                    [self.navigationController pushViewController:loanClass animated:YES];
-            }
-                break;
-            case 2:
-            {
-//                if (![[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
-                    WebVC *vc = [[WebVC alloc] init];
-                    [vc setNavTitle:@"信用卡查询"];
-                    [vc loadFromURLStr:@"https://cube.doraemoney.com/newCube/index.html?proId=65d44896d17b45c3895cb975f0757aa8"];
-                    vc.hidesBottomBarWhenPushed=YES;
-                    [self.navigationController pushViewController:vc animated:NO];
-//                }
-//                else
-//                {
-//                    [MessageAlertView showErrorMessage:@"服务器维护中"];
-//                }
-                
-            
-              
-            }
-                break;
-            default:
-                break;
+    //    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"]) {
+    switch (sender.tag) {
+        case 0:
+        {
+            AmountClassificationViewController *amount=[[AmountClassificationViewController alloc]init];
+            amount.hidesBottomBarWhenPushed=YES;
+            [self.navigationController pushViewController:amount animated:YES];
         }
-//    }
-//    else
-//    {
-//        LoginViewController *login=[[LoginViewController alloc]init];
-//        login.hidesBottomBarWhenPushed=YES;
-//        [self.navigationController pushViewController:login animated:YES];
-//    }
+            break;
+        case 1:
+            
+        { LoanClasssificationVC *loanClass=[[ LoanClasssificationVC alloc]init];
+            loanClass.hidesBottomBarWhenPushed=YES;
+            [self.navigationController pushViewController:loanClass animated:YES];
+        }
+            break;
+        case 2:
+        {
+            //                if (![[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
+            WebVC *vc = [[WebVC alloc] init];
+            [vc setNavTitle:@"信用卡查询"];
+            [vc loadFromURLStr:@"https://cube.doraemoney.com/newCube/index.html?proId=65d44896d17b45c3895cb975f0757aa8"];
+            vc.hidesBottomBarWhenPushed=YES;
+            [self.navigationController pushViewController:vc animated:NO];
+            //                }
+            //                else
+            //                {
+            //                    [MessageAlertView showErrorMessage:@"服务器维护中"];
+            //                }
+            
+            
+            
+        }
+            break;
+        default:
+            break;
+    }
+    //    }
+    //    else
+    //    {
+    //        LoginViewController *login=[[LoginViewController alloc]init];
+    //        login.hidesBottomBarWhenPushed=YES;
+    //        [self.navigationController pushViewController:login animated:YES];
+    //    }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -467,13 +466,13 @@ tab.dataSource=self;
         
         NSString *urlStr = [NSString stringWithFormat:@"%@&m=toutiao&a=redirect",SERVERE];
         [manager GET:urlStr parameters:dic progress:nil success:^(NSURLSessionDataTask *  task, id   responseObject) {
-          
+            
             
         } failure:^(NSURLSessionDataTask *  task, NSError *  error) {
             
         }];
-
-
+        
+        
         LoanDetailsViewController *load=[[LoanDetailsViewController alloc]init];
         load.hidesBottomBarWhenPushed=YES;
         
@@ -500,7 +499,7 @@ tab.dataSource=self;
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-// Dispose of any resources that can be recreated.
+    // Dispose of any resources that can be recreated.
 }
 
 /*

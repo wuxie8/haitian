@@ -35,13 +35,12 @@
  
  NSArray *array=@[@"小胖-社保贷",@"小胖-公积金贷",@"小胖-保单贷",@"小胖-供房贷",@"小胖-税金贷",@"小胖-学信贷"];
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
-                      appcode,@"code",
-                       @"1.0.0",@"version",
+                      @"ios",@"os",
                        @"1",@"page",
                        nil];
     [[NetWorkManager sharedManager]postNoTipJSON:loan parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
-        if ([dic[@"status"]boolValue]) {
+        if ([dic[@"code"]isEqualToString:@"0000"]) {
             NSArray *arr=dic[@"list"];
             
             for (int i=0; i<arr.count; i++) {

@@ -55,6 +55,7 @@
 
 -(void)setModel:(HomeProductModel *)model
 {
+    
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
         [self.image setImage:[UIImage imageNamed:model.smeta]];
         

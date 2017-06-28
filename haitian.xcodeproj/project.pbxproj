@@ -102,6 +102,7 @@
 		849012C71F024B0100E3D62A /* LoanClickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849012C61F024B0100E3D62A /* LoanClickViewController.m */; };
 		849012CA1F024B3F00E3D62A /* BtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849012C91F024B3F00E3D62A /* BtnView.m */; };
 		849012CD1F024C3000E3D62A /* HomeProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 849012CC1F024C3000E3D62A /* HomeProductModel.m */; };
+		849012D11F02641A00E3D62A /* HomePage.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 849012D01F02641A00E3D62A /* HomePage.xcassets */; };
 		84939E191EFA0C1200152EAF /* PersonalCreditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84939E181EFA0C1200152EAF /* PersonalCreditViewController.m */; };
 		84939E1C1EFA0FAD00152EAF /* EnterpriseManagementSituationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84939E1B1EFA0FAD00152EAF /* EnterpriseManagementSituationViewController.m */; };
 		84939E201EFA120200152EAF /* FamilyAndLivingConditionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84939E1F1EFA120200152EAF /* FamilyAndLivingConditionsViewController.m */; };
@@ -368,6 +369,7 @@
 		849012C91F024B3F00E3D62A /* BtnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BtnView.m; sourceTree = "<group>"; };
 		849012CB1F024C3000E3D62A /* HomeProductModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeProductModel.h; sourceTree = "<group>"; };
 		849012CC1F024C3000E3D62A /* HomeProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeProductModel.m; sourceTree = "<group>"; };
+		849012D01F02641A00E3D62A /* HomePage.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = HomePage.xcassets; sourceTree = "<group>"; };
 		84939E171EFA0C1200152EAF /* PersonalCreditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalCreditViewController.h; sourceTree = "<group>"; };
 		84939E181EFA0C1200152EAF /* PersonalCreditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalCreditViewController.m; sourceTree = "<group>"; };
 		84939E1A1EFA0FAD00152EAF /* EnterpriseManagementSituationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterpriseManagementSituationViewController.h; sourceTree = "<group>"; };
@@ -725,6 +727,7 @@
 				8451AFBE1EA85E65002F04B6 /* MessageAlertView.xcassets */,
 				84C50C371EADA5BC00AD0B62 /* Authentication.xcassets */,
 				84A274291ED44159009462F4 /* Remind.xcassets */,
+				849012D01F02641A00E3D62A /* HomePage.xcassets */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -828,19 +831,19 @@
 				849012BF1F024A2500E3D62A /* AmountClassificationViewController.h */,
 				849012C01F024A2500E3D62A /* AmountClassificationViewController.m */,
 				849012C21F024A9400E3D62A /* AmountTableViewCell.h */,
+				849012C31F024A9400E3D62A /* AmountTableViewCell.m */,
 				849012C51F024B0100E3D62A /* LoanClickViewController.h */,
 				849012C61F024B0100E3D62A /* LoanClickViewController.m */,
 				849012C81F024B3F00E3D62A /* BtnView.h */,
 				849012C91F024B3F00E3D62A /* BtnView.m */,
-				849012C31F024A9400E3D62A /* AmountTableViewCell.m */,
 				849012BC1F0249D600E3D62A /* LoanDetailsViewController.h */,
 				849012BD1F0249D600E3D62A /* LoanDetailsViewController.m */,
+				849012AF1F02477B00E3D62A /* JishiyuViewController.h */,
 				849012B01F02477B00E3D62A /* JishiyuViewController.m */,
 				849012B91F0249AA00E3D62A /* LoanClassification.h */,
 				849012BA1F0249AA00E3D62A /* LoanClassification.m */,
 				849012B61F0248F200E3D62A /* LoanClasssificationVC.h */,
 				849012B71F0248F200E3D62A /* LoanClasssificationVC.m */,
-				849012AF1F02477B00E3D62A /* JishiyuViewController.h */,
 				849012B31F02481F00E3D62A /* JishiyuTableViewCell.h */,
 				849012B41F02481F00E3D62A /* JishiyuTableViewCell.m */,
 			);
@@ -1347,6 +1350,7 @@
 			files = (
 				844FE79E1EB2D49000CFBE6B /* zocr0.lib in Resources */,
 				84F5D41B1EA7675E00EC8C9D /* TZAssetCell.xib in Resources */,
+				849012D11F02641A00E3D62A /* HomePage.xcassets in Resources */,
 				848F1F8B1EC0078D00720FB6 /* H5Service.bundle in Resources */,
 				8466290E1EB34252003E7979 /* Address.plist in Resources */,
 				84B9DBF91E9DC0990066A92D /* LaunchScreen.storyboard in Resources */,
