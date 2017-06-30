@@ -1,4 +1,4 @@
-//
+
 //  FastHandleCardCollectionViewCell.m
 //  haitian
 //
@@ -24,7 +24,7 @@
         self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(frame.size.width/2-40, frame.size.height/2, 80, frame.size.height/4-10)];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         self.titleLabel.textColor = [UIColor blackColor];
-    
+        self.titleLabel.adjustsFontSizeToFitWidth=YES;
 //        self.titleLabel.font = [UIFont systemFontOfSize:16];
         [self.contentView addSubview:self.titleLabel];
         

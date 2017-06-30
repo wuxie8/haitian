@@ -69,7 +69,7 @@
         [view addSubview:backView];
         if (i==arr.count-1) {
             but=[[UIButton alloc]initWithFrame:CGRectMake(WIDTH-120, 0, 120, ViewHeight)];
-            but.backgroundColor=AppBackColor;
+            but.backgroundColor=AppButtonbackgroundColor;
             [but setTitle:@"获取验证码" forState:UIControlStateNormal];
             [but addTarget: self action:@selector(verificationCodeRegister) forControlEvents:UIControlEventTouchUpInside];
             [view addSubview:but];

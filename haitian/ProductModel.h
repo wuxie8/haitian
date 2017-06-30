@@ -64,7 +64,9 @@
 
 @property (nonatomic, copy) NSString *pro_name;
 
+@property (nonatomic, copy) NSString *api_type;
 
+@property (nonatomic, copy) NSString *tiaojian;
 
 @property (nonatomic, copy) NSString *id;
 

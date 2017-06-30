@@ -67,6 +67,14 @@
     {
         [self.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,product.smeta]]];
     }
+    NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,product.smeta]];
+    UIImage * result;
+    NSData * data = [NSData dataWithContentsOfURL:url];
+    
+    result = [UIImage imageWithData:data];
+    
+    [self.image setImage:result];
+
     [self.titleLabel setText:product.post_title];
     [self.feliv_Label setText:[NSString stringWithFormat:@"费率%@",product.feilv]];
     

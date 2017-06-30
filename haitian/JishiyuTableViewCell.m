@@ -56,14 +56,22 @@
 -(void)setModel:(HomeProductModel *)model
 {
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
-        [self.image setImage:[UIImage imageNamed:model.smeta]];
-        
-    }
-    else
-    {
-        [self.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,model.smeta]]];
-    }
+//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
+//        [self.image setImage:[UIImage imageNamed:model.smeta]];
+//        
+//    }
+//    else
+//    {
+    NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,model.smeta]];
+    UIImage * result;
+    NSData * data = [NSData dataWithContentsOfURL:url];
+    
+    result = [UIImage imageWithData:data];
+    
+    [self.image setImage:result];
+
+//        [self.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,model.smeta]]];
+//    }
     [self.titleLabel setText:model.post_title];
     [self.feliv_Label setText:model.feilv];
     

@@ -49,7 +49,13 @@
     {
         [image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,self.product.smeta]]];
     }
-
+    NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,self.product.smeta]];
+    UIImage * result;
+    NSData * data = [NSData dataWithContentsOfURL:url];
+    
+    result = [UIImage imageWithData:data];
+    
+    [image setImage:result];
     [view addSubview:image];
     UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(image.frame)+10, 10, WIDTH-CGRectGetMaxX(image.frame)-20, 30)];
     label.text=self.product.post_title;

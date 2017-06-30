@@ -76,11 +76,11 @@
             if (page>page_count) {
                 page=1;
             }
-            if ([UtilTools isBlankString:dic[@"review"]]) {
+            if ([UtilTools isBlankString:[dic[@"data"] objectForKey:@"review"]]) {
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"review"];
             }else
             {
-                [[NSUserDefaults standardUserDefaults] setBool:[dic[@"review"]boolValue] forKey:@"review"];
+                [[NSUserDefaults standardUserDefaults] setBool:[[dic[@"data"] objectForKey:@"review"]boolValue] forKey:@"review"];
                 
                 
             }
@@ -89,24 +89,24 @@
                 for (int i=0; i<arr.count; i++) {
                     NSDictionary *diction=arr[i];
                     HomeProductModel *pro=[[HomeProductModel alloc]init];
-                    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
-                        pro.smeta=@"icon";
-                        
-                        int location=i%array.count;
-                        pro.post_title=array[location];
-                    }
-                    else
-                    {
-                        NSString *jsonString=diction[@"smeta"];
-                        NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-                        NSError *err;
-                        NSDictionary *imagedic = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                                                 options:NSJSONReadingMutableContainers
-                                                                                   error:&err];
-                        pro.smeta=imagedic[@"thumb"];
-                        pro.post_title=diction[@"post_title"];
-                    }
-                    pro.link=diction[@"link"];
+//                    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
+//                        pro.smeta=@"icon";
+//                        
+//                        int location=i%array.count;
+//                        pro.post_title=array[location];
+//                    }
+//                    else
+//                    {
+//                        NSString *jsonString=diction[@"smeta"];
+//                        NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+//                        NSError *err;
+//                        NSDictionary *imagedic = [NSJSONSerialization JSONObjectWithData:jsonData
+//                                                                                 options:NSJSONReadingMutableContainers
+//                                                                                   error:&err];
+                        pro.smeta=diction[@"img"];
+                        pro.post_title=diction[@"pro_name"];
+//                    }
+                    pro.link=diction[@"pro_link"];
                     pro.edufanwei=diction[@"edufanwei"];
                     pro.qixianfanwei=diction[@"qixianfanwei"];
                     pro.shenqingtiaojian=diction[@"shenqingtiaojian"];

@@ -111,7 +111,7 @@
 		84939E291EFA16A000152EAF /* CarProductionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84939E281EFA16A000152EAF /* CarProductionViewController.m */; };
 		84939E2C1EFA698900152EAF /* UploadDocumentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84939E2B1EFA698900152EAF /* UploadDocumentsViewController.m */; };
 		84939E2F1EFA90DA00152EAF /* BasicInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84939E2E1EFA90DA00152EAF /* BasicInformationViewController.m */; };
-		84939E321EFAA48600152EAF /* LoadDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84939E311EFAA48600152EAF /* LoadDetailViewController.m */; };
+		84939E321EFAA48600152EAF /* LoadDetailViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84939E311EFAA48600152EAF /* LoadDetailViewController.mm */; };
 		84A274211ED3CA35009462F4 /* lmzxResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84A2741F1ED3CA35009462F4 /* lmzxResource.bundle */; };
 		84A274241ED3DAAF009462F4 /* AccumulationFundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A274231ED3DAAF009462F4 /* AccumulationFundViewController.m */; };
 		84A274261ED427DC009462F4 /* LMZXSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A274251ED427DC009462F4 /* LMZXSDK.a */; };
@@ -387,7 +387,7 @@
 		84939E2D1EFA90DA00152EAF /* BasicInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicInformationViewController.h; sourceTree = "<group>"; };
 		84939E2E1EFA90DA00152EAF /* BasicInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicInformationViewController.m; sourceTree = "<group>"; };
 		84939E301EFAA48600152EAF /* LoadDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadDetailViewController.h; sourceTree = "<group>"; };
-		84939E311EFAA48600152EAF /* LoadDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadDetailViewController.m; sourceTree = "<group>"; };
+		84939E311EFAA48600152EAF /* LoadDetailViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoadDetailViewController.mm; sourceTree = "<group>"; };
 		84A2741E1ED3CA35009462F4 /* LMZXSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMZXSDK.h; sourceTree = "<group>"; };
 		84A2741F1ED3CA35009462F4 /* lmzxResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = lmzxResource.bundle; sourceTree = "<group>"; };
 		84A274221ED3DAAF009462F4 /* AccumulationFundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccumulationFundViewController.h; sourceTree = "<group>"; };
@@ -956,7 +956,7 @@
 				84B9DC3E1E9DCDBC0066A92D /* LoadSupermarketViewController.h */,
 				84B9DC3F1E9DCDBC0066A92D /* LoadSupermarketViewController.m */,
 				84939E301EFAA48600152EAF /* LoadDetailViewController.h */,
-				84939E311EFAA48600152EAF /* LoadDetailViewController.m */,
+				84939E311EFAA48600152EAF /* LoadDetailViewController.mm */,
 				84939E2D1EFA90DA00152EAF /* BasicInformationViewController.h */,
 				84939E2E1EFA90DA00152EAF /* BasicInformationViewController.m */,
 				84747CCC1EFBDB55006AF462 /* OtherInformationAuthenticationViewController.h */,
@@ -1472,7 +1472,7 @@
 				846856411EA0902D00C74F87 /* ASValuePopUpView.m in Sources */,
 				84A733531EB86C82008ABB7E /* AddressBookVC.m in Sources */,
 				84B9DBF11E9DC0990066A92D /* ViewController.m in Sources */,
-				84939E321EFAA48600152EAF /* LoadDetailViewController.m in Sources */,
+				84939E321EFAA48600152EAF /* LoadDetailViewController.mm in Sources */,
 				849012CA1F024B3F00E3D62A /* BtnView.m in Sources */,
 				84939E201EFA120200152EAF /* FamilyAndLivingConditionsViewController.m in Sources */,
 				84C50C401EADF3DE00AD0B62 /* RectManager.m in Sources */,

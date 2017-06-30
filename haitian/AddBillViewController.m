@@ -55,6 +55,8 @@ NSArray *imageArr;
     arr=@[arr1,arr2,arr3];
  imageArr=@[@[@"PayTreasure",@"JD",@"CreditCard",@"AccumulationFund"],@[@"PayTreasure",@"JD",@"CreditCard",@"AccumulationFund"],@[@"mortgage",@"CarLoans",@"ElectricityAndWater",@"CreditCard"
                                                                                                                                      ,@"Rent",@"Custom"]];
+    
+
  
     titleArr=@[@"常用账单",@"网贷账单",@"生活账单"];
     _LoadcollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-64) collectionViewLayout:[UICollectionViewFlowLayout new]];
@@ -142,6 +144,8 @@ NSArray *imageArr;
 ////                vc.hidesBottomBarWhenPushed=YES;
 ////                [self.navigationController pushViewController:vc animated:NO];
 //            [self.navigationController pushViewController:[WebViewController new] animated:YES];
+            [self initSDK];
+            [self startFunction:0];
 
         }
             break;
@@ -186,7 +190,7 @@ NSArray *imageArr;
     switch (lmzxSDKFunction) {
         case 0:
         {
-            [_lmzxSDK startFunction:LMZXSDKFunctionTaoBao
+            [_lmzxSDK startFunction:LMZXSDKFunctionMobileCarrie
                        authCallBack:^(NSString *authInfo) {
                            [wself sign:authInfo];
                        }];}
