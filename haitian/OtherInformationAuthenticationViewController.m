@@ -255,7 +255,14 @@
     }
 
     if (![UtilTools isBlankString: [(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"个人邮箱"]] text]]) {
-        [mutDic2 setObject:[(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"个人邮箱"]] text] forKey:@"email"];
+        if ([UtilTools validateEmail:[(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"个人邮箱"]] text]]) {
+            [mutDic2 setObject:[(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"个人邮箱"]] text] forKey:@"email"];
+
+        }
+        else{
+            [MessageAlertView showErrorMessage:@"请输入正确的邮箱"];
+             return;
+        }
     }
     if (![UtilTools isBlankString: [(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"配偶"]] text]])
         

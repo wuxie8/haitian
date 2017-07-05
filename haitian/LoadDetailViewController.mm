@@ -95,13 +95,16 @@
                                                               error:nil];
             Context.currentUser.other_auth=[dic[@"other_auth"] boolValue];
             NSDictionary *user_auth=dic[@"user_auth"];
-            Context.currentUser.base_auth=[user_auth[@"base_auth"] boolValue];
-            Context.currentUser.idcard_auth=[user_auth[@"idcard_auth"] boolValue];
-
-            Context.currentUser.mobile_auth=[user_auth[@"mobile_auth"] boolValue];
-         
-            Context.currentUser.zhima_auth=[user_auth[@"zhima_auth"] boolValue];
-            [NSKeyedArchiver archiveRootObject:Context.currentUser toFile:DOCUMENT_FOLDER(@"loginedUser")];
+            if (![UtilTools isBlankDictionary:user_auth]) {
+                Context.currentUser.base_auth=[user_auth[@"base_auth"] boolValue];
+                Context.currentUser.idcard_auth=[user_auth[@"idcard_auth"] boolValue];
+                
+                Context.currentUser.mobile_auth=[user_auth[@"mobile_auth"] boolValue];
+                
+                Context.currentUser.zhima_auth=[user_auth[@"zhima_auth"] boolValue];
+                [NSKeyedArchiver archiveRootObject:Context.currentUser toFile:DOCUMENT_FOLDER(@"loginedUser")];
+            }
+           
             [tab reloadData];
 
         }
