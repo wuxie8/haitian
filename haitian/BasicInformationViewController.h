@@ -8,8 +8,12 @@
 
 #import "GestureNavBaseVC.h"
 #import "ProductModel.h"
+typedef void(^backBlock)();
+
 @interface BasicInformationViewController : GestureNavBaseVC
 
+
+@property(nonatomic, copy)backBlock clickBlock;
 @property(strong, nonatomic)ProductListModel*product;
 
 

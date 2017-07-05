@@ -243,6 +243,9 @@ return [titleArray objectAtIndex:section];
         if ([resultDic[@"code"]isEqualToString:@"0000"]) {
             [MessageAlertView showSuccessMessage:@"提交成功"];
             [self.navigationController popViewControllerAnimated:YES];
+            if (self.clickBlock) {
+                self.clickBlock();
+            }
         }
         else
         {

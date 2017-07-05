@@ -65,7 +65,15 @@
     }
     else
     {
-        [self.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,product.smeta]]];
+//        [self.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,product.smeta]]];
+        NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,product.smeta]];
+        UIImage * result;
+        NSData * data = [NSData dataWithContentsOfURL:url];
+        
+        result = [UIImage imageWithData:data];
+        
+        [self.image setImage:result];
+
     }
     NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,product.smeta]];
     UIImage * result;

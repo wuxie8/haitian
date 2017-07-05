@@ -64,6 +64,8 @@
     tab.tableHeaderView=self.headView;
     tab.dataSource=self;
     [self.view addSubview:tab];
+    
+    [self.view addSubview:self.footView];
 //    [self.view addSubview:self.footView];
        // Do any additional setup after loading the view.
 }
@@ -132,8 +134,10 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"cell";
+    
+       static NSString *cellIdentifier = [NSString stringWithFormat:@"cell%ld%ld",indexPath.section,(long)indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+   
     if (cell == nil)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
@@ -144,6 +148,7 @@
     cell.textLabel.text=[mutableArray1 objectAtIndex:indexPath.row];
 
     UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(WIDTH-100, 5, 80, cell.frame.size.height-10)];
+   
     if ([cell.textLabel.text isEqualToString:@"基本信息认证"]) {
         [but setImage:[UIImage imageNamed:Context.currentUser.base_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
     }
@@ -152,6 +157,8 @@
     }
     if ([cell.textLabel.text isEqualToString:@"芝麻信用"]) {
         [but setImage:[UIImage imageNamed:Context.currentUser.zhima_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
+        but.tag=1000;
+
     }
     if ([cell.textLabel.text isEqualToString:@"身份证"]) {
         [but setImage:[UIImage imageNamed:Context.currentUser.idcard_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
@@ -166,6 +173,10 @@
 {
     if ([[mutableArray1 objectAtIndex:indexPath.row]isEqualToString:@"基本信息认证"]) {
         BasicInformationViewController *basic=[[BasicInformationViewController alloc]init];
+        [basic setClickBlock:^(){
+            Context.currentUser.base_auth=YES;
+            [NSKeyedArchiver archiveRootObject:Context.currentUser toFile:DOCUMENT_FOLDER(@"loginedUser")];
+        }];
         basic.product=self.product;
         [self.navigationController pushViewController:basic animated:YES];
         
@@ -183,12 +194,25 @@
     }
     else if ([[mutableArray1 objectAtIndex:indexPath.row]isEqualToString:@"身份证"])
     {
-         [self.navigationController pushViewController:[IdVerificationViewController new] animated:YES];
+        IdVerificationViewController *idVerification=[[IdVerificationViewController alloc]init];
+        [idVerification setClickBlock:^(){
+            // remove the transform animation if the animation finished and wasn't interrupted
+            Context.currentUser.idcard_auth=YES;
+            [NSKeyedArchiver archiveRootObject:Context.currentUser toFile:DOCUMENT_FOLDER(@"loginedUser")];
+            
+        }];
+         [self.navigationController pushViewController:idVerification animated:YES];
         
     }
     else if ([[mutableArray1 objectAtIndex:indexPath.row]isEqualToString:@"其他信息认证"])
     {
         OtherInformationAuthenticationViewController *other=[[OtherInformationAuthenticationViewController alloc]init];
+        [other setClickBlock:^(){
+            // remove the transform animation if the animation finished and wasn't interrupted
+            Context.currentUser.other_auth=YES;
+            [NSKeyedArchiver archiveRootObject:Context.currentUser toFile:DOCUMENT_FOLDER(@"loginedUser")];
+            
+        }];
         other.dataArray=jsonObject2;
         other.product=self.product;
         [self.navigationController pushViewController:other animated:YES];
@@ -270,12 +294,15 @@
             [MessageAlertView showSuccessMessage:@"认证成功"];
             Context.currentUser.zhima_auth=YES;
             [NSKeyedArchiver archiveRootObject:Context.currentUser toFile:DOCUMENT_FOLDER(@"loginedUser")];
-            [tab reloadData];
+           
         }
         else
         {
-        
+            Context.currentUser.zhima_auth=NO;
+            [NSKeyedArchiver archiveRootObject:Context.currentUser toFile:DOCUMENT_FOLDER(@"loginedUser")];
         }
+        UIButton *but=[self.view viewWithTag:1000];
+        [but setImage:[UIImage imageNamed:Context.currentUser.zhima_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
         
@@ -674,7 +701,41 @@
     }
     return _headView;
 }
+-(UIView *)footView
+{
+    if (_footView==nil) {
+        _footView=[[UIView alloc]initWithFrame:CGRectMake(0, HEIGHT-64-50, WIDTH, 50)];
+      
+        
+        UIButton *button=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 50)];
+        [button addTarget:self action:@selector(ImmediatelyBinding) forControlEvents:UIControlEventTouchUpInside];
+        button.backgroundColor=AppButtonbackgroundColor;
+        [button setTitle:@"完成申请" forState:UIControlStateNormal];
+        [_footView addSubview:button];
+    }
+    return _footView;
+}
+-(void)ImmediatelyBinding
+{
+    if ([mutableArray1 containsObject:@"基本信息认证"]&&!Context.currentUser.base_auth) {
 
+            [MessageAlertView showErrorMessage:@"请完善基本信息"];
+    }
+    else if ([mutableArray1 containsObject:@"手机运营商"]&&!Context.currentUser.mobile_auth) {
+            [MessageAlertView showErrorMessage:@"请完善手机运营商"];
+    }
+    else if ([mutableArray1 containsObject:@"芝麻信用"]&&!Context.currentUser.zhima_auth) {
+            [MessageAlertView showErrorMessage:@"请完善芝麻信用"];
+       
+    }
+    else if([mutableArray1 containsObject:@"身份证"]&&!Context.currentUser.idcard_auth) {
+            [MessageAlertView showErrorMessage:@"请完善身份证"];
+       
+    }
+  else if ([mutableArray1 containsObject:@"其他信息认证"]&&!Context.currentUser.other_auth) {
+            [MessageAlertView showErrorMessage:@"请完善其他信息认证"];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -138,6 +138,9 @@
     [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=base_add",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject[@"code"]isEqualToString:@"0000"]) {
             [MessageAlertView showSuccessMessage:@"上传成功"];
+            if (self.clickBlock) {
+                self.clickBlock();
+            }
             Context.currentUser.base_auth=YES;
             [NSKeyedArchiver archiveRootObject:Context.currentUser toFile:DOCUMENT_FOLDER(@"loginedUser")];
             [self.navigationController popViewControllerAnimated:YES];

@@ -22,7 +22,7 @@
 #define UploadPath @"http://47.93.122.140:8001/index.php?g=app"
 #define SERVEREURL SERVERE
 //贷款
-#define loan @"&m=business&a=index"
+#define Apploan @"&m=product&a=index"
 //换一批
 #define exchange @"&m=business&a=change_list"
 //登陆验证码
@@ -38,7 +38,7 @@
 //贷款参数
 #define filter_para @"&m=business&a=filter_para"
 
-#define filter @"&m=business&a=filter"
+#define filter @"&m=product&a=filter"
 //讯飞id
 #define USER_APPID           @"58fffe9f"
 //芝麻信用公钥

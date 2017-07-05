@@ -425,7 +425,7 @@
             //                if (![[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
             WebVC *vc = [[WebVC alloc] init];
             [vc setNavTitle:@"信用卡查询"];
-            [vc loadFromURLStr:@"https://cube.doraemoney.com/newCube/index.html?proId=65d44896d17b45c3895cb975f0757aa8"];
+            [vc loadFromURLStr:@"http://www.kuaicha.info/mobile/credit/credit.html"];
             vc.hidesBottomBarWhenPushed=YES;
             [self.navigationController pushViewController:vc animated:NO];
             //                }

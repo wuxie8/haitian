@@ -7,7 +7,9 @@
 //
 
 #import "GestureNavBaseVC.h"
+typedef void(^backBlock)();
 
 @interface IdVerificationViewController : GestureNavBaseVC
+@property(nonatomic, copy)backBlock clickBlock;
 
 @end

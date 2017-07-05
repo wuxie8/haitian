@@ -899,6 +899,17 @@
 			name = "第三方轮播";
 			sourceTree = "<group>";
 		};
+		84AA68A51F0B252800825C50 /* LoadSupermarket */ = {
+			isa = PBXGroup;
+			children = (
+				84B9DC3E1E9DCDBC0066A92D /* LoadSupermarketViewController.h */,
+				84B9DC3F1E9DCDBC0066A92D /* LoadSupermarketViewController.m */,
+				84939E301EFAA48600152EAF /* LoadDetailViewController.h */,
+				84939E311EFAA48600152EAF /* LoadDetailViewController.mm */,
+			);
+			name = LoadSupermarket;
+			sourceTree = "<group>";
+		};
 		84B36FC81EB327DC001FCD96 /* ProfessionalInformation */ = {
 			isa = PBXGroup;
 			children = (
@@ -953,10 +964,7 @@
 				84B9DC521E9DEC200066A92D /* ASValueTrackingSlider */,
 				84546F3E1EA5A0B200AD0350 /* HomePage */,
 				844E163B1EC9797F00F4EA80 /* Remind */,
-				84B9DC3E1E9DCDBC0066A92D /* LoadSupermarketViewController.h */,
-				84B9DC3F1E9DCDBC0066A92D /* LoadSupermarketViewController.m */,
-				84939E301EFAA48600152EAF /* LoadDetailViewController.h */,
-				84939E311EFAA48600152EAF /* LoadDetailViewController.mm */,
+				84AA68A51F0B252800825C50 /* LoadSupermarket */,
 				84939E2D1EFA90DA00152EAF /* BasicInformationViewController.h */,
 				84939E2E1EFA90DA00152EAF /* BasicInformationViewController.m */,
 				84747CCC1EFBDB55006AF462 /* OtherInformationAuthenticationViewController.h */,

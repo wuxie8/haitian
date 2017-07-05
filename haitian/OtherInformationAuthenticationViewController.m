@@ -49,7 +49,7 @@
     [super viewDidLoad];
     
     arr=@[@"个人邮箱",@"配偶",@"居住地址",@"居住方式",@"公司名称",@"公司地址",@"公司电话",@"紧急联系人A",@"关系A",@"手机号码A",@"紧急联系人B",@"关系B",@"手机号码B"];
-  placeArray=@[@"请填写邮箱",@"请选择",@"请填写详细地址",@"请选择",@"请输入公司名称",@"请输入公司地址",@"请输入电话",@"姓名A",@"关系A",@"手机号码A",@"姓名B",@"关系B",@"手机号码B"];
+  placeArray=@[@"请填写邮箱",@"请输入",@"请填写详细地址",@"请选择",@"请输入公司名称",@"请输入公司地址",@"请输入电话",@"姓名A",@"请选择",@"请输入手机号",@"姓名B",@"请选择",@"请输入手机号"];
     dataMutableArray=[NSMutableArray array];
     placeMutableArray =[NSMutableArray array];
   
@@ -281,6 +281,10 @@
     [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=other_info_add",SERVERE] parameters:mutDic2 success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject[@"code"]isEqualToString:@"0000"]) {
             [MessageAlertView showSuccessMessage:@"上传成功"];
+            if (self.clickBlock) {
+                self.clickBlock();
+            }
+            [self.navigationController popViewControllerAnimated:NO];
         }
         else
         {
