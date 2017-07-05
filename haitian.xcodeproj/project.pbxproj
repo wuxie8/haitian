@@ -10,7 +10,6 @@
 		2E2193132720ACDF463B286D /* libPods-haitian.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C281EA8F719D2415E82CC71C /* libPods-haitian.a */; };
 		8402B9DA1E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402B9D91E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m */; };
 		8402B9F91E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402B9F81E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m */; };
-		841178631EF0D9BB009A74EC /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841178621EF0D9BB009A74EC /* WebViewController.m */; };
 		84174D691EDEC3FA00A815B3 /* PersonalDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84174D681EDEC3FA00A815B3 /* PersonalDataViewController.m */; };
 		8420A4DA1EE4E808001C5EAC /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8420A4D91EE4E808001C5EAC /* libc++.tbd */; };
 		842A01691EC9464200143E4A /* NewRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842A01681EC9464200143E4A /* NewRemindViewController.m */; };
@@ -214,8 +213,6 @@
 		8402B9D91E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadSupermarketCollectionViewCell.m; sourceTree = "<group>"; };
 		8402B9F71E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastHandleCardCollectionViewCell.h; sourceTree = "<group>"; };
 		8402B9F81E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastHandleCardCollectionViewCell.m; sourceTree = "<group>"; };
-		841178611EF0D9BB009A74EC /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
-		841178621EF0D9BB009A74EC /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		84174D671EDEC3FA00A815B3 /* PersonalDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalDataViewController.h; sourceTree = "<group>"; };
 		84174D681EDEC3FA00A815B3 /* PersonalDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalDataViewController.m; sourceTree = "<group>"; };
 		8420A4D91EE4E808001C5EAC /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -691,8 +688,6 @@
 				848FBC141ED2E99000A1E1CD /* RemindViewController.m */,
 				844E16461EC99FB700F4EA80 /* AddBillViewController.h */,
 				844E16471EC99FB700F4EA80 /* AddBillViewController.m */,
-				841178611EF0D9BB009A74EC /* WebViewController.h */,
-				841178621EF0D9BB009A74EC /* WebViewController.m */,
 				845663F91ED57F6F0075A971 /* LMResultShowVC.h */,
 				845663FA1ED57F6F0075A971 /* LMResultShowVC.m */,
 				84A274221ED3DAAF009462F4 /* AccumulationFundViewController.h */,
@@ -1446,7 +1441,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				84EAEAD81EE176A9007D3CCA /* AppDelegate+JPush.m in Sources */,
-				841178631EF0D9BB009A74EC /* WebViewController.m in Sources */,
 				84EAEAD71EE17683007D3CCA /* HelpCenterViewController.m in Sources */,
 				842E61FE1EB08C8300BF91FB /* IFlyFaceImage.m in Sources */,
 				842E62161EB0915D00BF91FB /* DetectionSuccessfulViewController.m in Sources */,

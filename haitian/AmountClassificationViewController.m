@@ -15,25 +15,61 @@
 
 @implementation AmountClassificationViewController
 {
-    NSArray *arr;
-    NSArray *array;
-      NSArray *amountarray;
-    NSArray *describearray;
+    NSMutableArray *arr;
+    NSMutableArray *array;
+      NSMutableArray *amountarray;
+    NSMutableArray *describearray;
+    NSMutableArray *idarray;
+
+    UITableView *tab;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"极速贷款";
     self.view.backgroundColor=AppPageColor;
-   arr=@[@"speed",@"PopularLoan",@"StudentLoan"];
-     array=@[@"极速微额贷款",@"热门极速贷",@"学生贷"];
-     amountarray=@[@"2000元以下",@"2000-10000元",@"1万-10万"];
-    describearray=@[@"有手机服务密码就能贷 \n微额快速，闪电放款",@"有手机服务密码就能贷 \n 1分钟申请，10分钟放款",@"放款快，学生的最爱 \n额度高，利率低，如你所想"];
-    UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 10, WIDTH, HEIGHT)];
+//   arr=@[@"speed",@"PopularLoan",@"StudentLoan"];
+//     array=@[@"极速微额贷款",@"热门极速贷",@"学生贷"];
+//     amountarray=@[@"2000元以下",@"2000-10000元",@"1万-10万"];
+//    describearray=@[@"有手机服务密码就能贷 \n微额快速，闪电放款",@"有手机服务密码就能贷 \n 1分钟申请，10分钟放款",@"放款快，学生的最爱 \n额度高，利率低，如你所想"];
+    [self getList];
+    tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 10, WIDTH, HEIGHT)];
     tab.delegate=self;
     tab.dataSource=self;
     tab.backgroundColor=AppPageColor;
     [self.view addSubview:tab];
     // Do any additional setup after loading the view.
+}
+-(void)getList
+{
+    arr=[NSMutableArray array];
+    array=[NSMutableArray array];
+    amountarray=[NSMutableArray array];
+    describearray=[NSMutableArray array];
+    idarray=[NSMutableArray array];
+    [[NetWorkManager sharedManager]postJSON:@"http://app.jishiyu11.cn/index.php?g=app&m=product&a=product_type" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        if ([responseObject[@"code"]isEqualToString:@"0000"]) {
+            NSArray *arr1=responseObject[@"data"];
+            for (NSDictionary *dic in arr1) {
+                [arr addObject:dic[@"icon"]];
+                [array addObject:dic[@"property_name"]];
+
+                [amountarray addObject:dic[@"money"]];
+
+                [describearray addObject:dic[@"description"]];
+                [idarray addObject:dic[@"property_id"]];
+                
+            }
+            [tab reloadData];
+        }
+        else
+        {}
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+
 }
 -(CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -42,14 +78,21 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return arr.count;
     
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    AmountTableViewCell *cell=[[AmountTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
       cell.accessoryType =UITableViewCellAccessoryDisclosureIndicator;
-    cell.image.image=[UIImage imageNamed:arr[indexPath.row]];
+    NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,arr[indexPath.row]]];
+    UIImage * result;
+    NSData * data = [NSData dataWithContentsOfURL:url];
+    
+    result = [UIImage imageWithData:data];
+    
+    [cell.image setImage:result];
+//    e.image=[UIImage imageNamed:arr[indexPath.row]];
     cell.titleLabel.text=array[indexPath.row];
     cell.post_hits_Label.text=amountarray[indexPath.row];
     cell.feliv_Label.text=describearray[indexPath.row];
@@ -60,7 +103,7 @@
 {
 
     LoanClickViewController *loanclick=[[LoanClickViewController alloc]init];
-    loanclick.location=[NSString stringWithFormat:@"%ld",(long)indexPath.row+19];
+    loanclick.location=idarray[indexPath.row];
     [self.navigationController pushViewController:loanclick animated:YES];
 }
 - (void)didReceiveMemoryWarning {

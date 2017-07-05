@@ -7,6 +7,7 @@
 //
 
 #import "RegisterVC.h"
+#import "JPUSHService.h"
 
 #define ViewHeight 40
 #define ButtonWeight 100
@@ -17,6 +18,8 @@
 @implementation RegisterVC
 {
     UIButton *but;
+    NSArray *arr;
+
 }
 #ifdef __IPHONE_7_0
 - (UIRectEdge)edgesForExtendedLayout
@@ -30,9 +33,8 @@
     self.title=@"注册";
     self.view.backgroundColor=AppPageColor;
     
-    
-    NSArray *arr=@[@"手机号",@"密码",@"确认",@"验证码"];
-    NSArray *arr1=@[@"请输入手机号",@"组合字母、数字",@"请确认密码",@"请输入验证码"];
+    arr=@[@"手机号",@"验证码"];
+    NSArray *arr1=@[@"请输入手机号",@"请输入验证码"];
     for (int i=0; i<arr.count; i++) {
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 20+i*ViewHeight, WIDTH, ViewHeight)];
         view.backgroundColor=[UIColor whiteColor];
@@ -47,21 +49,21 @@
         text.tag=1000+i;
         switch (i) {
             case 0:
-            case 3:
+            case 1:
                 text.keyboardType=UIKeyboardTypeNumberPad;
-               
+                
                 break;
-               case 1:
-                case 2:
-                text.keyboardType=UIKeyboardTypeDefault;
-                text.secureTextEntry=YES;
-                break;
+                //               case 1:
+                //                case 2:
+                //                text.keyboardType=UIKeyboardTypeDefault;
+                //                text.secureTextEntry=YES;
+                //                break;
                 
             default:
                 break;
         }
         text.placeholder=arr1[i];
-//        text.delegate=self;
+        //        text.delegate=self;
         [view addSubview:text];
         
         UIView *backView=[[UIView alloc]initWithFrame:CGRectMake(5, 39, WIDTH-10, 1)];
@@ -69,33 +71,33 @@
         [view addSubview:backView];
         if (i==arr.count-1) {
             but=[[UIButton alloc]initWithFrame:CGRectMake(WIDTH-120, 0, 120, ViewHeight)];
-            but.backgroundColor=AppButtonbackgroundColor;
+            but.backgroundColor=AppBackColor;
             [but setTitle:@"获取验证码" forState:UIControlStateNormal];
             [but addTarget: self action:@selector(verificationCodeRegister) forControlEvents:UIControlEventTouchUpInside];
             [view addSubview:but];
         }
         [self.view addSubview:view];
     }
-        UIButton *loginButton=[[UIButton alloc]initWithFrame:CGRectMake(3, 20+arr.count*ViewHeight+20, WIDTH-3*2, 50)];
-        loginButton.backgroundColor=AppButtonbackgroundColor;
-        [loginButton setTitle:@"注册" forState:UIControlStateNormal];
-        loginButton.clipsToBounds=YES;
-    [loginButton addTarget:self action:@selector(registerClick) forControlEvents:UIControlEventTouchUpInside];
-        loginButton.layer.cornerRadius=5;
-        [self.view addSubview:loginButton];
+    UIButton *loginButton=[[UIButton alloc]initWithFrame:CGRectMake(3, 20+arr.count*ViewHeight+20, WIDTH-3*2, 50)];
+    loginButton.backgroundColor=AppBackColor;
+    [loginButton setTitle:@"注册" forState:UIControlStateNormal];
+    loginButton.clipsToBounds=YES;
+    [loginButton addTarget:self action:@selector(registerClick ) forControlEvents:UIControlEventTouchUpInside];
+    loginButton.layer.cornerRadius=5;
+    [self.view addSubview:loginButton];
     
     
-        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(WIDTH/2-100, CGRectGetMaxY(loginButton.frame), 200, 40)];
-        label.text=@"注册即表示同意《及时雨注册协议》";
+    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(WIDTH/2-100, CGRectGetMaxY(loginButton.frame), 200, 40)];
+    label.text=@"注册即表示同意《及时雨注册协议》";
     label.font=[UIFont systemFontOfSize:12];
-        label.textAlignment=NSTextAlignmentCenter;
-        [self.view addSubview:label];
+    label.textAlignment=NSTextAlignmentCenter;
+    [self.view addSubview:label];
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardHide:)];
     //设置成NO表示当前控件响应后会传播到其他控件上，默认为YES。
     tapGestureRecognizer.cancelsTouchesInView = NO;
     //将触摸事件添加到当前view
     [self.view addGestureRecognizer:tapGestureRecognizer];
-
+    
     // Do any additional setup after loading the view.
 }
 
@@ -103,27 +105,37 @@
 {
  
     NSMutableDictionary *registerDic=[NSMutableDictionary dictionary];
-    for (int i=0; i<4; i++) {
+    for (int i=0; i<arr.count; i++) {
         UIView *view1=[self.view viewWithTag:100+i];
         
         UITextField *text1=(UITextField *)[view1 viewWithTag:1000+i];
              [registerDic setObject:text1.text forKey:[NSString stringWithFormat:@"%d",i]];
 
     }
-    if (![registerDic[@"1"] isEqualToString:registerDic[@"2"]]) {
-        [MessageAlertView showErrorMessage:@"两次密码不一致"];
-        return;
-    }
+   
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
                       registerDic[@"0"],@"mobile",
-                      registerDic[@"1"],@"password",
-                       registerDic[@"3"],@"code",
+//                      registerDic[@"1"],@"password",
+                       registerDic[@"1"],@"code",
                        nil];
-    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@%@",SERVERE,doregister] parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSDictionary *dic=(NSDictionary *)responseObject;
-        if ([dic[@"status"]boolValue]) {
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=register&a=bycode",SERVERE] parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *resultDic=(NSDictionary *)responseObject;
+        if ([resultDic[@"status"]boolValue]) {
             [MessageAlertView showSuccessMessage:@"注册成功"];
-            [self.navigationController popViewControllerAnimated:YES];
+            User *user=[[User alloc]init];
+            user.token=resultDic[@"token"];
+            user.uid=resultDic[@"uid"];
+            user.username=resultDic[@"username"];
+            Context.currentUser=user;
+            if ( [NSKeyedArchiver archiveRootObject:Context.currentUser toFile:DOCUMENT_FOLDER(@"loginedUser")]) {
+                //保存用户登录状态以及登录成功通知
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"kIsLogin"];
+                UIViewController *viewCtl = self.navigationController.viewControllers[self.navigationController.viewControllers.count-3];
+                [JPUSHService setAlias:resultDic[@"username"] callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];
+                
+                [self.navigationController popToViewController:viewCtl animated:YES];
+            }
+
         }else
         {
             [MessageAlertView showErrorMessage:[NSString stringWithFormat:@"%@",dic[@"info"]]];
@@ -133,6 +145,12 @@
         
     }];
 
+}
+- (void)tagsAliasCallback:(int)iResCode
+                     tags:(NSSet *)tags
+                    alias:(NSString *)alias {
+    
+    
 }
 -(void)verificationCodeRegister
 {

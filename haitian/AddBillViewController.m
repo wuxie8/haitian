@@ -12,7 +12,6 @@
 #import "LMZXSDK.h"
 #import "LMResultShowVC.h"
 #import "WebVC.h"
-#import "WebViewController.h"
 #define  APIKEY         @"9073253582026649"
 #define  UID            @"u123456"
 //#define  CALLBACKURL    @"http://192.168.117.239:8080/credit_callback.php"
@@ -138,12 +137,7 @@ NSArray *imageArr;
     switch (indexPath.section) {
         case 0:
         {
-////                WebVC *vc = [[WebVC alloc] init];
-////                [vc setNavTitle:@"ceshi"];
-////                [vc loadFromURLStr:@"https://oauth.taobao.com/authorize?response_type=token&client_id=23901088&state=1212&view=web"];
-////                vc.hidesBottomBarWhenPushed=YES;
-////                [self.navigationController pushViewController:vc animated:NO];
-//            [self.navigationController pushViewController:[WebViewController new] animated:YES];
+
             [self initSDK];
             [self startFunction:0];
 
