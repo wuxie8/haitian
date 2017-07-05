@@ -151,20 +151,27 @@
    
     if ([cell.textLabel.text isEqualToString:@"基本信息认证"]) {
         [but setImage:[UIImage imageNamed:Context.currentUser.base_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
+        but.tag=1000;
     }
     if ([cell.textLabel.text isEqualToString:@"手机运营商"]) {
         [but setImage:[UIImage imageNamed:Context.currentUser.mobile_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
+        but.tag=1001;
+
     }
     if ([cell.textLabel.text isEqualToString:@"芝麻信用"]) {
         [but setImage:[UIImage imageNamed:Context.currentUser.zhima_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
-        but.tag=1000;
+        but.tag=1002;
 
     }
     if ([cell.textLabel.text isEqualToString:@"身份证"]) {
         [but setImage:[UIImage imageNamed:Context.currentUser.idcard_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
+        but.tag=1003;
+
     }
     if ([cell.textLabel.text isEqualToString:@"其他信息认证"]) {
         [but setImage:[UIImage imageNamed:Context.currentUser.other_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
+        but.tag=1004;
+
     }
     [cell.contentView addSubview:but];
     return cell;
@@ -176,6 +183,8 @@
         [basic setClickBlock:^(){
             Context.currentUser.base_auth=YES;
             [NSKeyedArchiver archiveRootObject:Context.currentUser toFile:DOCUMENT_FOLDER(@"loginedUser")];
+            UIButton *but=[self.view viewWithTag:1000];
+            [but setImage:[UIImage imageNamed:Context.currentUser.base_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
         }];
         basic.product=self.product;
         [self.navigationController pushViewController:basic animated:YES];
@@ -199,6 +208,8 @@
             // remove the transform animation if the animation finished and wasn't interrupted
             Context.currentUser.idcard_auth=YES;
             [NSKeyedArchiver archiveRootObject:Context.currentUser toFile:DOCUMENT_FOLDER(@"loginedUser")];
+            UIButton *but=[self.view viewWithTag:1003];
+            [but setImage:[UIImage imageNamed:Context.currentUser.idcard_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
             
         }];
          [self.navigationController pushViewController:idVerification animated:YES];
@@ -211,6 +222,8 @@
             // remove the transform animation if the animation finished and wasn't interrupted
             Context.currentUser.other_auth=YES;
             [NSKeyedArchiver archiveRootObject:Context.currentUser toFile:DOCUMENT_FOLDER(@"loginedUser")];
+            UIButton *but=[self.view viewWithTag:1004];
+            [but setImage:[UIImage imageNamed:Context.currentUser.other_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
             
         }];
         other.dataArray=jsonObject2;
@@ -301,7 +314,7 @@
             Context.currentUser.zhima_auth=NO;
             [NSKeyedArchiver archiveRootObject:Context.currentUser toFile:DOCUMENT_FOLDER(@"loginedUser")];
         }
-        UIButton *but=[self.view viewWithTag:1000];
+        UIButton *but=[self.view viewWithTag:1002];
         [but setImage:[UIImage imageNamed:Context.currentUser.zhima_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);

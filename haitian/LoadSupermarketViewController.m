@@ -86,7 +86,7 @@ static NSString *const footerId = @"footerId1";
         NSDictionary *dic=(NSDictionary *)responseObject;
         NSDictionary *diction=dic[@"data"];
         NSArray *recommendarr=diction[@"recommend"];
-        NSArray *quickarr=diction[@"recommend"];
+        NSArray *quickarr=diction[@"quick"];
 
         productMutableArray=[NSMutableArray array];
         NSMutableArray *recommendMutableArray=[NSMutableArray array];
