@@ -79,6 +79,8 @@
 		847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114F1EA45F0C002D8832 /* UserInfoContext.m */; };
 		847B17201EDE8F2B003A4D98 /* SetUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B171F1EDE8F2B003A4D98 /* SetUpViewController.m */; };
 		847B17231EDE91B2003A4D98 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B17221EDE91B2003A4D98 /* AboutUsViewController.m */; };
+		847DF40A1F146639007DDB60 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 847DF4091F146639007DDB60 /* libsqlite3.tbd */; };
+		847DF40C1F1473BA007DDB60 /* location_Numbercity_citynumber.db in Resources */ = {isa = PBXBuildFile; fileRef = 847DF40B1F1473BA007DDB60 /* location_Numbercity_citynumber.db */; };
 		848F1F8B1EC0078D00720FB6 /* H5Service.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 848F1F891EC0078D00720FB6 /* H5Service.bundle */; };
 		848F1F8C1EC0078D00720FB6 /* Poseidon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 848F1F8A1EC0078D00720FB6 /* Poseidon.bundle */; };
 		848F1F8F1EC0089000720FB6 /* ZMCreditSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F1F8D1EC0088F00720FB6 /* ZMCreditSDK.framework */; };
@@ -156,6 +158,8 @@
 		84C50C5D1EADF47100AD0B62 /* IDInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C50C581EADF47100AD0B62 /* IDInfoViewController.m */; };
 		84C50C5E1EADF47100AD0B62 /* IDInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C50C591EADF47100AD0B62 /* IDInfoViewController.xib */; };
 		84CD81F51EA48F30009B786F /* RegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD81F41EA48F30009B786F /* RegisterVC.m */; };
+		84E47DC81F13507400C72D20 /* PhoneCarrierViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E47DC71F13507400C72D20 /* PhoneCarrierViewController.m */; };
+		84E47DCB1F13565700C72D20 /* SmsCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E47DCA1F13565700C72D20 /* SmsCodeViewController.m */; };
 		84EAEAD71EE17683007D3CCA /* HelpCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FC1EA7039D00EC8C9D /* HelpCenterViewController.m */; };
 		84EAEAD81EE176A9007D3CCA /* AppDelegate+JPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C9E9F1ED821A40099CC51 /* AppDelegate+JPush.m */; };
 		84F5D4001EA703D100EC8C9D /* XDMultTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FF1EA703D100EC8C9D /* XDMultTableView.m */; };
@@ -333,6 +337,8 @@
 		847B171F1EDE8F2B003A4D98 /* SetUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetUpViewController.m; sourceTree = "<group>"; };
 		847B17211EDE91B2003A4D98 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
 		847B17221EDE91B2003A4D98 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
+		847DF4091F146639007DDB60 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		847DF40B1F1473BA007DDB60 /* location_Numbercity_citynumber.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = location_Numbercity_citynumber.db; sourceTree = SOURCE_ROOT; };
 		848F1F891EC0078D00720FB6 /* H5Service.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = H5Service.bundle; sourceTree = "<group>"; };
 		848F1F8A1EC0078D00720FB6 /* Poseidon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Poseidon.bundle; sourceTree = "<group>"; };
 		848F1F8D1EC0088F00720FB6 /* ZMCreditSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZMCreditSDK.framework; sourceTree = "<group>"; };
@@ -474,6 +480,10 @@
 		84C50C621EADFDA200AD0B62 /* zocr0.lib */ = {isa = PBXFileReference; lastKnownFileType = file; name = zocr0.lib; path = "../../Downloads/IDCardRecognition-master/IDCardRecognition/libexidcard/dicts/zocr0.lib"; sourceTree = "<group>"; };
 		84CD81F31EA48F30009B786F /* RegisterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterVC.h; sourceTree = "<group>"; };
 		84CD81F41EA48F30009B786F /* RegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterVC.m; sourceTree = "<group>"; };
+		84E47DC61F13507400C72D20 /* PhoneCarrierViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneCarrierViewController.h; sourceTree = "<group>"; };
+		84E47DC71F13507400C72D20 /* PhoneCarrierViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneCarrierViewController.m; sourceTree = "<group>"; };
+		84E47DC91F13565700C72D20 /* SmsCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmsCodeViewController.h; sourceTree = "<group>"; };
+		84E47DCA1F13565700C72D20 /* SmsCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmsCodeViewController.m; sourceTree = "<group>"; };
 		84F5D3FB1EA7039D00EC8C9D /* HelpCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpCenterViewController.h; sourceTree = "<group>"; };
 		84F5D3FC1EA7039D00EC8C9D /* HelpCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpCenterViewController.m; sourceTree = "<group>"; };
 		84F5D3FE1EA703D100EC8C9D /* XDMultTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDMultTableView.h; sourceTree = "<group>"; };
@@ -515,6 +525,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847DF40A1F146639007DDB60 /* libsqlite3.tbd in Frameworks */,
 				842E61DD1EB08AF500BF91FB /* CoreGraphics.framework in Frameworks */,
 				842E61DB1EB08AED00BF91FB /* Foundation.framework in Frameworks */,
 				842E61D91EB08AE300BF91FB /* UIKit.framework in Frameworks */,
@@ -718,6 +729,7 @@
 		8451AFB81EA8599F002F04B6 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				847DF4071F1464E8007DDB60 /* DB文件 */,
 				8451AFBA1EA859FA002F04B6 /* PersonCenter.xcassets */,
 				8451AFBE1EA85E65002F04B6 /* MessageAlertView.xcassets */,
 				84C50C371EADA5BC00AD0B62 /* Authentication.xcassets */,
@@ -816,6 +828,13 @@
 				847A114F1EA45F0C002D8832 /* UserInfoContext.m */,
 			);
 			name = User;
+			sourceTree = "<group>";
+		};
+		847DF4071F1464E8007DDB60 /* DB文件 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "DB文件";
 			sourceTree = "<group>";
 		};
 		849012B21F02477F00E3D62A /* Jishiyu-HomePage */ = {
@@ -950,6 +969,7 @@
 			isa = PBXGroup;
 			children = (
 				8439598A1EC3FEF60093D906 /* haitian.entitlements */,
+				847DF40B1F1473BA007DDB60 /* location_Numbercity_citynumber.db */,
 				846856491EA09AA400C74F87 /* Utils */,
 				84CD81F61EA4909F009B786F /* Appdeledate */,
 				84B9DC3A1E9DCCC90066A92D /* Base */,
@@ -964,6 +984,10 @@
 				84939E2E1EFA90DA00152EAF /* BasicInformationViewController.m */,
 				84747CCC1EFBDB55006AF462 /* OtherInformationAuthenticationViewController.h */,
 				84747CCD1EFBDB55006AF462 /* OtherInformationAuthenticationViewController.m */,
+				84E47DC61F13507400C72D20 /* PhoneCarrierViewController.h */,
+				84E47DC71F13507400C72D20 /* PhoneCarrierViewController.m */,
+				84E47DC91F13565700C72D20 /* SmsCodeViewController.h */,
+				84E47DCA1F13565700C72D20 /* SmsCodeViewController.m */,
 				8402B9D81E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.h */,
 				8402B9D91E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m */,
 				84FD17241EE7EB3100EB79A3 /* BannerModel.h */,
@@ -1191,6 +1215,7 @@
 		E5D4A71C4E15B4A453FF3CA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				847DF4091F146639007DDB60 /* libsqlite3.tbd */,
 				8420A4D91EE4E808001C5EAC /* libc++.tbd */,
 				846C9E9C1ED81EE00099CC51 /* Security.framework */,
 				846C9E9A1ED81EA60099CC51 /* CoreFoundation.framework */,
@@ -1363,6 +1388,7 @@
 				84B9DBF41E9DC0990066A92D /* Main.storyboard in Resources */,
 				84C50C5E1EADF47100AD0B62 /* IDInfoViewController.xib in Resources */,
 				84F5D4191EA7675E00EC8C9D /* TZAlbumCell.xib in Resources */,
+				847DF40C1F1473BA007DDB60 /* location_Numbercity_citynumber.db in Resources */,
 				848F1F8C1EC0078D00720FB6 /* Poseidon.bundle in Resources */,
 				8451AFBF1EA85E65002F04B6 /* MessageAlertView.xcassets in Resources */,
 				84C50C5C1EADF47100AD0B62 /* IDAuthViewController.xib in Resources */,
@@ -1465,6 +1491,7 @@
 				8468563A1EA08FF900C74F87 /* GestureBaseVC.m in Sources */,
 				84F5D41E1EA7675E00EC8C9D /* TZImagePickerController.m in Sources */,
 				84A733561EB86C82008ABB7E /* PersonCell.m in Sources */,
+				84E47DCB1F13565700C72D20 /* SmsCodeViewController.m in Sources */,
 				846856391EA08FF900C74F87 /* BaseVC.m in Sources */,
 				847B17231EDE91B2003A4D98 /* AboutUsViewController.m in Sources */,
 				84C50C3B1EADD49C00AD0B62 /* IdVerificationViewController.m in Sources */,
@@ -1532,6 +1559,7 @@
 				849012BB1F0249AA00E3D62A /* LoanClassification.m in Sources */,
 				847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */,
 				84F5D4271EA768EA00EC8C9D /* TZTestCell.m in Sources */,
+				84E47DC81F13507400C72D20 /* PhoneCarrierViewController.m in Sources */,
 				84F5D4041EA7492A00EC8C9D /* FeedbackViewController.m in Sources */,
 				844E16441EC97A2000F4EA80 /* MXSCycleScrollView.m in Sources */,
 				84B9DBEB1E9DC0990066A92D /* main.m in Sources */,

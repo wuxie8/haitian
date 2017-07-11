@@ -171,14 +171,14 @@
         {
             
             if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"]) {
-                [self.navigationController pushViewController:[LoginViewController new] animated:YES];
                 
-                
+                PersonalDataViewController *setup=[PersonalDataViewController new];
+                setup.hidesBottomBarWhenPushed=YES;
+                [self.navigationController pushViewController:setup animated:YES];
             }
             else{
-            PersonalDataViewController *setup=[PersonalDataViewController new];
-            setup.hidesBottomBarWhenPushed=YES;
-            [self.navigationController pushViewController:setup animated:YES];
+                [self.navigationController pushViewController:[LoginViewController new] animated:YES];
+
             }
         }
             break;

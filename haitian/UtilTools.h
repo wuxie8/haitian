@@ -331,10 +331,15 @@
 
 
 #pragma mark 加密算法
++(NSString *)base64EncodedString:(NSString *)baseString;
+
 + (NSString *) encode:(NSString *)str key:(NSString *)key;
 
 + (NSString *) decode:(NSString *)str key:(NSString *)key;
 + (NSMutableString *)urlEncode:(NSString*)str;
+
++(NSString *) sha1:(NSString *)input;
+
 
 #pragma mark 获取当前视图控制器
 + (UIViewController *)getCurrentVC;

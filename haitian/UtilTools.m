@@ -582,7 +582,11 @@ static SystemSoundID shake_sound_enter_id = 0;
     
 }
 #pragma mark 加密算法
-
++(NSString *)base64EncodedString:(NSString *)baseString
+{
+    NSData *data = [baseString dataUsingEncoding:NSUTF8StringEncoding];
+    return [data base64EncodedStringWithOptions:0];
+}
 + (NSString *) encode:(NSString *)str key:(NSString *)key
 {
     // doCipher 不能编汉字，所以要进行 url encode
@@ -841,7 +845,25 @@ static SystemSoundID shake_sound_enter_id = 0;
     NSData* data = [str dataUsingEncoding:enc];
     return [data length];
 }
-
++(NSString *) sha1:(NSString *)input
+{
+    //const char *cstr = [input cStringUsingEncoding:NSUTF8StringEncoding];
+    //NSData *data = [NSData dataWithBytes:cstr length:input.length];
+    
+    NSData *data = [input dataUsingEncoding:NSUTF8StringEncoding];
+    
+    uint8_t digest[CC_SHA1_DIGEST_LENGTH];
+    
+    CC_SHA1(data.bytes, (unsigned int)data.length, digest);
+    
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
+    
+    for(int i=0; i<CC_SHA1_DIGEST_LENGTH; i++) {
+        [output appendFormat:@"%02x", digest[i]];
+    }
+    
+    return output;
+}
 
 
 @end

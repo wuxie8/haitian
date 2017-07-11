@@ -15,7 +15,7 @@
 #import "CreditSesameViewController.h"
 #import "AddBillViewController.h"
 #import <ZMCreditSDK/ALCreditService.h>
-
+#import "PhoneCarrierViewController.h"
 #define margen 30
 
 @interface LoadDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -195,7 +195,10 @@
     }
     else if ([[mutableArray1 objectAtIndex:indexPath.row]isEqualToString:@"手机运营商"])
     {
-      [self.navigationController pushViewController:[AddBillViewController new] animated:YES];
+        
+
+
+      [self.navigationController pushViewController:[PhoneCarrierViewController new] animated:YES];
     
     }
     else if ([[mutableArray1 objectAtIndex:indexPath.row]isEqualToString:@"芝麻信用"])
@@ -238,7 +241,37 @@
 
 
 }
+-(NSDictionary *)encryption:(NSDictionary *)dic
+{
+    NSArray *keyArray = [dic allKeys];
+    NSArray *sortArray = [keyArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        return [obj1 compare:obj2 options:NSNumericSearch];
+    }];
+    
+    NSMutableArray *valueArray = [NSMutableArray array];
+    for (NSString *sortString in sortArray) {
+        [valueArray addObject:[dic objectForKey:sortString]];
+    }
+    NSMutableString *signString=[NSMutableString string];
+    for (int i = 0; i < sortArray.count; i++) {
+        NSString *keyValueStr = [NSString stringWithFormat:@"%@=%@",sortArray[i],valueArray[i]];
+        [signString appendString:keyValueStr];
+        if (i!=sortArray.count-1) {
+            [signString appendString:@"&"];
 
+        }
+    }
+    
+    [signString appendString:@"JSjUU4cv45fFQaRudSWXaXWCYWMdBt3w"];
+    
+    
+    
+    NSString *string=[UtilTools sha1:signString];
+    NSMutableDictionary *paradic=[NSMutableDictionary dictionaryWithDictionary:dic];
+    [paradic setObject:string forKey:@"sign"];
+    return paradic;
+
+}
 - (void)launchSDK {
     NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:
                         Context.currentUser.username,@"mobileNo",
