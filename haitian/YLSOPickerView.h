@@ -19,4 +19,5 @@
 //弹出
 -(void)show;
 
+-(void)quit;
 @end

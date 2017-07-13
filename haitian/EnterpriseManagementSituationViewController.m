@@ -46,14 +46,21 @@
         
     }
     [self getList];
+   
     UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
     tab.delegate=self;
     tab.dataSource=self;
     
     [self.view addSubview:tab];
+   
     // Do any additional setup after loading the view.
 }
+- (void)keyboardHide:(UITapGestureRecognizer *)tap
+{
+    YLSOPickerView *pickView=(YLSOPickerView *)tap.view;
+    [pickView quit];
 
+}
 -(void)getList
 {
     NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:
@@ -139,6 +146,15 @@
     
     
 }
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+    
+}
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     
@@ -157,6 +173,11 @@
             
             
             [picker show];
+            UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardHide:)];
+            //设置成NO表示当前控件响应后会传播到其他控件上，默认为YES。
+            tapGestureRecognizer.cancelsTouchesInView = YES;
+            //将触摸事件添加到当前view
+            [picker addGestureRecognizer:tapGestureRecognizer];
         return NO;}
             case 2:
         {
@@ -169,7 +190,8 @@
                 
             }];
             
-            return NO;}
+            return NO;
+        }
             break;
             
         default:

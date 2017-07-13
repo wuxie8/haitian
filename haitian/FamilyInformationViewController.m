@@ -109,6 +109,12 @@
     
     return cell;
 }
+- (void)keyboardHide:(UITapGestureRecognizer *)tap
+{
+    YLSOPickerView *pickView=(YLSOPickerView *)tap.view;
+    [pickView quit];
+    
+}
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     if (textField.tag==1000) {
@@ -116,6 +122,11 @@
         picker.array = _dataArray;
         picker.title = professional;
         [picker show];
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardHide:)];
+        //设置成NO表示当前控件响应后会传播到其他控件上，默认为YES。
+        tapGestureRecognizer.cancelsTouchesInView = YES;
+        //将触摸事件添加到当前view
+        [picker addGestureRecognizer:tapGestureRecognizer];
         return NO;
         
     }
@@ -135,6 +146,11 @@
         picker.array = @[@"高中及中专以下",@"大学专科",@"大学本科",@"研究生及以上"];
         picker.title = schoolRecord;
         [picker show];
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardHide:)];
+        //设置成NO表示当前控件响应后会传播到其他控件上，默认为YES。
+        tapGestureRecognizer.cancelsTouchesInView = YES;
+        //将触摸事件添加到当前view
+        [picker addGestureRecognizer:tapGestureRecognizer];
         return NO;
         
     }

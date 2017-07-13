@@ -27,7 +27,7 @@
     [super viewDidLoad];
     [self getList];
     arr=@[@"亲属／配偶姓名",@"手机号码",@"紧急联系人",@"手机号码"];
-    
+    self.title=@"其他联系人";
     UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
     tab.delegate=self;
     tab.dataSource=self;
@@ -89,25 +89,26 @@
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     cell.backgroundColor=[UIColor whiteColor];
     cell.textLabel.text=arr[indexPath.row];
-    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(WIDTH-100, 10, 100, cell.frame.size.height-20)];
+    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(WIDTH-80, 10,80, cell.frame.size.height-20)];
     label.tag=100+indexPath.row;
+    label.textAlignment=NSTextAlignmentRight;
     label.font=[UIFont systemFontOfSize:14];
     [cell.contentView addSubview:label];
 
     switch (indexPath.row) {
         case 0:
-             case 2:
+        case 2:
         {
-            UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(WIDTH-200, 10, 80, cell.frame.size.height-20)];
+            UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(WIDTH-160, 10, 80, cell.frame.size.height-20)];
             [but setTitle:@"快捷导入" forState:UIControlStateNormal];
             [but addTarget:self action:@selector(butClick:) forControlEvents:UIControlEventTouchUpInside];
             but.tag=1000+indexPath.row;
-            [but setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+            [but setTitleColor: kColorFromRGBHex(0x5190e1) forState:UIControlStateNormal];
             [but.layer setMasksToBounds:YES];
-            [but.layer setCornerRadius:10.0]; //设置矩形四个圆角半径
+            [but.layer setCornerRadius:5.0]; //设置矩形四个圆角半径
             //边框宽度
             [but.layer setBorderWidth:1.0];
-            but.layer.borderColor=[UIColor blueColor].CGColor;
+            but.layer.borderColor=kColorFromRGBHex(0x5190e1).CGColor;
             [cell.contentView addSubview:but];
 
         }

@@ -143,6 +143,15 @@
     
     
 }
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+    
+}
 -(void)complete
 {
     NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:
@@ -199,6 +208,7 @@
         if (indexPath.row==0) {
             textField.text=Context.currentUser.username;
         }
+        textField.returnKeyType = UIReturnKeyDone;
         textField.delegate=self;
         textField.tag=1000+indexPath.row;
         [cell.contentView addSubview:textField];

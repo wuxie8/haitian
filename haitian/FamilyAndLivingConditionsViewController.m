@@ -34,7 +34,7 @@ static NSString *const family = @"婚姻情况";
     tab.delegate=self;
     tab.dataSource=self;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getValue:) name:family object:nil];
-
+    
     [self.view addSubview:tab];
     // Do any additional setup after loading the view.
 }
@@ -123,22 +123,33 @@ static NSString *const family = @"婚姻情况";
     
     
 }
+- (void)keyboardHide:(UITapGestureRecognizer *)tap
+{
+    YLSOPickerView *pickView=(YLSOPickerView *)tap.view;
+    [pickView quit];
+    
+}
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     NSArray *arr1=@[@"已婚",@"未婚",@"离异"];
-
+    
     [self.view endEditing:YES];
     if (textField.tag-1000==0)        {
         YLSOPickerView *picker = [[YLSOPickerView alloc]init];
-            picker.array=arr1;
-            picker.title=family;
-            
-            
-            [picker show];
-            return NO;
+        picker.array=arr1;
+        picker.title=family;
+        
+        
+        [picker show];
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardHide:)];
+        //设置成NO表示当前控件响应后会传播到其他控件上，默认为YES。
+        tapGestureRecognizer.cancelsTouchesInView = YES;
+        //将触摸事件添加到当前view
+        [picker addGestureRecognizer:tapGestureRecognizer];
+        return NO;
     }
     else{
-    
+        
         {
             
             [LZCityPickerController showPickerInViewController:self selectBlock:^(NSString *address, NSString *province, NSString *city, NSString *area) {
@@ -151,7 +162,7 @@ static NSString *const family = @"婚姻情况";
             
             return NO;}
     }
-            
+    
     
     return YES;
 }

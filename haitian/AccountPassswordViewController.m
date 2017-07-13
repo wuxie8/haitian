@@ -60,6 +60,8 @@
         text.tag=1000+i;
         if (i==1) {
             text.secureTextEntry = YES;
+            text.keyboardType= UIKeyboardTypeDefault;
+
         }
         [view addSubview:text];
        

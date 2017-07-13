@@ -304,6 +304,11 @@ type=5;
         picker.title = RepeatType;
         
         [picker show];
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardHide:)];
+        //设置成NO表示当前控件响应后会传播到其他控件上，默认为YES。
+        tapGestureRecognizer.cancelsTouchesInView = YES;
+        //将触摸事件添加到当前view
+        [picker addGestureRecognizer:tapGestureRecognizer];
         return NO;
         
     }
@@ -312,11 +317,23 @@ type=5;
         picker.array = remindTimeArray;
         picker.title = RemianTime;
         [picker show];
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardHide:)];
+        //设置成NO表示当前控件响应后会传播到其他控件上，默认为YES。
+        tapGestureRecognizer.cancelsTouchesInView = YES;
+        //将触摸事件添加到当前view
+        [picker addGestureRecognizer:tapGestureRecognizer];
         return NO;
         
     }
     return YES;
 }
+- (void)keyboardHide:(UITapGestureRecognizer *)tap
+{
+    YLSOPickerView *pickView=(YLSOPickerView *)tap.view;
+    [pickView quit];
+    
+}
+
 -(void)getValue:(NSNotification *)notification
 {
     if ([notification.name isEqualToString:RepeatType]) {

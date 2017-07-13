@@ -131,10 +131,21 @@
         picker.array = _dataArray;
         picker.title = bank;
         [picker show];
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardHide:)];
+        //设置成NO表示当前控件响应后会传播到其他控件上，默认为YES。
+        tapGestureRecognizer.cancelsTouchesInView = YES;
+        //将触摸事件添加到当前view
+        [picker addGestureRecognizer:tapGestureRecognizer];
         return NO;
 
     }
     return YES;
+}
+- (void)keyboardHide:(UITapGestureRecognizer *)tap
+{
+    YLSOPickerView *pickView=(YLSOPickerView *)tap.view;
+    [pickView quit];
+    
 }
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {

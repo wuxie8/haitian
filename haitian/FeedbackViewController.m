@@ -22,7 +22,7 @@
     UICollectionView *_collectionView;
 //    NSMutableArray *_selectedPhotos;//图片数据源
     UITextView *text1;
-    UITextField *textField;
+    UITextField *textField1;
 
 }
 - (void)viewDidLoad {
@@ -52,22 +52,31 @@
     [text1 addSubview:label];
     
     
-    textField=[[UITextField alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(text1.frame)+20, WIDTH-20, 60 )];
-    textField.backgroundColor=[UIColor whiteColor];
-    textField.placeholder=@"请填写手机号/邮箱(选填,方便我们联系您)";
-    [self.view addSubview:textField];
+    textField1=[[UITextField alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(text1.frame)+20, WIDTH-20, 60 )];
+    textField1.backgroundColor=[UIColor whiteColor];
+    textField1.placeholder=@"请填写手机号/邮箱(选填,方便我们联系您)";
+    [self.view addSubview:textField1];
     
     [self.view addSubview:text1];
     
     [self configCollectionView];
     
-    UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(textField.frame)+20, WIDTH-20, 40)];
+    UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(textField1.frame)+20, WIDTH-20, 40)];
     [but setTitle:@"提交" forState:UIControlStateNormal];
     but.backgroundColor=AppButtonbackgroundColor;
      but.clipsToBounds=YES;
      but.layer.cornerRadius=10;
     [but addTarget:self action:@selector(submit) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:but];
+    
+}
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    
+    
+    [textField resignFirstResponder];
+    
+    return YES;
     
 }
 #pragma mark - 添加相册图片
@@ -170,12 +179,12 @@
                        text1.text,@"problem",
                        nil];
     NSMutableDictionary *dic1=[NSMutableDictionary dictionaryWithDictionary:dic];
-    if (![UtilTools isBlankString:textField.text]) {
-        if ([textField.text containsString:@"@"]) {
-            [dic1 setObject:textField.text forKey:@"email"];
+    if (![UtilTools isBlankString:textField1.text]) {
+        if ([textField1.text containsString:@"@"]) {
+            [dic1 setObject:textField1.text forKey:@"email"];
         }
         else{
-            [dic1 setObject:textField.text forKey:@"mobile"];
+            [dic1 setObject:textField1.text forKey:@"mobile"];
 
         }
     }
