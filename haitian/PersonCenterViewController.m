@@ -12,6 +12,7 @@
 #import "FeedbackViewController.h"
 #import "SetUpViewController.h"
 #import "PersonalDataViewController.h"
+#import "InviteFriendsViewController.h"
 @interface PersonCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(strong, nonatomic)UIView *headView;
 @end
@@ -180,6 +181,12 @@
                 [self.navigationController pushViewController:[LoginViewController new] animated:YES];
 
             }
+        }
+            break;
+        case 2:
+        {InviteFriendsViewController *helpCenter=[[InviteFriendsViewController alloc]init];
+            helpCenter.hidesBottomBarWhenPushed=YES;
+            [self.navigationController pushViewController:helpCenter animated:YES];
         }
             break;
         case 3:

@@ -100,6 +100,8 @@
 -(void)registere
 {
     RegisterVC *registervc=[[RegisterVC alloc]init];
+    registervc.hidesBottomBarWhenPushed=YES;
+
     [self.navigationController pushViewController:registervc animated:YES];
 
 }

@@ -21,25 +21,23 @@
     NSArray *arr;
 
 }
-#ifdef __IPHONE_7_0
-- (UIRectEdge)edgesForExtendedLayout
-{
-    return UIRectEdgeNone;
-}
-#endif
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title=@"注册";
     self.view.backgroundColor=AppPageColor;
-    
+    UIImageView * image=[[UIImageView  alloc]initWithFrame:CGRectMake(0, 24, WIDTH, ButtonWeight)];
+    [image setImage:[UIImage imageNamed:@"LoginBackGround"]];
+    image.contentMode=UIViewContentModeScaleAspectFill;
+    [self.view addSubview:image];
     arr=@[@"手机号",@"验证码"];
     NSArray *arr1=@[@"请输入手机号",@"请输入验证码"];
     for (int i=0; i<arr.count; i++) {
-        UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 20+i*ViewHeight, WIDTH, ViewHeight)];
+        UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0,CGRectGetMaxY(image.frame)+ViewHeight+i*ViewHeight , WIDTH, ViewHeight)];
         view.backgroundColor=[UIColor whiteColor];
         view.tag=i+100;
-        [self.view addSubview:view];
+        
+//        [self.view addSubview:view];
         UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(20, 0, 80, 40)];
         label.textColor=[UIColor blackColor];
         [label setText:arr[i]];
@@ -71,15 +69,15 @@
         [view addSubview:backView];
         if (i==arr.count-1) {
             but=[[UIButton alloc]initWithFrame:CGRectMake(WIDTH-120, 0, 120, ViewHeight)];
-            but.backgroundColor=AppBackColor;
+            but.backgroundColor=AppButtonbackgroundColor;
             [but setTitle:@"获取验证码" forState:UIControlStateNormal];
             [but addTarget: self action:@selector(verificationCodeRegister) forControlEvents:UIControlEventTouchUpInside];
             [view addSubview:but];
         }
         [self.view addSubview:view];
     }
-    UIButton *loginButton=[[UIButton alloc]initWithFrame:CGRectMake(3, 20+arr.count*ViewHeight+20, WIDTH-3*2, 50)];
-    loginButton.backgroundColor=AppBackColor;
+    UIButton *loginButton=[[UIButton alloc]initWithFrame:CGRectMake(3, CGRectGetMaxY(image.frame)+ViewHeight+arr.count*ViewHeight+20, WIDTH-3*2, 50)];
+    loginButton.backgroundColor=AppButtonbackgroundColor;
     [loginButton setTitle:@"注册" forState:UIControlStateNormal];
     loginButton.clipsToBounds=YES;
     [loginButton addTarget:self action:@selector(registerClick ) forControlEvents:UIControlEventTouchUpInside];

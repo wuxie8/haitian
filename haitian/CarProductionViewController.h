@@ -8,6 +8,10 @@
 
 #import "GestureNavBaseVC.h"
 
+typedef void(^backBlock)();
+
 @interface CarProductionViewController : GestureNavBaseVC
 
+
+@property(nonatomic, copy)backBlock clickBlock;
 @end

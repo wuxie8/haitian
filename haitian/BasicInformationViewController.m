@@ -275,7 +275,7 @@
                 else
                 {
 //                    qixian=[textField.text intValue];
-                    UILabel *label=[self.view viewWithTag:1001];
+//                    UILabel *label=[self.view viewWithTag:1001];
 //                    if (qixian) {
 //                        float feilv=edu/qixian+edu*[self.product.feilv floatValue]/100;
 //    

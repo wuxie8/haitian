@@ -16,6 +16,7 @@
 #import "UploadDocumentsViewController.h"
 #import "BasicInformationViewController.h"
 #import "LoadDetailViewController.h"
+#import "PhoneCarrierViewController.h"
 @interface PersonalDataViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 
@@ -41,6 +42,7 @@
     tab.delegate=self;
     tab.dataSource=self;
     [self getList];
+    [self getStatus];
     tab.backgroundColor=AppPageColor;
     [self.view addSubview:tab];
     // Do any additional setup after loading the view.
@@ -59,14 +61,17 @@
                         Context.currentUser.uid,@"uid",
                         nil];
     
-    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@/&m=userinfo&a=postDetail",SERVEREURL] parameters:dic1 success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userinfo&a=postDetail",SERVEREURL] parameters:dic1 success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
         if ([dic[@"code"] isEqualToString:@"0000"]) {
             NSDictionary *diction=[dic[@"data"] objectForKey:@"data"];
-            UITextField *text1=    [self.view viewWithTag:1001];
-            [text1 setText:[diction objectForKey:@"realname"]];
-            UITextField *text2=    [self.view viewWithTag:1002];
-            [text2 setText:[diction objectForKey:@"idcard"]];
+            if (![UtilTools isBlankDictionary:diction]) {
+                UITextField *text1=    [self.view viewWithTag:1001];
+                [text1 setText:[diction objectForKey:@"realname"]];
+                UITextField *text2=    [self.view viewWithTag:1002];
+                [text2 setText:[diction objectForKey:@"idcard"]];
+            }
+           
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
@@ -75,6 +80,68 @@
     }];
 
 
+}
+-(void)getStatus
+{
+    NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:
+                        
+                        Context.currentUser.uid,@"uid",
+                        nil];
+    
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userinfo&a=status",SERVEREURL] parameters:dic1 success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *dic=(NSDictionary *)responseObject;
+        if ([dic[@"code"] isEqualToString:@"0000"]) {
+            NSDictionary *diction=dic[@"data"];
+            DLog(@"%@",diction);
+            if ([diction[@"credit_status"] boolValue]) {
+                UILabel *label=[self.view viewWithTag:100];
+                label.text=@"已完成";
+            }
+            if ([diction[@"company_status"] boolValue]) {
+                UILabel *label=[self.view viewWithTag:101];
+                label.text=@"已完成";
+            }
+            if ([diction[@"family_status"] boolValue]) {
+                UILabel *label=[self.view viewWithTag:102];
+                label.text=@"已完成";
+            }
+            if ([diction[@"other_status"] boolValue]) {
+                UILabel *label=[self.view viewWithTag:103];
+                label.text=@"已完成";
+            }
+            if ([diction[@"house_status"] boolValue]) {
+                UILabel *label=[self.view viewWithTag:104];
+                label.text=@"已完成";
+            }
+            if ([diction[@"car_status"] boolValue]) {
+                UILabel *label=[self.view viewWithTag:105];
+                label.text=@"已完成";
+            }
+            if ([diction[@"operator_status"] boolValue]) {
+                UILabel *label=[self.view viewWithTag:106];
+                label.text=@"已完成";
+            }
+            if ([diction[@"shopping_status"] boolValue]) {
+                UILabel *label=[self.view viewWithTag:107];
+                label.text=@"已完成";
+            }
+            if ([diction[@"papers_status"] boolValue]) {
+                UILabel *label=[self.view viewWithTag:108];
+                label.text=@"已完成";
+            }
+            if ([diction[@"bankcard_status"] boolValue]) {
+                UILabel *label=[self.view viewWithTag:109];
+                label.text=@"已完成";
+            }
+        }
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+    
+    
 }
 -(void)complete
 {
@@ -138,7 +205,11 @@
     }
     else{
         cell.accessoryType =UITableViewCellAccessoryDisclosureIndicator;
-
+        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(WIDTH-100, 0, 80, cell.frame.size.height)];
+        label.tag=100+indexPath.row;
+        label.text=@"未完成";
+        label.textAlignment=NSTextAlignmentCenter;
+        [cell.contentView addSubview:label];
     }
     
     
@@ -150,39 +221,94 @@
     if (indexPath.section==1) {
         switch (indexPath.row) {
             case 0:
-                [self.navigationController pushViewController:[PersonalCreditViewController new] animated:YES];
+            {
+                PersonalCreditViewController *personCredit=[PersonalCreditViewController new];
+                [personCredit setClickBlock:^(){
+                    UILabel *label=[self.view viewWithTag:100];
+                    label.text=@"已完成";
+                }];
+                [self.navigationController pushViewController:personCredit animated:YES];
+                
+            }
 
                 break;
             case 1:
-                [self.navigationController pushViewController:[EnterpriseManagementSituationViewController new] animated:YES];
+            {
+                EnterpriseManagementSituationViewController *personCredit=[EnterpriseManagementSituationViewController new];
+                [personCredit setClickBlock:^(){
+                    UILabel *label=[self.view viewWithTag:101];
+                    label.text=@"已完成";
+                }];
+                [self.navigationController pushViewController:personCredit animated:YES];
                 
+            }
                 break;
             case 2:
-                [self.navigationController pushViewController:[FamilyAndLivingConditionsViewController new] animated:YES];
+            {
+                FamilyAndLivingConditionsViewController *personCredit=[FamilyAndLivingConditionsViewController new];
+                [personCredit setClickBlock:^(){
+                    UILabel *label=[self.view viewWithTag:102];
+                    label.text=@"已完成";
+                }];
+                [self.navigationController pushViewController:personCredit animated:YES];
                 
+            }
                 break;
             case 3:
-                [self.navigationController pushViewController:[OtherContactsViewController new] animated:YES];
+            {
+                OtherContactsViewController *personCredit=[OtherContactsViewController new];
+                [personCredit setClickBlock:^(){
+                    UILabel *label=[self.view viewWithTag:103];
+                    label.text=@"已完成";
+                }];
+                [self.navigationController pushViewController:personCredit animated:YES];
                 
-                break;
+            }                break;
             case 4:
-                [self.navigationController pushViewController:[RealEstateViewController new] animated:YES];
+            {
+                RealEstateViewController *personCredit=[RealEstateViewController new];
+                [personCredit setClickBlock:^(){
+                    UILabel *label=[self.view viewWithTag:104];
+                    label.text=@"已完成";
+                }];
+                [self.navigationController pushViewController:personCredit animated:YES];
                 
+            }
                 break;
             case 5:
-                [self.navigationController pushViewController:[CarProductionViewController new] animated:YES];
+            {
+                CarProductionViewController *personCredit=[CarProductionViewController new];
+                [personCredit setClickBlock:^(){
+                    UILabel *label=[self.view viewWithTag:105];
+                    label.text=@"已完成";
+                }];
+                [self.navigationController pushViewController:personCredit animated:YES];
                 
+            }
                 break;
             case 6:
-                [self.navigationController pushViewController:[LoadDetailViewController new] animated:YES];
+            {
+                PhoneCarrierViewController *personCredit=[PhoneCarrierViewController new];
+                [personCredit setClickBlock:^(){
+                    UILabel *label=[self.view viewWithTag:106];
+                    label.text=@"已完成";
+                }];
+                [self.navigationController pushViewController:personCredit animated:YES];
                 
+            }
                 break;
             case 8:
-                [self.navigationController pushViewController:[UploadDocumentsViewController new] animated:YES];
+            {
+                UploadDocumentsViewController *personCredit=[UploadDocumentsViewController new];
+                [personCredit setClickBlock:^(){
+                    [self getStatus];
+                }];
+                [self.navigationController pushViewController:personCredit animated:YES];
                 
+            }
                 break;
             case 9:
-                [self.navigationController pushViewController:[BasicInformationViewController new] animated:YES];
+//                [self.navigationController pushViewController:[BasicInformationViewController new] animated:YES];
                 
                 break;
                 

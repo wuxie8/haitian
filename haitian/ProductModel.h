@@ -54,6 +54,9 @@
 
 @property (nonatomic, copy) NSString *pro_hits;
 
+@property (nonatomic, copy) NSString *hits;
+
+
 @property (nonatomic, copy) NSString *status;
 
 @property (nonatomic, copy) NSString *type;

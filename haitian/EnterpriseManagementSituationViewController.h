@@ -8,6 +8,10 @@
 
 #import "GestureNavBaseVC.h"
 
+typedef void(^backBlock)();
+
 @interface EnterpriseManagementSituationViewController : GestureNavBaseVC
 
+
+@property(nonatomic, copy)backBlock clickBlock;
 @end

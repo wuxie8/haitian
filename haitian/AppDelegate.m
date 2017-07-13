@@ -23,14 +23,28 @@
 
 #import "AppDelegate+JPush.h"
 
+#import <UMSocialCore/UMSocialCore.h>
+
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
 @end
+static NSString *USHARE_DEMO_APPKEY = @"5913bac1cae7e74ebe000675";
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    /* 打开调试日志 */
+    [[UMSocialManager defaultManager] openLog:YES];
+    
+    /* 设置友盟appkey */
+    [[UMSocialManager defaultManager] setUmSocialAppkey:USHARE_DEMO_APPKEY];
+    
+    [self configUSharePlatforms];
+    
+
+    
     //激光推送
     [self registerJPush:application options:launchOptions];
     
@@ -54,7 +68,32 @@
     // Override point for customization after application launch.
     return YES;
 }
-
+-(void)configUSharePlatforms
+{
+    /* 设置分享到QQ互联的appID
+     * U-Share SDK为了兼容大部分平台命名，统一用appKey和appSecret进行参数设置，而QQ平台仅需将appID作为U-Share的appKey参数传进即可。
+     */
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1105546421"/*设置QQ平台的appID*/  appSecret:@"RNcK0FZOllBAy1bb" redirectURL:@"http://mobile.umeng.com/social"];
+    
+    
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Qzone appKey:@"1105546421"/*设置QQ平台的appID*/  appSecret:@"RNcK0FZOllBAy1bb" redirectURL:@"http://mobile.umeng.com/social"];
+    //http://www.jishiyu007.com
+    /* 设置分享到QQ互联的appID
+     * U-Share SDK为了兼容大部分平台命名，统一用appKey和appSecret进行参数设置，而QQ平台仅需将appID作为U-Share的appKey参数传进即可。
+     */
+//        [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1105821097"/*设置QQ平台的appID*/  appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
+    /* 设置微信的appKey和appSecret */
+    /* 设置微信的appKey和appSecret */
+        [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx43b913bd07fb3715" appSecret:@"89d50c49ce0e58ee0d32a66c9b149970" redirectURL:@"http://mobile.umeng.com/social"];
+}
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
+    if (!result) {
+        // 其他如支付等SDK的回调
+    }
+    return result;
+}
 +(UITabBarController *)setTabBarController
 {
     

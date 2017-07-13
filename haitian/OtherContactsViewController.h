@@ -8,6 +8,10 @@
 
 #import "GestureNavBaseVC.h"
 
+typedef void(^backBlock)();
+
 @interface OtherContactsViewController : GestureNavBaseVC
 
+
+@property(nonatomic, copy)backBlock clickBlock;
 @end

@@ -50,32 +50,24 @@
     [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=parpers_list",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
         
         if ([responseObject[@"code"]isEqualToString:@"0000"]) {
-//            NSArray *array1=[[responseObject objectForKey:@"data"]objectForKey:@"data"];
-//            NSDictionary *dictionary=[array1 firstObject];
-//            if (![UtilTools isBlankString:dictionary[@"car"]]) {
-//                UITextField *text=[self.view viewWithTag:1000];
-//                text.text=dictionary[@"car"];
-//            }
-//            if (![UtilTools isBlankString:dictionary[@"car_price"]]) {
-//                UITextField *text=[self.view viewWithTag:1001];
-//                text.text=dictionary[@"car_price"];
-//            }
-//            if (![UtilTools isBlankString:dictionary[@"use_time"]]) {
-//                UITextField *text=[self.view viewWithTag:1002];
-//                text.text=dictionary[@"use_time"];
-//            }
-//            if (![UtilTools isBlankString:dictionary[@"installment"]]) {
-//                UITextField *text=[self.view viewWithTag:1003];
-//                text.text=dictionary[@"installment"];
-//            }
-//            if (![UtilTools isBlankString:dictionary[@"installment"]]) {
-//                UITextField *text=[self.view viewWithTag:1004];
-//                text.text=dictionary[@"installment"];
-//            }
-//            if (![UtilTools isBlankString:dictionary[@"mortgage"]]) {
-//                UITextField *text=[self.view viewWithTag:1005];
-//                text.text=dictionary[@"mortgage"];
-//            }
+            NSArray *array1=[[responseObject objectForKey:@"data"]objectForKey:@"data"];
+            NSDictionary *dictionary=[array1 firstObject];
+            if (![UtilTools isBlankString:dictionary[@"idcard_front"]]) {
+                UIImageView *imageView=[self.view viewWithTag:1000];
+                imageView.image=[UIImage imageNamed:@"UploadedSuccess"];
+            }
+            if (![UtilTools isBlankString:dictionary[@"idcard"]]) {
+                UIImageView *imageView=[self.view viewWithTag:1001];
+                imageView.image=[UIImage imageNamed:@"UploadedSuccess"];
+            }
+            if (![UtilTools isBlankString:dictionary[@"house_card"]]) {
+                UIImageView *imageView=[self.view viewWithTag:1002];
+                imageView.image=[UIImage imageNamed:@"UploadedSuccess"];
+            }
+            if (![UtilTools isBlankString:dictionary[@"driving_card"]]) {
+                UIImageView *imageView=[self.view viewWithTag:1003];
+                imageView.image=[UIImage imageNamed:@"UploadedSuccess"];
+            }
         }
         else
         {
@@ -169,20 +161,19 @@
                        nil];
     
 
-//    http://app.jishiyu11.cn/index.php?g=app&m=userdetail&a=parpers_add
     AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
     manager.responseSerializer=[AFHTTPResponseSerializer serializer];
     [manager POST:[NSString stringWithFormat:@"%@&m=userdetail&a=parpers_add",UploadPath]parameters:dic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
-//        for (UIImage *image in _selectedPhotos) {
+//        for (UIImage *image in [mutableDictionary allValues]) {
 //            //根据当前系统时间生成图片名称
 //            NSDate *date = [NSDate date];
 //            NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
 //            [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
 //            NSString *dateString = [formatter stringFromDate:date];
 //            NSString *  _headfileName = [NSString stringWithFormat:@"%@.png",dateString];
-//            NSData *     _headImageData = UIImageJPEGRepresentation(image, 1);
-//            [formData appendPartWithFileData:_headImageData name:@"photo" fileName:_headfileName mimeType:@"image/jpg/png/jpeg"];
+//            NSData *     _headImageData = UIImageJPEGRepresentation(image, 0.1);
+//            [formData appendPartWithFileData:_headImageData name:@"photo1" fileName:_headfileName mimeType:@"image/jpg/png/jpeg"];
 //            
 //        }
         for (NSString *string in [mutableDictionary allKeys]) {
@@ -191,12 +182,19 @@
         [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
         NSString *dateString = [formatter stringFromDate:date];
         NSString *  _headfileName = [NSString stringWithFormat:@"%@.png",dateString];
-            UIImage *image=[mutableDictionary objectForKey:string];
+            UIImage *image=(UIImage *)[mutableDictionary objectForKey:string];
 
             NSData * _headImageData = UIImageJPEGRepresentation(image, 0.1);
-        [formData appendPartWithFileData:_headImageData name:[NSString stringWithFormat:@"photot%d",[string intValue]-999] fileName:_headfileName mimeType:@"image/jpg/png/jpeg"];
+            NSString *nameString=[NSString stringWithFormat:@"photo%d",[string intValue]-999] ;
+            DLog(@"%@",nameString);
+
+            
+        [formData appendPartWithFileData:_headImageData name:nameString fileName:_headfileName mimeType:@"image/jpg/png/jpeg"];
+//            [formData appendPartWithFileData:_headImageData name:[NSString stringWithFormat:@"photot%d",[string intValue]-999] fileName:_headfileName mimeType:@"image/jpg/png/jpeg"];
+
+            
         }
-       
+//
     } progress:^(NSProgress * _Nonnull uploadProgress) {
 
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -205,6 +203,9 @@
 
         if ([resultDic[@"code"]isEqualToString:@"0000"]) {
             [MessageAlertView showSuccessMessage:@"提交成功"];
+            if (self.clickBlock) {
+                self.clickBlock();
+            }
             [self.navigationController popViewControllerAnimated:YES];
         }
         else

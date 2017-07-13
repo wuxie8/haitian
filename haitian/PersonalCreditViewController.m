@@ -163,6 +163,10 @@
     [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=credit_add",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject[@"code"]isEqualToString:@"0000"]) {
             [MessageAlertView showSuccessMessage:@"上传成功"];
+            if (self.clickBlock) {
+                self.clickBlock();
+            }
+            [self.navigationController popViewControllerAnimated:YES];
         }
         else
         {

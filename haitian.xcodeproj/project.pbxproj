@@ -56,6 +56,7 @@
 		8466290F1EB34252003E7979 /* LZCityPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846629091EB34252003E7979 /* LZCityPickerController.m */; };
 		846629101EB34252003E7979 /* LZCityPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8466290B1EB34252003E7979 /* LZCityPickerView.m */; };
 		846629111EB34252003E7979 /* LZPickerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8466290D1EB34252003E7979 /* LZPickerModel.m */; };
+		846724341F15C320002F2F57 /* InviteFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846724331F15C320002F2F57 /* InviteFriendsViewController.m */; };
 		846856151EA059F400C74F87 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856141EA059F400C74F87 /* LoginViewController.m */; };
 		846856181EA0764900C74F87 /* AccountPassswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856171EA0764900C74F87 /* AccountPassswordViewController.m */; };
 		846856241EA0813C00C74F87 /* NetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856211EA0813C00C74F87 /* NetWorkManager.m */; };
@@ -80,7 +81,6 @@
 		847B17201EDE8F2B003A4D98 /* SetUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B171F1EDE8F2B003A4D98 /* SetUpViewController.m */; };
 		847B17231EDE91B2003A4D98 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B17221EDE91B2003A4D98 /* AboutUsViewController.m */; };
 		847DF40A1F146639007DDB60 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 847DF4091F146639007DDB60 /* libsqlite3.tbd */; };
-		847DF40C1F1473BA007DDB60 /* location_Numbercity_citynumber.db in Resources */ = {isa = PBXBuildFile; fileRef = 847DF40B1F1473BA007DDB60 /* location_Numbercity_citynumber.db */; };
 		848F1F8B1EC0078D00720FB6 /* H5Service.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 848F1F891EC0078D00720FB6 /* H5Service.bundle */; };
 		848F1F8C1EC0078D00720FB6 /* Poseidon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 848F1F8A1EC0078D00720FB6 /* Poseidon.bundle */; };
 		848F1F8F1EC0089000720FB6 /* ZMCreditSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F1F8D1EC0088F00720FB6 /* ZMCreditSDK.framework */; };
@@ -291,6 +291,8 @@
 		8466290B1EB34252003E7979 /* LZCityPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZCityPickerView.m; sourceTree = "<group>"; };
 		8466290C1EB34252003E7979 /* LZPickerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZPickerModel.h; sourceTree = "<group>"; };
 		8466290D1EB34252003E7979 /* LZPickerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZPickerModel.m; sourceTree = "<group>"; };
+		846724321F15C320002F2F57 /* InviteFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteFriendsViewController.h; sourceTree = "<group>"; };
+		846724331F15C320002F2F57 /* InviteFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteFriendsViewController.m; sourceTree = "<group>"; };
 		846856131EA059F400C74F87 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		846856141EA059F400C74F87 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		846856161EA0764900C74F87 /* AccountPassswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountPassswordViewController.h; sourceTree = "<group>"; };
@@ -338,7 +340,6 @@
 		847B17211EDE91B2003A4D98 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
 		847B17221EDE91B2003A4D98 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
 		847DF4091F146639007DDB60 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		847DF40B1F1473BA007DDB60 /* location_Numbercity_citynumber.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = location_Numbercity_citynumber.db; sourceTree = SOURCE_ROOT; };
 		848F1F891EC0078D00720FB6 /* H5Service.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = H5Service.bundle; sourceTree = "<group>"; };
 		848F1F8A1EC0078D00720FB6 /* Poseidon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Poseidon.bundle; sourceTree = "<group>"; };
 		848F1F8D1EC0088F00720FB6 /* ZMCreditSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZMCreditSDK.framework; sourceTree = "<group>"; };
@@ -969,7 +970,6 @@
 			isa = PBXGroup;
 			children = (
 				8439598A1EC3FEF60093D906 /* haitian.entitlements */,
-				847DF40B1F1473BA007DDB60 /* location_Numbercity_citynumber.db */,
 				846856491EA09AA400C74F87 /* Utils */,
 				84CD81F61EA4909F009B786F /* Appdeledate */,
 				84B9DC3A1E9DCCC90066A92D /* Base */,
@@ -1165,6 +1165,8 @@
 			children = (
 				84B9DC441E9DCE240066A92D /* PersonCenterViewController.h */,
 				84B9DC451E9DCE240066A92D /* PersonCenterViewController.m */,
+				846724321F15C320002F2F57 /* InviteFriendsViewController.h */,
+				846724331F15C320002F2F57 /* InviteFriendsViewController.m */,
 				84174D671EDEC3FA00A815B3 /* PersonalDataViewController.h */,
 				84174D681EDEC3FA00A815B3 /* PersonalDataViewController.m */,
 				84939E1D1EFA113000152EAF /* PersonalDetails */,
@@ -1388,7 +1390,6 @@
 				84B9DBF41E9DC0990066A92D /* Main.storyboard in Resources */,
 				84C50C5E1EADF47100AD0B62 /* IDInfoViewController.xib in Resources */,
 				84F5D4191EA7675E00EC8C9D /* TZAlbumCell.xib in Resources */,
-				847DF40C1F1473BA007DDB60 /* location_Numbercity_citynumber.db in Resources */,
 				848F1F8C1EC0078D00720FB6 /* Poseidon.bundle in Resources */,
 				8451AFBF1EA85E65002F04B6 /* MessageAlertView.xcassets in Resources */,
 				84C50C5C1EADF47100AD0B62 /* IDAuthViewController.xib in Resources */,
@@ -1523,6 +1524,7 @@
 				84C50C5A1EADF47100AD0B62 /* AVCaptureViewController.m in Sources */,
 				8468563C1EA08FF900C74F87 /* NavBaseVC.m in Sources */,
 				846856421EA0902D00C74F87 /* ASValueTrackingSlider.m in Sources */,
+				846724341F15C320002F2F57 /* InviteFriendsViewController.m in Sources */,
 				84939E191EFA0C1200152EAF /* PersonalCreditViewController.m in Sources */,
 				842E62061EB08C9700BF91FB /* IFlyFaceResultKeys.m in Sources */,
 				845663FB1ED57F6F0075A971 /* LMResultShowVC.m in Sources */,

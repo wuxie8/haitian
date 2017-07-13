@@ -201,125 +201,6 @@
 
 }
 
--(NSString *)FindDatabase{
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"location_Numbercity_citynumber" ofType:@"db"];
-    return path;
-}
--(void)SelectInfoByCall:(NSString *) callnumber
-{
-    NSString *SelectCityNameByCityZoneCode = @"SELECT city FROM citywithnumber WHERE zone=";
-    NSString *SelectCityNameByCityZoneCodeFull = [SelectCityNameByCityZoneCode stringByAppendingString:callnumber ];
-    sqlite3 *database;
-    if (sqlite3_open([[self FindDatabase] UTF8String], &database)
-        != SQLITE_OK) {
-        sqlite3_close(database);
-        NSAssert(0, @"Failed to open database");
-    }
-    sqlite3_stmt *stmt;
-    if (sqlite3_prepare_v2(database, [SelectCityNameByCityZoneCodeFull UTF8String], -1, &stmt, nil) == SQLITE_OK) {
-        if (sqlite3_step(stmt) == SQLITE_ROW) {
-            char *cityname = (char *)sqlite3_column_text(stmt, 0);
-            NSString *cityNameNSString = [[NSString alloc] initWithUTF8String:cityname];
-            if (cityname != nil) {
-                DLog(@"%@",cityNameNSString);
-
-//                mylabellocation.text = cityNameNSString;
-            }
-        }else {
-            [self PhoneNumberError];
-        }
-        sqlite3_finalize(stmt);
-    }
-    sqlite3_close(database);
-    
-}
-
--(void)SelectInfoByPhone:(NSString *)phonenumber WithMobile:(NSString *)phonemobile
-{
-    NSString *SelectWhatMobile = @"SELECT mobile FROM numbermobile where uid=";
-    NSString *SelectWhatMobileFull = [SelectWhatMobile stringByAppendingFormat:@"%@", phonemobile];
-    sqlite3 *database;
-    if (sqlite3_open([[self FindDatabase] UTF8String], &database)
-        != SQLITE_OK) {
-        sqlite3_close(database);
-        NSAssert(0, @"Failed to open database");
-    }
-    sqlite3_stmt *stmt;
-    DLog(@"%d",sqlite3_prepare_v2(database, [SelectWhatMobileFull UTF8String], -1, &stmt, nil));
-
-    if (sqlite3_prepare_v2(database, [SelectWhatMobileFull UTF8String], -1, &stmt, nil) == SQLITE_OK) {
-
-        while (sqlite3_step(stmt) == SQLITE_ROW) {
-            int mobilenumber = sqlite3_column_int(stmt, 0);
-            if (mobilenumber) {
-                NSString *mobileNumberString = [NSString stringWithFormat:@"%d",mobilenumber];
-                NSString *SelectWhatMobileName = @"SELECT mobile FROM mobilenumber WHERE uid=";
-                NSString *SelectWhatMobileNameFull = [SelectWhatMobileName stringByAppendingFormat:@"%@", mobileNumberString];
-                sqlite3_stmt *stmt2;
-                if (sqlite3_prepare_v2(database, [SelectWhatMobileNameFull UTF8String], -1, &stmt2, nil) == SQLITE_OK) {
-                    while (sqlite3_step(stmt2) == SQLITE_ROW) {
-                        char *mobilename = (char *)sqlite3_column_text(stmt2, 0);
-                        NSString *mobilenamestring = [[NSString alloc] initWithUTF8String:mobilename];
-                        if (mobilenamestring!= NULL) {
-                            DLog(@"%@",mobilenamestring);
-
-//                            mylabelmobile.text = mobilenamestring;
-                        }
-                    }
-                }sqlite3_finalize(stmt2);
-                
-            }
-        }
-        sqlite3_finalize(stmt);
-    }
-    else {
-        NSLog(@"Error:%s",sqlite3_errmsg(database));
-    }
-    sqlite3_stmt *stmt3;
-    NSString *SelectCityNumberByPhoneNumber = @"SELECT city FROM phonenumberwithcity WHERE uid=";
-    NSString *SelectCityNumberByPhoneNumberFull = [SelectCityNumberByPhoneNumber stringByAppendingFormat:@"%@", phonenumber];
-    if (sqlite3_prepare_v2(database, [SelectCityNumberByPhoneNumberFull UTF8String], -1, &stmt3, nil) == SQLITE_OK) {
-        if (sqlite3_step(stmt3) == SQLITE_ROW) {
-            int citynumber = sqlite3_column_int(stmt3, 0);
-            NSString *citynumberNSString = [NSString stringWithFormat:@"%d",citynumber];
-            if (citynumberNSString != nil) {
-                NSString *SelectCityNameAndCtiyZoneByCityBumber = @"SELECT city,zone FROM citywithnumber WHERE uid=";
-                NSString *SelectCityNameAndCtiyZoneByCityBumberFull = [SelectCityNameAndCtiyZoneByCityBumber stringByAppendingFormat:@"%@", citynumberNSString];
-                sqlite3_stmt *stmt4;
-                if (sqlite3_prepare_v2(database, [SelectCityNameAndCtiyZoneByCityBumberFull UTF8String], -1, &stmt4, nil) == SQLITE_OK) {
-                    if (sqlite3_step(stmt4) == SQLITE_ROW) {
-                        char *cityname = (char *)sqlite3_column_text(stmt4, 0);
-                        int cityzonecode = sqlite3_column_int(stmt4, 1);
-                        NSString *cityNameNSString = [[NSString alloc] initWithUTF8String:cityname];
-                        NSString *cityzonecodeNnumber = [@"0" stringByAppendingFormat:@"%d",cityzonecode];
-                        if (cityNameNSString != nil && cityzonecodeNnumber != nil) {
-                            DLog(@"%@",cityNameNSString);
-                            DLog(@"%@",cityzonecodeNnumber);
-
-//                            mylabellocation.text = cityNameNSString;
-//                            mylabelzonecode.text = cityzonecodeNnumber;
-                        }
-                    }else {
-                        [self PhoneNumberError];
-                    }
-                    sqlite3_finalize(stmt4);
-                }
-            }
-        }else {
-            [self PhoneNumberError];
-        }
-        sqlite3_finalize(stmt3);
-    }
-    
-    sqlite3_close(database);
-    
-    
-    
-}
-
--(void)PhoneNumberError{
-    [MessageAlertView showErrorMessage:@"电话号码无效"];
-}
 -(void)getResultSign:(NSDictionary *)signDic step:(NSString *)step
 {
 
@@ -454,6 +335,50 @@
             }
            
             else if([typeString isEqualToString:@"吉林电信"]){
+                NSString *title = NSLocalizedString(@"请输入验证码", nil);
+                NSString *message = NSLocalizedString(@"请发送CXDD到10001获取验证码", nil);
+
+                NSString *cancelButtonTitle = NSLocalizedString(@"取消", nil);
+                NSString *otherButtonTitle = NSLocalizedString(@"确定", nil);
+                
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+                
+                // Add the text field for the secure text entry.
+                [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+                    // Listen for changes to the text field's text so that we can toggle the current
+                    // action's enabled property based on whether the user has entered a sufficiently
+                    // secure entry.
+                    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTextFieldTextDidChangeNotification:) name:UITextFieldTextDidChangeNotification object:textField];
+                    
+                    textField.secureTextEntry = YES;
+                }];
+                
+                // Create the actions.
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                    NSLog(@"The \"Secure Text Entry\" alert's cancel action occured.");
+                    
+                    // Stop listening for text changed notifications.
+                    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:alertController.textFields.firstObject];
+                }];
+                
+                UIAlertAction *otherAction = [UIAlertAction actionWithTitle:otherButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    NSLog(@"The \"Secure Text Entry\" alert's other action occured.");
+                    [self getSign:otherInfo];
+                    // Stop listening for text changed notifications.
+                    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:alertController.textFields.firstObject];
+                }];
+                
+                // The text field initially has no text in the text field, so we'll disable it.
+                //                otherAction.enabled = NO;
+                
+                // Hold onto the secure text alert action to toggle the enabled/disabled state when the text changed.
+                //                self.secureTextAlertAction = otherAction;
+                
+                // Add the actions.
+                [alertController addAction:cancelAction];
+                [alertController addAction:otherAction];
+                
+                [self presentViewController:alertController animated:YES completion:nil];
             }
             else
             {
@@ -476,8 +401,6 @@
 - (void)handleTextFieldTextDidChangeNotification:(NSNotification *)notification {
     UITextField *textField = notification.object;
     otherInfo=textField.text;
-    DLog(@"%@",textField.text);
-
     // Enforce a minimum length of >= 5 characters for secure text alerts.
 //    self.secureTextAlertAction.enabled = textField.text.length >= 5;
 }
@@ -487,7 +410,6 @@
     
     [[NetWorkManager sharedManager]postJSON:@"http://api.tanzhishuju.com/api/gateway" parameters:paraDic success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        DLog(@"%@",responseObject);
         [MessageAlertView showSuccessMessage:@"认证成功"];
         [self OperatorStatus];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -504,7 +426,12 @@
                        @"1",@"auth",
                        nil];
     [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=mobile_auth",SERVERE] parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
-        
+        if ([responseObject[@"code"] isEqualToString:@"0000"]) {
+            if (self.clickBlock) {
+                self.clickBlock();
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+        }
        
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
@@ -529,14 +456,6 @@
                                    @"1.0.0",@"version",
                                    @"mobile",@"bizType",
                                    responseObject[@"token"],@"token",
-                                   
-                                   
-                                   //                           @"1",@"sign",
-                                   //                                                      @"371102199303215716",@"identityCardNo",
-                                   //                                                      @"吴公胜",@"identityName",
-                                   
-                                   
-                                   
                                    nil];
                 [self getResultSign:dic step:@"3"];
 

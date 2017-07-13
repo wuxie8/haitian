@@ -7,7 +7,10 @@
 //
 
 #import "GestureNavBaseVC.h"
+typedef void(^backBlock)();
 
 @interface PersonalCreditViewController : GestureNavBaseVC
 
+
+@property(nonatomic, copy)backBlock clickBlock;
 @end

@@ -246,6 +246,8 @@ return [titleArray objectAtIndex:section];
             if (self.clickBlock) {
                 self.clickBlock();
             }
+            [self.navigationController popViewControllerAnimated:YES];
+
         }
         else
         {

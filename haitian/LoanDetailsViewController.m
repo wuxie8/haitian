@@ -94,12 +94,15 @@
     [view1 addSubview:label1];
     
     UIView *yellowView=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(view1.frame)+10, WIDTH, 100)];
-    yellowView.backgroundColor=kColorFromRGBHex(0xfffcf5);
+    yellowView.backgroundColor=kColorFromRGBHex(0xc1dff8);
     [scrollView addSubview:yellowView];
     
     UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(margen, 20, WIDTH/2-margen*2, margen)];
     textField.delegate=self;
     textField.tag=500;
+    textField.layer.borderColor=AppButtonbackgroundColor.CGColor;
+    textField.layer.borderWidth=1.0f;
+    textField.textColor=kColorFromRGBHex(0x4f698b);
     textField.borderStyle = UITextBorderStyleRoundedRect;
     textField.keyboardType = UIKeyboardTypeNumberPad;
     NSString *maxString;
@@ -118,14 +121,23 @@
     edu=[maxString intValue];
     UILabel *unitLabel=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(textField.frame)-30, 0, 30, 20)];
     unitLabel.text=@"元";
-    unitLabel.textColor=[UIColor grayColor];
+    unitLabel.textColor=kColorFromRGBHex(0x4f698b);
+
+//    unitLabel.textColor=[UIColor grayColor];
     [textField setRightView:unitLabel];
       [textField setRightViewMode:UITextFieldViewModeAlways];
     [yellowView addSubview:textField];
+   
 
     UITextField *textField1=[[UITextField alloc]initWithFrame:CGRectMake(WIDTH/2+margen, 20, WIDTH/2-margen*2, 30)];
     textField1.delegate=self;
     textField1.tag=501;
+    textField1.borderStyle = UITextBorderStyleLine;
+    [textField1 setBorderStyle:UITextBorderStyleRoundedRect]; //外框类型
+    textField1.layer.borderColor=AppButtonbackgroundColor.CGColor;
+    textField1.layer.borderWidth=1.0f;
+    textField1.textColor=kColorFromRGBHex(0x4f698b);
+
     NSString *maxString1;
     if ([self.product.qixianfanwei rangeOfString:@"-"].location == NSNotFound) {
         NSArray *arr=   [self.product.qixianfanwei   componentsSeparatedByString:@","];
@@ -136,7 +148,7 @@
         NSRange range1=[self.product.qixianfanwei rangeOfString:@"-"];
         maxString1=[self.product.qixianfanwei substringFromIndex:(range1.location+1)];
     }
-    maxString1=[maxString1 substringToIndex:maxString1.length-1];
+    maxString1=[maxString1 substringToIndex:maxString1.length];
     textField1.text=maxString1;
     qixian=[maxString1 intValue];
     if ([self.product.post_title isEqualToString:@"平安i贷"]) {
@@ -152,20 +164,26 @@
         unitLabel1.text=@"月";
     }
     unitLabel1.textColor=[UIColor grayColor];
+    unitLabel1.textColor=kColorFromRGBHex(0x4f698b);
     [textField1 setRightView:unitLabel1];
     [textField1 setRightViewMode:UITextFieldViewModeAlways];
     [yellowView addSubview:textField1];
     
     
-    UILabel *label3=[[UILabel alloc]initWithFrame:CGRectMake(margen, CGRectGetMaxY(textField.frame)+20, WIDTH/2-margen*2, 30)];
+    UILabel *label3=[[UILabel alloc]initWithFrame:CGRectMake(margen, CGRectGetMaxY(textField.frame)+10, WIDTH/2-margen*2, 30)];
     label3.text=[NSString stringWithFormat:@"额度范围：%@元",self.product.edufanwei];
     label3.adjustsFontSizeToFitWidth=YES;
+    label3.font=[UIFont systemFontOfSize:13];
+
     [yellowView addSubview:label3];
 
     
-    UILabel *label4=[[UILabel alloc]initWithFrame:CGRectMake(margen+WIDTH/2, CGRectGetMaxY(textField.frame)+20, WIDTH/2-margen*2, 30)];
-    label4.text=[NSString stringWithFormat:@"期限范围：%@",self.product.qixianfanwei];
+    UILabel *label4=[[UILabel alloc]initWithFrame:CGRectMake(margen+WIDTH/2, CGRectGetMaxY(textField.frame)+10, WIDTH/2-margen*2, 30)];
+    label4.text=[NSString stringWithFormat:@"期限范围：%@%@",self.product.qixianfanwei,[self.product.fv_unit isEqualToString:@"1"]?@"天":@"月"];
+
     label4.adjustsFontSizeToFitWidth=YES;
+    label4.font=[UIFont systemFontOfSize:13];
+
     [yellowView addSubview:label4];
     
     UIView *view4=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(yellowView.frame), WIDTH, 100)];
