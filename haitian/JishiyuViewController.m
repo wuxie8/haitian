@@ -404,7 +404,7 @@
 -(void)butClick:(UIButton *)sender
 {
     
-    //    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"]) {
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"]) {
     switch (sender.tag) {
         case 0:
         {
@@ -441,13 +441,13 @@
         default:
             break;
     }
-    //    }
-    //    else
-    //    {
-    //        LoginViewController *login=[[LoginViewController alloc]init];
-    //        login.hidesBottomBarWhenPushed=YES;
-    //        [self.navigationController pushViewController:login animated:YES];
-    //    }
+        }
+        else
+        {
+            LoginViewController *login=[[LoginViewController alloc]init];
+            login.hidesBottomBarWhenPushed=YES;
+            [self.navigationController pushViewController:login animated:YES];
+        }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

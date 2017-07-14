@@ -267,7 +267,7 @@
 
     NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:
                         Context.currentUser.uid,@"uid",
-                        self.product.id,@"pid",
+                        self.productID,@"pid",
 
                         nil];
     NSMutableDictionary * mutDic2 = [[NSMutableDictionary alloc]initWithDictionary:dic2];

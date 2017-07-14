@@ -27,6 +27,7 @@
     UITableView *tab;
     NSArray *arr;
     NSArray *placeArray;
+    NSArray *imageArr;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,6 +38,7 @@
    NSArray *arr1=@[@"手机号码",@"姓名",@"身份证号码"];
     placeArray=@[@"",@"请输入姓名",@"请输入身份证号码"];
     NSArray *arr2=@[@"个人资信",@"企业经营情况",@"家庭及居住情况",@"其他联系人",@"房产",@"车产",@"运营商验证",@"网购信用",@"证件上传",@"我的银行卡"];
+    imageArr=@[@"PersonalCredit",@"EnterpriseManagement",@"FamilyAndResidentialConditions",@"Other contacts",@"RealEstate",@"CarProduction",@"OperatorVerification",@"OnlineCredit",@"certificate",@"bankCard"];
     arr=@[arr1,arr2];
     tab=[[UITableView alloc]initWithFrame:CGRectMake(0 , 0, WIDTH, HEIGHT-50)];
     tab.delegate=self;
@@ -214,6 +216,7 @@
         [cell.contentView addSubview:textField];
     }
     else{
+        cell.imageView.image=[UIImage imageNamed:imageArr[indexPath.row]];
         cell.accessoryType =UITableViewCellAccessoryDisclosureIndicator;
         UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(WIDTH-100, 0, 80, cell.frame.size.height)];
         label.tag=100+indexPath.row;
@@ -307,6 +310,10 @@
                 
             }
                 break;
+            case 7:
+                [MessageAlertView showErrorMessage:@"服务器维护中"];
+                
+                break;
             case 8:
             {
                 UploadDocumentsViewController *personCredit=[UploadDocumentsViewController new];
@@ -318,7 +325,7 @@
             }
                 break;
             case 9:
-//                [self.navigationController pushViewController:[BasicInformationViewController new] animated:YES];
+                [MessageAlertView showErrorMessage:@"服务器维护中"];
                 
                 break;
                 

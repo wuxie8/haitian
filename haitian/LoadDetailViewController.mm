@@ -1,3 +1,4 @@
+
 //
 //  LoadDetailViewController.m
 //  haitian
@@ -16,6 +17,7 @@
 #import "AddBillViewController.h"
 #import <ZMCreditSDK/ALCreditService.h>
 #import "PhoneCarrierViewController.h"
+#import "BtnView.h"
 #define margen 30
 
 @interface LoadDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -62,6 +64,7 @@
     tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-50)];
     tab.delegate=self;
     tab.tableHeaderView=self.headView;
+    tab.tableFooterView=[UIView new];
     tab.dataSource=self;
     [self.view addSubview:tab];
     
@@ -119,21 +122,41 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section;
 {
-    return 50;
+    if (section==0) {
+        return 50;
+    }
+    return 10;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 50)];
-    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(10, 10, 100, 30)];
-    label.textAlignment=NSTextAlignmentCenter;
-    label.text=@"认证资料";
-    label.textColor=[UIColor blackColor];
-    [view addSubview:label];
-    return view;
-}
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+    if (section==0) {
+        UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 50)];
+        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(10, 10, 100, 29)];
+        label.textAlignment=NSTextAlignmentCenter;
+        label.text=@"认证资料";
+        label.textColor=[UIColor blackColor];
+        [view addSubview:label];
+        
+        UILabel *label1=[[UILabel alloc]initWithFrame:CGRectMake(0, 49, WIDTH, 1)];
+        label1.backgroundColor=kColorFromRGBHex(0xe3e3e3);
+        [view addSubview:label1];
+        return view;
+
+    }
+    UIView   *tableHeadView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 10)];
+    tableHeadView.backgroundColor=kColorFromRGBHex(0xf3f3f3);
+    return tableHeadView;
+   
+   }
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return mutableArray1.count;
+
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -145,10 +168,10 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    [cell.imageView setImage:[UIImage imageNamed:imageArray[indexPath.row]]];
+    [cell.imageView setImage:[UIImage imageNamed:imageArray[indexPath.section]]];
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     cell.backgroundColor=[UIColor whiteColor];
-    cell.textLabel.text=[mutableArray1 objectAtIndex:indexPath.row];
+    cell.textLabel.text=[mutableArray1 objectAtIndex:indexPath.section];
 
     UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(WIDTH-100, 5, 80, cell.frame.size.height-10)];
    
@@ -181,7 +204,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([[mutableArray1 objectAtIndex:indexPath.row]isEqualToString:@"基本信息认证"]) {
+    if ([[mutableArray1 objectAtIndex:indexPath.section]isEqualToString:@"基本信息认证"]) {
         BasicInformationViewController *basic=[[BasicInformationViewController alloc]init];
         [basic setClickBlock:^(){
             Context.currentUser.base_auth=YES;
@@ -193,7 +216,7 @@
         [self.navigationController pushViewController:basic animated:YES];
         
     }
-    else if ([[mutableArray1 objectAtIndex:indexPath.row]isEqualToString:@"手机运营商"])
+    else if ([[mutableArray1 objectAtIndex:indexPath.section]isEqualToString:@"手机运营商"])
     {
         
 
@@ -201,13 +224,13 @@
       [self.navigationController pushViewController:[PhoneCarrierViewController new] animated:YES];
     
     }
-    else if ([[mutableArray1 objectAtIndex:indexPath.row]isEqualToString:@"芝麻信用"])
+    else if ([[mutableArray1 objectAtIndex:indexPath.section]isEqualToString:@"芝麻信用"])
     {
 //        [self.navigationController pushViewController:[CreditSesameViewController new] animated:YES];
         [self launchSDK];
         
     }
-    else if ([[mutableArray1 objectAtIndex:indexPath.row]isEqualToString:@"身份证"])
+    else if ([[mutableArray1 objectAtIndex:indexPath.section]isEqualToString:@"身份证"])
     {
         IdVerificationViewController *idVerification=[[IdVerificationViewController alloc]init];
         [idVerification setClickBlock:^(){
@@ -221,7 +244,7 @@
          [self.navigationController pushViewController:idVerification animated:YES];
         
     }
-    else if ([[mutableArray1 objectAtIndex:indexPath.row]isEqualToString:@"其他信息认证"])
+    else if ([[mutableArray1 objectAtIndex:indexPath.section]isEqualToString:@"其他信息认证"])
     {
         OtherInformationAuthenticationViewController *other=[[OtherInformationAuthenticationViewController alloc]init];
         [other setClickBlock:^(){
@@ -233,7 +256,7 @@
             
         }];
         other.dataArray=jsonObject2;
-        other.product=self.product;
+        other.productID=self.product.id;
         [self.navigationController pushViewController:other animated:YES];
         
     }
@@ -564,9 +587,52 @@
 {
     if (!_headView) {
         
-        _headView =[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 250)];
-        UIView *yellowView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 100)];
-        yellowView.backgroundColor=kColorFromRGBHex(0xc1dff8);
+        _headView =[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 210)];
+        
+        UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 5, WIDTH, 110)];
+        view.backgroundColor=[UIColor whiteColor];
+        [_headView addSubview:view];
+        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 90, 90)];
+        imageView.backgroundColor=[UIColor whiteColor];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
+            [imageView setImage:[UIImage imageNamed:@"Reimbursement"]];
+        }
+        else
+        {
+            //        [image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,self.product.smeta]]];
+            NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,self.product.img]];
+            UIImage * result;
+            NSData * data = [NSData dataWithContentsOfURL:url];
+            
+            result = [UIImage imageWithData:data];
+            
+            [imageView setImage:result];
+        }
+//        NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,self.product.smeta]];
+//        UIImage * result;
+//        NSData * data = [NSData dataWithContentsOfURL:url];
+//        
+//        result = [UIImage imageWithData:data];
+//        
+//        [image setImage:result];
+        [view addSubview:imageView];
+        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imageView.frame)+10, 10, WIDTH-CGRectGetMaxX(imageView.frame)-20, 30)];
+        label.text=self.product.pro_name;
+        //    label.adjustsFontSizeToFitWidth=YES;
+        label.font=[UIFont systemFontOfSize:14*Context.rectScaleX];
+        [view addSubview:label];
+//        NSArray *titleArr = self.product.tagsArray;
+        NSArray *titleArr =@[@"工薪贷",@"工薪贷"];
+
+        UIView *btnview=[BtnView creatBtnWithArray:titleArr frame:CGRectMake(CGRectGetMaxX(imageView.frame)+10, CGRectGetMaxY(label.frame), WIDTH-CGRectGetMaxX(imageView.frame)-10, 40)];
+        [view addSubview:btnview];
+        
+        UILabel *detailLabel=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imageView.frame)+10, CGRectGetMaxY(btnview.frame), 150, 20)];
+        detailLabel.text=[NSString stringWithFormat:@"%@利率%@",[self.product.fv_unit isEqualToString:@"1"]?@"日":@"月",self.product.feilv];
+        detailLabel.font=[UIFont systemFontOfSize:13];
+        [view addSubview:detailLabel];
+        UIView *yellowView=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(view.frame), WIDTH, 100)];
+        yellowView.backgroundColor=kColorFromRGBHex(0xfffcf5);
         [_headView addSubview:yellowView];
       
         
@@ -657,83 +723,83 @@
 
         [yellowView addSubview:label4];
         
-        UIView *view4=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(yellowView.frame), WIDTH, 100)];
-        view4.backgroundColor=[UIColor whiteColor];
-        [_headView addSubview:view4];
-        for (int i=0; i<3; i++) {
-            UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(WIDTH/3*i, 30, WIDTH/3, 20)];
-            label.textAlignment=NSTextAlignmentCenter;
-            //        label.textColor=AppBlue;
-            label.tag=1000+i;
-            [view4 addSubview:label];
-            
-            UILabel *label1=[[UILabel alloc]initWithFrame:CGRectMake(WIDTH/3*i, CGRectGetMaxY(label.frame)+10, WIDTH/3, 20)];
-            label1.text=@"500-1000元";
-            label1.tag=100+i;
-            label1.textAlignment=NSTextAlignmentCenter;
-            
-            [view4 addSubview:label1];
-            UIView *backgroundView=[[UIView alloc]initWithFrame:CGRectMake(WIDTH/3*i, 10, 1, 80)];
-            backgroundView.backgroundColor=[UIColor lightGrayColor];
-            [view4 addSubview:backgroundView];
-            switch (i) {
-                case 0:
-                {
-                    label.text=self.product.feilv;
-                    //                                    label.text=@"0.04";
-                    label1.text=[self.product.fv_unit isEqualToString:@"1"]?@"参考日利率":@"参考月利率";
-                    //                    label1.text=@"参考月利率";
-                    
-                }
-                    break;
-                case 1:
-                {
-                    
-                    if([self.product.feilv containsString:@"-"])
-                    {
-                        NSArray *array = [self.product.feilv componentsSeparatedByString:@"-"]; //从字符A中分隔成2个元素的数组
-                        
-                        float feilv1=edu/qixian+edu*[[array firstObject] floatValue]/100;
-                        
-                        float feilv2=edu/qixian+edu*[[array lastObject] floatValue]/100;
-                        
-                        label.text=[NSString stringWithFormat:@"%d-%d",(int)feilv1,(int)feilv2];
-                    }
-                    else{
-                        
-                        float feilv=edu/qixian+edu*[self.product.feilv floatValue]/100;
-                        
-                        label.text=[NSString stringWithFormat:@"%d",(int)feilv];
-                    }
-                    
-                    
-                    label1.text=[self.product.fv_unit isEqualToString:@"1"]?@"每日还款":@"每月还款";
-                    
-                }
-                    break;
-                case 2:
-                {
-                    label.text=self.product.zuikuaifangkuan;
-                    label1.text=@"最快放款时间";
-                    
-                }
-                    break;
-                default:
-                    break;
-            }
-        }
-        UIView *view5=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(view4.frame), WIDTH, 40)];
-        view5.layer.borderWidth=1;
-        view5.layer.borderColor=[UIColor grayColor].CGColor;
-        view5.backgroundColor=[UIColor whiteColor];
-        [_headView addSubview:view5];
-        
-        UILabel *label5=[[UILabel alloc]initWithFrame:CGRectMake(0, 5, WIDTH, 30)];
-        label5.text=[self.product.fv_unit isEqualToString:@"1"]?@"按日计息，随借随还":@"参考月利率";
-        label5.textAlignment=NSTextAlignmentCenter;
-        [view5 addSubview:label5];
-        view5.layer.borderWidth=1;
-        
+//        UIView *view4=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(yellowView.frame), WIDTH, 100)];
+//        view4.backgroundColor=[UIColor whiteColor];
+//        [_headView addSubview:view4];
+//        for (int i=0; i<3; i++) {
+//            UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(WIDTH/3*i, 30, WIDTH/3, 20)];
+//            label.textAlignment=NSTextAlignmentCenter;
+//            //        label.textColor=AppBlue;
+//            label.tag=1000+i;
+//            [view4 addSubview:label];
+//            
+//            UILabel *label1=[[UILabel alloc]initWithFrame:CGRectMake(WIDTH/3*i, CGRectGetMaxY(label.frame)+10, WIDTH/3, 20)];
+//            label1.text=@"500-1000元";
+//            label1.tag=100+i;
+//            label1.textAlignment=NSTextAlignmentCenter;
+//            
+//            [view4 addSubview:label1];
+//            UIView *backgroundView=[[UIView alloc]initWithFrame:CGRectMake(WIDTH/3*i, 10, 1, 80)];
+//            backgroundView.backgroundColor=[UIColor lightGrayColor];
+//            [view4 addSubview:backgroundView];
+//            switch (i) {
+//                case 0:
+//                {
+//                    label.text=self.product.feilv;
+//                    //                                    label.text=@"0.04";
+//                    label1.text=[self.product.fv_unit isEqualToString:@"1"]?@"参考日利率":@"参考月利率";
+//                    //                    label1.text=@"参考月利率";
+//                    
+//                }
+//                    break;
+//                case 1:
+//                {
+//                    
+//                    if([self.product.feilv containsString:@"-"])
+//                    {
+//                        NSArray *array = [self.product.feilv componentsSeparatedByString:@"-"]; //从字符A中分隔成2个元素的数组
+//                        
+//                        float feilv1=edu/qixian+edu*[[array firstObject] floatValue]/100;
+//                        
+//                        float feilv2=edu/qixian+edu*[[array lastObject] floatValue]/100;
+//                        
+//                        label.text=[NSString stringWithFormat:@"%d-%d",(int)feilv1,(int)feilv2];
+//                    }
+//                    else{
+//                        
+//                        float feilv=edu/qixian+edu*[self.product.feilv floatValue]/100;
+//                        
+//                        label.text=[NSString stringWithFormat:@"%d",(int)feilv];
+//                    }
+//                    
+//                    
+//                    label1.text=[self.product.fv_unit isEqualToString:@"1"]?@"每日还款":@"每月还款";
+//                    
+//                }
+//                    break;
+//                case 2:
+//                {
+//                    label.text=self.product.zuikuaifangkuan;
+//                    label1.text=@"最快放款时间";
+//                    
+//                }
+//                    break;
+//                default:
+//                    break;
+//            }
+//        }
+//        UIView *view5=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(view4.frame), WIDTH, 40)];
+//        view5.layer.borderWidth=1;
+//        view5.layer.borderColor=[UIColor grayColor].CGColor;
+//        view5.backgroundColor=[UIColor whiteColor];
+//        [_headView addSubview:view5];
+//        
+//        UILabel *label5=[[UILabel alloc]initWithFrame:CGRectMake(0, 5, WIDTH, 30)];
+//        label5.text=[self.product.fv_unit isEqualToString:@"1"]?@"按日计息，随借随还":@"参考月利率";
+//        label5.textAlignment=NSTextAlignmentCenter;
+//        [view5 addSubview:label5];
+//        view5.layer.borderWidth=1;
+//        
         //        UIView *view6=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(view5.frame)+20, WIDTH, HEIGHT-CGRectGetMaxY(view5.frame)-20)];
         //        view6.backgroundColor=[UIColor whiteColor];
         //        [_headView addSubview:view6];
@@ -751,15 +817,6 @@
         //        _feliv_Label.font=[UIFont systemFontOfSize:16];
         //        [view6 addSubview:_feliv_Label];
         
-        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
-            
-            UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(10, HEIGHT-64-50, WIDTH-20, 40)];
-            //        but.backgroundColor=AppBlue;
-            
-            [but setTitle:@"马上申请" forState:UIControlStateNormal];
-            [but addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
-            [_headView addSubview:but];
-        }
         
     }
     return _headView;

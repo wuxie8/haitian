@@ -15,7 +15,9 @@ typedef void(^backBlock)();
 
 @property(nonatomic, copy)backBlock clickBlock;
 
-@property(strong, nonatomic)ProductListModel*product;
+//@property(strong, nonatomic)ProductListModel*product;
+
+@property(strong, nonatomic)NSString*productID;
 
 @property(strong, nonatomic)NSArray *dataArray;
 @end
