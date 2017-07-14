@@ -31,6 +31,9 @@
 @property(strong, nonatomic)NSString*  productID;
 //单位
 @property(strong, nonatomic)NSString*  fv_unit;
+
+@property(strong, nonatomic)NSString*  api_type;
+
 //天／月
 @property(strong, nonatomic)NSString*  qx_unit;
 //介绍

@@ -95,45 +95,48 @@
         if ([dic[@"code"] isEqualToString:@"0000"]) {
             NSDictionary *diction=dic[@"data"];
             DLog(@"%@",diction);
-            if ([diction[@"credit_status"] boolValue]) {
-                UILabel *label=[self.view viewWithTag:100];
-                label.text=@"已完成";
-            }
-            if ([diction[@"company_status"] boolValue]) {
-                UILabel *label=[self.view viewWithTag:101];
-                label.text=@"已完成";
-            }
-            if ([diction[@"family_status"] boolValue]) {
-                UILabel *label=[self.view viewWithTag:102];
-                label.text=@"已完成";
-            }
-            if ([diction[@"other_status"] boolValue]) {
-                UILabel *label=[self.view viewWithTag:103];
-                label.text=@"已完成";
-            }
-            if ([diction[@"house_status"] boolValue]) {
-                UILabel *label=[self.view viewWithTag:104];
-                label.text=@"已完成";
-            }
-            if ([diction[@"car_status"] boolValue]) {
-                UILabel *label=[self.view viewWithTag:105];
-                label.text=@"已完成";
-            }
-            if ([diction[@"operator_status"] boolValue]) {
-                UILabel *label=[self.view viewWithTag:106];
-                label.text=@"已完成";
-            }
-            if ([diction[@"shopping_status"] boolValue]) {
-                UILabel *label=[self.view viewWithTag:107];
-                label.text=@"已完成";
-            }
-            if ([diction[@"papers_status"] boolValue]) {
-                UILabel *label=[self.view viewWithTag:108];
-                label.text=@"已完成";
-            }
-            if ([diction[@"bankcard_status"] boolValue]) {
-                UILabel *label=[self.view viewWithTag:109];
-                label.text=@"已完成";
+            if (![UtilTools isBlankDictionary:diction]) {
+                if ([diction[@"credit_status"] boolValue]) {
+                    UILabel *label=[self.view viewWithTag:100];
+                    label.text=@"已完成";
+                }
+                if ([diction[@"company_status"] boolValue]) {
+                    UILabel *label=[self.view viewWithTag:101];
+                    label.text=@"已完成";
+                }
+                if ([diction[@"family_status"] boolValue]) {
+                    UILabel *label=[self.view viewWithTag:102];
+                    label.text=@"已完成";
+                }
+                if ([diction[@"other_status"] boolValue]) {
+                    UILabel *label=[self.view viewWithTag:103];
+                    label.text=@"已完成";
+                }
+                if ([diction[@"house_status"] boolValue]) {
+                    UILabel *label=[self.view viewWithTag:104];
+                    label.text=@"已完成";
+                }
+                if ([diction[@"car_status"] boolValue]) {
+                    UILabel *label=[self.view viewWithTag:105];
+                    label.text=@"已完成";
+                }
+                if ([diction[@"operator_status"] boolValue]) {
+                    UILabel *label=[self.view viewWithTag:106];
+                    label.text=@"已完成";
+                }
+                if ([diction[@"shopping_status"] boolValue]) {
+                    UILabel *label=[self.view viewWithTag:107];
+                    label.text=@"已完成";
+                }
+                if ([diction[@"papers_status"] boolValue]) {
+                    UILabel *label=[self.view viewWithTag:108];
+                    label.text=@"已完成";
+                }
+                if ([diction[@"bankcard_status"] boolValue]) {
+                    UILabel *label=[self.view viewWithTag:109];
+                    label.text=@"已完成";
+                }
+
             }
         }
         

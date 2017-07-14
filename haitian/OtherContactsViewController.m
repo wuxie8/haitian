@@ -46,19 +46,19 @@
             NSArray *array1=[[responseObject objectForKey:@"data"]objectForKey:@"data"];
             NSDictionary *dictionary=[array1 firstObject];
             if (![UtilTools isBlankString:dictionary[@"kinsfolk_name"]]) {
-                UILabel *label=[self.view viewWithTag:100];
+               UITextField *label=[self.view viewWithTag:100];
                 label.text=dictionary[@"kinsfolk_name"];
             }
             if (![UtilTools isBlankString:dictionary[@"kinsfolk_mobile"]]) {
-                UILabel *label=[self.view viewWithTag:101];
+               UITextField *label=[self.view viewWithTag:101];
                 label.text=dictionary[@"kinsfolk_mobile"];
             }
             if (![UtilTools isBlankString:dictionary[@"urgency_name"]]) {
-                UILabel *label=[self.view viewWithTag:102];
+               UITextField *label=[self.view viewWithTag:102];
                 label.text=dictionary[@"urgency_name"];
             }
             if (![UtilTools isBlankString:dictionary[@"urgency_mobile"]]) {
-                UILabel *label=[self.view viewWithTag:103];
+               UITextField *label=[self.view viewWithTag:103];
                 label.text=dictionary[@"urgency_mobile"];
             }
                    }
@@ -89,17 +89,22 @@
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     cell.backgroundColor=[UIColor whiteColor];
     cell.textLabel.text=arr[indexPath.row];
-    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(WIDTH-80, 10,80, cell.frame.size.height-20)];
-    label.tag=100+indexPath.row;
-    label.textAlignment=NSTextAlignmentRight;
-    label.font=[UIFont systemFontOfSize:14];
-    [cell.contentView addSubview:label];
-
+//    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(WIDTH-80, 10,80, cell.frame.size.height-20)];
+//    label.tag=100+indexPath.row;
+//    label.textAlignment=NSTextAlignmentRight;
+//    label.font=[UIFont systemFontOfSize:14];
+//    [cell.contentView addSubview:label];
+    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(WIDTH-120, 0, 100, cell.frame.size.height)];
+    textField.textAlignment=NSTextAlignmentRight;
+    textField.delegate=self;
+    textField.tag=100+indexPath.row;
+    textField.adjustsFontSizeToFitWidth=YES;
+    textField.textColor=[UIColor grayColor];
     switch (indexPath.row) {
         case 0:
         case 2:
         {
-            UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(WIDTH-160, 10, 80, cell.frame.size.height-20)];
+            UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(WIDTH-200, 10, 80, cell.frame.size.height-20)];
             [but setTitle:@"快捷导入" forState:UIControlStateNormal];
             [but addTarget:self action:@selector(butClick:) forControlEvents:UIControlEventTouchUpInside];
             but.tag=1000+indexPath.row;
@@ -110,13 +115,18 @@
             [but.layer setBorderWidth:1.0];
             but.layer.borderColor=kColorFromRGBHex(0x5190e1).CGColor;
             [cell.contentView addSubview:but];
+            textField.placeholder=@"请输入姓名";
+
 
         }
             break;
             
         default:
+            textField.placeholder=@"输入手机号";
+
             break;
     }
+    [cell.contentView addSubview:textField];
 
     return cell;
 }
@@ -126,15 +136,15 @@
     [address setClickBlock:^(PersonModel *person){
 
         if (click.tag==1000) {
-                    UILabel *label=(UILabel *)[self.view viewWithTag:100];
+                    UITextField *label=(UITextField *)[self.view viewWithTag:100];
             label.text=person.name1;
-             UILabel *label1=(UILabel *)[self.view viewWithTag:101];
+             UITextField *label1=(UITextField *)[self.view viewWithTag:101];
             label1.text=person.tel;
         }
         else{
-            UILabel *label=(UILabel *)[self.view viewWithTag:102];
+           UITextField *label=(UITextField *)[self.view viewWithTag:102];
             label.text=person.name1;
-            UILabel *label1=(UILabel *)[self.view viewWithTag:103];
+           UITextField *label1=(UITextField *)[self.view viewWithTag:103];
             label1.text=person.tel;
 
         }
@@ -149,10 +159,10 @@
 {
     NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:
                         Context.currentUser.uid,@"uid",
-                        [(UILabel *) [self.view viewWithTag:100] text],@"kinsfolk_name",
-                        [(UILabel *) [self.view viewWithTag:101] text],@"kinsfolk_mobile",
-                        [(UILabel *) [self.view viewWithTag:102] text],@"urgency_name",
-                        [(UILabel *) [self.view viewWithTag:103] text],@"urgency_mobile",
+                        [(UITextField  *) [self.view viewWithTag:100] text],@"kinsfolk_name",
+                        [(UITextField  *) [self.view viewWithTag:101] text],@"kinsfolk_mobile",
+                        [(UITextField  *) [self.view viewWithTag:102] text],@"urgency_name",
+                        [(UITextField  *) [self.view viewWithTag:103] text],@"urgency_mobile",
                         
                         nil];
     [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=other_add",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {

@@ -112,7 +112,7 @@
                     pro.shenqingtiaojian=diction[@"shenqingtiaojian"];
                     pro.zuikuaifangkuan=diction[@"zuikuaifangkuan"];
                     
-                    pro.post_hits=diction[@"post_hits"];
+                    pro.post_hits=diction[@"hits"];
                     pro.feilv=diction[@"feilv"];
                     pro.productID=diction[@"id"];
                     pro.post_excerpt=diction[@"post_excerpt"];
@@ -457,6 +457,8 @@
         HomeProductModel *product=(HomeProductModel *)self.productArray[indexPath.row];
         NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
                            product.productID,@"id",
+                           Context.currentUser.uid,@"uid",
+
                            nil];
         
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -464,20 +466,35 @@
         manager.requestSerializer.stringEncoding = NSUTF8StringEncoding;
         [manager.requestSerializer setValue:@"text/html; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
         
-        NSString *urlStr = [NSString stringWithFormat:@"%@&m=toutiao&a=redirect",SERVERE];
+        NSString *urlStr = [NSString stringWithFormat:@"%@&m=product&a=hits",SERVERE];
         [manager GET:urlStr parameters:dic progress:nil success:^(NSURLSessionDataTask *  task, id   responseObject) {
             
-            
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:(NSJSONReadingMutableContainers) error:nil];
+            DLog(@"%@",dict);
+
         } failure:^(NSURLSessionDataTask *  task, NSError *  error) {
             
         }];
         
+        if ([product.api_type isEqualToString:@"1"]) {
+            WebVC *vc = [[WebVC alloc] init];
+            [vc setNavTitle:product.post_title];
+            [vc loadFromURLStr:product.link];
+            vc.hidesBottomBarWhenPushed=YES;
+            [self.navigationController pushViewController:vc animated:NO];
+        }
+        else if ([product.api_type isEqualToString:@"2"]) {
+            
+            }
         
-        LoanDetailsViewController *load=[[LoanDetailsViewController alloc]init];
-        load.hidesBottomBarWhenPushed=YES;
-        
-        load.product=product;
-        [self.navigationController pushViewController:load animated:YES];
+        else if ([product.api_type isEqualToString:@"3"]) {
+            LoanDetailsViewController *load=[[LoanDetailsViewController alloc]init];
+            load.hidesBottomBarWhenPushed=YES;
+            
+            load.product=product;
+            [self.navigationController pushViewController:load animated:YES];
+        }
+      
         
     }
     else

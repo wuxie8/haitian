@@ -10,6 +10,8 @@
 #import "HomeProductModel.h"
 #import "LoanClassification.h"
 #import "LoanDetailsViewController.h"
+#import "LoginViewController.h"
+#import "WebVC.h"
 #define SectionHeight 90
 @interface LoanClickViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(strong, nonatomic)NSMutableArray*productArray;
@@ -143,12 +145,58 @@
     return loancell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{   HomeProductModel *pro=[self.productArray objectAtIndex:indexPath.row];
-    LoanDetailsViewController *load=[[LoanDetailsViewController alloc]init];
-    load.hidesBottomBarWhenPushed=YES;
-    
-    load.product=pro;
-    [self.navigationController pushViewController:load animated:YES];
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"])
+    {
+
+        HomeProductModel *product=(HomeProductModel *)self.productArray[indexPath.row];
+        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
+                           product.productID,@"id",
+                           Context.currentUser.uid,@"uid",
+                           
+                           nil];
+        
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        manager.requestSerializer.stringEncoding = NSUTF8StringEncoding;
+        [manager.requestSerializer setValue:@"text/html; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        
+        NSString *urlStr = [NSString stringWithFormat:@"%@&m=product&a=hits",SERVERE];
+        [manager GET:urlStr parameters:dic progress:nil success:^(NSURLSessionDataTask *  task, id   responseObject) {
+            
+            
+        } failure:^(NSURLSessionDataTask *  task, NSError *  error) {
+            
+        }];
+        
+        if ([product.api_type isEqualToString:@"1"]) {
+            WebVC *vc = [[WebVC alloc] init];
+            [vc setNavTitle:product.post_title];
+            [vc loadFromURLStr:product.link];
+            vc.hidesBottomBarWhenPushed=YES;
+            [self.navigationController pushViewController:vc animated:NO];
+        }
+        else if ([product.api_type isEqualToString:@"2"]) {
+            
+        }
+        
+        else if ([product.api_type isEqualToString:@"3"]) {
+            LoanDetailsViewController *load=[[LoanDetailsViewController alloc]init];
+            load.hidesBottomBarWhenPushed=YES;
+            
+            load.product=product;
+            [self.navigationController pushViewController:load animated:YES];        }
+        
+        
+    }
+    else
+    {
+        LoginViewController *login=[[LoginViewController alloc]init];
+        [self.navigationController pushViewController:login animated:YES];
+        
+    }
+
+   
     
 }
 -(NSMutableArray *)productArray

@@ -270,11 +270,47 @@ static NSString *const footerId = @"footerId1";
     
     }
     else{
-    ProductListModel *productList=[[productMutableArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    LoadDetailViewController *detail=[[LoadDetailViewController alloc]init];
-    detail.product=productList;
-    detail.hidesBottomBarWhenPushed=YES;
-      [self.navigationController pushViewController:detail animated:YES];
+        ProductListModel *product=[[productMutableArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+
+        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
+                           product.id,@"id",
+                           Context.currentUser.uid,@"uid",
+                           
+                           nil];
+        
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        manager.requestSerializer.stringEncoding = NSUTF8StringEncoding;
+        [manager.requestSerializer setValue:@"text/html; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        
+        NSString *urlStr = [NSString stringWithFormat:@"%@&m=product&a=hits",SERVERE];
+        [manager GET:urlStr parameters:dic progress:nil success:^(NSURLSessionDataTask *  task, id   responseObject) {
+            
+            
+        } failure:^(NSURLSessionDataTask *  task, NSError *  error) {
+            
+        }];
+
+
+        if ([product.api_type isEqualToString:@"1"]) {
+            WebVC *vc = [[WebVC alloc] init];
+            [vc setNavTitle:product.pro_name];
+            [vc loadFromURLStr:product.pro_link];
+            vc.hidesBottomBarWhenPushed=YES;
+            [self.navigationController pushViewController:vc animated:NO];
+        }
+        else if ([product.api_type isEqualToString:@"2"]) {
+            
+        }
+        
+        else if ([product.api_type isEqualToString:@"3"]) {
+            LoadDetailViewController *detail=[[LoadDetailViewController alloc]init];
+            detail.product=product;
+            detail.hidesBottomBarWhenPushed=YES;
+            [self.navigationController pushViewController:detail animated:YES];
+        }
+
+   
     }
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
