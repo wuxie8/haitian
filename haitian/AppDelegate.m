@@ -24,7 +24,11 @@
 #import "AppDelegate+JPush.h"
 
 #import <UMSocialCore/UMSocialCore.h>
-
+#import <AdSupport/AdSupport.h>
+#include <sys/sysctl.h>
+#include <sys/socket.h>
+#include <net/if.h>
+#include <net/if_dl.h>
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
 @end
@@ -62,12 +66,79 @@ static NSString *USHARE_DEMO_APPKEY = @"5913bac1cae7e74ebe000675";
     self.window  = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     Context.idInfo = [NSKeyedUnarchiver unarchiveObjectWithFile:DOCUMENT_FOLDER(@"iDInfofile")];
     Context.currentUser = [NSKeyedUnarchiver unarchiveObjectWithFile:DOCUMENT_FOLDER(@"loginedUser")];
+        if (![[NSUserDefaults standardUserDefaults] objectForKey:@"FirstLG"]){
+            DLog(@"%@",[[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]);
+            DLog(@"%@",[self getMacAddress]);
 
+            NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
+                               [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString],@"idfa",
+                               @"1.0.0",@"mac",
+                               @"QD0089",@"channel",
+                               nil];
+            [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=toutiao&a=activate",SERVERE] parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
+                
+               
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                NSLog(@"%@",error);
+                
+                
+            }];
+
+        }
     self.window.rootViewController=[AppDelegate setTabBarController];
     [self.window  makeKeyAndVisible];
     // Override point for customization after application launch.
     return YES;
 }
+- (NSString *)getMacAddress {
+    int mib[6];
+    size_t len;
+    char *buf;
+    unsigned char *ptr;
+    struct if_msghdr *ifm;
+    struct sockaddr_dl *sdl;
+    
+    mib[0] = CTL_NET;
+    mib[1] = AF_ROUTE;
+    mib[2] = 0;
+    mib[3] = AF_LINK;
+    mib[4] = NET_RT_IFLIST;
+    
+    if ((mib[5] = if_nametoindex("en0")) == 0) {
+        printf("Error: if_nametoindex error/n");
+        return NULL;
+    }
+    
+    if (sysctl(mib, 6, NULL, &len, NULL, 0) < 0) {
+        printf("Error: sysctl, take 1/n");
+        return NULL;
+    }
+    
+    if ((buf = malloc(len)) == NULL) {
+        printf("Could not allocate memory. error!/n");
+        return NULL;
+    }
+    
+    if (sysctl(mib, 6, buf, &len, NULL, 0) < 0) {
+        free(buf);
+        printf("Error: sysctl, take 2");
+        return NULL;
+    }
+    
+    ifm = (struct if_msghdr *)buf;
+    sdl = (struct sockaddr_dl *)(ifm + 1);
+    ptr = (unsigned char *)LLADDR(sdl);
+    
+    // MAC地址带冒号
+    NSString *outstring = [NSString stringWithFormat:@"%02x:%02x:%02x:%02x:%02x:%02x", *ptr, *(ptr+1), *(ptr+2),
+                           *(ptr+3), *(ptr+4), *(ptr+5)];
+    
+    
+    free(buf);
+    
+    return [outstring uppercaseString];
+}
+
 -(void)configUSharePlatforms
 {
     /* 设置分享到QQ互联的appID
@@ -97,7 +168,10 @@ static NSString *USHARE_DEMO_APPKEY = @"5913bac1cae7e74ebe000675";
 +(UITabBarController *)setTabBarController
 {
     
+    [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"FirstLG"];
     
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
     HomePageViewController *homepage = [[HomePageViewController alloc] init]; //未处理
     LoadSupermarketViewController *treatVC = [[LoadSupermarketViewController alloc] init]; //已处理
     FastHandleCardViewController *mine=[[FastHandleCardViewController alloc]init];

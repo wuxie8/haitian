@@ -22,14 +22,32 @@
 - (UIWebView *)webView
 {
     if (_webView == nil) {
-        _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+        _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-64)];
         _webView.dataDetectorTypes = UIDataDetectorTypeAll;
         _webView.delegate = self;
         
     }
     return _webView;
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    UIButton *backButton = [[UIButton alloc] init];
+    backButton.frame = CGRectMake(0, 0, 25, 34);
+    [backButton setImage:[UIImage imageNamed:@"Back"] forState:UIControlStateNormal];
+    [backButton addTarget: self action: @selector(backAction) forControlEvents: UIControlEventTouchUpInside];
+    [backButton setImageEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    self.navigationItem.leftBarButtonItem = backItem;
+}
+-(void)backAction
+{
+    
+    if (self.webView.canGoBack==YES) {
+        [self.webView goBack];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];

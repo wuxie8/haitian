@@ -74,7 +74,8 @@
                 pro.qixianfanwei=diction[@"qixianfanwei"];
                 pro.shenqingtiaojian=diction[@"tiaojian"];
                 pro.zuikuaifangkuan=diction[@"zuikuaifangkuan"];
-                
+                pro.hits=diction[@"hits"];
+
                 pro.post_hits=diction[@"post_hits"];
                 pro.feilv=diction[@"feilv"];
                 pro.productID=diction[@"id"];
@@ -107,6 +108,7 @@
     tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-64)];
     tab.delegate=self;
     tab.dataSource=self;
+    tab.tableFooterView=[UIView new];
     [self.view addSubview:tab];
 }
 

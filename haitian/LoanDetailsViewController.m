@@ -848,21 +848,26 @@
     if ([mutableArray1 containsObject:@"基本信息认证"]&&!Context.currentUser.base_auth) {
         
         [MessageAlertView showErrorMessage:@"请完善基本信息"];
+        return;
     }
     else if ([mutableArray1 containsObject:@"手机运营商"]&&!Context.currentUser.mobile_auth) {
         [MessageAlertView showErrorMessage:@"请完善手机运营商"];
+        return;
     }
     else if ([mutableArray1 containsObject:@"芝麻信用"]&&!Context.currentUser.zhima_auth) {
         [MessageAlertView showErrorMessage:@"请完善芝麻信用"];
-        
+        return;
     }
     else if([mutableArray1 containsObject:@"身份证"]&&!Context.currentUser.idcard_auth) {
         [MessageAlertView showErrorMessage:@"请完善身份证"];
-        
+        return;
     }
     else if ([mutableArray1 containsObject:@"其他信息认证"]&&!Context.currentUser.other_auth) {
         [MessageAlertView showErrorMessage:@"请完善其他信息认证"];
+        return;
     }
+    
+    [MessageAlertView showSuccessMessage:@"审核中"];
 }
 
 - (void)didReceiveMemoryWarning {

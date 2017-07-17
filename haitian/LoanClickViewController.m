@@ -21,6 +21,7 @@
 
 {
     UITableView *tab;
+    UIImageView *imageView;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -84,7 +85,8 @@
                 pro.feilv=diction[@"feilv"];
                 pro.productID=diction[@"id"];
                 pro.post_excerpt=diction[@"post_excerpt"];
-                
+                pro.hits=diction[@"hits"];
+
                 pro.fv_unit=diction[@"fv_unit"];
                 NSArray *tags=diction[@"tags"];
                 NSMutableArray *tagsArray=[NSMutableArray array];
@@ -96,7 +98,11 @@
                 [self.productArray addObject:pro];
                 
             }
-            
+            if ([UtilTools isBlankArray:self.productArray]) {
+               imageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+                imageView.image=[UIImage imageNamed:@"blankImage"];
+                [self.view addSubview:imageView];
+            }
             [tab reloadData];
         }
         
@@ -114,6 +120,7 @@
     tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-64)];
     tab.delegate=self;
     tab.dataSource=self;
+    tab.tableFooterView=[UIView new];
     [self.view addSubview:tab];
 }
 

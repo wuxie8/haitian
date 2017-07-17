@@ -47,7 +47,7 @@
     NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:
                         Context.currentUser.uid,@"uid",
                         nil];
-    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=parpers_list",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=parpers_list",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
         
         if ([responseObject[@"code"]isEqualToString:@"0000"]) {
             NSArray *array1=[[responseObject objectForKey:@"data"]objectForKey:@"data"];
@@ -160,7 +160,10 @@
                        Context.currentUser.uid,@"uid",
                        nil];
     
-
+    if ([UtilTools isBlankArray:[mutableDictionary allValues]]) {
+        [MessageAlertView showErrorMessage:@"请上传证件"];
+        return ;
+    }
     AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
     manager.responseSerializer=[AFHTTPResponseSerializer serializer];
     [manager POST:[NSString stringWithFormat:@"%@&m=userdetail&a=parpers_add",UploadPath]parameters:dic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
@@ -176,6 +179,7 @@
 //            [formData appendPartWithFileData:_headImageData name:@"photo1" fileName:_headfileName mimeType:@"image/jpg/png/jpeg"];
 //            
 //        }
+       
         for (NSString *string in [mutableDictionary allKeys]) {
         NSDate *date = [NSDate date];
         NSDateFormatter *formatter = [[NSDateFormatter alloc]init];

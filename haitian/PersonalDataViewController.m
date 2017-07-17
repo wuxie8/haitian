@@ -90,7 +90,7 @@
                         Context.currentUser.uid,@"uid",
                         nil];
     
-    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userinfo&a=status",SERVEREURL] parameters:dic1 success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@&m=userinfo&a=status",SERVEREURL] parameters:dic1 success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
         if ([dic[@"code"] isEqualToString:@"0000"]) {
             NSDictionary *diction=dic[@"data"];

@@ -111,7 +111,9 @@
                     pro.qixianfanwei=diction[@"qixianfanwei"];
                     pro.shenqingtiaojian=diction[@"shenqingtiaojian"];
                     pro.zuikuaifangkuan=diction[@"zuikuaifangkuan"];
-                    
+                    pro.api_type=diction[@"api_type"];
+                    pro.hits=diction[@"hits"];
+
                     pro.post_hits=diction[@"hits"];
                     pro.feilv=diction[@"feilv"];
                     pro.productID=diction[@"id"];
@@ -469,8 +471,6 @@
         NSString *urlStr = [NSString stringWithFormat:@"%@&m=product&a=hits",SERVERE];
         [manager GET:urlStr parameters:dic progress:nil success:^(NSURLSessionDataTask *  task, id   responseObject) {
             
-            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:(NSJSONReadingMutableContainers) error:nil];
-            DLog(@"%@",dict);
 
         } failure:^(NSURLSessionDataTask *  task, NSError *  error) {
             
@@ -484,7 +484,32 @@
             [self.navigationController pushViewController:vc animated:NO];
         }
         else if ([product.api_type isEqualToString:@"2"]) {
-            
+            NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:
+                                Context.currentUser.uid,@"uid",
+                                product.productID,@"id",
+                                
+                                nil];
+            [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=product&a=postDetail",SERVERE] parameters:dic1 success:^(NSURLSessionDataTask *task, id responseObject) {
+                
+                if ([responseObject[@"code"]isEqualToString:@"0000"]) {
+                    NSDictionary *dic=responseObject[@"data"];
+                    WebVC *vc = [[WebVC alloc] init];
+                    [vc setNavTitle:product.post_title];
+                    [vc loadFromURLStr:dic[@"pro_link"]];
+                    vc.hidesBottomBarWhenPushed=YES;
+                    [self.navigationController pushViewController:vc animated:NO];
+                    
+                }
+                else
+                {}
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                NSLog(@"%@",error);
+                
+                
+            }];
+
+           
+
             }
         
         else if ([product.api_type isEqualToString:@"3"]) {

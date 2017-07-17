@@ -86,7 +86,7 @@
     [self.titleLabel setText:product.post_title];
     [self.feliv_Label setText:[NSString stringWithFormat:@"费率%@",product.feilv]];
     
-    NSString *str=[NSString stringWithFormat:@"申请人数%@人",product.post_hits];
+    NSString *str=[NSString stringWithFormat:@"申请人数%@人",product.hits];
     NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:str];
     
     [AttributedStr addAttribute:NSForegroundColorAttributeName

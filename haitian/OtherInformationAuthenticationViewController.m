@@ -48,8 +48,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    arr=@[@"个人邮箱",@"配偶",@"居住地址",@"居住方式",@"公司名称",@"公司地址",@"公司电话",@"紧急联系人A",@"关系A",@"手机号码A",@"紧急联系人B",@"关系B",@"手机号码B"];
-  placeArray=@[@"请填写邮箱",@"请输入",@"请填写详细地址",@"请选择",@"请输入公司名称",@"请输入公司地址",@"请输入电话",@"姓名A",@"请选择",@"请输入手机号",@"姓名B",@"请选择",@"请输入手机号"];
+    arr=@[@"个人邮箱",@"配偶",@"居住地址",@"居住方式",@"公司名称",@"公司地址",@"公司电话",@"紧急联系人A",@"关系A",@"手机号码A",@"紧急联系人B",@"关系B",@"手机号码B",@"紧急联系人C",@"关系C",@"手机号码C",@"紧急联系人D",@"关系D",@"手机号码D",@"紧急联系人E",@"关系E",@"手机号码E"];
+  placeArray=@[@"请填写邮箱",@"请输入",@"请填写详细地址",@"请选择",@"请输入公司名称",@"请输入公司地址",@"请输入电话",@"姓名A",@"请选择",@"请输入手机号",@"姓名B",@"请选择",@"请输入手机号",@"姓名C",@"请选择",@"请输入手机号",@"姓名D",@"请选择",@"请输入手机号",@"姓名E",@"请选择",@"请输入手机号"];
     dataMutableArray=[NSMutableArray array];
     placeMutableArray =[NSMutableArray array];
   
@@ -253,6 +253,51 @@
        return NO;
        
    }
+    if ([[dataMutableArray objectAtIndex:textField.tag-1000] isEqualToString:@"关系C"]) {
+        YLSOPickerView *picker = [[YLSOPickerView alloc]init];
+        picker.array=@[@"父母",@"配偶",@"兄弟",@"姐妹"];
+        picker.title=@"关系C";
+        
+        
+        [picker show];
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardHide:)];
+        //设置成NO表示当前控件响应后会传播到其他控件上，默认为YES。
+        tapGestureRecognizer.cancelsTouchesInView = YES;
+        //将触摸事件添加到当前view
+        [picker addGestureRecognizer:tapGestureRecognizer];
+        return NO;
+        
+    }
+    if ([[dataMutableArray objectAtIndex:textField.tag-1000] isEqualToString:@"关系D"]) {
+        YLSOPickerView *picker = [[YLSOPickerView alloc]init];
+        picker.array=@[@"父母",@"配偶",@"兄弟",@"姐妹"];
+        picker.title=@"关系D";
+        
+        
+        [picker show];
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardHide:)];
+        //设置成NO表示当前控件响应后会传播到其他控件上，默认为YES。
+        tapGestureRecognizer.cancelsTouchesInView = YES;
+        //将触摸事件添加到当前view
+        [picker addGestureRecognizer:tapGestureRecognizer];
+        return NO;
+        
+    }
+    if ([[dataMutableArray objectAtIndex:textField.tag-1000] isEqualToString:@"关系E"]) {
+        YLSOPickerView *picker = [[YLSOPickerView alloc]init];
+        picker.array=@[@"父母",@"配偶",@"兄弟",@"姐妹"];
+        picker.title=@"关系E";
+        
+        
+        [picker show];
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardHide:)];
+        //设置成NO表示当前控件响应后会传播到其他控件上，默认为YES。
+        tapGestureRecognizer.cancelsTouchesInView = YES;
+        //将触摸事件添加到当前view
+        [picker addGestureRecognizer:tapGestureRecognizer];
+        return NO;
+        
+    }
 
     return YES;
    }
@@ -342,6 +387,7 @@
     }
      if (![UtilTools isBlankString: [(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"关系B"]] text]])
         
+         
     {
         [mutDic2 setObject:[(UITextField *) [self.view viewWithTag:1000+[dataMutableArray indexOfObject:@"关系B"]] text] forKey:@"relation_b"];
     }

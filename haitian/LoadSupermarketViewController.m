@@ -300,7 +300,30 @@ static NSString *const footerId = @"footerId1";
             [self.navigationController pushViewController:vc animated:NO];
         }
         else if ([product.api_type isEqualToString:@"2"]) {
-            
+            NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:
+                                Context.currentUser.uid,@"uid",
+                                product.id,@"id",
+                                
+                                nil];
+            [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=product&a=postDetail",SERVERE] parameters:dic1 success:^(NSURLSessionDataTask *task, id responseObject) {
+                
+                if ([responseObject[@"code"]isEqualToString:@"0000"]) {
+                    NSDictionary *dic=responseObject[@"data"];
+                    WebVC *vc = [[WebVC alloc] init];
+                    [vc setNavTitle:product.pro_name];
+                    [vc loadFromURLStr:dic[@"pro_link"]];
+                    vc.hidesBottomBarWhenPushed=YES;
+                    [self.navigationController pushViewController:vc animated:NO];
+                    
+                }
+                else
+                {}
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                NSLog(@"%@",error);
+                
+                
+            }];
+  
         }
         
         else if ([product.api_type isEqualToString:@"3"]) {

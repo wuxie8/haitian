@@ -11,6 +11,9 @@
 @interface HomeProductModel : NSObject
 //产品名字
 @property (nonatomic, copy) NSString *post_title;
+
+@property (nonatomic, copy) NSString *hits;
+
 //产品图标
 @property (nonatomic, copy) NSString *smeta;
 //申请人数

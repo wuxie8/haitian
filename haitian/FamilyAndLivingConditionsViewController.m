@@ -43,7 +43,7 @@ static NSString *const family = @"婚姻情况";
     NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:
                         Context.currentUser.uid,@"uid",
                         nil];
-    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=family_list",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=family_list",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
         
         if ([responseObject[@"code"]isEqualToString:@"0000"]) {
             NSArray *array1=[[responseObject objectForKey:@"data"]objectForKey:@"data"];
@@ -186,7 +186,7 @@ static NSString *const family = @"婚姻情况";
                         [(UITextField *) [self.view viewWithTag:1003] text],@"hj_address",
                         
                         nil];
-    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=family_add",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=family_add",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject[@"code"]isEqualToString:@"0000"]) {
             [MessageAlertView showSuccessMessage:@"上传成功"];
         }

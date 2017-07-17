@@ -40,7 +40,7 @@
     NSDictionary *dic2=[NSDictionary dictionaryWithObjectsAndKeys:
                         Context.currentUser.uid,@"uid",
                         nil];
-    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=other_list",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=other_list",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
         
         if ([responseObject[@"code"]isEqualToString:@"0000"]) {
             NSArray *array1=[[responseObject objectForKey:@"data"]objectForKey:@"data"];
@@ -165,7 +165,7 @@
                         [(UITextField  *) [self.view viewWithTag:103] text],@"urgency_mobile",
                         
                         nil];
-    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=other_add",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@&m=userdetail&a=other_add",SERVERE] parameters:dic2 success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject[@"code"]isEqualToString:@"0000"]) {
             [MessageAlertView showSuccessMessage:@"上传成功"];
             if (self.clickBlock) {
