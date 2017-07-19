@@ -198,7 +198,8 @@
                            failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure
 {
     if ([NetWorkUtil currentNetWorkStatus] == NET_UNKNOWN) {
-        return nil;
+//        [MessageAlertView showErrorMessage:@"请检查网络"];
+//        return nil;
     }
     
 //    [self configNetManager:name];

@@ -190,7 +190,6 @@
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    DLog(@"%@",[dataMutableArray objectAtIndex:textField.tag-1000]);
 
     [self.view endEditing:YES];
     if ([[dataMutableArray objectAtIndex:textField.tag-1000] isEqualToString:@"居住方式"]) {

@@ -94,7 +94,6 @@
         NSDictionary *dic=(NSDictionary *)responseObject;
         if ([dic[@"code"] isEqualToString:@"0000"]) {
             NSDictionary *diction=dic[@"data"];
-            DLog(@"%@",diction);
             if (![UtilTools isBlankDictionary:diction]) {
                 if ([diction[@"credit_status"] boolValue]) {
                     UILabel *label=[self.view viewWithTag:100];

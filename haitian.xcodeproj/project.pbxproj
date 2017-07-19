@@ -1339,7 +1339,7 @@
 				TargetAttributes = {
 					84B9DBE51E9DC0990066A92D = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = NUH99A3LBD;
+						DevelopmentTeam = XQ37MWJJTH;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -1767,7 +1767,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CODE_SIGN_ENTITLEMENTS = haitian/haitian.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = NUH99A3LBD;
+				DEVELOPMENT_TEAM = XQ37MWJJTH;
 				ENABLE_BITCODE = NO;
 				ENABLE_ON_DEMAND_RESOURCES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1794,7 +1794,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.haitian.jishiyudaikuan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.haitianji.jishiyudaikuan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1813,7 +1813,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CODE_SIGN_ENTITLEMENTS = haitian/haitian.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = NUH99A3LBD;
+				DEVELOPMENT_TEAM = XQ37MWJJTH;
 				ENABLE_BITCODE = NO;
 				ENABLE_ON_DEMAND_RESOURCES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1840,7 +1840,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.haitian.jishiyudaikuan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.haitianji.jishiyudaikuan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

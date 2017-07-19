@@ -28,6 +28,7 @@
     UILabel *label4;
 
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor=BaseColor;

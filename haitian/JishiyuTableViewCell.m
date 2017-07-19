@@ -56,20 +56,24 @@
 -(void)setModel:(HomeProductModel *)model
 {
     
-//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
-//        [self.image setImage:[UIImage imageNamed:model.smeta]];
-//        
-//    }
-//    else
-//    {
-    NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,model.smeta]];
-    UIImage * result;
-    NSData * data = [NSData dataWithContentsOfURL:url];
-    
-    result = [UIImage imageWithData:data];
-    
-    [self.image setImage:result];
-
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
+        [self.image setImage:[UIImage imageNamed:model.smeta]];
+        
+    }
+    else
+    {
+        [self.image setImage:[UIImage imageNamed:@"iconLoading"]];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,model.smeta]];
+            UIImage * result;
+            NSData * data = [NSData dataWithContentsOfURL:url];
+            
+            result = [UIImage imageWithData:data];
+            
+            [self.image setImage:result];
+        });
+   
+    }
 //        [self.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,model.smeta]]];
 //    }
     [self.titleLabel setText:model.post_title];

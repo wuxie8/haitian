@@ -40,6 +40,7 @@ static NSString *const footerId = @"footerId1";
      NSArray *arr4;
     NSMutableArray *bannerMutableArray;
     NSMutableArray *productMutableArray;
+    UIView *backgroundView;
 }
 #ifdef __IPHONE_7_0
 - (UIRectEdge)edgesForExtendedLayout
@@ -47,6 +48,12 @@ static NSString *const footerId = @"footerId1";
     return UIRectEdgeNone;
 }
 #endif
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self getList];
+    [self getBannerList];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
  self.view.backgroundColor=BaseColor;
@@ -60,11 +67,6 @@ static NSString *const footerId = @"footerId1";
     NSArray *detailTitleArray=@[@"有身份证可借5000元\n最快三分钟下款",@"借款只需三分钟\n30秒极速放款",@"有手机就能贷\n最快三分钟放款"];
      NSArray *detailTitleArray1=@[@"额度高\n最快三分钟下款",@"有身份证就能贷\n1分钟审核，56秒到账"];
     arr2=@[titleArray,titleArray1];
-    
-
-    
-    [self getBannerList];
-    [self getList];
     arr3=@[detailTitleArray,detailTitleArray1];
     arr4=@[imageArray,imageArray1];
     _LoadcollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, pageHeight, WIDTH, HEIGHT-64-44-pageHeight) collectionViewLayout:[UICollectionViewFlowLayout new]];
@@ -83,32 +85,51 @@ static NSString *const footerId = @"footerId1";
 -(void)getList
 {
     [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@&m=product&a=postList",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSDictionary *dic=(NSDictionary *)responseObject;
-        NSDictionary *diction=dic[@"data"];
-        NSArray *recommendarr=diction[@"recommend"];
-        NSArray *quickarr=diction[@"quick"];
+        if ([responseObject[@"code"] isEqualToString:@"0000"]) {
+            [backgroundView removeFromSuperview];
+            productMutableArray=nil;
+            NSDictionary *dic=(NSDictionary *)responseObject;
+            NSDictionary *diction=dic[@"data"];
+            NSArray *recommendarr=diction[@"recommend"];
+            NSArray *quickarr=diction[@"quick"];
+            
+            productMutableArray=[NSMutableArray array];
+            NSMutableArray *recommendMutableArray=[NSMutableArray array];
+            NSMutableArray *quickMutableArray=[NSMutableArray array];
+            
+            for (NSDictionary *dic1 in recommendarr) {
+                ProductListModel *remind=[ProductListModel new];
+                [remind setValuesForKeysWithDictionary:dic1];
+                [recommendMutableArray addObject:remind];
+            }
+            for (NSDictionary *dic1 in quickarr) {
+                ProductListModel *remind=[ProductListModel new];
+                [remind setValuesForKeysWithDictionary:dic1];
+                [quickMutableArray addObject:remind];
+            }
+            productMutableArray =[NSMutableArray arrayWithObjects:recommendMutableArray,quickMutableArray, nil];
+            [backgroundView removeFromSuperview];
 
-        productMutableArray=[NSMutableArray array];
-        NSMutableArray *recommendMutableArray=[NSMutableArray array];
-        NSMutableArray *quickMutableArray=[NSMutableArray array];
-
-        for (NSDictionary *dic1 in recommendarr) {
-            ProductListModel *remind=[ProductListModel new];
-            [remind setValuesForKeysWithDictionary:dic1];
-            [recommendMutableArray addObject:remind];
+            [_LoadcollectionView reloadData];
         }
-        for (NSDictionary *dic1 in quickarr) {
-            ProductListModel *remind=[ProductListModel new];
-            [remind setValuesForKeysWithDictionary:dic1];
-            [quickMutableArray addObject:remind];
-        }
-        productMutableArray =[NSMutableArray arrayWithObjects:recommendMutableArray,quickMutableArray, nil];
-        [_LoadcollectionView reloadData];
+      
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
+        [self LoadFailed];
     }];
     
     
+}
+-(void)LoadFailed
+{
+    backgroundView=[[UIView alloc]initWithFrame:CGRectMake(0, pageHeight, WIDTH, HEIGHT-pageHeight-64)];
+    [self.view addSubview:backgroundView];
+    UIImageView *image=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, backgroundView.frame.size.height)];
+    image.backgroundColor=[UIColor redColor];
+    image.image=[UIImage imageNamed:@"Loadunsuccessful"];
+    
+    
+    [backgroundView addSubview:image];
 }
 -(void)getBannerList
 {
@@ -126,6 +147,8 @@ static NSString *const footerId = @"footerId1";
 
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
+        [self loadBanner];
+
     }];
     
 
@@ -159,7 +182,7 @@ static NSString *const footerId = @"footerId1";
 }
 #pragma mark NewPagedFlowView Datasource
 - (NSInteger)numberOfPagesInFlowView:(WSPageView *)flowView {
-    return bannerMutableArray.count;
+    return  [UtilTools isBlankArray:bannerMutableArray]?1:bannerMutableArray.count;
 }
 
 - (UIView *)flowView:(WSPageView *)flowView cellForPageAtIndex:(NSInteger)index{
@@ -170,27 +193,29 @@ static NSString *const footerId = @"footerId1";
         bannerView.layer.cornerRadius = 4;
         bannerView.layer.masksToBounds = YES;
     }
+    if ([UtilTools isBlankArray:bannerMutableArray]) {
+        [bannerView.mainImageView setImage:[UIImage imageNamed:@"LoadFailed"]];
+    }
+    else{
+      
     BannerModel *banner=[bannerMutableArray objectAtIndex:index];
    NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,banner.img]];
     [bannerView.mainImageView setImageWithURL:url placeholderImage:[UIImage imageNamed:@"LoadFailed"]];
-//    [bannerView.mainImageView setImageWithURL:url];
-//    UIImage * result;
-//    NSData * data = [NSData dataWithContentsOfURL:url];
-//    
-//    result = [UIImage imageWithData:data];
-//    [bannerView.mainImageView setImage:result];
+    }
 
     return bannerView;
 }
 - (void)didSelectCell:(UIView *)subView withSubViewIndex:(NSInteger)subIndex {
   
-
-    BannerModel *banner=[bannerMutableArray objectAtIndex:subIndex];
-    WebVC *vc = [[WebVC alloc] init];
-    [vc setNavTitle:banner.title];
-    [vc loadFromURLStr:banner.img_url];
-    vc.hidesBottomBarWhenPushed=YES;
-    [self.navigationController pushViewController:vc animated:NO];
+    if (![UtilTools isBlankArray:bannerMutableArray]) {
+        BannerModel *banner=[bannerMutableArray objectAtIndex:subIndex];
+        WebVC *vc = [[WebVC alloc] init];
+        [vc setNavTitle:banner.title];
+        [vc loadFromURLStr:banner.img_url];
+        vc.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:vc animated:NO];
+    }
+   
     
 }
 
@@ -213,30 +238,51 @@ static NSString *const footerId = @"footerId1";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ProductListModel *productList=[[productMutableArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,productList.img]];
-    UIImage * result;
-    NSData * data = [NSData dataWithContentsOfURL:url];
-    
-    result = [UIImage imageWithData:data];
-   LoadSupermarketCollectionViewCell *cell =(LoadSupermarketCollectionViewCell *) [_LoadcollectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
-    [cell.imageView setImage:result];
-    [cell.titleLabel setText:productList.pro_name];
+    LoadSupermarketCollectionViewCell *cell =(LoadSupermarketCollectionViewCell *) [_LoadcollectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
+        [cell.imageView setImage:[UIImage imageNamed:@"iconLoading"]];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,productList.img]];
+            UIImage * result;
+            NSData * data = [NSData dataWithContentsOfURL:url];
+            
+            result = [UIImage imageWithData:data];
+            dispatch_sync(dispatch_get_main_queue(), ^
+                          {
+                              [cell.imageView  setImage:result];
+                              
+                          });
+        });
+        
+
+        [cell.titleLabel setText:productList.pro_name];
+    }
+    else{
+        NSArray *array=@[@"及时雨-社保贷",@"及时雨-公积金贷",@"及时雨-保单贷",@"及时雨-供房贷",@"及时雨-税金贷",@"及时雨-学信贷"];
+        int row=(int)indexPath.row;
+        int location=row%array.count;
+        [cell.titleLabel setText:array[location]];
+        [cell.imageView setImage:[UIImage imageNamed:@"icon"]];
+    }
+  
     [cell.detailLabel setText:productList.pro_describe];
     return cell;
 }
 // 和UITableView类似，UICollectionView也可设置段头段尾
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionReusableView *headerView;
+    UICollectionReusableView * headerView = [collectionView  dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:headerId forIndexPath:indexPath];
     if([kind isEqualToString:UICollectionElementKindSectionHeader])
     {
-        headerView = [collectionView  dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:headerId forIndexPath:indexPath];
+       
         if(headerView == nil)
         {
             headerView = [[UICollectionReusableView alloc] init];
         }
         headerView.backgroundColor = AppPageColor;
-        
+        for (UIView *view in headerView.subviews) {
+            [view removeFromSuperview];
+        }
         UIImageView *image=[[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 20, 20)];
         image.image=[UIImage imageNamed:arr1[indexPath.section]];
         [headerView addSubview:image];
@@ -245,6 +291,7 @@ static NSString *const footerId = @"footerId1";
         [headerView addSubview:lab];
         
         }
+    
     return headerView;
 }
 #pragma mark UICollectionViewDelegateFlowLayout
@@ -291,6 +338,7 @@ static NSString *const footerId = @"footerId1";
             
         }];
 
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
 
         if ([product.api_type isEqualToString:@"1"]) {
             WebVC *vc = [[WebVC alloc] init];
@@ -333,7 +381,7 @@ static NSString *const footerId = @"footerId1";
             [self.navigationController pushViewController:detail animated:YES];
         }
 
-   
+        }
     }
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section

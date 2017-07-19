@@ -116,7 +116,6 @@
     
     [[NetWorkManager sharedManager]postJSON:@"http://api.tanzhishuju.com/api/gateway" parameters:paraDic success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        DLog(@"%@",responseObject);
         if ([responseObject[@"code"] isEqualToString:@"0010"]) {
             NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
                                @"api.common.getStatus",@"method",
@@ -207,11 +206,9 @@
 
     [[NetWorkManager sharedManager]postJSON:@"http://app.jishiyu11.cn/index.php?g=app&m=userdetail&a=mobileSign" parameters:signDic success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        DLog(@"%@",responseObject);
         NSMutableDictionary *paradic=[NSMutableDictionary dictionaryWithDictionary:signDic];
         [paradic setObject:[responseObject[@"data"] objectForKey:@"sign"] forKey:@"sign"];
         if ([step isEqualToString:@"0"]) {
-            DLog(@"%@",responseObject);
 
             [self getmobilePhoneOwnership:paradic];
         }
@@ -240,7 +237,6 @@
     
     [[NetWorkManager sharedManager]postJSON:@"http://api.tanzhishuju.com/api/gateway" parameters:paraDic success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        DLog(@"%@",responseObject);
         if ([responseObject[@"code"] isEqualToString:@"0000"]) {
             NSString *typeString = [NSString stringWithFormat:@"%@%@",responseObject[@"province"],responseObject[@"type"]];
             if ([typeString isEqualToString:@"北京移动"]) {
@@ -446,7 +442,6 @@
     
     [[NetWorkManager sharedManager]postJSON:@"http://api.tanzhishuju.com/api/gateway" parameters:paraDic success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        DLog(@"%@",responseObject);
     
         if ([responseObject[@"code"] hasPrefix:@"0"]||[UtilTools isBlankString:responseObject[@"code"]]) {
             if ([responseObject[@"code"] isEqualToString:@"0000"]) {

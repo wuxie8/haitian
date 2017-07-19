@@ -20,13 +20,15 @@
       NSMutableArray *amountarray;
     NSMutableArray *describearray;
     NSMutableArray *idarray;
-
+    UIView *backgroundView;
     UITableView *tab;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"极速贷款";
     self.view.backgroundColor=AppPageColor;
+   
+
 //   arr=@[@"speed",@"PopularLoan",@"StudentLoan"];
 //     array=@[@"极速微额贷款",@"热门极速贷",@"学生贷"];
 //     amountarray=@[@"2000元以下",@"2000-10000元",@"1万-10万"];
@@ -46,7 +48,7 @@
     amountarray=[NSMutableArray array];
     describearray=[NSMutableArray array];
     idarray=[NSMutableArray array];
-    [[NetWorkManager sharedManager]postJSON:@"http://app.jishiyu11.cn/index.php?g=app&m=product&a=product_type" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postNoTipJSON:@"http://app.jishiyu11.cn/index.php?g=app&m=product&a=product_type" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
         if ([responseObject[@"code"]isEqualToString:@"0000"]) {
             NSArray *arr1=responseObject[@"data"];
@@ -60,15 +62,41 @@
                 [idarray addObject:dic[@"property_id"]];
                 
             }
+            [backgroundView removeFromSuperview];
             [tab reloadData];
         }
         else
-        {}
+        {
+            [self LoadFailed];
+
+        }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
-        
-        
-    }];
+        [self LoadFailed];
+          }];
+
+}
+-(void)LoadFailed
+{
+    backgroundView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+    [self.view addSubview:backgroundView];
+    UIImageView *image=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+    image.backgroundColor=[UIColor redColor];
+    image.image=[UIImage imageNamed:@"LoadFailedPage"];
+    
+    
+    [backgroundView addSubview:image];
+    
+    UIImageView *refreshImageView=[[UIImageView alloc]initWithFrame:CGRectMake((WIDTH/2-30)*Context.autoSizeScaleX, 350*Context.autoSizeScaleY, 65*Context.autoSizeScaleX, 65*Context.autoSizeScaleY)];
+    refreshImageView.image=[UIImage imageNamed:@"RefreshButton"];
+    refreshImageView.userInteractionEnabled=YES;
+    [backgroundView addSubview:refreshImageView];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(refresh)];
+    [refreshImageView addGestureRecognizer:tap];
+
+}
+-(void)refresh{
+    [self getList];
 
 }
 -(CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

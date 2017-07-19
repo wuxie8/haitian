@@ -416,7 +416,6 @@
 //        CGRect faceRegion = transformedMetadataObject.bounds;
 //        
 //        if (metadataObject.type == AVMetadataObjectTypeFace) {
-//            NSLog(@"是否包含头像：%d, facePathRect: %@, faceRegion: %@",CGRectContainsRect(self.faceDetectionFrame, faceRegion),NSStringFromCGRect(self.faceDetectionFrame),NSStringFromCGRect(faceRegion));
 //            
 //            if (CGRectContainsRect(self.faceDetectionFrame, faceRegion)) {// 只有当人脸区域的确在小框内时，才再去做捕获此时的这一帧图像
 //                // 为videoDataOutput设置代理，程序就会自动调用下面的代理方法，捕获每一帧图像
@@ -489,7 +488,6 @@
             
             IDInfo *iDInfo = [[IDInfo alloc] init];
             
-            ctype = pResult[i++];
             
             //            iDInfo.type = ctype;
             while(i < ret){

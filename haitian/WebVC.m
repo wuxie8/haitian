@@ -31,6 +31,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     UIButton *backButton = [[UIButton alloc] init];
     backButton.frame = CGRectMake(0, 0, 25, 34);
     [backButton setImage:[UIImage imageNamed:@"Back"] forState:UIControlStateNormal];
@@ -88,13 +89,11 @@
 }
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
-    DLog(@"%@",request.URL);
 
     // click event
     if ([request.URL.host isEqualToString:@"call_close"])
     {// notify click close
       
-        DLog(@"%@",request.URL);
 
         return NO;
     }

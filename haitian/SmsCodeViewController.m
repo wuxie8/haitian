@@ -196,19 +196,15 @@
                        @"api.mobile.get",@"method",
                        @"0618854278903691",@"apiKey",
                        @"1.0.0",@"version",
-                       //                           @"1",@"sign",
-                       //                               @"371102199303215716",@"identityCardNo",
-                       //                               @"吴公胜",@"identityName",
+                    
                        diction[@"0"],@"username",
                        diction[@"1"],@"password",
                        
                        
                        nil];
-    DLog(@"%@",dic);
     
     [[NetWorkManager sharedManager]postJSON:@"http://api.tanzhishuju.com/api/gateway" parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        DLog(@"%@",responseObject);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
         
@@ -228,19 +224,15 @@
                        @"api.mobile.get",@"method",
                        @"0618854278903691",@"apiKey",
                        @"1.0.0",@"version",
-                       //                           @"1",@"sign",
-                       //                               @"371102199303215716",@"identityCardNo",
-                       //                               @"吴公胜",@"identityName",
+                     
                        diction[@"0"],@"username",
                        diction[@"1"],@"password",
                        
                        
                        nil];
-    DLog(@"%@",dic);
     
     [[NetWorkManager sharedManager]postJSON:@"http://api.tanzhishuju.com/api/gateway" parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        DLog(@"%@",responseObject);
         NSMutableDictionary *paradic=[NSMutableDictionary dictionaryWithDictionary:dic];
         [paradic setObject:@"" forKey:@"sign"];
         [self phoneCarrier:paradic];

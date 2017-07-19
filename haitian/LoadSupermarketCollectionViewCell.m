@@ -17,14 +17,14 @@
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         
-        self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(40, 20, 40, 40)];
+        self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(30, 20, 40, 40)];
         self.imageView.contentMode = UIViewContentModeScaleAspectFill;
         [self.contentView addSubview:self.imageView];
         
         self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.imageView.frame)+10, 20, 80, 40)];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         self.titleLabel.textColor = [UIColor blackColor];
-        self.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+        self.titleLabel.font = [UIFont boldSystemFontOfSize:14];
         [self.contentView addSubview:self.titleLabel];
         
         

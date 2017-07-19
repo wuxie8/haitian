@@ -161,7 +161,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-       static NSString *cellIdentifier = [NSString stringWithFormat:@"cell%ld%ld",indexPath.section,(long)indexPath.row];
+       static NSString *cellIdentifier = [NSString stringWithFormat:@"cell%ld%ld",(long)indexPath.section,(long)indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
    
     if (cell == nil)

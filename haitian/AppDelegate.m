@@ -60,7 +60,7 @@ static NSString *const adUrl = @"adUrl";
     else
     {
         AdvertiseView *advertiseView = [[AdvertiseView alloc] initWithFrame:self.window.bounds];
-        advertiseView.image = [UIImage imageNamed:@"AboutUs"];
+        advertiseView.image = [UIImage imageNamed:@"LaunchImageDefault"];
         [advertiseView show];
     }
     
@@ -194,7 +194,7 @@ static NSString *const adUrl = @"adUrl";
     PersonCenterViewController *person=[[PersonCenterViewController alloc]init];
     JishiyuViewController *jishiyu=[JishiyuViewController new];
     //步骤2：将视图控制器绑定到导航控制器上
-   BaseNC *nav1C = [[BaseNC alloc] initWithRootViewController:homepage];
+  __unused   BaseNC *nav1C = [[BaseNC alloc] initWithRootViewController:homepage];
     BaseNC *nav2C = [[BaseNC alloc] initWithRootViewController:treatVC];
     BaseNC *nav3C=[[BaseNC alloc]initWithRootViewController:mine];
     BaseNC *nav4C=[[BaseNC alloc]initWithRootViewController:person];
@@ -282,10 +282,8 @@ static NSString *const adUrl = @"adUrl";
             [kUserDefaults setValue:boot_url forKey:adUrl];
             [kUserDefaults synchronize];
         }
-        DLog(@"%@",responseObject);
 
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"%@",error);
         
         
     }];

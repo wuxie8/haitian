@@ -46,7 +46,7 @@
 
 
 //贷款
-#define appcode @"jiandanjiekuanmiaojieban"
+#define appcode @"jishiyudaikuan"
 
 
 #endif /* Serve_h */

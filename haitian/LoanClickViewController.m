@@ -22,6 +22,7 @@
 {
     UITableView *tab;
     UIImageView *imageView;
+    UIView * backgroundView;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,7 +41,7 @@
                         self.location,@"type",
                         nil];
     
-    NSArray *array=@[@"小胖-社保贷",@"小胖-公积金贷",@"小胖-保单贷",@"小胖-供房贷",@"小胖-税金贷",@"小胖-学信贷"];
+    NSArray *array=@[@"及时雨-社保贷",@"及时雨-公积金贷",@"及时雨-保单贷",@"及时雨-供房贷",@"及时雨-税金贷",@"及时雨-学信贷"];
     
     self.productArray=nil;
     
@@ -51,29 +52,24 @@
         NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
 
         if ([dic[@"code"] isEqualToString:@"0000"]) {
+            [backgroundView removeFromSuperview];
             NSArray *arr=dic[@"data"];
             for (int i=0; i<arr.count; i++) {
                 NSDictionary *diction=arr[i];
                 HomeProductModel *pro=[[HomeProductModel alloc]init];
                 
-//                if ([[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
-//                    pro.smeta=@"icon";
-//                    
-//                    int location=i%array.count;
-//                    pro.post_title=array[location];
-//                }
-//                else
-//                {
-//                    NSString *jsonString=diction[@"smeta"];
-//                    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-//                    NSError *err;
-//                    NSDictionary *imagedic = [NSJSONSerialization JSONObjectWithData:jsonData
-//                                                                             options:NSJSONReadingMutableContainers
-//                                                                               error:&err];
+                if ([[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
+                    pro.smeta=@"icon";
+                    
+                    int location=i%array.count;
+                    pro.post_title=array[location];
+                }
+                else
+                {
+                 
                     pro.smeta=diction[@"img"];
                     pro.post_title=diction[@"pro_name"];
-//                }
-                DLog(@"%@",pro.smeta);
+                }
 
                 pro.link=diction[@"pro_link"];
                 pro.edufanwei=diction[@"edufanwei"];
@@ -108,12 +104,36 @@
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+        [self LoadFailed];
     }];
     
     
     
 }
+-(void)LoadFailed
+{
+    backgroundView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+    [self.view addSubview:backgroundView];
+    UIImageView *image=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+    image.backgroundColor=[UIColor redColor];
+    image.image=[UIImage imageNamed:@"LoadFailedPage"];
+    
+    
+    [backgroundView addSubview:image];
+    
+    UIImageView *refreshImageView=[[UIImageView alloc]initWithFrame:CGRectMake((WIDTH/2-30)*Context.autoSizeScaleX, 350*Context.autoSizeScaleY, 65*Context.autoSizeScaleX, 65*Context.autoSizeScaleY)];
+    refreshImageView.image=[UIImage imageNamed:@"RefreshButton"];
+    refreshImageView.userInteractionEnabled=YES;
+    [backgroundView addSubview:refreshImageView];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(refresh)];
+    [refreshImageView addGestureRecognizer:tap];
+    
+}
+-(void)refresh{
+    [self loadData];
+    
+}
+
 -(void)loadTableView
 {
     

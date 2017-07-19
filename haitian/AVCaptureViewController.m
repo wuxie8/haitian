@@ -492,7 +492,6 @@
             
             IDInfo *iDInfo = [[IDInfo alloc] init];
             
-            ctype = pResult[i++];
             
 //            iDInfo.type = ctype;            
             while(i < ret){

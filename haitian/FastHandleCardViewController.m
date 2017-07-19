@@ -32,6 +32,7 @@ static NSString *const footerId = @"footerId";
 {
     NSMutableArray *bankMutableArray;
     NSMutableArray *bannerMutableArray;
+    UIView *backgroundView;
 }
 #ifdef __IPHONE_7_0
 - (UIRectEdge)edgesForExtendedLayout
@@ -39,10 +40,15 @@ static NSString *const footerId = @"footerId";
     return UIRectEdgeNone;
 }
 #endif
-- (void)viewDidLoad {
-    [super viewDidLoad];
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     [self getList];
     [self getBannerList];
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
     self.title=@"快速办卡";
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0,pageHeight, WIDTH, HEIGHT-64-44-pageHeight) collectionViewLayout:[UICollectionViewFlowLayout new]];
     [_collectionView setBackgroundColor:kColorFromRGBHex(0xEBEBEB)];
@@ -95,15 +101,32 @@ static NSString *const footerId = @"footerId";
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
+        [self loadBanner];
+
     }];
 }
+-(void)LoadFailed
+{
+    backgroundView=[[UIView alloc]initWithFrame:CGRectMake(0, pageHeight, WIDTH, HEIGHT-pageHeight-64)];
+    [self.view addSubview:backgroundView];
+    UIImageView *image=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, backgroundView.frame.size.height)];
+    image.backgroundColor=[UIColor redColor];
+    image.image=[UIImage imageNamed:@"Loadunsuccessful"];
+    
+    
+    [backgroundView addSubview:image];
+}
 - (void)didSelectCell:(UIView *)subView withSubViewIndex:(NSInteger)subIndex {
-    BannerModel *banner=[bannerMutableArray objectAtIndex:subIndex];
-    WebVC *vc = [[WebVC alloc] init];
-    [vc setNavTitle:banner.title];
-    [vc loadFromURLStr:banner.img_url];
-    vc.hidesBottomBarWhenPushed=YES;
-    [self.navigationController pushViewController:vc animated:NO];
+    if (![UtilTools isBlankArray:bannerMutableArray]) {
+        BannerModel *banner=[bannerMutableArray objectAtIndex:subIndex];
+        WebVC *vc = [[WebVC alloc] init];
+        [vc setNavTitle:banner.title];
+        [vc loadFromURLStr:banner.img_url];
+        vc.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:vc animated:NO];
+    }
+    
+
 }
 
 -(void)getList
@@ -118,9 +141,12 @@ static NSString *const footerId = @"footerId";
             [remind setValuesForKeysWithDictionary:dic1];
             [bankMutableArray addObject:remind];
         }
+        [backgroundView removeFromSuperview];
+
         [_collectionView reloadData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
+        [self LoadFailed];
     }];
     
     
@@ -131,7 +157,7 @@ static NSString *const footerId = @"footerId";
 }
 #pragma mark NewPagedFlowView Datasource
 - (NSInteger)numberOfPagesInFlowView:(WSPageView *)flowView {
-    return bannerMutableArray.count;
+    return  [UtilTools isBlankArray:bannerMutableArray]?1:bannerMutableArray.count;
 }
 
 - (UIView *)flowView:(WSPageView *)flowView cellForPageAtIndex:(NSInteger)index{
@@ -142,10 +168,14 @@ static NSString *const footerId = @"footerId";
         bannerView.layer.cornerRadius = 4;
         bannerView.layer.masksToBounds = YES;
     }
-    BannerModel *banner=[bannerMutableArray objectAtIndex:index];
-    
-    NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,banner.img]];
-    [bannerView.mainImageView setImageWithURL:url placeholderImage:[UIImage imageNamed:@"LoadFailed"]];
+    if ([UtilTools isBlankArray:bannerMutableArray]) {
+        [bannerView.mainImageView setImage:[UIImage imageNamed:@"LoadFailed"]];
+    }
+    else{
+        BannerModel *banner=[bannerMutableArray objectAtIndex:index];
+        NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,banner.img]];
+        [bannerView.mainImageView setImageWithURL:url placeholderImage:[UIImage imageNamed:@"LoadFailed"]];
+    }
     return bannerView;
 }
 
@@ -161,6 +191,8 @@ static NSString *const footerId = @"footerId";
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
+
     ProductModel *pro=[bankMutableArray objectAtIndex:indexPath.row];
     
     WebVC *vc = [[WebVC alloc] init];
@@ -168,6 +200,7 @@ static NSString *const footerId = @"footerId";
     [vc loadFromURLStr:pro.link];
     vc.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:vc animated:NO];
+    }
 }
 
 
@@ -175,15 +208,19 @@ static NSString *const footerId = @"footerId";
 {
     ProductModel *pro=[bankMutableArray objectAtIndex:indexPath.row];
     FastHandleCardCollectionViewCell *cell = (FastHandleCardCollectionViewCell *)[_collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor whiteColor];
-    NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,pro.icon]];
-    UIImage * result;
-    NSData * data = [NSData dataWithContentsOfURL:url];
-    
-    result = [UIImage imageWithData:data];
-    
-    [cell.bankimageView setImage:result];
-    [cell.bankimageView setContentMode:UIViewContentModeScaleToFill];
+    [cell.bankimageView setImage:[UIImage imageNamed:@"iconLoading"]];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,pro.icon]];
+        UIImage * result;
+        NSData * data = [NSData dataWithContentsOfURL:url];
+        
+        result = [UIImage imageWithData:data];
+        dispatch_sync(dispatch_get_main_queue(), ^
+                      {
+                          [cell.bankimageView  setImage:result];
+                          
+                      });
+    });
     [cell.titleLabel setText:pro.name];
     [cell.detailLabel setText:pro.describe];
     return cell;
@@ -191,10 +228,10 @@ static NSString *const footerId = @"footerId";
 // 和UITableView类似，UICollectionView也可设置段头段尾
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionReusableView *headerView;
+    UICollectionReusableView *headerView = [_collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:headerId forIndexPath:indexPath];
     if([kind isEqualToString:UICollectionElementKindSectionHeader])
     {
-        headerView = [_collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:headerId forIndexPath:indexPath];
+        
         if(headerView == nil)
         {
             headerView = [[UICollectionReusableView alloc] init];

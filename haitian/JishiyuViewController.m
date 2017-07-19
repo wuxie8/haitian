@@ -35,6 +35,13 @@ static NSString *const adUrl = @"adUrl";
     UITableView*tab;
     int page;
     int page_count;
+    UIView *backgroundView;
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self getList];
+
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,34 +55,6 @@ static NSString *const adUrl = @"adUrl";
     
     self.view.backgroundColor=[UIColor grayColor];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushToAd) name:@"pushtoad" object:nil];
-
-    [self getList];
-    
-    tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-64-40)];
-    tab.delegate=self;
-    tab.dataSource=self;
-    tab.backgroundColor=AppPageColor;
-    tab.tableHeaderView=[self creatUI];
-    
-    [self.view addSubview:tab];
-    // Do any additional setup after loading the view.
-}
-- (void)pushToAd {
-    
-     NSString * url= [kUserDefaults valueForKey:adUrl];
-    
-    if (!url) {
-        url = @"http://www.jianshu.com";
-    }
-    WebVC *vc = [[WebVC alloc] init];
-    [vc setNavTitle:@"及时雨贷款"];
-    [vc loadFromURLStr:url];
-    vc.hidesBottomBarWhenPushed=YES;
-    [self.navigationController pushViewController:vc animated:NO];
-    
-}
--(void)getList
-{
     if ([NetWorkUtil currentNetWorkStatus]==NET_UNKNOWN) {
         if (![UtilTools openEventServiceWithBolck]) {
             NSString *title = NSLocalizedString(@"请打开网络权限", nil);
@@ -110,20 +89,49 @@ static NSString *const adUrl = @"adUrl";
             [self presentViewController:alertController animated:YES completion:nil];
             
         }
+        
+    }
+
+    
+    tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-64-44)];
+    tab.delegate=self;
+    tab.dataSource=self;
+    tab.backgroundColor=AppPageColor;
+    tab.tableHeaderView=[self creatUI];
+    
+    [self.view addSubview:tab];
+    // Do any additional setup after loading the view.
+}
+- (void)pushToAd {
+    
+     NSString * url= [kUserDefaults valueForKey:adUrl];
+    
+    if (![UtilTools isBlankString:url]) {
+        WebVC *vc = [[WebVC alloc] init];
+        [vc setNavTitle:@"及时雨贷款"];
+        [vc loadFromURLStr:url];
+        vc.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:vc animated:NO];
 
     }
-        self.productArray=nil;
     
+}
+-(void)getList
+{
+           self.productArray=nil;
     
+    [backgroundView removeFromSuperview];
+
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
                        @"ios",@"os",
                        [NSString stringWithFormat:@"%d",page],@"page",
+                        appcode,@"code",
                        nil];
-    NSArray *array=@[@"小胖-社保贷",@"小胖-公积金贷",@"小胖-保单贷",@"小胖-供房贷",@"小胖-税金贷",@"小胖-学信贷"];
+    NSArray *array=@[@"及时雨-社保贷",@"及时雨-公积金贷",@"及时雨-保单贷",@"及时雨-供房贷",@"及时雨-税金贷",@"及时雨-学信贷"];
     [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@&m=product&a=change_list",SERVEREURL] parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
+
         if ([dic[@"code"]isEqualToString:@"0000"]) {
-            
             NSArray *arr=[dic[@"data"] objectForKey:@"list"];
             page_count=[[dic[@"data"] objectForKey:@"page_count"] intValue];
             ++page;
@@ -143,23 +151,18 @@ static NSString *const adUrl = @"adUrl";
                 for (int i=0; i<arr.count; i++) {
                     NSDictionary *diction=arr[i];
                     HomeProductModel *pro=[[HomeProductModel alloc]init];
-//                    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
-//                        pro.smeta=@"icon";
-//                        
-//                        int location=i%array.count;
-//                        pro.post_title=array[location];
-//                    }
-//                    else
-//                    {
-//                        NSString *jsonString=diction[@"smeta"];
-//                        NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-//                        NSError *err;
-//                        NSDictionary *imagedic = [NSJSONSerialization JSONObjectWithData:jsonData
-//                                                                                 options:NSJSONReadingMutableContainers
-//                                                                                   error:&err];
+                    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
+                        pro.smeta=@"icon";
+                        
+                        int location=i%array.count;
+                        pro.post_title=array[location];
+                    }
+                    else
+                    {
+                      
                         pro.smeta=diction[@"img"];
                         pro.post_title=diction[@"pro_name"];
-//                    }
+                    }
                     pro.link=diction[@"pro_link"];
                     pro.edufanwei=diction[@"edufanwei"];
                     pro.qixianfanwei=diction[@"qixianfanwei"];
@@ -187,17 +190,33 @@ static NSString *const adUrl = @"adUrl";
                 }
                 
             }
-            
-            [tab reloadData];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.75 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                  [tab reloadData];
+            });
             
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
-        
+        [self LoadFailed];
     }];
     
     
 }
+-(void)LoadFailed
+{
+    backgroundView=[[UIView alloc]initWithFrame:CGRectMake(0, ScrollviewHeight+SectionHeight+SectionHeadHeight, WIDTH, HEIGHT-(ScrollviewHeight+SectionHeight+SectionHeadHeight)-64)];
+    [self.view addSubview:backgroundView];
+    UIImageView *image=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, backgroundView.frame.size.height)];
+    image.backgroundColor=[UIColor redColor];
+    image.image=[UIImage imageNamed:@"Loadunsuccessful"];
+    
+    
+    [backgroundView addSubview:image];
+    
+   
+    
+}
+
 - (UIView *)creatUI {
     
     WSPageView *pageView = [[WSPageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH,ScrollviewHeight)];
@@ -331,7 +350,7 @@ static NSString *const adUrl = @"adUrl";
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320,  SectionHeadHeight)] ;
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH,  SectionHeadHeight)] ;
     
     [view setBackgroundColor:[UIColor whiteColor]];//改变标题的颜色，也可用图片
     view .backgroundColor=AppPageColor;
@@ -357,9 +376,9 @@ static NSString *const adUrl = @"adUrl";
     [view addSubview:but];
     
     
-    UIView *backgroundview=[[UIView alloc]initWithFrame:CGRectMake(0, 58, WIDTH, 2)];
-    backgroundview.backgroundColor=kColorFromRGB(245, 245, 243);
-    [view addSubview:backgroundview];
+    UIView *backgroundview1=[[UIView alloc]initWithFrame:CGRectMake(0, 58, WIDTH, 2)];
+    backgroundview1.backgroundColor=kColorFromRGB(245, 245, 243);
+    [view addSubview:backgroundview1];
     
     return view;
     
@@ -412,8 +431,6 @@ static NSString *const adUrl = @"adUrl";
     
     
     if (indexPath.section==1) {
-        HomeProductModel *pro=(HomeProductModel *)[self.productArray objectAtIndex: indexPath.row];
-        
         static NSString *HealthBroadcastCellID=@"HealthBroadcastCellID";
         JishiyuTableViewCell *jishiyu=[tableView dequeueReusableCellWithIdentifier:HealthBroadcastCellID];
         if (!jishiyu) {
@@ -423,9 +440,15 @@ static NSString *const adUrl = @"adUrl";
             jishiyu.accessoryType = UITableViewCellAccessoryDisclosureIndicator; //显示最右边的箭头
         }
         
-        
-        [jishiyu setModel:pro];
+
+        if (![UtilTools isBlankArray:self.productArray]) {
+            HomeProductModel *pro=(HomeProductModel *)[self.productArray objectAtIndex: indexPath.row];
+            
+            
+            [jishiyu setModel:pro];
+        }
         return jishiyu;
+
         
     }
     else
@@ -451,9 +474,7 @@ static NSString *const adUrl = @"adUrl";
             
             [cell.contentView addSubview:but];
         }
-        //        UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, SectionHeight-10, WIDTH, 10)];
-        //        view.backgroundColor=kColorFromRGB(245, 245, 243);
-        //        [cell.contentView addSubview:view];
+  
         return cell;
     }
 }
@@ -510,70 +531,75 @@ static NSString *const adUrl = @"adUrl";
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"])
     {
-        HomeProductModel *product=(HomeProductModel *)self.productArray[indexPath.row];
-        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
-                           product.productID,@"id",
-                           Context.currentUser.uid,@"uid",
+        if (indexPath.section==1) {
+            HomeProductModel *product=(HomeProductModel *)self.productArray[indexPath.row];
 
-                           nil];
-        
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        manager.requestSerializer.stringEncoding = NSUTF8StringEncoding;
-        [manager.requestSerializer setValue:@"text/html; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-        
-        NSString *urlStr = [NSString stringWithFormat:@"%@&m=product&a=hits",SERVERE];
-        [manager GET:urlStr parameters:dic progress:nil success:^(NSURLSessionDataTask *  task, id   responseObject) {
+            NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
+                               product.productID,@"id",
+                               Context.currentUser.uid,@"uid",
+                               
+                               nil];
             
-
-        } failure:^(NSURLSessionDataTask *  task, NSError *  error) {
+            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+            manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+            manager.requestSerializer.stringEncoding = NSUTF8StringEncoding;
+            [manager.requestSerializer setValue:@"text/html; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
             
-        }];
-        
-        if ([product.api_type isEqualToString:@"1"]) {
-            WebVC *vc = [[WebVC alloc] init];
-            [vc setNavTitle:product.post_title];
-            [vc loadFromURLStr:product.link];
-            vc.hidesBottomBarWhenPushed=YES;
-            [self.navigationController pushViewController:vc animated:NO];
-        }
-        else if ([product.api_type isEqualToString:@"2"]) {
-            NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:
-                                Context.currentUser.uid,@"uid",
-                                product.productID,@"id",
-                                
-                                nil];
-            [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=product&a=postDetail",SERVERE] parameters:dic1 success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSString *urlStr = [NSString stringWithFormat:@"%@&m=product&a=hits",SERVERE];
+            [manager GET:urlStr parameters:dic progress:nil success:^(NSURLSessionDataTask *  task, id   responseObject) {
                 
-                if ([responseObject[@"code"]isEqualToString:@"0000"]) {
-                    NSDictionary *dic=responseObject[@"data"];
-                    WebVC *vc = [[WebVC alloc] init];
-                    [vc setNavTitle:product.post_title];
-                    [vc loadFromURLStr:dic[@"pro_link"]];
-                    vc.hidesBottomBarWhenPushed=YES;
-                    [self.navigationController pushViewController:vc animated:NO];
-                    
-                }
-                else
-                {}
-            } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                NSLog(@"%@",error);
                 
+            } failure:^(NSURLSessionDataTask *  task, NSError *  error) {
                 
             }];
-
-           
-
+            if (![[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
+                
+                if ([product.api_type isEqualToString:@"1"]) {
+                    WebVC *vc = [[WebVC alloc] init];
+                    [vc setNavTitle:product.post_title];
+                    [vc loadFromURLStr:product.link];
+                    vc.hidesBottomBarWhenPushed=YES;
+                    [self.navigationController pushViewController:vc animated:NO];
+                }
+                else if ([product.api_type isEqualToString:@"2"]) {
+                    NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:
+                                        Context.currentUser.uid,@"uid",
+                                        product.productID,@"id",
+                                        
+                                        nil];
+                    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=product&a=postDetail",SERVERE] parameters:dic1 success:^(NSURLSessionDataTask *task, id responseObject) {
+                        
+                        if ([responseObject[@"code"]isEqualToString:@"0000"]) {
+                            NSDictionary *dic=responseObject[@"data"];
+                            WebVC *vc = [[WebVC alloc] init];
+                            [vc setNavTitle:product.post_title];
+                            [vc loadFromURLStr:dic[@"pro_link"]];
+                            vc.hidesBottomBarWhenPushed=YES;
+                            [self.navigationController pushViewController:vc animated:NO];
+                            
+                        }
+                        else
+                        {}
+                    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                        NSLog(@"%@",error);
+                        
+                        
+                    }];
+                    
+                    
+                    
+                }
+                
+                else if ([product.api_type isEqualToString:@"3"]) {
+                    LoanDetailsViewController *load=[[LoanDetailsViewController alloc]init];
+                    load.hidesBottomBarWhenPushed=YES;
+                    
+                    load.product=product;
+                    [self.navigationController pushViewController:load animated:YES];
+                }
             }
-        
-        else if ([product.api_type isEqualToString:@"3"]) {
-            LoanDetailsViewController *load=[[LoanDetailsViewController alloc]init];
-            load.hidesBottomBarWhenPushed=YES;
-            
-            load.product=product;
-            [self.navigationController pushViewController:load animated:YES];
+
         }
-      
         
     }
     else

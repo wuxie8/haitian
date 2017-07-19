@@ -64,7 +64,6 @@
      - (void)shareTextToPlatformType:(UMSocialPlatformType)platformType
      {
          [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@&m=userinfo&a=share",SERVERE] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-             DLog(@"%@",responseObject);
              if([responseObject[@"code"] isEqualToString:@"0000"])
              {
                  NSDictionary *dic=responseObject[@"data"];
@@ -83,7 +82,7 @@
                      //设置网页地址
                      shareObject.webpageUrl =@"http://app.jishiyu11.cn:88/download/?id=1239285391";
                  }
-                 shareObject.webpageUrl =@"http://app.jishiyu11.cn:88/download/?id=1239285391";
+                 shareObject.webpageUrl =@"http://app.jishiyu11.cn:88/download/?id=1261291024";
                  
                  //分享消息对象设置分享内容对象
                  messageObject.shareObject = shareObject;

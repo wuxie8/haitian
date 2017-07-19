@@ -33,7 +33,7 @@
     
     self.productArray=nil;
  
- NSArray *array=@[@"小胖-社保贷",@"小胖-公积金贷",@"小胖-保单贷",@"小胖-供房贷",@"小胖-税金贷",@"小胖-学信贷"];
+ NSArray *array=@[@"及时雨-社保贷",@"及时雨-公积金贷",@"及时雨-保单贷",@"及时雨-供房贷",@"及时雨-税金贷",@"及时雨-学信贷"];
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
                       @"ios",@"os",
                        @"1",@"page",
@@ -48,26 +48,18 @@
                 NSDictionary *diction=arr[i];
                 HomeProductModel *pro=[[HomeProductModel alloc]init];
                 
-//                if ([[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
-//                    pro.smeta=@"icon";
-//                    
-//                    int location=i%array.count;
-//                    pro.post_title=array[location];
-//                }
-//                else
-//                {
-//                    NSString *jsonString=diction[@"smeta"];
-//                    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-//                    NSError *err;
-//                    NSDictionary *imagedic = [NSJSONSerialization JSONObjectWithData:jsonData
-//                                                                             options:NSJSONReadingMutableContainers
-//                                                                               error:&err];
-                    pro.smeta=diction[@"img"];
-                    DLog(@"%@",pro.smeta);
+                if ([[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
+                    pro.smeta=@"icon";
+                    
+                    int location=i%array.count;
+                    pro.post_title=array[location];
+                }
+                else
+                {
+                        pro.smeta=diction[@"img"];
 
                     pro.post_title=diction[@"pro_name"];
-//                }
-                DLog(@"%@",pro.smeta);
+                }
 
                 pro.link=diction[@"pro_link"];
                 pro.edufanwei=diction[@"edufanwei"];

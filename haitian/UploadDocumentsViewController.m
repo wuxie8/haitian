@@ -190,15 +190,12 @@
 
             NSData * _headImageData = UIImageJPEGRepresentation(image, 0.1);
             NSString *nameString=[NSString stringWithFormat:@"photo%d",[string intValue]-999] ;
-            DLog(@"%@",nameString);
 
             
         [formData appendPartWithFileData:_headImageData name:nameString fileName:_headfileName mimeType:@"image/jpg/png/jpeg"];
-//            [formData appendPartWithFileData:_headImageData name:[NSString stringWithFormat:@"photot%d",[string intValue]-999] fileName:_headfileName mimeType:@"image/jpg/png/jpeg"];
 
             
         }
-//
     } progress:^(NSProgress * _Nonnull uploadProgress) {
 
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

@@ -59,42 +59,40 @@
         if ([responseObject[@"code"]isEqualToString:@"0000"]) {
             NSArray *idcardArr=[responseObject[@"data"]objectForKey:@"data"];
             NSDictionary *diction=[idcardArr firstObject];
-            NSString *front_img=diction[@"front_img"];
-            NSString *back_img=diction[@"back_img"];
-            UIImageView *imageView=[self.view viewWithTag:1000];
-            NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMG_PATH,front_img]];
-            UIImage * result;
-            NSData * data = [NSData dataWithContentsOfURL:url];
-            
-            result = [UIImage imageWithData:data];
-            Context.idInfo.IDPositiveImage=result;
-            IDInfo *idInfo=[IDInfo new];
-            idInfo.IDPositiveImage=result;
-
-            [imageView setImage:result];
-            NSURL *url1=[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMG_PATH,back_img]];
-            UIImage * result1;
-            NSData * data1 = [NSData dataWithContentsOfURL:url1];
-            
-            result1 = [UIImage imageWithData:data1];
-            UIImageView *imageView1=[self.view viewWithTag:1001];
-
-            [imageView1 setImage:result1];
-            idInfo.IDOppositeImage=result1;
-            Context.idInfo=idInfo;
-            [NSKeyedArchiver archiveRootObject:Context.idInfo toFile:DOCUMENT_FOLDER(@"iDInfofile")];
-            Context.idInfo.IDOppositeImage=result1;
-            [NSKeyedArchiver archiveRootObject:Context.idInfo toFile:DOCUMENT_FOLDER(@"iDInfofile")];
-            if (Context.currentUser.idcard_auth) {
-                UIImageView *imageView2=[self.view viewWithTag:1002];
-                [imageView2 setImage:[UIImage imageNamed:@"IdentifySuccessful"]];
+            if (![UtilTools isBlankDictionary:diction]) {
+                NSString *front_img=diction[@"front_img"];
+                NSString *back_img=diction[@"back_img"];
+                UIImageView *imageView=[self.view viewWithTag:1000];
+                NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMG_PATH,front_img]];
+                UIImage * result;
+                NSData * data = [NSData dataWithContentsOfURL:url];
+                
+                result = [UIImage imageWithData:data];
+                Context.idInfo.IDPositiveImage=result;
+                IDInfo *idInfo=[IDInfo new];
+                idInfo.IDPositiveImage=result;
+                
+                [imageView setImage:result];
+                NSURL *url1=[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMG_PATH,back_img]];
+                UIImage * result1;
+                NSData * data1 = [NSData dataWithContentsOfURL:url1];
+                
+                result1 = [UIImage imageWithData:data1];
+                UIImageView *imageView1=[self.view viewWithTag:1001];
+                
+                [imageView1 setImage:result1];
+                idInfo.IDOppositeImage=result1;
+                Context.idInfo=idInfo;
+                [NSKeyedArchiver archiveRootObject:Context.idInfo toFile:DOCUMENT_FOLDER(@"iDInfofile")];
+                Context.idInfo.IDOppositeImage=result1;
+                [NSKeyedArchiver archiveRootObject:Context.idInfo toFile:DOCUMENT_FOLDER(@"iDInfofile")];
+                if (Context.currentUser.idcard_auth) {
+                    UIImageView *imageView2=[self.view viewWithTag:1002];
+                    [imageView2 setImage:[UIImage imageNamed:@"IdentifySuccessful"]];
+                }
             }
-
-
-
          }
-        else
-        {}
+        
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
         
