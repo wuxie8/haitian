@@ -244,6 +244,9 @@
 +(NSString *)intervalSinceNow: (NSString *) theDate;
 
 #pragma  mark  封装方法
+//检测联网权限
++ (BOOL)openEventServiceWithBolck;
+
  //检测是否安装qq
 +(BOOL)haveQQ;
 //检测是否安装微信

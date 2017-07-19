@@ -7,6 +7,7 @@
 //
 
 #import "UtilTools.h"
+#import <CoreTelephony/CTCellularData.h>
 @implementation UtilTools
 static SystemSoundID shake_sound_enter_id = 0;
 
@@ -473,7 +474,49 @@ static SystemSoundID shake_sound_enter_id = 0;
     return timeString;
 }
 #pragma  mark  封装方法
++ (BOOL)openEventServiceWithBolck
+{
+    __block BOOL Restrictedstate=YES;
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_9_0
+    CTCellularData *cellularData = [[CTCellularData alloc] init];
+//    cellularData.cellularDataRestrictionDidUpdateNotifier = ^(CTCellularDataRestrictedState state) {
+//        DLog(@"%lu",(unsigned long)state);
+//
+//    };
+   
+    cellularData.cellularDataRestrictionDidUpdateNotifier =  ^(CTCellularDataRestrictedState state){
+        //获取联网状态
+        switch (state) {
+            case kCTCellularDataRestricted:
+                Restrictedstate=YES;
+                break;
+            case kCTCellularDataNotRestricted:
+            case kCTCellularDataRestrictedStateUnknown:
+               Restrictedstate=NO;
+                break;
+            default:
+                break;
+        };
+    };
+    
+      CTCellularDataRestrictedState state = cellularData.restrictedState;
+    switch (state) {
+        case kCTCellularDataRestricted:
+            Restrictedstate=YES;
+            break;
+        case kCTCellularDataNotRestricted:
+            Restrictedstate=NO;
+            break;
+        case kCTCellularDataRestrictedStateUnknown:
+            Restrictedstate=NO;
+            break;
+        default:
+            break;
+    };
+   #endif
+    return Restrictedstate;
+}
 +(BOOL)haveQQ
 {
     return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"mqq://"]];

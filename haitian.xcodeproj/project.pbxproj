@@ -14,6 +14,8 @@
 		8420A4DA1EE4E808001C5EAC /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8420A4D91EE4E808001C5EAC /* libc++.tbd */; };
 		842A01691EC9464200143E4A /* NewRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842A01681EC9464200143E4A /* NewRemindViewController.m */; };
 		842C82C41EAEFDCB005D27A7 /* IdOpposite ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842C82C31EAEFDCB005D27A7 /* IdOpposite ViewController.m */; };
+		842DCD1B1F1DF1BE00078589 /* AdvertiseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842DCD1A1F1DF1BE00078589 /* AdvertiseView.m */; };
+		842DCD1E1F1DF40F00078589 /* AdvertiseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842DCD1D1F1DF40F00078589 /* AdvertiseViewController.m */; };
 		842E61C71EB08A5700BF91FB /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61C61EB08A5700BF91FB /* iflyMSC.framework */; };
 		842E61C91EB08A9300BF91FB /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61C81EB08A9300BF91FB /* libz.tbd */; };
 		842E61CB1EB08AA000BF91FB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842E61CA1EB08AA000BF91FB /* CoreLocation.framework */; };
@@ -224,6 +226,10 @@
 		842A01681EC9464200143E4A /* NewRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRemindViewController.m; sourceTree = "<group>"; };
 		842C82C21EAEFDCB005D27A7 /* IdOpposite ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IdOpposite ViewController.h"; sourceTree = "<group>"; };
 		842C82C31EAEFDCB005D27A7 /* IdOpposite ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IdOpposite ViewController.m"; sourceTree = "<group>"; };
+		842DCD191F1DF1BE00078589 /* AdvertiseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertiseView.h; sourceTree = "<group>"; };
+		842DCD1A1F1DF1BE00078589 /* AdvertiseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvertiseView.m; sourceTree = "<group>"; };
+		842DCD1C1F1DF40F00078589 /* AdvertiseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertiseViewController.h; sourceTree = "<group>"; };
+		842DCD1D1F1DF40F00078589 /* AdvertiseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvertiseViewController.m; sourceTree = "<group>"; };
 		842E61C61EB08A5700BF91FB /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
 		842E61C81EB08A9300BF91FB /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		842E61CA1EB08AA000BF91FB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -730,7 +736,6 @@
 		8451AFB81EA8599F002F04B6 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				847DF4071F1464E8007DDB60 /* DB文件 */,
 				8451AFBA1EA859FA002F04B6 /* PersonCenter.xcassets */,
 				8451AFBE1EA85E65002F04B6 /* MessageAlertView.xcassets */,
 				84C50C371EADA5BC00AD0B62 /* Authentication.xcassets */,
@@ -829,13 +834,6 @@
 				847A114F1EA45F0C002D8832 /* UserInfoContext.m */,
 			);
 			name = User;
-			sourceTree = "<group>";
-		};
-		847DF4071F1464E8007DDB60 /* DB文件 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "DB文件";
 			sourceTree = "<group>";
 		};
 		849012B21F02477F00E3D62A /* Jishiyu-HomePage */ = {
@@ -1153,16 +1151,20 @@
 		84CD81F61EA4909F009B786F /* Appdeledate */ = {
 			isa = PBXGroup;
 			children = (
+				8451AFB81EA8599F002F04B6 /* Resource */,
 				84B9DBF51E9DC0990066A92D /* Assets.xcassets */,
 				84B9DBF71E9DC0990066A92D /* LaunchScreen.storyboard */,
 				84B9DBFA1E9DC0990066A92D /* Info.plist */,
+				842DCD191F1DF1BE00078589 /* AdvertiseView.h */,
+				842DCD1A1F1DF1BE00078589 /* AdvertiseView.m */,
+				842DCD1C1F1DF40F00078589 /* AdvertiseViewController.h */,
+				842DCD1D1F1DF40F00078589 /* AdvertiseViewController.m */,
 				84B9DBEC1E9DC0990066A92D /* AppDelegate.h */,
 				84B9DBED1E9DC0990066A92D /* AppDelegate.m */,
 				846C9E9E1ED821A40099CC51 /* AppDelegate+JPush.h */,
 				846C9E9F1ED821A40099CC51 /* AppDelegate+JPush.m */,
 				84B9DBEF1E9DC0990066A92D /* ViewController.h */,
 				84B9DBF01E9DC0990066A92D /* ViewController.m */,
-				8451AFB81EA8599F002F04B6 /* Resource */,
 				84B9DBF21E9DC0990066A92D /* Main.storyboard */,
 			);
 			name = Appdeledate;
@@ -1507,6 +1509,7 @@
 				84F5D41D1EA7675E00EC8C9D /* TZImageManager.m in Sources */,
 				849012B81F0248F200E3D62A /* LoanClasssificationVC.m in Sources */,
 				842E61FD1EB08C8300BF91FB /* CalculatorTools.m in Sources */,
+				842DCD1E1F1DF40F00078589 /* AdvertiseViewController.m in Sources */,
 				846856411EA0902D00C74F87 /* ASValuePopUpView.m in Sources */,
 				84A733531EB86C82008ABB7E /* AddressBookVC.m in Sources */,
 				84B9DBF11E9DC0990066A92D /* ViewController.m in Sources */,
@@ -1540,6 +1543,7 @@
 				848FBC151ED2E99000A1E1CD /* RemindViewController.m in Sources */,
 				84B9DC401E9DCDBC0066A92D /* LoadSupermarketViewController.m in Sources */,
 				84174D691EDEC3FA00A815B3 /* PersonalDataViewController.m in Sources */,
+				842DCD1B1F1DF1BE00078589 /* AdvertiseView.m in Sources */,
 				84F5D4201EA7675E00EC8C9D /* TZPhotoPreviewCell.m in Sources */,
 				84ABC8F01EC5556400269C87 /* RemindTableViewCell.m in Sources */,
 				84A733381EB86BA0008ABB7E /* AddressVC.m in Sources */,

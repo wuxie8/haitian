@@ -9,6 +9,7 @@
 #import "HomePageViewController.h"
 #import "ASValueTrackingSlider.h"
 #import "CertificationViewController.h"
+#import "AdvertiseViewController.h"
 #define ImageHeight 220
 #define viewHeight 80
 @interface HomePageViewController ()<UITableViewDelegate,UITableViewDataSource,ASValueTrackingSliderDataSource>
@@ -35,6 +36,8 @@
      arr3=@[@"动动手指就能借款，无需繁琐流程",@"3分钟前填资料，30分钟审核，1天到账",@"最高1万元额度，支持12个月超长分期"];
     value1=5000;
     value2=12;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushToAd) name:@"pushtoad" object:nil];
+
     UITableView *tab=[[UITableView alloc]initWithFrame:CGRectMake(0,0, WIDTH, HEIGHT-44)];
     tab.delegate=self;
     tab.tableHeaderView=self.headView;
@@ -42,7 +45,12 @@
     [self.view addSubview:tab];
     // Do any additional setup after loading the view.
 }
-
+- (void)pushToAd {
+    
+    AdvertiseViewController *adVc = [[AdvertiseViewController alloc] init];
+    [self.navigationController pushViewController:adVc animated:YES];
+    
+}
 
 -(UIView *)headView
 {

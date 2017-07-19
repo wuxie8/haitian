@@ -16,10 +16,14 @@
 #import "LoginViewController.h"
 #import "AmountClassificationViewController.h"
 #import "LoanDetailsViewController.h"
+#import "AdvertiseViewController.h"
 #define  ScrollviewWeight 50
 #define  ScrollviewHeight 180
 #define SectionHeight 110
 #define SectionHeadHeight 60
+
+static NSString *const adUrl = @"adUrl";
+
 @interface JishiyuViewController ()<UITableViewDelegate,UITableViewDataSource,WSPageViewDelegate,WSPageViewDataSource>
 @property(strong, nonatomic) UIScrollView *scrollview;
 @property(strong, nonatomic)NSMutableArray *productArray;
@@ -43,7 +47,8 @@
     page=1;
     
     self.view.backgroundColor=[UIColor grayColor];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushToAd) name:@"pushtoad" object:nil];
+
     [self getList];
     
     tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-64-40)];
@@ -55,10 +60,59 @@
     [self.view addSubview:tab];
     // Do any additional setup after loading the view.
 }
-
+- (void)pushToAd {
+    
+     NSString * url= [kUserDefaults valueForKey:adUrl];
+    
+    if (!url) {
+        url = @"http://www.jianshu.com";
+    }
+    WebVC *vc = [[WebVC alloc] init];
+    [vc setNavTitle:@"及时雨贷款"];
+    [vc loadFromURLStr:url];
+    vc.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:vc animated:NO];
+    
+}
 -(void)getList
 {
-    self.productArray=nil;
+    if ([NetWorkUtil currentNetWorkStatus]==NET_UNKNOWN) {
+        if (![UtilTools openEventServiceWithBolck]) {
+            NSString *title = NSLocalizedString(@"请打开网络权限", nil);
+            NSString *cancelButtonTitle = NSLocalizedString(@"设置", nil);
+            NSString *otherButtonTitle = NSLocalizedString(@"确定", nil);
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
+            
+            // Create the actions.
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                
+                if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                    [[UIApplication sharedApplication] openURL:url];
+                }
+            }];
+            
+            UIAlertAction *otherAction = [UIAlertAction actionWithTitle:otherButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                
+            }];
+            
+            // The text field initially has no text in the text field, so we'll disable it.
+            //                otherAction.enabled = NO;
+            
+            // Hold onto the secure text alert action to toggle the enabled/disabled state when the text changed.
+            //                self.secureTextAlertAction = otherAction;
+            
+            // Add the actions.
+            [alertController addAction:cancelAction];
+            [alertController addAction:otherAction];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+            
+        }
+
+    }
+        self.productArray=nil;
     
     
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:

@@ -29,46 +29,63 @@
 #include <sys/socket.h>
 #include <net/if.h>
 #include <net/if_dl.h>
+#import "AdvertiseView.h"
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
 @end
 static NSString *USHARE_DEMO_APPKEY = @"5913bac1cae7e74ebe000675";
-
+static NSString *const adImageName = @"adImageName";
+static NSString *const adUrl = @"adUrl";
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+       self.window  = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+
+    self.window.rootViewController=[AppDelegate setTabBarController];
+
+    [self.window makeKeyAndVisible];
+#pragma mark 启动广告
+    // 1.判断沙盒中是否存在广告图片，如果存在，直接显示
+    NSString *filePath = [self getFilePathWithImageName:[kUserDefaults valueForKey:adImageName]];
+    
+    BOOL isExist = [self isFileExistWithFilePath:filePath];
+    if (isExist) {// 图片存在
+        AdvertiseView *advertiseView = [[AdvertiseView alloc] initWithFrame:self.window.bounds];
+        advertiseView.filePath = filePath;
+        [advertiseView show];
+        
+    }
+    else
+    {
+        AdvertiseView *advertiseView = [[AdvertiseView alloc] initWithFrame:self.window.bounds];
+        advertiseView.image = [UIImage imageNamed:@"AboutUs"];
+        [advertiseView show];
+    }
+    
+    // 2.无论沙盒中是否存在广告图片，都需要重新调用广告接口，判断广告是否更新
+    [self getAdvertisingImage];
+    [[ALCreditService sharedService] resgisterApp];
     /* 打开调试日志 */
-    [[UMSocialManager defaultManager] openLog:YES];
+    [[UMSocialManager defaultManager] openLog:NO];
     
     /* 设置友盟appkey */
     [[UMSocialManager defaultManager] setUmSocialAppkey:USHARE_DEMO_APPKEY];
     
     [self configUSharePlatforms];
     
-
+    
     
     //激光推送
     [self registerJPush:application options:launchOptions];
     
-    //立木正信
-    [LMZXSDK registerLMZXSDK];
-    [[LMZXSDK shared] unlockLog];
+    //讯飞人脸识别
+    [self makeConfiguration];
 
- 
-   //讯飞人脸识别
-   [self makeConfiguration];
-    
-    [self.window makeKeyAndVisible];
-    [[ALCreditService sharedService] resgisterApp];
-
-    self.window  = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     Context.idInfo = [NSKeyedUnarchiver unarchiveObjectWithFile:DOCUMENT_FOLDER(@"iDInfofile")];
     Context.currentUser = [NSKeyedUnarchiver unarchiveObjectWithFile:DOCUMENT_FOLDER(@"loginedUser")];
         if (![[NSUserDefaults standardUserDefaults] objectForKey:@"FirstLG"]){
-            DLog(@"%@",[[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]);
-            DLog(@"%@",[self getMacAddress]);
 
             NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
                                [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString],@"idfa",
@@ -85,8 +102,6 @@ static NSString *USHARE_DEMO_APPKEY = @"5913bac1cae7e74ebe000675";
             }];
 
         }
-    self.window.rootViewController=[AppDelegate setTabBarController];
-    [self.window  makeKeyAndVisible];
     // Override point for customization after application launch.
     return YES;
 }
@@ -179,7 +194,7 @@ static NSString *USHARE_DEMO_APPKEY = @"5913bac1cae7e74ebe000675";
     PersonCenterViewController *person=[[PersonCenterViewController alloc]init];
     JishiyuViewController *jishiyu=[JishiyuViewController new];
     //步骤2：将视图控制器绑定到导航控制器上
- __unused   BaseNC *nav1C = [[BaseNC alloc] initWithRootViewController:homepage];
+   BaseNC *nav1C = [[BaseNC alloc] initWithRootViewController:homepage];
     BaseNC *nav2C = [[BaseNC alloc] initWithRootViewController:treatVC];
     BaseNC *nav3C=[[BaseNC alloc]initWithRootViewController:mine];
     BaseNC *nav4C=[[BaseNC alloc]initWithRootViewController:person];
@@ -236,8 +251,108 @@ static NSString *USHARE_DEMO_APPKEY = @"5913bac1cae7e74ebe000675";
     //所有服务启动前，需要确保执行createUtility
     [IFlySpeechUtility createUtility:initString];
 }
+#pragma mark 启动广告
+/**
+ *  初始化广告页面
+ */
+- (void)getAdvertisingImage
+{
+    
+    // TODO 请求广告接口
+  
+    [[NetWorkManager sharedManager]postNoTipJSON:@"http://app.jishiyu11.cn/index.php?g=app&m=app&a=boot" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"code"] isEqualToString:@"0000"]) {
+            NSDictionary *diction=responseObject[@"data"];
+            NSString *imageUrl=[NSString stringWithFormat:@"%@%@",IMG_PATH,diction[@"boot_img"]];
+            NSString *boot_url=diction[@"boot_url"];
+            
+            // 获取图片名:43-130P5122Z60-50.jpg
+            NSArray *stringArr = [imageUrl componentsSeparatedByString:@"/"];
+            NSString *imageName = stringArr.lastObject;
+            
+            // 拼接沙盒路径
+            NSString *filePath = [self getFilePathWithImageName:imageName];
+            BOOL isExist = [self isFileExistWithFilePath:filePath];
+            if (!isExist){// 如果该图片不存在，则删除老图片，下载新图片
+                
+                [self downloadAdImageWithUrl:imageUrl imageName:imageName];
+                
+            }
+
+            [kUserDefaults setValue:boot_url forKey:adUrl];
+            [kUserDefaults synchronize];
+        }
+        DLog(@"%@",responseObject);
+
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
 
 
+    
+}
+/**
+ *  下载新图片
+ */
+- (void)downloadAdImageWithUrl:(NSString *)imageUrl imageName:(NSString *)imageName
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]];
+        UIImage *image = [UIImage imageWithData:data];
+        
+        NSString *filePath = [self getFilePathWithImageName:imageName]; // 保存文件的名称
+        
+        if ([UIImagePNGRepresentation(image) writeToFile:filePath atomically:YES]) {// 保存成功
+            [self deleteOldImage];
+            [kUserDefaults setValue:imageName forKey:adImageName];
+            [kUserDefaults synchronize];
+            // 如果有广告链接，将广告链接也保存下来
+        }else{
+            NSLog(@"保存失败");
+        }
+        
+    });
+}
+/**
+ *  删除旧图片
+ */
+- (void)deleteOldImage
+{
+    NSString *imageName = [kUserDefaults valueForKey:adImageName];
+    if (imageName) {
+        NSString *filePath = [self getFilePathWithImageName:imageName];
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        [fileManager removeItemAtPath:filePath error:nil];
+    }
+}
+/**
+ *  判断文件是否存在
+ */
+- (BOOL)isFileExistWithFilePath:(NSString *)filePath
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL isDirectory = FALSE;
+    return [fileManager fileExistsAtPath:filePath isDirectory:&isDirectory];
+}
+
+/**
+ *  根据图片名拼接文件路径
+ */
+- (NSString *)getFilePathWithImageName:(NSString *)imageName
+{
+    if (imageName) {
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory,NSUserDomainMask, YES);
+        NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:imageName];
+        
+        return filePath;
+    }
+    
+    return nil;
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

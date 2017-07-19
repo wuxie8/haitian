@@ -172,7 +172,7 @@ static NSString *const footerId = @"footerId1";
     }
     BannerModel *banner=[bannerMutableArray objectAtIndex:index];
    NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,banner.img]];
-    [bannerView.mainImageView setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
+    [bannerView.mainImageView setImageWithURL:url placeholderImage:[UIImage imageNamed:@"LoadFailed"]];
 //    [bannerView.mainImageView setImageWithURL:url];
 //    UIImage * result;
 //    NSData * data = [NSData dataWithContentsOfURL:url];

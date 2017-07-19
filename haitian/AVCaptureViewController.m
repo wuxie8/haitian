@@ -282,6 +282,8 @@
     const char *thePath = [[[NSBundle mainBundle] resourcePath] UTF8String];
     int ret = EXCARDS_Init(thePath);
     if (ret != 0) {
+        NSLog(@"初始化失败：ret=%d", ret);
+
     }
     
     // 添加预览图层

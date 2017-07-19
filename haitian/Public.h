@@ -57,6 +57,7 @@
 
 #define DOCUMENT_FOLDER(fileName) [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:fileName]
 #define CACHE_FOLDER(fileName) [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:fileName]
+#define kUserDefaults [NSUserDefaults standardUserDefaults]
 
 #define WS(weakSelf) __weak typeof(self) weakSelf = self
 
