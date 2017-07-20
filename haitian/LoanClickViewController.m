@@ -82,7 +82,7 @@
                 pro.productID=diction[@"id"];
                 pro.post_excerpt=diction[@"post_excerpt"];
                 pro.hits=diction[@"hits"];
-
+                pro.api_type=diction[@"api_type"];
                 pro.fv_unit=diction[@"fv_unit"];
                 NSArray *tags=diction[@"tags"];
                 NSMutableArray *tagsArray=[NSMutableArray array];

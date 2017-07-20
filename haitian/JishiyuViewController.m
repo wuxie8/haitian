@@ -40,7 +40,10 @@ static NSString *const adUrl = @"adUrl";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self getList];
+    if ([UtilTools isBlankArray:self.productArray]) {
+        [self getList];
+
+    }
 
 }
 - (void)viewDidLoad {
@@ -143,10 +146,10 @@ static NSString *const adUrl = @"adUrl";
             }else
             {
                 [[NSUserDefaults standardUserDefaults] setBool:[[dic[@"data"] objectForKey:@"review"]boolValue] forKey:@"review"];
-                
+
                 
             }
-            
+
             if (![UtilTools isBlankArray:arr]) {
                 for (int i=0; i<arr.count; i++) {
                     NSDictionary *diction=arr[i];

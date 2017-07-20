@@ -14,8 +14,8 @@
 #import <AudioToolbox/AudioFile.h>
 #import <AudioToolbox/AudioServices.h>
 #import <AudioToolbox/AudioConverter.h>
-#import <AVFoundation/AVFoundation.h>
-//#import <AVFoundation/AVAudioSession.h>
+#import <AVFoundation/AVAudioSession.h>
+
 
 @class IFlyPcmRecorder;
 

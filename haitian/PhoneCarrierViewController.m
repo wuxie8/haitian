@@ -184,8 +184,7 @@
                        @"api.mobile.get",@"method",
                        @"0618854278903691",@"apiKey",
                        @"1.0.0",@"version",
-//                                                      @"371102199303215716",@"identityCardNo",
-//                                                      @"吴公胜",@"identityName",
+
                        diction[@"0"],@"username",
                         [UtilTools base64EncodedString:diction[@"1"]],@"password",
                        @"busi",@"contentType",
