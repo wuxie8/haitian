@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"关于我们";
-    UIImageView *image=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+    UIImageView *image=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-44)];
     image.image=[UIImage imageNamed:@"AboutUs"];
     [self.view addSubview:image];
     // Do any additional setup after loading the view.

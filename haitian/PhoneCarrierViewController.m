@@ -124,13 +124,6 @@
                                @"mobile",@"bizType",
                                responseObject[@"token"],@"token",
                                
-                               
-                               //                           @"1",@"sign",
-                               //                                                      @"371102199303215716",@"identityCardNo",
-                               //                                                      @"吴公胜",@"identityName",
-                               
-                               
-                               
                                nil];
             [self getResultSign:dic step:@"2"];
             
@@ -149,6 +142,26 @@
 
 -(void)mobilePhoneOwnership{
     NSMutableDictionary *diction=[NSMutableDictionary dictionary];
+    UIView *view1=[self.view viewWithTag:100];
+
+    UITextField *textField1=(UITextField *)[view1 viewWithTag:1000];
+    UIView *view2=[self.view viewWithTag:101];
+
+    UITextField *textField2=(UITextField *)[view2 viewWithTag:1001];
+    
+    if ([UtilTools isBlankString:textField1.text]) {
+        [MessageAlertView showErrorMessage:@"手机号码不能为空"];
+        return;
+    }
+    if (textField1.text.length!=11) {
+        [MessageAlertView showErrorMessage:@"请输入正确的手机号"];
+        return;
+    }
+    if ([UtilTools isBlankString:textField2.text]) {
+        [MessageAlertView showErrorMessage:@"服务密码不能为空"];
+        return;
+    }
+
 
     for (int i=0; i<2; i++) {
         UIView *view1=[self.view viewWithTag:100+i];
@@ -160,8 +173,7 @@
                        @"api.mobile.area",@"method",
                        @"0618854278903691",@"apiKey",
                        @"1.0.0",@"version",
-                       //                                                      @"371102199303215716",@"identityCardNo",
-                       //                                                      @"吴公胜",@"identityName",
+                    
                        diction[@"0"],@"mobileNo",
                        
                        
@@ -239,7 +251,7 @@
         if ([responseObject[@"code"] isEqualToString:@"0000"]) {
             NSString *typeString = [NSString stringWithFormat:@"%@%@",responseObject[@"province"],responseObject[@"type"]];
             if ([typeString isEqualToString:@"北京移动"]) {
-                NSString *title = NSLocalizedString(@"请输入服务密码", nil);
+                NSString *title = NSLocalizedString(@"请输入客服密码", nil);
                 NSString *cancelButtonTitle = NSLocalizedString(@"取消", nil);
                 NSString *otherButtonTitle = NSLocalizedString(@"确定", nil);
                 
@@ -264,10 +276,14 @@
                 }];
                 
                 UIAlertAction *otherAction = [UIAlertAction actionWithTitle:otherButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                    NSLog(@"The \"Secure Text Entry\" alert's other action occured.");
-                    [self getSign:otherInfo];
-                    // Stop listening for text changed notifications.
-                    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:alertController.textFields.firstObject];
+                    if ([UtilTools isBlankString:otherInfo]) {
+                        [MessageAlertView  showErrorMessage:@"客服密码不能为空"];
+                        return ;
+                    }
+                    else{
+                        [self getSign:otherInfo];
+                        [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:alertController.textFields.firstObject];
+                    }
                 }];
                 
                 // The text field initially has no text in the text field, so we'll disable it.
@@ -310,10 +326,15 @@
                 }];
                 
                 UIAlertAction *otherAction = [UIAlertAction actionWithTitle:otherButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                    NSLog(@"The \"Secure Text Entry\" alert's other action occured.");
-                    [self getSign:otherInfo];
-                    // Stop listening for text changed notifications.
-                    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:alertController.textFields.firstObject];
+                    if ([UtilTools isBlankString:otherInfo]) {
+                        [MessageAlertView  showErrorMessage:@"身份证号码不能为空"];
+                        return ;
+                    }
+                    else{
+                        [self getSign:otherInfo];
+                        [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:alertController.textFields.firstObject];
+                    }
+
                 }];
                 
                 // The text field initially has no text in the text field, so we'll disable it.
@@ -357,10 +378,14 @@
                 }];
                 
                 UIAlertAction *otherAction = [UIAlertAction actionWithTitle:otherButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                    NSLog(@"The \"Secure Text Entry\" alert's other action occured.");
-                    [self getSign:otherInfo];
-                    // Stop listening for text changed notifications.
-                    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:alertController.textFields.firstObject];
+                    if ([UtilTools isBlankString:otherInfo]) {
+                        [MessageAlertView  showErrorMessage:@"验证码不能为空"];
+                        return ;
+                    }
+                    else{
+                        [self getSign:otherInfo];
+                        [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:alertController.textFields.firstObject];
+                    }
                 }];
                 
                 // The text field initially has no text in the text field, so we'll disable it.
@@ -441,7 +466,8 @@
     
     [[NetWorkManager sharedManager]postJSON:@"http://api.tanzhishuju.com/api/gateway" parameters:paraDic success:^(NSURLSessionDataTask *task, id responseObject) {
         
-    
+        [MessageAlertView showLoading:@"数据加载中"];
+
         if ([responseObject[@"code"] hasPrefix:@"0"]||[UtilTools isBlankString:responseObject[@"code"]]) {
             if ([responseObject[@"code"] isEqualToString:@"0000"]) {
                 NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
@@ -452,6 +478,7 @@
                                    responseObject[@"token"],@"token",
                                    nil];
                 [self getResultSign:dic step:@"3"];
+                [MessageAlertView dismissHud];
 
             }
             else
@@ -461,9 +488,15 @@
             }
           
         }
+        else if ([responseObject[@"code"]isEqualToString:@"2038" ]){
+            [MessageAlertView showErrorMessage:@"客服密码不对"];
+            [MessageAlertView dismissHud];
+            
+        }
         else{
             [MessageAlertView showErrorMessage:responseObject[@"msg"]];
-        
+            [MessageAlertView dismissHud];
+
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
@@ -476,14 +509,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end

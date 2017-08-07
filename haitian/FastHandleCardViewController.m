@@ -213,7 +213,7 @@ static NSString *const footerId = @"footerId";
         NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,pro.icon]];
         UIImage * result;
         NSData * data = [NSData dataWithContentsOfURL:url];
-        
+//        http://app.jishiyu11.cn/data/upload/20170628/b287f8c5afd21c491a719ced743d1cf4.jpg
         result = [UIImage imageWithData:data];
         dispatch_sync(dispatch_get_main_queue(), ^
                       {
@@ -221,7 +221,14 @@ static NSString *const footerId = @"footerId";
                           
                       });
     });
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
+
     [cell.titleLabel setText:pro.name];
+    }
+    else
+    {
+        [cell.titleLabel setText:@"及时雨信用卡"];
+    }
     [cell.detailLabel setText:pro.describe];
     return cell;
 }

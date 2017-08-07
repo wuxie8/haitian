@@ -172,6 +172,26 @@
 }
 -(void)loginClick
 {
+    UIView *view1=[self.view viewWithTag:100];
+    
+    UITextField *text1=(UITextField *)[view1 viewWithTag:1000];
+    
+    if (text1.text.length==0) {
+        [MessageAlertView showErrorMessage:@"请输入手机号"];
+        return;
+    }
+    else if (text1.text.length!=11)
+    {
+        [MessageAlertView showErrorMessage:@"请输入正确的手机号"];
+        return;
+    }
+    UIView *view2=[self.view viewWithTag:101];
+
+    UITextField *text2=(UITextField *)[view2 viewWithTag:1001];
+    if ([UtilTools isBlankString:text2.text]) {
+        [MessageAlertView showErrorMessage:@"请输入验证码"];
+        return;
+    }
     NSMutableDictionary *diction=[NSMutableDictionary dictionary];
     for (int i=0; i<2; i++) {
         UIView *view1=[self.view viewWithTag:100+i];

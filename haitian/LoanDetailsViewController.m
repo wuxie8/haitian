@@ -91,7 +91,10 @@
             for (NSString *string in arr1) {
                 [mutableArray1 addObject:[textArray objectAtIndex:[string integerValue]-1]];
             }
+            
+
             [mutableArray1 addObject:@"其他信息认证"];
+            
             NSData*jsondata=    [dic[@"other_id"] dataUsingEncoding:NSASCIIStringEncoding];
             jsonObject2 = [NSJSONSerialization JSONObjectWithData:jsondata
                                                           options:NSJSONReadingAllowFragments
