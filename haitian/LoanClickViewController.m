@@ -182,7 +182,8 @@
         NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
                            product.productID,@"id",
                            Context.currentUser.uid,@"uid",
-                           
+                           appNO,@"channel",
+
                            nil];
         
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];

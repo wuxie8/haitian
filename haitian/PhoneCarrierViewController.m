@@ -21,6 +21,8 @@
     UIButton *but;
     NSDictionary *dic1;
     NSString *otherInfo;
+    NSString *smsCodeNsstring;
+    int timeLength;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -116,7 +118,65 @@
     
     [[NetWorkManager sharedManager]postJSON:@"http://api.tanzhishuju.com/api/gateway" parameters:paraDic success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        if ([responseObject[@"code"] isEqualToString:@"0010"]) {
+        if ([responseObject[@"additional"] isEqualToString:@"true"]) {
+            
+            NSString *title = NSLocalizedString(@"请输入验证码", nil);
+            NSString *cancelButtonTitle = NSLocalizedString(@"取消", nil);
+            NSString *otherButtonTitle = NSLocalizedString(@"确定", nil);
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
+            
+            // Add the text field for the secure text entry.
+            [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+                // Listen for changes to the text field's text so that we can toggle the current
+                // action's enabled property based on whether the user has entered a sufficiently
+                // secure entry.
+                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTextFieldTextDidChangeNotification:) name:UITextFieldTextDidChangeNotification object:textField];
+                
+                textField.secureTextEntry = YES;
+            }];
+            
+            // Create the actions.
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                
+                // Stop listening for text changed notifications.
+                [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:alertController.textFields.firstObject];
+            }];
+            
+            UIAlertAction *otherAction = [UIAlertAction actionWithTitle:otherButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                if ([UtilTools isBlankString:otherInfo]) {
+                    [MessageAlertView  showErrorMessage:@"验证码不能为空"];
+                    return ;
+                }
+                else{
+//                    [self getSign:otherInfo];
+                    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
+                                       @"api.mobile.sendSms",@"method",
+                                       @"0618854278903691",@"apiKey",
+                                       @"1.0.0",@"version",
+                                       
+                                       responseObject[@"token"],@"token",
+                                       
+                                       otherInfo,@"smsCode",
+
+                                       
+                                       
+                                       nil];
+                    
+                    [self getResultSign:dic step:@"4"];
+                    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:alertController.textFields.firstObject];
+                }
+            }];
+            
+            
+            [alertController addAction:cancelAction];
+            [alertController addAction:otherAction];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+          
+
+        }
+       else  if ([responseObject[@"code"] isEqualToString:@"0010"]) {
             NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
                                @"api.common.getStatus",@"method",
                                @"0618854278903691",@"apiKey",
@@ -215,7 +275,7 @@
 {
 
 
-    [[NetWorkManager sharedManager]postJSON:@"http://app.jishiyu11.cn/index.php?g=app&m=userdetail&a=mobileSign" parameters:signDic success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postNoTipJSON:@"http://app.jishiyu11.cn/index.php?g=app&m=userdetail&a=mobileSign" parameters:signDic success:^(NSURLSessionDataTask *task, id responseObject) {
         
         NSMutableDictionary *paradic=[NSMutableDictionary dictionaryWithDictionary:signDic];
         [paradic setObject:[responseObject[@"data"] objectForKey:@"sign"] forKey:@"sign"];
@@ -232,6 +292,10 @@
             dic1=paradic;
             [self getStatus:paradic];
         }
+        else if ([step isEqualToString:@"4"])
+        {
+            [self getSms:paradic];
+        }
         else{
             [self getRusult:paradic];
         }
@@ -242,11 +306,30 @@
     }];
 
 }
+-(void)getSms:(NSDictionary *)diction
+{
+    [[NetWorkManager sharedManager]postNoTipJSON:@"http://api.tanzhishuju.com/api/gateway" parameters:diction success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
+                           @"api.common.getStatus",@"method",
+                           @"0618854278903691",@"apiKey",
+                           @"1.0.0",@"version",
+                           @"mobile",@"bizType",
+                           responseObject[@"token"],@"token",
+                           
+                           nil];
+        [self getResultSign:dic step:@"2"];
+    }
+    failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+}
 //第一步 获取归属地
 -(void)getmobilePhoneOwnership:(NSDictionary *)paraDic
 {
     
-    [[NetWorkManager sharedManager]postJSON:@"http://api.tanzhishuju.com/api/gateway" parameters:paraDic success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postNoTipJSON:@"http://api.tanzhishuju.com/api/gateway" parameters:paraDic success:^(NSURLSessionDataTask *task, id responseObject) {
         
         if ([responseObject[@"code"] isEqualToString:@"0000"]) {
             NSString *typeString = [NSString stringWithFormat:@"%@%@",responseObject[@"province"],responseObject[@"type"]];
@@ -269,7 +352,6 @@
                 
                 // Create the actions.
                 UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-                    NSLog(@"The \"Secure Text Entry\" alert's cancel action occured.");
                     
                     // Stop listening for text changed notifications.
                     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:alertController.textFields.firstObject];
@@ -285,14 +367,8 @@
                         [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:alertController.textFields.firstObject];
                     }
                 }];
+   
                 
-                // The text field initially has no text in the text field, so we'll disable it.
-//                otherAction.enabled = NO;
-                
-                // Hold onto the secure text alert action to toggle the enabled/disabled state when the text changed.
-//                self.secureTextAlertAction = otherAction;
-                
-                // Add the actions.
                 [alertController addAction:cancelAction];
                 [alertController addAction:otherAction];
                 
@@ -309,9 +385,7 @@
                 
                 // Add the text field for the secure text entry.
                 [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-                    // Listen for changes to the text field's text so that we can toggle the current
-                    // action's enabled property based on whether the user has entered a sufficiently
-                    // secure entry.
+               
                     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTextFieldTextDidChangeNotification:) name:UITextFieldTextDidChangeNotification object:textField];
                     
                     textField.secureTextEntry = YES;
@@ -319,9 +393,7 @@
                 
                 // Create the actions.
                 UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-                    NSLog(@"The \"Secure Text Entry\" alert's cancel action occured.");
                     
-                    // Stop listening for text changed notifications.
                     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:alertController.textFields.firstObject];
                 }];
                 
@@ -337,13 +409,7 @@
 
                 }];
                 
-                // The text field initially has no text in the text field, so we'll disable it.
-                //                otherAction.enabled = NO;
-                
-                // Hold onto the secure text alert action to toggle the enabled/disabled state when the text changed.
-                //                self.secureTextAlertAction = otherAction;
-                
-                // Add the actions.
+              
                 [alertController addAction:cancelAction];
                 [alertController addAction:otherAction];
                 
@@ -371,7 +437,6 @@
                 
                 // Create the actions.
                 UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-                    NSLog(@"The \"Secure Text Entry\" alert's cancel action occured.");
                     
                     // Stop listening for text changed notifications.
                     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:alertController.textFields.firstObject];
@@ -388,13 +453,7 @@
                     }
                 }];
                 
-                // The text field initially has no text in the text field, so we'll disable it.
-                //                otherAction.enabled = NO;
                 
-                // Hold onto the secure text alert action to toggle the enabled/disabled state when the text changed.
-                //                self.secureTextAlertAction = otherAction;
-                
-                // Add the actions.
                 [alertController addAction:cancelAction];
                 [alertController addAction:otherAction];
                 
@@ -464,7 +523,7 @@
 -(void)getStatus:(NSDictionary *)paraDic
 {
     
-    [[NetWorkManager sharedManager]postJSON:@"http://api.tanzhishuju.com/api/gateway" parameters:paraDic success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetWorkManager sharedManager]postNoTipJSON:@"http://api.tanzhishuju.com/api/gateway" parameters:paraDic success:^(NSURLSessionDataTask *task, id responseObject) {
         
         [MessageAlertView showLoading:@"数据加载中"];
 
@@ -481,21 +540,90 @@
                 [MessageAlertView dismissHud];
 
             }
+          else  if ([responseObject[@"code"] isEqualToString:@"0001"]) {
+              {
+                  [MessageAlertView dismissHud];
+  
+                  NSString *title = NSLocalizedString(@"请输入验证码", nil);
+                  NSString *cancelButtonTitle = NSLocalizedString(@"取消", nil);
+                  NSString *otherButtonTitle = NSLocalizedString(@"确定", nil);
+                  
+                  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
+                  
+                  // Add the text field for the secure text entry.
+                  [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+                      // Listen for changes to the text field's text so that we can toggle the current
+                      // action's enabled property based on whether the user has entered a sufficiently
+                      // secure entry.
+                      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTextFieldTextDidChangeNotification:) name:UITextFieldTextDidChangeNotification object:textField];
+                      
+                      textField.secureTextEntry = YES;
+                  }];
+                  
+                  // Create the actions.
+                  UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                      
+                      // Stop listening for text changed notifications.
+                      [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:alertController.textFields.firstObject];
+                  }];
+                  
+                  UIAlertAction *otherAction = [UIAlertAction actionWithTitle:otherButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                      if ([UtilTools isBlankString:otherInfo]) {
+                          [MessageAlertView  showErrorMessage:@"验证码不能为空"];
+                          return ;
+                      }
+                      else{
+                          //                    [self getSign:otherInfo];
+                          NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
+                                             @"api.mobile.sendSms",@"method",
+                                             @"0618854278903691",@"apiKey",
+                                             @"1.0.0",@"version",
+                                             
+                                             responseObject[@"token"],@"token",
+                                             
+                                             otherInfo,@"smsCode",
+                                             
+                                             
+                                             
+                                             nil];
+                          
+                          [self getResultSign:dic step:@"4"];
+                          [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:alertController.textFields.firstObject];
+                      }
+                  }];
+                  
+                  
+                  [alertController addAction:cancelAction];
+                  [alertController addAction:otherAction];
+                  
+                  [self presentViewController:alertController animated:YES completion:nil];
+                  
+                  
+              }
+                
+            }
             else
             {
-                [self performSelector:@selector(getStatus:) withObject:dic1 afterDelay:5];
+                timeLength+=10;
+                if (timeLength>120) {
+                    [MessageAlertView showErrorMessage:@"请求超时"];
+                    return ;
+                }
+                [self performSelector:@selector(getStatus:) withObject:dic1 afterDelay:10];
 
             }
           
         }
         else if ([responseObject[@"code"]isEqualToString:@"2038" ]){
-            [MessageAlertView showErrorMessage:@"客服密码不对"];
             [MessageAlertView dismissHud];
+
+            [MessageAlertView showErrorMessage:@"客服密码不对"];
             
         }
         else{
-            [MessageAlertView showErrorMessage:responseObject[@"msg"]];
             [MessageAlertView dismissHud];
+
+            [MessageAlertView showErrorMessage:responseObject[@"msg"]];
 
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

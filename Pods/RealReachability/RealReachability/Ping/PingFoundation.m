@@ -620,7 +620,7 @@ static void SocketReadCallback(CFSocketRef s, CFSocketCallBackType type, CFDataR
     }
     
     int                     err;
-    int                     fd;
+  __unused   int                     fd;
     
     // Open the socket.
     
@@ -657,7 +657,7 @@ static void SocketReadCallback(CFSocketRef s, CFSocketCallBackType type, CFDataR
    
         // The socket will now take care of cleaning up our file descriptor.
         
-        fd = -1;
+       fd = -1;
         
         rls = CFSocketCreateRunLoopSource(NULL, self.socket, 0);
         

@@ -48,5 +48,7 @@
 //贷款
 #define appcode @"jishiyudaikuan"
 
+#define appNO @"QD0089"
+
 
 #endif /* Serve_h */

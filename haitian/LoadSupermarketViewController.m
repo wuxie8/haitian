@@ -310,7 +310,12 @@ static NSString *const footerId = @"footerId1";
     return kMargin;
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
+{        ProductListModel *product=[[productMutableArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+
+    LoadDetailViewController *detail=[[LoadDetailViewController alloc]init];
+    detail.product=product;
+    detail.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:detail animated:YES];
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"]) {
         [self.navigationController pushViewController:[LoginViewController new] animated:YES];
 
@@ -322,7 +327,8 @@ static NSString *const footerId = @"footerId1";
         NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
                            product.id,@"id",
                            Context.currentUser.uid,@"uid",
-                           
+                           appNO,@"channel",
+
                            nil];
         
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];

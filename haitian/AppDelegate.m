@@ -90,7 +90,7 @@ static NSString *const adUrl = @"adUrl";
             NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
                                [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString],@"idfa",
                                @"1.0.0",@"mac",
-                               @"QD0089",@"channel",
+                               appNO,@"channel",
                                nil];
             [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=toutiao&a=activate",SERVERE] parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
                 

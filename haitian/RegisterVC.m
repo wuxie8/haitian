@@ -115,7 +115,7 @@
                       registerDic[@"0"],@"mobile",
 //                      registerDic[@"1"],@"password",
                        registerDic[@"1"],@"code",
-                       @"QD0089",@"no",
+                       appNO,@"no",
 
                        
                        nil];

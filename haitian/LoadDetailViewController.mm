@@ -91,7 +91,7 @@
             for (NSString *string in arr1) {
                 [mutableArray1 addObject:[textArray objectAtIndex:[string integerValue]-1]];
             }
-            [mutableArray1 addObject:@"其他信息认证"];
+//            [mutableArray1 addObject:@"其他信息认证"];
             NSData*jsondata=    [dic[@"other_id"] dataUsingEncoding:NSASCIIStringEncoding];
             jsonObject2 = [NSJSONSerialization JSONObjectWithData:jsondata
                                                             options:NSJSONReadingAllowFragments
@@ -209,8 +209,9 @@
         [basic setClickBlock:^(){
             Context.currentUser.base_auth=YES;
             [NSKeyedArchiver archiveRootObject:Context.currentUser toFile:DOCUMENT_FOLDER(@"loginedUser")];
-            UIButton *but=[self.view viewWithTag:1000];
-            [but setImage:[UIImage imageNamed:Context.currentUser.base_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
+            UIButton *but1=[self.view viewWithTag:1000+[mutableArray1 indexOfObject:@"基本信息认证"]] ;
+
+            [but1 setImage:[UIImage imageNamed:Context.currentUser.base_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
         }];
         basic.product=self.product;
         [self.navigationController pushViewController:basic animated:YES];
@@ -218,15 +219,18 @@
     }
     else if ([[mutableArray1 objectAtIndex:indexPath.section]isEqualToString:@"手机运营商"])
     {
-        
+        PhoneCarrierViewController *phone=[PhoneCarrierViewController new];
+                 [phone setClickBlock:^(){
+                     UIButton *but1=[self.view viewWithTag:1000+[mutableArray1 indexOfObject:@"手机运营商"]] ;
+                     
+                     [but1 setImage:[UIImage imageNamed:Context.currentUser.base_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
+                 }];
 
-
-      [self.navigationController pushViewController:[PhoneCarrierViewController new] animated:YES];
+      [self.navigationController pushViewController:phone animated:YES];
     
     }
     else if ([[mutableArray1 objectAtIndex:indexPath.section]isEqualToString:@"芝麻信用"])
     {
-//        [self.navigationController pushViewController:[CreditSesameViewController new] animated:YES];
         [self launchSDK];
         
     }
@@ -237,7 +241,7 @@
             // remove the transform animation if the animation finished and wasn't interrupted
             Context.currentUser.idcard_auth=YES;
             [NSKeyedArchiver archiveRootObject:Context.currentUser toFile:DOCUMENT_FOLDER(@"loginedUser")];
-            UIButton *but=[self.view viewWithTag:1003];
+            UIButton *but=[self.view viewWithTag:1000+[mutableArray1 indexOfObject:@"身份证"]];
             [but setImage:[UIImage imageNamed:Context.currentUser.idcard_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
             
         }];
@@ -251,7 +255,7 @@
             // remove the transform animation if the animation finished and wasn't interrupted
             Context.currentUser.other_auth=YES;
             [NSKeyedArchiver archiveRootObject:Context.currentUser toFile:DOCUMENT_FOLDER(@"loginedUser")];
-            UIButton *but=[self.view viewWithTag:1004];
+            UIButton *but=[self.view viewWithTag:1000+[mutableArray1 indexOfObject:@"其他信息认证"]];
             [but setImage:[UIImage imageNamed:Context.currentUser.other_auth?@"certified":@"Certification"] forState:UIControlStateNormal];
             
         }];

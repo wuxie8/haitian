@@ -147,9 +147,9 @@ static NSString *const adUrl = @"adUrl";
             {
                 [[NSUserDefaults standardUserDefaults] setBool:[[dic[@"data"] objectForKey:@"review"]boolValue] forKey:@"review"];
 
-                
-            }
+                [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"review"];
 
+            }
             if (![UtilTools isBlankArray:arr]) {
                 for (int i=0; i<arr.count; i++) {
                     NSDictionary *diction=arr[i];
@@ -540,7 +540,8 @@ static NSString *const adUrl = @"adUrl";
             NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
                                product.productID,@"id",
                                Context.currentUser.uid,@"uid",
-                               
+                               appNO,@"channel",
+
                                nil];
             
             AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
