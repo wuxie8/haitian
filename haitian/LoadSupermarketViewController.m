@@ -172,7 +172,8 @@ static NSString *const footerId = @"footerId1";
     pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
     pageView.pageControl = pageControl;
     [pageView addSubview:pageControl];
-    [pageView stopTimer];
+ 
+bannerMutableArray.count==1?[pageView stopTimer]:[pageView startTimer];
     [self.view addSubview:pageView];
 
 }
@@ -182,6 +183,7 @@ static NSString *const footerId = @"footerId1";
 }
 #pragma mark NewPagedFlowView Datasource
 - (NSInteger)numberOfPagesInFlowView:(WSPageView *)flowView {
+    
     return  [UtilTools isBlankArray:bannerMutableArray]?1:bannerMutableArray.count;
 }
 
@@ -310,12 +312,7 @@ static NSString *const footerId = @"footerId1";
     return kMargin;
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{        ProductListModel *product=[[productMutableArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-
-    LoadDetailViewController *detail=[[LoadDetailViewController alloc]init];
-    detail.product=product;
-    detail.hidesBottomBarWhenPushed=YES;
-    [self.navigationController pushViewController:detail animated:YES];
+{
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"]) {
         [self.navigationController pushViewController:[LoginViewController new] animated:YES];
 
@@ -330,20 +327,18 @@ static NSString *const footerId = @"footerId1";
                            appNO,@"channel",
 
                            nil];
-        
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        manager.requestSerializer.stringEncoding = NSUTF8StringEncoding;
-        [manager.requestSerializer setValue:@"text/html; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-        
         NSString *urlStr = [NSString stringWithFormat:@"%@&m=product&a=hits",SERVERE];
-        [manager GET:urlStr parameters:dic progress:nil success:^(NSURLSessionDataTask *  task, id   responseObject) {
+
+        [[NetWorkManager sharedManager]postJSON:urlStr parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
             
+           
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            NSLog(@"%@",error);
             
-        } failure:^(NSURLSessionDataTask *  task, NSError *  error) {
             
         }];
 
+     
         if (![[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
 
         if ([product.api_type isEqualToString:@"1"]) {

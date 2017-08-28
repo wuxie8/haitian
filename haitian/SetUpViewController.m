@@ -76,7 +76,8 @@
             
             break;
         case 2:
-        { [self.navigationController pushViewController:[LoginViewController new] animated:YES];
+        {
+            [self.navigationController pushViewController:[LoginViewController new] animated:YES];
             [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"kIsLogin"];
             Context.currentUser = nil;
             //用户信息归档
