@@ -1,31 +1,25 @@
 //
-//  ProductModel.h
+//  ClassModel.h
 //  haitian
 //
-//  Created by Admin on 2017/6/7.
+//  Created by Admin on 2017/8/29.
 //  Copyright © 2017年 Admin. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+@class ClassListModel;
 
-@interface ProductModel : NSObject
+@interface ClassModel : NSObject
+@property (nonatomic,copy) NSString *cat_icon;
 
-@property (nonatomic, copy) NSString *link;
-
-@property (nonatomic, copy) NSString *name;
-
-@property (nonatomic, copy) NSString *icon;
-
-@property (nonatomic, copy) NSString *describe;
-
-@property (nonatomic, copy) NSString *created_at;
-
-@property (nonatomic, copy) NSString *updated_at;
-
-@property (nonatomic, copy) NSString *id;
+@property (nonatomic,copy) NSString *cat_name;
+@property (nonatomic,copy) NSString *id;
+@property (nonatomic, strong) NSArray<ClassListModel *> *classListArray;
 
 @end
-@interface ProductListModel : NSObject
+
+
+@interface ClassListModel : NSObject
 
 @property (nonatomic, copy) NSString *created_at;
 

@@ -164,7 +164,7 @@ static NSString *const footerId = @"footerId1";
     pageView.minimumPageAlpha = 0.4;   //非当前页的透明比例
     pageView.minimumPageScale = 0.85;  //非当前页的缩放比例
     pageView.orginPageCount = 3; //原始页数
-    
+
     pageView.backgroundColor=[UIColor grayColor];
     //初始化pageControl
     UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, pageView.frame.size.height - 8 - 10, WIDTH, 8)];
@@ -277,10 +277,10 @@ bannerMutableArray.count==1?[pageView stopTimer]:[pageView startTimer];
     if([kind isEqualToString:UICollectionElementKindSectionHeader])
     {
        
-        if(headerView == nil)
-        {
-            headerView = [[UICollectionReusableView alloc] init];
-        }
+//        if(headerView == nil)
+//        {
+//            headerView = [[UICollectionReusableView alloc] init];
+//        }
         headerView.backgroundColor = AppPageColor;
         for (UIView *view in headerView.subviews) {
             [view removeFromSuperview];

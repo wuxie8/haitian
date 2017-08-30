@@ -39,6 +39,8 @@
 		842E62161EB0915D00BF91FB /* DetectionSuccessfulViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E62151EB0915D00BF91FB /* DetectionSuccessfulViewController.m */; };
 		842E621B1EB0A19E00BF91FB /* BankCardAuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E621A1EB0A19E00BF91FB /* BankCardAuthenticationViewController.m */; };
 		84361FDC1EB1EFB9008595E7 /* YLSOPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84361FDB1EB1EFB9008595E7 /* YLSOPickerView.m */; };
+		8436738A1F55477200F6E5C3 /* HomePageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 843673891F55477200F6E5C3 /* HomePageCollectionViewCell.m */; };
+		8436738E1F55674C00F6E5C3 /* ClassModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436738D1F55674C00F6E5C3 /* ClassModel.m */; };
 		843959871EC3FEAC0093D906 /* libUMessage_Sdk_1.5.0a.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 843959851EC3FEAC0093D906 /* libUMessage_Sdk_1.5.0a.a */; };
 		843959891EC3FEC60093D906 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843959881EC3FEC60093D906 /* UserNotifications.framework */; };
 		843DD77E1EB2F14A0014E283 /* DataSubmittedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843DD77D1EB2F14A0014E283 /* DataSubmittedViewController.m */; };
@@ -76,6 +78,7 @@
 		846C9E9B1ED81EA60099CC51 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 846C9E9A1ED81EA60099CC51 /* CoreFoundation.framework */; };
 		846C9E9D1ED81EE00099CC51 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 846C9E9C1ED81EE00099CC51 /* Security.framework */; };
 		84747CCE1EFBDB55006AF462 /* OtherInformationAuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84747CCD1EFBDB55006AF462 /* OtherInformationAuthenticationViewController.m */; };
+		8476E8181F5537C5004C1608 /* CCPScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8476E8171F5537C5004C1608 /* CCPScrollView.m */; };
 		847944BB1ECED16200227EC8 /* WebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 847944BA1ECED16200227EC8 /* WebVC.m */; };
 		847A11501EA45F0C002D8832 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114D1EA45F0C002D8832 /* User.m */; };
 		847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114F1EA45F0C002D8832 /* UserInfoContext.m */; };
@@ -265,6 +268,10 @@
 		842E621A1EB0A19E00BF91FB /* BankCardAuthenticationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankCardAuthenticationViewController.m; sourceTree = "<group>"; };
 		84361FDA1EB1EFB9008595E7 /* YLSOPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLSOPickerView.h; sourceTree = "<group>"; };
 		84361FDB1EB1EFB9008595E7 /* YLSOPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLSOPickerView.m; sourceTree = "<group>"; };
+		843673881F55477200F6E5C3 /* HomePageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageCollectionViewCell.h; sourceTree = "<group>"; };
+		843673891F55477200F6E5C3 /* HomePageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageCollectionViewCell.m; sourceTree = "<group>"; };
+		8436738C1F55674C00F6E5C3 /* ClassModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassModel.h; sourceTree = "<group>"; };
+		8436738D1F55674C00F6E5C3 /* ClassModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassModel.m; sourceTree = "<group>"; };
 		843959851EC3FEAC0093D906 /* libUMessage_Sdk_1.5.0a.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.5.0a.a; sourceTree = "<group>"; };
 		843959881EC3FEC60093D906 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		8439598A1EC3FEF60093D906 /* haitian.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = haitian.entitlements; sourceTree = "<group>"; };
@@ -333,6 +340,8 @@
 		846C9E9F1ED821A40099CC51 /* AppDelegate+JPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+JPush.m"; sourceTree = "<group>"; };
 		84747CCC1EFBDB55006AF462 /* OtherInformationAuthenticationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherInformationAuthenticationViewController.h; sourceTree = "<group>"; };
 		84747CCD1EFBDB55006AF462 /* OtherInformationAuthenticationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherInformationAuthenticationViewController.m; sourceTree = "<group>"; };
+		8476E8161F5537C5004C1608 /* CCPScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPScrollView.h; sourceTree = "<group>"; };
+		8476E8171F5537C5004C1608 /* CCPScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCPScrollView.m; sourceTree = "<group>"; };
 		847944B91ECED16200227EC8 /* WebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebVC.h; sourceTree = "<group>"; };
 		847944BA1ECED16200227EC8 /* WebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebVC.m; sourceTree = "<group>"; };
 		847A114C1EA45F0C002D8832 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -696,6 +705,15 @@
 			name = BankCardAuthentication;
 			sourceTree = "<group>";
 		};
+		8436738B1F55673900F6E5C3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8436738C1F55674C00F6E5C3 /* ClassModel.h */,
+				8436738D1F55674C00F6E5C3 /* ClassModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		844E163B1EC9797F00F4EA80 /* Remind */ = {
 			isa = PBXGroup;
 			children = (
@@ -823,6 +841,15 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		8476E8151F553789004C1608 /* CCPScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				8476E8161F5537C5004C1608 /* CCPScrollView.h */,
+				8476E8171F5537C5004C1608 /* CCPScrollView.m */,
+			);
+			name = CCPScrollView;
+			sourceTree = "<group>";
+		};
 		847A11521EA45F16002D8832 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -837,6 +864,8 @@
 		849012B21F02477F00E3D62A /* Jishiyu-HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				8436738B1F55673900F6E5C3 /* Model */,
+				8476E8151F553789004C1608 /* CCPScrollView */,
 				849012CB1F024C3000E3D62A /* HomeProductModel.h */,
 				849012CC1F024C3000E3D62A /* HomeProductModel.m */,
 				849012BF1F024A2500E3D62A /* AmountClassificationViewController.h */,
@@ -851,6 +880,8 @@
 				849012BD1F0249D600E3D62A /* LoanDetailsViewController.m */,
 				849012AF1F02477B00E3D62A /* JishiyuViewController.h */,
 				849012B01F02477B00E3D62A /* JishiyuViewController.m */,
+				843673881F55477200F6E5C3 /* HomePageCollectionViewCell.h */,
+				843673891F55477200F6E5C3 /* HomePageCollectionViewCell.m */,
 				849012B91F0249AA00E3D62A /* LoanClassification.h */,
 				849012BA1F0249AA00E3D62A /* LoanClassification.m */,
 				849012B61F0248F200E3D62A /* LoanClasssificationVC.h */,
@@ -1483,6 +1514,7 @@
 				842C82C41EAEFDCB005D27A7 /* IdOpposite ViewController.m in Sources */,
 				84C50C481EADF40D00AD0B62 /* UIImage+Extend.m in Sources */,
 				84939E2F1EFA90DA00152EAF /* BasicInformationViewController.m in Sources */,
+				8436738A1F55477200F6E5C3 /* HomePageCollectionViewCell.m in Sources */,
 				84A274241ED3DAAF009462F4 /* AccumulationFundViewController.m in Sources */,
 				847A11501EA45F0C002D8832 /* User.m in Sources */,
 				844E16431EC97A2000F4EA80 /* HcdDateTimePickerView.m in Sources */,
@@ -1510,6 +1542,7 @@
 				842DCD1E1F1DF40F00078589 /* AdvertiseViewController.m in Sources */,
 				846856411EA0902D00C74F87 /* ASValuePopUpView.m in Sources */,
 				84A733531EB86C82008ABB7E /* AddressBookVC.m in Sources */,
+				8436738E1F55674C00F6E5C3 /* ClassModel.m in Sources */,
 				84B9DBF11E9DC0990066A92D /* ViewController.m in Sources */,
 				84939E321EFAA48600152EAF /* LoadDetailViewController.mm in Sources */,
 				849012CA1F024B3F00E3D62A /* BtnView.m in Sources */,
@@ -1573,6 +1606,7 @@
 				84F5D4271EA768EA00EC8C9D /* TZTestCell.m in Sources */,
 				84E47DC81F13507400C72D20 /* PhoneCarrierViewController.m in Sources */,
 				84F5D4041EA7492A00EC8C9D /* FeedbackViewController.m in Sources */,
+				8476E8181F5537C5004C1608 /* CCPScrollView.m in Sources */,
 				844E16441EC97A2000F4EA80 /* MXSCycleScrollView.m in Sources */,
 				84B9DBEB1E9DC0990066A92D /* main.m in Sources */,
 				849012B51F02481F00E3D62A /* JishiyuTableViewCell.m in Sources */,

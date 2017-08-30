@@ -17,17 +17,29 @@
 #import "AmountClassificationViewController.h"
 #import "LoanDetailsViewController.h"
 #import "AdvertiseViewController.h"
+#import "CCPScrollView.h"
+#import "HomePageCollectionViewCell.h"
+#import "ClassModel.h"
 #define  ScrollviewWeight 50
 #define  ScrollviewHeight 180
 #define SectionHeight 110
 #define SectionHeadHeight 60
+#define ccpViewHeadHeight 50
 
+#define kMargin 10
+
+static NSString *const cellId = @"cellId1";
+static NSString *const headerId = @"headerId1";
+static NSString *const footerId = @"footerId1";
 static NSString *const adUrl = @"adUrl";
 
-@interface JishiyuViewController ()<UITableViewDelegate,UITableViewDataSource,WSPageViewDelegate,WSPageViewDataSource>
+@interface JishiyuViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UITableViewDelegate,UITableViewDataSource,WSPageViewDelegate,WSPageViewDataSource>
 @property(strong, nonatomic) UIScrollView *scrollview;
 @property(strong, nonatomic)NSMutableArray *productArray;
+@property(strong, nonatomic)NSMutableArray *classArray;
 
+@property (nonatomic, strong)UICollectionView *LoadcollectionView;
+@property(strong, nonatomic)UIView *headView;
 @end
 
 @implementation JishiyuViewController
@@ -52,7 +64,7 @@ static NSString *const adUrl = @"adUrl";
     
     
     self.title=@"及时雨贷款";
-    
+    [self getCollectionData];
     
     page=1;
     
@@ -99,8 +111,8 @@ static NSString *const adUrl = @"adUrl";
     tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-64-44)];
     tab.delegate=self;
     tab.dataSource=self;
-    tab.backgroundColor=AppPageColor;
-    tab.tableHeaderView=[self creatUI];
+    tab.backgroundColor=[UIColor whiteColor];
+    tab.tableHeaderView=self.headView;
     
     [self.view addSubview:tab];
     // Do any additional setup after loading the view.
@@ -118,6 +130,40 @@ static NSString *const adUrl = @"adUrl";
 
     }
     
+}
+-(void)getCollectionData{
+   
+    [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@&m=productcate&a=getList",SERVEREURL] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"code"] isEqualToString:@"0000"]) {
+            NSArray *arr=responseObject[@"data"];
+            for (NSDictionary *dic in arr) {
+                ClassModel *class=[[ClassModel alloc]init];
+                class.cat_icon=dic[@"cat_icon"];
+                class.cat_name=dic[@"cat_name"];
+                NSArray *classArray=dic[@"data"];
+                if (![UtilTools isBlankArray:classArray]) {
+                    NSMutableArray *classMutableArray=[NSMutableArray array];
+                    for (NSDictionary *diction in classArray) {
+                        ClassListModel *classList=[[ClassListModel alloc]init];
+                        [classList setValuesForKeysWithDictionary:diction];
+                        [classMutableArray addObject:classList];
+                    }
+                    class.classListArray=classMutableArray;
+                }
+            
+                [self.classArray addObject:class];
+            }
+            ClassModel *class=[[ClassModel alloc]init];
+            [self.classArray addObject:class];
+
+            [_LoadcollectionView reloadData];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+
 }
 -(void)getList
 {
@@ -220,27 +266,43 @@ static NSString *const adUrl = @"adUrl";
     
 }
 
-- (UIView *)creatUI {
-    
-    WSPageView *pageView = [[WSPageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH,ScrollviewHeight)];
-    pageView.delegate = self;
-    pageView.dataSource = self;
-    pageView.minimumPageAlpha = 0.4;   //非当前页的透明比例
-    pageView.minimumPageScale = 0.85;  //非当前页的缩放比例
-    pageView.orginPageCount = 1; //原始页数
-    pageView.autoTime = 3;    //自动切换视图的时间,默认是5.0
-
-    pageView.backgroundColor=[UIColor grayColor];
-    //初始化pageControl
+- (UIView *)headView {
+    if (!_headView) {
+        _headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, (WIDTH-kMargin*7)/2+ScrollviewHeight+30)];
+        WSPageView *pageView = [[WSPageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH,ScrollviewHeight)];
+        pageView.delegate = self;
+        pageView.dataSource = self;
+        pageView.minimumPageAlpha = 0.4;   //非当前页的透明比例
+        pageView.minimumPageScale = 0.85;  //非当前页的缩放比例
+        pageView.orginPageCount = 1; //原始页数
+        pageView.autoTime = 3;    //自动切换视图的时间,默认是5.0
+        
+        pageView.backgroundColor=[UIColor grayColor];
+        //初始化pageControl
         UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, pageView.frame.size.height - 8 - 10, WIDTH, 8)];
         pageControl.pageIndicatorTintColor = [UIColor grayColor];
         pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
         pageView.pageControl = pageControl;
         [pageView addSubview:pageControl];
         [pageView startTimer];
-    [self.view addSubview:pageView];
-    
-    return pageView;
+        _LoadcollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(pageView.frame), WIDTH, (WIDTH-kMargin*7)/2+20) collectionViewLayout:[UICollectionViewFlowLayout new]];
+        [_LoadcollectionView setBackgroundColor:[UIColor whiteColor]];
+        _LoadcollectionView.delegate = self;
+        _LoadcollectionView.dataSource = self;
+        self.LoadcollectionView.alwaysBounceVertical = YES;
+        // 注册cell、sectionHeader、sectionFooter
+        [_LoadcollectionView registerClass:[HomePageCollectionViewCell class] forCellWithReuseIdentifier:cellId];
+        [_LoadcollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerId];
+        [_LoadcollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerId];
+        _LoadcollectionView.scrollEnabled=NO;
+            UIView *backgroundview1=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_LoadcollectionView.frame), WIDTH, 5)];
+            backgroundview1.backgroundColor=kColorFromRGBHex(0xf3f3f3);
+            [_headView addSubview:backgroundview1];
+        [_headView addSubview:pageView];
+        [_headView addSubview:_LoadcollectionView];
+    }
+    return _headView;
+   
 }
 
 #pragma mark NewPagedFlowView Delegate
@@ -321,7 +383,7 @@ static NSString *const adUrl = @"adUrl";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 2;//返回标题数组中元素的个数来确定分区的个数
+    return 1;//返回标题数组中元素的个数来确定分区的个数
     
 }
 
@@ -329,36 +391,57 @@ static NSString *const adUrl = @"adUrl";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    switch (section) {
-            
-        case 0:
-            
-            return  1;//每个分区通常对应不同的数组，返回其元素个数来确定分区的行数
-            
-            break;
-            
-        case 1:
-            
+//    switch (section) {
+//            
+//        case 0:
+//            
+//            return  1;//每个分区通常对应不同的数组，返回其元素个数来确定分区的行数
+//            
+//            break;
+//            
+//        case 1:
+    
             return  [self.productArray count];
+//            
+//            break;
+//            
+//        default:
+//            
+//            return 0;
+//            
+//            break;
             
-            break;
-            
-        default:
-            
-            return 0;
-            
-            break;
-            
-    }
+//    }
     
 }
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH,  SectionHeadHeight)] ;
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH,  SectionHeadHeight+ccpViewHeadHeight)] ;
     
     [view setBackgroundColor:[UIColor whiteColor]];//改变标题的颜色，也可用图片
     view .backgroundColor=AppPageColor;
-    UIImageView *image=[[UIImageView alloc]initWithFrame:CGRectMake(WIDTH/2-100, 10, 200, 40)];
+    
+    CCPScrollView *ccpView = [[CCPScrollView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, ccpViewHeadHeight)];
+    
+    ccpView.titleArray = self.productArray;
+    
+    ccpView.titleFont = 10;
+    
+//    ccpView.titleColor = [UIColor greenColor];
+    
+    ccpView.BGColor = [UIColor whiteColor];
+    
+    [ccpView clickTitleLabel:^(NSInteger index) {
+        
+        NSLog(@"%ld",index);
+        
+        
+    }];
+    
+    [view addSubview:ccpView];
+
+    UIImageView *image=[[UIImageView alloc]initWithFrame:CGRectMake(WIDTH/2-100, CGRectGetMaxY(ccpView.frame)+10, 200, 40)];
     [image setContentMode:UIViewContentModeScaleAspectFit];
     [image setClipsToBounds:YES];
     
@@ -366,7 +449,7 @@ static NSString *const adUrl = @"adUrl";
     [view addSubview:image];
     
     
-    UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(WIDTH-60, 30, 50, 25)];
+    UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(WIDTH-60, CGRectGetMaxY(ccpView.frame)+30, 50, 25)];
     [but setImage:[UIImage imageNamed:@"change"] forState:UIControlStateNormal];
     
     [but.imageView setContentMode:UIViewContentModeScaleAspectFit];
@@ -380,23 +463,24 @@ static NSString *const adUrl = @"adUrl";
     [view addSubview:but];
     
     
-    UIView *backgroundview1=[[UIView alloc]initWithFrame:CGRectMake(0, 58, WIDTH, 2)];
-    backgroundview1.backgroundColor=kColorFromRGB(245, 245, 243);
-    [view addSubview:backgroundview1];
+//    UIView *backgroundview1=[[UIView alloc]initWithFrame:CGRectMake(0, 58, WIDTH, 2)];
+//    backgroundview1.backgroundColor=kColorFromRGB(245, 245, 243);
+//    [view addSubview:backgroundview1];
     
     return view;
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section==1) {
-        return  SectionHeadHeight;
-    }
-    else
-    {
-        return 0;
-    }
-    
+//    if (section==1) {
+//        return  SectionHeadHeight;
+//    }
+//    else
+//    {
+//        return 0;
+//    }
+    return  SectionHeadHeight+ccpViewHeadHeight;
+
     
 }
 
@@ -404,10 +488,10 @@ static NSString *const adUrl = @"adUrl";
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    if (indexPath.section==0 ) {
-        return SectionHeight;
-    }
-    else
+//    if (indexPath.section==0 ) {
+//        return SectionHeight;
+//    }
+//    else
         return 80;
 }
 -(void)viewDidLayoutSubviews
@@ -434,7 +518,7 @@ static NSString *const adUrl = @"adUrl";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    if (indexPath.section==1) {
+//    if (indexPath.section==1) {
         static NSString *HealthBroadcastCellID=@"HealthBroadcastCellID";
         JishiyuTableViewCell *jishiyu=[tableView dequeueReusableCellWithIdentifier:HealthBroadcastCellID];
         if (!jishiyu) {
@@ -454,33 +538,33 @@ static NSString *const adUrl = @"adUrl";
         return jishiyu;
 
         
-    }
-    else
-    {
-        UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell"];
-        if (!cell) {
-            cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
-        NSArray *images=@[@"Fastloan",@"recommend",@"Creditcardreport"];
-        for (int i=0; i<images.count; i++) {
-            UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(WIDTH/images.count*i, 10, WIDTH/images.count, SectionHeight-20)];
-            [but setImage:[UIImage imageNamed:images[i]] forState:UIControlStateNormal];
-            
-            [but.imageView setContentMode:UIViewContentModeScaleAspectFit];
-            [but.imageView setClipsToBounds:YES];
-            
-            but.contentHorizontalAlignment= UIControlContentHorizontalAlignmentFill;
-            
-            but.contentVerticalAlignment = UIControlContentVerticalAlignmentFill;
-            [but addTarget:self action:@selector(butClick:) forControlEvents:UIControlEventTouchUpInside];
-            but.tag=i;
-            
-            [cell.contentView addSubview:but];
-        }
-  
-        return cell;
-    }
+//    }
+//    else
+//    {
+//        UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell"];
+//        if (!cell) {
+//            cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        }
+//        NSArray *images=@[@"Fastloan",@"recommend",@"Creditcardreport"];
+//        for (int i=0; i<images.count; i++) {
+//            UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(WIDTH/images.count*i, 10, WIDTH/images.count, SectionHeight-20)];
+//            [but setImage:[UIImage imageNamed:images[i]] forState:UIControlStateNormal];
+//            
+//            [but.imageView setContentMode:UIViewContentModeScaleAspectFit];
+//            [but.imageView setClipsToBounds:YES];
+//            
+//            but.contentHorizontalAlignment= UIControlContentHorizontalAlignmentFill;
+//            
+//            but.contentVerticalAlignment = UIControlContentVerticalAlignmentFill;
+//            [but addTarget:self action:@selector(butClick:) forControlEvents:UIControlEventTouchUpInside];
+//            but.tag=i;
+//            
+//            [cell.contentView addSubview:but];
+//        }
+//  
+//        return cell;
+//    }
 }
 -(void)butClick:(UIButton *)sender
 {
@@ -535,7 +619,6 @@ static NSString *const adUrl = @"adUrl";
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"])
     {
-        if (indexPath.section==1) {
             HomeProductModel *product=(HomeProductModel *)self.productArray[indexPath.row];
 
             NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
@@ -604,7 +687,6 @@ static NSString *const adUrl = @"adUrl";
                 }
             }
 
-        }
         
     }
     else
@@ -614,6 +696,81 @@ static NSString *const adUrl = @"adUrl";
         
     }
 }
+#pragma mark ---- UICollectionViewDataSource
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
+
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    
+    return self.classArray.count;
+}
+
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ClassModel*class=self.classArray[indexPath.row];
+    HomePageCollectionViewCell *cell =(HomePageCollectionViewCell*) [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+    if (indexPath.row==self.classArray.count-1) {
+        [cell.titleLabel setText:@"征信查询"];
+        [cell.bankimageView  setImage:[UIImage imageNamed:@"Creditcardreport"]];
+
+    }
+    else{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,class.cat_icon]];
+        UIImage * result;
+        NSData * data = [NSData dataWithContentsOfURL:url];
+        
+        result = [UIImage imageWithData:data];
+        dispatch_sync(dispatch_get_main_queue(), ^
+                      {
+                          [cell.bankimageView  setImage:result];
+                          
+                      });
+    });
+    [cell.titleLabel setText:class.cat_name];
+    }
+    [cell.backgroundView setClipsToBounds:YES];
+    return cell;
+}
+
+#pragma mark UICollectionViewDelegateFlowLayout
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake((WIDTH-kMargin*7)/4, (WIDTH-kMargin*7)/4);
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsMake(kMargin, kMargin, kMargin, kMargin);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return kMargin;
+}
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row==7) {
+        WebVC *vc = [[WebVC alloc] init];
+        [vc setNavTitle:@"信用卡查询"];
+        [vc loadFromURLStr:@"http://www.kuaicha.info/mobile/credit/credit.html"];
+        vc.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:vc animated:NO];
+    }
+}
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return kMargin;
+}
+
+
 
 -(NSMutableArray *)productArray
 {
@@ -623,7 +780,14 @@ static NSString *const adUrl = @"adUrl";
     }
     return _productArray;
 }
-
+-(NSMutableArray *)classArray
+{
+    if (!_classArray) {
+        _classArray=[NSMutableArray array];
+        
+    }
+    return _classArray;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

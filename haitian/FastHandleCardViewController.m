@@ -72,7 +72,6 @@ static NSString *const footerId = @"footerId";
     pageView.minimumPageScale = 0.85;  //非当前页的缩放比例
     pageView.orginPageCount = 3; //原始页数
     pageView.autoTime = 3;    //自动切换视图的时间,默认是5.0
-
     pageView.backgroundColor=[UIColor grayColor];
     //初始化pageControl
     UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, pageView.frame.size.height - 8 - 10, WIDTH, 8)];
