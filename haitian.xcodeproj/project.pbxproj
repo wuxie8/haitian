@@ -10,6 +10,18 @@
 		2E2193132720ACDF463B286D /* libPods-haitian.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C281EA8F719D2415E82CC71C /* libPods-haitian.a */; };
 		8402B9DA1E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402B9D91E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m */; };
 		8402B9F91E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8402B9F81E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m */; };
+		8403316D1F566FE900DE1E60 /* LoanDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8403316C1F566FE800DE1E60 /* LoanDetaiViewController.m */; };
+		840331761F56701300DE1E60 /* BottomLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8403316F1F56701300DE1E60 /* BottomLineView.m */; };
+		840331771F56701300DE1E60 /* OptionBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840331711F56701300DE1E60 /* OptionBarController.m */; };
+		840331781F56701300DE1E60 /* OptionsBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 840331731F56701300DE1E60 /* OptionsBarItem.m */; };
+		840331791F56701300DE1E60 /* OptionsBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 840331751F56701300DE1E60 /* OptionsBarView.m */; };
+		8403317D1F56707500DE1E60 /* AuthenticationInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8403317C1F56707500DE1E60 /* AuthenticationInformationViewController.m */; };
+		840331801F5671F100DE1E60 /* CommentariesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8403317F1F5671F100DE1E60 /* CommentariesViewController.m */; };
+		840331831F56943400DE1E60 /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840331821F56943400DE1E60 /* ProductDetailViewController.m */; };
+		840331861F569F4E00DE1E60 /* ZJD_StarEvaluateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 840331851F569F4E00DE1E60 /* ZJD_StarEvaluateView.m */; };
+		840331891F569F5600DE1E60 /* UIView+View.m in Sources */ = {isa = PBXBuildFile; fileRef = 840331881F569F5600DE1E60 /* UIView+View.m */; };
+		8403318C1F56A1A600DE1E60 /* AddEvaluationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8403318B1F56A1A600DE1E60 /* AddEvaluationViewController.m */; };
+		8403318F1F56A2DE00DE1E60 /* AppraiseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8403318E1F56A2DE00DE1E60 /* AppraiseTableViewCell.m */; };
 		84174D691EDEC3FA00A815B3 /* PersonalDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84174D681EDEC3FA00A815B3 /* PersonalDataViewController.m */; };
 		8420A4DA1EE4E808001C5EAC /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8420A4D91EE4E808001C5EAC /* libc++.tbd */; };
 		842A01691EC9464200143E4A /* NewRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842A01681EC9464200143E4A /* NewRemindViewController.m */; };
@@ -220,6 +232,30 @@
 		8402B9D91E9F1C88000CDFF7 /* LoadSupermarketCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadSupermarketCollectionViewCell.m; sourceTree = "<group>"; };
 		8402B9F71E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastHandleCardCollectionViewCell.h; sourceTree = "<group>"; };
 		8402B9F81E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastHandleCardCollectionViewCell.m; sourceTree = "<group>"; };
+		8403316B1F566FE800DE1E60 /* LoanDetaiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoanDetaiViewController.h; sourceTree = "<group>"; };
+		8403316C1F566FE800DE1E60 /* LoanDetaiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoanDetaiViewController.m; sourceTree = "<group>"; };
+		8403316E1F56701300DE1E60 /* BottomLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomLineView.h; sourceTree = "<group>"; };
+		8403316F1F56701300DE1E60 /* BottomLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomLineView.m; sourceTree = "<group>"; };
+		840331701F56701300DE1E60 /* OptionBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionBarController.h; sourceTree = "<group>"; };
+		840331711F56701300DE1E60 /* OptionBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionBarController.m; sourceTree = "<group>"; };
+		840331721F56701300DE1E60 /* OptionsBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsBarItem.h; sourceTree = "<group>"; };
+		840331731F56701300DE1E60 /* OptionsBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsBarItem.m; sourceTree = "<group>"; };
+		840331741F56701300DE1E60 /* OptionsBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsBarView.h; sourceTree = "<group>"; };
+		840331751F56701300DE1E60 /* OptionsBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsBarView.m; sourceTree = "<group>"; };
+		8403317B1F56707500DE1E60 /* AuthenticationInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationInformationViewController.h; sourceTree = "<group>"; };
+		8403317C1F56707500DE1E60 /* AuthenticationInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationInformationViewController.m; sourceTree = "<group>"; };
+		8403317E1F5671F100DE1E60 /* CommentariesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentariesViewController.h; sourceTree = "<group>"; };
+		8403317F1F5671F100DE1E60 /* CommentariesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentariesViewController.m; sourceTree = "<group>"; };
+		840331811F56943400DE1E60 /* ProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailViewController.h; sourceTree = "<group>"; };
+		840331821F56943400DE1E60 /* ProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailViewController.m; sourceTree = "<group>"; };
+		840331841F569F4E00DE1E60 /* ZJD_StarEvaluateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJD_StarEvaluateView.h; sourceTree = "<group>"; };
+		840331851F569F4E00DE1E60 /* ZJD_StarEvaluateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJD_StarEvaluateView.m; sourceTree = "<group>"; };
+		840331871F569F5600DE1E60 /* UIView+View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+View.h"; sourceTree = "<group>"; };
+		840331881F569F5600DE1E60 /* UIView+View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+View.m"; sourceTree = "<group>"; };
+		8403318A1F56A1A600DE1E60 /* AddEvaluationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEvaluationViewController.h; sourceTree = "<group>"; };
+		8403318B1F56A1A600DE1E60 /* AddEvaluationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEvaluationViewController.m; sourceTree = "<group>"; };
+		8403318D1F56A2DE00DE1E60 /* AppraiseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppraiseTableViewCell.h; sourceTree = "<group>"; };
+		8403318E1F56A2DE00DE1E60 /* AppraiseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppraiseTableViewCell.m; sourceTree = "<group>"; };
 		84174D671EDEC3FA00A815B3 /* PersonalDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalDataViewController.h; sourceTree = "<group>"; };
 		84174D681EDEC3FA00A815B3 /* PersonalDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalDataViewController.m; sourceTree = "<group>"; };
 		8420A4D91EE4E808001C5EAC /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -599,6 +635,51 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8403316A1F566D5800DE1E60 /* LoanDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8403316B1F566FE800DE1E60 /* LoanDetaiViewController.h */,
+				8403316C1F566FE800DE1E60 /* LoanDetaiViewController.m */,
+				8403317B1F56707500DE1E60 /* AuthenticationInformationViewController.h */,
+				8403317C1F56707500DE1E60 /* AuthenticationInformationViewController.m */,
+				840331811F56943400DE1E60 /* ProductDetailViewController.h */,
+				840331821F56943400DE1E60 /* ProductDetailViewController.m */,
+				8403317E1F5671F100DE1E60 /* CommentariesViewController.h */,
+				8403317F1F5671F100DE1E60 /* CommentariesViewController.m */,
+				8403318D1F56A2DE00DE1E60 /* AppraiseTableViewCell.h */,
+				8403318E1F56A2DE00DE1E60 /* AppraiseTableViewCell.m */,
+				8403318A1F56A1A600DE1E60 /* AddEvaluationViewController.h */,
+				8403318B1F56A1A600DE1E60 /* AddEvaluationViewController.m */,
+			);
+			name = LoanDetail;
+			sourceTree = "<group>";
+		};
+		8403317A1F56701900DE1E60 /* OptionsBar */ = {
+			isa = PBXGroup;
+			children = (
+				8403316E1F56701300DE1E60 /* BottomLineView.h */,
+				8403316F1F56701300DE1E60 /* BottomLineView.m */,
+				840331701F56701300DE1E60 /* OptionBarController.h */,
+				840331711F56701300DE1E60 /* OptionBarController.m */,
+				840331721F56701300DE1E60 /* OptionsBarItem.h */,
+				840331731F56701300DE1E60 /* OptionsBarItem.m */,
+				840331741F56701300DE1E60 /* OptionsBarView.h */,
+				840331751F56701300DE1E60 /* OptionsBarView.m */,
+			);
+			name = OptionsBar;
+			sourceTree = "<group>";
+		};
+		840331901F56A97700DE1E60 /* ZJD_StarEvaluateView */ = {
+			isa = PBXGroup;
+			children = (
+				840331871F569F5600DE1E60 /* UIView+View.h */,
+				840331881F569F5600DE1E60 /* UIView+View.m */,
+				840331841F569F4E00DE1E60 /* ZJD_StarEvaluateView.h */,
+				840331851F569F4E00DE1E60 /* ZJD_StarEvaluateView.m */,
+			);
+			name = ZJD_StarEvaluateView;
+			sourceTree = "<group>";
+		};
 		842E61E11EB08BCA00BF91FB /* FaceRecognition */ = {
 			isa = PBXGroup;
 			children = (
@@ -864,8 +945,10 @@
 		849012B21F02477F00E3D62A /* Jishiyu-HomePage */ = {
 			isa = PBXGroup;
 			children = (
-				8436738B1F55673900F6E5C3 /* Model */,
+				840331901F56A97700DE1E60 /* ZJD_StarEvaluateView */,
 				8476E8151F553789004C1608 /* CCPScrollView */,
+				8436738B1F55673900F6E5C3 /* Model */,
+				8403316A1F566D5800DE1E60 /* LoanDetail */,
 				849012CB1F024C3000E3D62A /* HomeProductModel.h */,
 				849012CC1F024C3000E3D62A /* HomeProductModel.m */,
 				849012BF1F024A2500E3D62A /* AmountClassificationViewController.h */,
@@ -1022,6 +1105,8 @@
 			isa = PBXGroup;
 			children = (
 				8439598A1EC3FEF60093D906 /* haitian.entitlements */,
+				8451AFB81EA8599F002F04B6 /* Resource */,
+				8403317A1F56701900DE1E60 /* OptionsBar */,
 				846856491EA09AA400C74F87 /* Utils */,
 				84CD81F61EA4909F009B786F /* Appdeledate */,
 				84B9DC3A1E9DCCC90066A92D /* Base */,
@@ -1180,7 +1265,6 @@
 		84CD81F61EA4909F009B786F /* Appdeledate */ = {
 			isa = PBXGroup;
 			children = (
-				8451AFB81EA8599F002F04B6 /* Resource */,
 				84B9DBF51E9DC0990066A92D /* Assets.xcassets */,
 				84B9DBF71E9DC0990066A92D /* LaunchScreen.storyboard */,
 				84B9DBFA1E9DC0990066A92D /* Info.plist */,
@@ -1507,16 +1591,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				84EAEAD81EE176A9007D3CCA /* AppDelegate+JPush.m in Sources */,
+				840331761F56701300DE1E60 /* BottomLineView.m in Sources */,
 				84EAEAD71EE17683007D3CCA /* HelpCenterViewController.m in Sources */,
 				842E61FE1EB08C8300BF91FB /* IFlyFaceImage.m in Sources */,
 				842E62161EB0915D00BF91FB /* DetectionSuccessfulViewController.m in Sources */,
 				842E61E51EB08BEF00BF91FB /* FaceStreamDetectorViewController.m in Sources */,
 				842C82C41EAEFDCB005D27A7 /* IdOpposite ViewController.m in Sources */,
+				840331791F56701300DE1E60 /* OptionsBarView.m in Sources */,
 				84C50C481EADF40D00AD0B62 /* UIImage+Extend.m in Sources */,
 				84939E2F1EFA90DA00152EAF /* BasicInformationViewController.m in Sources */,
 				8436738A1F55477200F6E5C3 /* HomePageCollectionViewCell.m in Sources */,
 				84A274241ED3DAAF009462F4 /* AccumulationFundViewController.m in Sources */,
 				847A11501EA45F0C002D8832 /* User.m in Sources */,
+				840331801F5671F100DE1E60 /* CommentariesViewController.m in Sources */,
 				844E16431EC97A2000F4EA80 /* HcdDateTimePickerView.m in Sources */,
 				849012C41F024A9400E3D62A /* AmountTableViewCell.m in Sources */,
 				844E16451EC97A2000F4EA80 /* UIColor+HcdCustom.m in Sources */,
@@ -1534,6 +1621,7 @@
 				84A733561EB86C82008ABB7E /* PersonCell.m in Sources */,
 				84E47DCB1F13565700C72D20 /* SmsCodeViewController.m in Sources */,
 				846856391EA08FF900C74F87 /* BaseVC.m in Sources */,
+				8403318F1F56A2DE00DE1E60 /* AppraiseTableViewCell.m in Sources */,
 				847B17231EDE91B2003A4D98 /* AboutUsViewController.m in Sources */,
 				84C50C3B1EADD49C00AD0B62 /* IdVerificationViewController.m in Sources */,
 				84F5D41D1EA7675E00EC8C9D /* TZImageManager.m in Sources */,
@@ -1551,6 +1639,7 @@
 				844E16481EC99FB700F4EA80 /* AddBillViewController.m in Sources */,
 				84A733551EB86C82008ABB7E /* NSString+TKUtilities.m in Sources */,
 				84546F4A1EA5E77B00AD0350 /* CertificationViewController.m in Sources */,
+				840331891F569F5600DE1E60 /* UIView+View.m in Sources */,
 				842E62001EB08C8300BF91FB /* UIImage+Extensions.m in Sources */,
 				84B9DBEE1E9DC0990066A92D /* AppDelegate.m in Sources */,
 				84939E231EFA133100152EAF /* OtherContactsViewController.m in Sources */,
@@ -1558,6 +1647,7 @@
 				842E61FF1EB08C8300BF91FB /* UIImage+compress.m in Sources */,
 				84939E2C1EFA698900152EAF /* UploadDocumentsViewController.m in Sources */,
 				843DD77E1EB2F14A0014E283 /* DataSubmittedViewController.m in Sources */,
+				8403318C1F56A1A600DE1E60 /* AddEvaluationViewController.m in Sources */,
 				84A733541EB86C82008ABB7E /* CDFInitialsAvatar.m in Sources */,
 				8402B9F91E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m in Sources */,
 				84A733391EB86BA0008ABB7E /* PersonModel.m in Sources */,
@@ -1569,6 +1659,7 @@
 				846724341F15C320002F2F57 /* InviteFriendsViewController.m in Sources */,
 				84939E191EFA0C1200152EAF /* PersonalCreditViewController.m in Sources */,
 				842E62061EB08C9700BF91FB /* IFlyFaceResultKeys.m in Sources */,
+				840331781F56701300DE1E60 /* OptionsBarItem.m in Sources */,
 				845663FB1ED57F6F0075A971 /* LMResultShowVC.m in Sources */,
 				849012C11F024A2500E3D62A /* AmountClassificationViewController.m in Sources */,
 				848FBC151ED2E99000A1E1CD /* RemindViewController.m in Sources */,
@@ -1582,6 +1673,7 @@
 				84939E291EFA16A000152EAF /* CarProductionViewController.m in Sources */,
 				84FD17231EE7D6A600EB79A3 /* ProductModel.m in Sources */,
 				849012CD1F024C3000E3D62A /* HomeProductModel.m in Sources */,
+				8403316D1F566FE900DE1E60 /* LoanDetaiViewController.m in Sources */,
 				846856181EA0764900C74F87 /* AccountPassswordViewController.m in Sources */,
 				84F5D4001EA703D100EC8C9D /* XDMultTableView.m in Sources */,
 				84A733331EB85FB1008ABB7E /* ContactInformationViewController.m in Sources */,
@@ -1597,11 +1689,14 @@
 				849012B11F02477B00E3D62A /* JishiyuViewController.m in Sources */,
 				847B17201EDE8F2B003A4D98 /* SetUpViewController.m in Sources */,
 				84361FDC1EB1EFB9008595E7 /* YLSOPickerView.m in Sources */,
+				840331861F569F4E00DE1E60 /* ZJD_StarEvaluateView.m in Sources */,
 				8468562C1EA0822900C74F87 /* MessageAlertView.m in Sources */,
 				84747CCE1EFBDB55006AF462 /* OtherInformationAuthenticationViewController.m in Sources */,
 				84B36FCB1EB32820001FCD96 /* ProfessionalInformationViewController.m in Sources */,
 				84A350B71ED66B6500D9C1C7 /* RemindModel.m in Sources */,
 				849012BB1F0249AA00E3D62A /* LoanClassification.m in Sources */,
+				840331771F56701300DE1E60 /* OptionBarController.m in Sources */,
+				840331831F56943400DE1E60 /* ProductDetailViewController.m in Sources */,
 				847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */,
 				84F5D4271EA768EA00EC8C9D /* TZTestCell.m in Sources */,
 				84E47DC81F13507400C72D20 /* PhoneCarrierViewController.m in Sources */,
@@ -1613,6 +1708,7 @@
 				84C50C471EADF40D00AD0B62 /* UIAlertController+Extend.m in Sources */,
 				84A7398C1E9E25B700A42502 /* WSPageView.m in Sources */,
 				84939E261EFA147D00152EAF /* RealEstateViewController.m in Sources */,
+				8403317D1F56707500DE1E60 /* AuthenticationInformationViewController.m in Sources */,
 				84A733571EB86C82008ABB7E /* XHJAddressBook.m in Sources */,
 				84B9DC4B1E9DD9CE0066A92D /* HomePageViewController.m in Sources */,
 				846856151EA059F400C74F87 /* LoginViewController.m in Sources */,

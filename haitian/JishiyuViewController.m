@@ -20,6 +20,7 @@
 #import "CCPScrollView.h"
 #import "HomePageCollectionViewCell.h"
 #import "ClassModel.h"
+#import "LoanDetaiViewController.h"
 #define  ScrollviewWeight 50
 #define  ScrollviewHeight 180
 #define SectionHeight 110
@@ -616,10 +617,16 @@ static NSString *const adUrl = @"adUrl";
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    HomeProductModel *product=(HomeProductModel *)self.productArray[indexPath.row];
+
+    LoanDetaiViewController *load=[[LoanDetaiViewController alloc]init];
+    load.hidesBottomBarWhenPushed=YES;
     
+    load.product=product;
+    [self.navigationController pushViewController:load animated:YES];
+    return;
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"])
     {
-            HomeProductModel *product=(HomeProductModel *)self.productArray[indexPath.row];
 
             NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
                                product.productID,@"id",
