@@ -25,16 +25,25 @@
 {
     NSArray *sectionArray;
     NSArray *imageArray;
+    NSArray *titleArray;
     
 }
+#ifdef __IPHONE_7_0
+- (UIRectEdge)edgesForExtendedLayout
+{
+    return UIRectEdgeNone;
+}
+#endif
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"认证资料";
     sectionArray=@[@"申请条件",@"借款审核细节",@"新手指导"];
+    titleArray=@[@"贷款类型",@"面向人群",@"审核方式",@"到账方式",@"实际到账",@"还款途径",@"提前还款",@"逾期还款",@"能否提额",@"所属平台"];
+
     imageArray=@[kColorFromRGBHex(0x4ed19d),kColorFromRGBHex(0x2591f3),[UIColor redColor]];
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(keyboard)];
     [self.view addGestureRecognizer:tap];
-    UITableView *productDetailsTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+    UITableView *productDetailsTableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-210-50-64) style:UITableViewStyleGrouped];
     productDetailsTableView.delegate=self;
     productDetailsTableView.dataSource=self;
 //    productDetailsTableView.tableHeaderView=self.productDetailsTbbHeadView;
@@ -124,7 +133,7 @@
 -(UIView *)footView
 {
     if (!_footView) {
-        _footView=[[UIView alloc]initWithFrame:CGRectMake(0, HEIGHT-64-50, WIDTH, 50)];
+        _footView=[[UIView alloc]initWithFrame:CGRectMake(0, HEIGHT-64-50-250, WIDTH, 50)];
         UIButton *footBut=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 50)];
         [footBut setTitle:@"立即申请" forState:0];
         footBut.backgroundColor=AppBaseColor;
@@ -136,6 +145,10 @@
 }
 -(void)nextStep
 {
+    if (self.backblock) {
+        self.backblock();
+    }
+   
     WebVC *vc = [[WebVC alloc] init];
     [vc setNavTitle:self.productModel.post_title];
     [vc loadFromURLStr:self.productModel.link];
@@ -172,11 +185,11 @@
             return 100;
             break;
         case 1:
-            return   [UtilTools getTextHeight:self.productModel.shenqingtiaojian hight:WIDTH font:[UIFont systemFontOfSize:18]].height+50;
-            return 100;
+//            return   [UtilTools getTextHeight:self.productModel.shenqingtiaojian hight:WIDTH font:[UIFont systemFontOfSize:18]].height+50;
+            return 300;
             break;
         case 2:
-            return   [UtilTools getTextHeight:self.productModel.post_excerpt hight:WIDTH font:[UIFont systemFontOfSize:18]].height+50;
+            return   100;
             break;
         default:
             return 0;
@@ -201,132 +214,41 @@
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
         
     }
+    //防止重复赋值数据叠加
+    for (UILabel * label in cell.contentView.subviews) {
+        
+        [label removeFromSuperview];
+        
+    }
     switch (indexPath.section) {
         case 0:
         {
-            UILabel *amountLabel=[[UILabel alloc]initWithFrame:CGRectMake(30, 10, 40, controlsHeight)];
-            amountLabel.text=@"金额";
-            amountLabel.textColor=AppThemeColor;
-            
-            [cell.contentView addSubview:amountLabel];
-            NSString *maxString;
-            if (![self.productModel.edufanwei containsString:@"-"]) {
-                NSArray *arr=   [self.productModel.edufanwei   componentsSeparatedByString:@","];
-                maxString=[arr lastObject];
-            }
-            else
-            {
-                NSRange range=[self.productModel.edufanwei rangeOfString:@"-"];
-                maxString=[self.productModel.edufanwei substringFromIndex:(range.location+1)];
-            }
-            
-            
-            UITextField *amountTextField=[[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(amountLabel.frame)+10, 10, WIDTH/2-CGRectGetMaxX(amountLabel.frame)-20, controlsHeight  )];
-            amountTextField.placeholder=maxString;
-            UILabel *unitLabel=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(amountTextField.frame)-30, 0, 30, 20)];
-            unitLabel.text=@"元";
-            unitLabel.textColor=kColorFromRGBHex(0x4f698b);
-            amountTextField.tag=500;
-            amountTextField.delegate=self;
-            [amountTextField setRightView:unitLabel];
-            [amountTextField setRightViewMode:UITextFieldViewModeAlways];
-            amountTextField.layer.borderWidth = 1;
-            amountTextField.layer.cornerRadius = 10;
-            amountTextField.leftView=[[UIView alloc ]initWithFrame:CGRectMake(0, 0, 10, 10)];
-            amountTextField.leftViewMode=UITextFieldViewModeAlways;
-            amountTextField.keyboardType=UIKeyboardTypeNumberPad;
-            amountTextField.layer.borderColor = kColorFromRGBHex(0xb5b5b5).CGColor;
-            [cell.contentView addSubview:amountTextField];
-            UILabel *limitRangeLabel=[[UILabel alloc]initWithFrame:CGRectMake(30, CGRectGetMaxY(amountLabel.frame)+10, 150, 40)];
-            limitRangeLabel.text=[NSString stringWithFormat:@"额度范围:%@",self.productModel.edufanwei];
-            limitRangeLabel.font=[UIFont systemFontOfSize:12];
-            limitRangeLabel.textColor=kColorFromRGBHex(0x616161);
-            
-            [cell .contentView addSubview:limitRangeLabel];
-            NSString *qixianfanweimaxString;
-            
-            if (![self.productModel.qixianfanwei containsString:@"-"]) {
-                NSArray *arr=   [self.productModel.qixianfanwei   componentsSeparatedByString:@","];
-                qixianfanweimaxString=[arr lastObject];
-            }
-            else
-            {
-                NSRange range1=[self.productModel.qixianfanwei rangeOfString:@"-"];
-                qixianfanweimaxString=[self.productModel.qixianfanwei substringFromIndex:(range1.location+1)];
-            }
-            
-            qixianfanweimaxString=[qixianfanweimaxString substringToIndex:qixianfanweimaxString.length-1];
-            UILabel *timeLabel=[[UILabel alloc]initWithFrame:CGRectMake(WIDTH/2+20, 10, 40, controlsHeight)];
-            timeLabel.text=@"期限";
-            timeLabel.textColor=AppThemeColor;
-            timeLabel.font=[UIFont systemFontOfSize:18];
-            [cell.contentView addSubview:timeLabel];
-            
-            UITextField *timeTextField=[[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(timeLabel.frame)+10, 10, WIDTH-CGRectGetMaxX(timeLabel.frame)-20, controlsHeight  )];
-            timeTextField.placeholder=qixianfanweimaxString;
-            timeTextField.layer.borderWidth = 1;
-            timeTextField.layer.cornerRadius = 10;
-            timeTextField.tag=501;
-            timeTextField.delegate=self;
-            UILabel *timeunitLabel=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(amountTextField.frame)-30, 0, 30, 20)];
-            timeunitLabel.text=[self.productModel.fv_unit isEqualToString:@"1"]?@"日":@"月";
-            timeunitLabel.textColor=kColorFromRGBHex(0x4f698b);
-            timeTextField.keyboardType=UIKeyboardTypeNumberPad;
-            
-            [timeTextField setRightView:timeunitLabel];
-            [timeTextField setRightViewMode:UITextFieldViewModeAlways];
-            
-            timeTextField.layer.borderColor = kColorFromRGBHex(0xb5b5b5).CGColor;
-            timeTextField.leftView=[[UIView alloc ]initWithFrame:CGRectMake(0, 0, 10, 10)];
-            timeTextField.leftViewMode=UITextFieldViewModeAlways;
-            [cell.contentView addSubview:timeTextField];
-            
-            UILabel *timeLimitRangeLabel=[[UILabel alloc]initWithFrame:CGRectMake(WIDTH/2+30, CGRectGetMaxY(timeLabel.frame)+10, 150, 40)];
-            timeLimitRangeLabel.text=[NSString stringWithFormat:@"期限范围：%@",self.productModel.qixianfanwei];
-            timeLimitRangeLabel.textColor=kColorFromRGBHex(0x616161);
-            
-            timeLimitRangeLabel.font=[UIFont systemFontOfSize:12];
-            [cell .contentView addSubview:timeLimitRangeLabel];
+            UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(30, 10, WIDTH-30*2, 100)];
+            label.text=@"sndlkas";
+            label.numberOfLines=0;
+            [cell.contentView addSubview:label];
         }
             break;
         case 1:
         {
-            UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(30, 0, WIDTH-30,  [UtilTools getTextHeight:self.productModel.shenqingtiaojian hight:WIDTH font:[UIFont systemFontOfSize:18]].height+50)];
-            //            label.text=self.productModel.shenqingtiaojian;
-            label.numberOfLines=0;
-            label.textColor=kColorFromRGBHex(0x616161);
-            NSMutableParagraphStyle  *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-            
-            // 行间距设置为30
-            [paragraphStyle  setLineSpacing:6];
-//            
-//            NSMutableAttributedString  *setString = [[NSMutableAttributedString alloc] initWithString:self.productModel.shenqingtiaojian];
-//            [setString  addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [self.productModel.shenqingtiaojian length])];
-//            
-//            // 设置Label要显示的text
-//            [label  setAttributedText:setString];
-            [cell.contentView addSubview:label];
-        }
+            for (int i=0; i<10; i++) {
+                UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(30, 10+(30+5)*i, WIDTH-30*2, 30)];
+                label.text=titleArray[i];
+                label.numberOfLines=0;
+                [cell.contentView addSubview:label];
+
+            }
+                  }
             //
             //            cell.textLabel.text=self.productModel.shenqingtiaojian;
             //            cell.textLabel.numberOfLines=0;
             break;
         case 2:
         {
-            UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(30, 0, WIDTH-30, [UtilTools getTextHeight:self.productModel.post_excerpt hight:WIDTH font:[UIFont systemFontOfSize:18]].height+50)];
-            //            label.text=self.productModel.post_excerpt;
+            UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(30, 10, WIDTH-30*2, 90)];
             label.numberOfLines=0;
-            NSMutableParagraphStyle  *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-            
-            // 行间距设置为30
-            [paragraphStyle  setLineSpacing:6];
-            
-//            NSMutableAttributedString  *setString = [[NSMutableAttributedString alloc] initWithString:self.productModel.post_excerpt];
-//            [setString  addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [self.productModel.post_excerpt length])];
-//            
-//            // 设置Label要显示的text
-//            [label  setAttributedText:setString];
-            label.textColor=kColorFromRGBHex(0x616161);
+            label.text=@"sndlkas";
+
             [cell.contentView addSubview:label];
         }
             break;

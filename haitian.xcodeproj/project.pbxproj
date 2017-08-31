@@ -22,7 +22,6 @@
 		840331891F569F5600DE1E60 /* UIView+View.m in Sources */ = {isa = PBXBuildFile; fileRef = 840331881F569F5600DE1E60 /* UIView+View.m */; };
 		8403318C1F56A1A600DE1E60 /* AddEvaluationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8403318B1F56A1A600DE1E60 /* AddEvaluationViewController.m */; };
 		8403318F1F56A2DE00DE1E60 /* AppraiseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8403318E1F56A2DE00DE1E60 /* AppraiseTableViewCell.m */; };
-		84174D691EDEC3FA00A815B3 /* PersonalDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84174D681EDEC3FA00A815B3 /* PersonalDataViewController.m */; };
 		8420A4DA1EE4E808001C5EAC /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8420A4D91EE4E808001C5EAC /* libc++.tbd */; };
 		842A01691EC9464200143E4A /* NewRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842A01681EC9464200143E4A /* NewRemindViewController.m */; };
 		842C82C41EAEFDCB005D27A7 /* IdOpposite ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842C82C31EAEFDCB005D27A7 /* IdOpposite ViewController.m */; };
@@ -71,7 +70,6 @@
 		8466290F1EB34252003E7979 /* LZCityPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846629091EB34252003E7979 /* LZCityPickerController.m */; };
 		846629101EB34252003E7979 /* LZCityPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8466290B1EB34252003E7979 /* LZCityPickerView.m */; };
 		846629111EB34252003E7979 /* LZPickerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8466290D1EB34252003E7979 /* LZPickerModel.m */; };
-		846724341F15C320002F2F57 /* InviteFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846724331F15C320002F2F57 /* InviteFriendsViewController.m */; };
 		846856151EA059F400C74F87 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856141EA059F400C74F87 /* LoginViewController.m */; };
 		846856181EA0764900C74F87 /* AccountPassswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856171EA0764900C74F87 /* AccountPassswordViewController.m */; };
 		846856241EA0813C00C74F87 /* NetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 846856211EA0813C00C74F87 /* NetWorkManager.m */; };
@@ -94,8 +92,6 @@
 		847944BB1ECED16200227EC8 /* WebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 847944BA1ECED16200227EC8 /* WebVC.m */; };
 		847A11501EA45F0C002D8832 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114D1EA45F0C002D8832 /* User.m */; };
 		847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114F1EA45F0C002D8832 /* UserInfoContext.m */; };
-		847B17201EDE8F2B003A4D98 /* SetUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B171F1EDE8F2B003A4D98 /* SetUpViewController.m */; };
-		847B17231EDE91B2003A4D98 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B17221EDE91B2003A4D98 /* AboutUsViewController.m */; };
 		847DF40A1F146639007DDB60 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 847DF4091F146639007DDB60 /* libsqlite3.tbd */; };
 		848F1F8B1EC0078D00720FB6 /* H5Service.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 848F1F891EC0078D00720FB6 /* H5Service.bundle */; };
 		848F1F8C1EC0078D00720FB6 /* Poseidon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 848F1F8A1EC0078D00720FB6 /* Poseidon.bundle */; };
@@ -129,6 +125,18 @@
 		84939E2C1EFA698900152EAF /* UploadDocumentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84939E2B1EFA698900152EAF /* UploadDocumentsViewController.m */; };
 		84939E2F1EFA90DA00152EAF /* BasicInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84939E2E1EFA90DA00152EAF /* BasicInformationViewController.m */; };
 		84939E321EFAA48600152EAF /* LoadDetailViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84939E311EFAA48600152EAF /* LoadDetailViewController.mm */; };
+		849BC5091F57A2A8005B80E5 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BC5081F57A2A8005B80E5 /* CommentModel.m */; };
+		849BC5201F57E570005B80E5 /* BorrowingRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BC50F1F57E570005B80E5 /* BorrowingRecordViewController.m */; };
+		849BC5211F57E570005B80E5 /* InviteFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BC5111F57E570005B80E5 /* InviteFriendsViewController.m */; };
+		849BC5221F57E570005B80E5 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BC5131F57E570005B80E5 /* AboutUsViewController.m */; };
+		849BC5231F57E570005B80E5 /* PersonalDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BC5151F57E570005B80E5 /* PersonalDataViewController.m */; };
+		849BC5241F57E570005B80E5 /* SetUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BC5171F57E570005B80E5 /* SetUpViewController.m */; };
+		849BC5251F57E570005B80E5 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BC5191F57E570005B80E5 /* FeedbackViewController.m */; };
+		849BC5261F57E570005B80E5 /* HelpCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BC51B1F57E570005B80E5 /* HelpCenterViewController.m */; };
+		849BC5271F57E570005B80E5 /* PersonCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BC51D1F57E570005B80E5 /* PersonCenterViewController.m */; };
+		849BC5281F57E570005B80E5 /* XDMultTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BC51F1F57E570005B80E5 /* XDMultTableView.m */; };
+		849BC52C1F57E5D5005B80E5 /* RecordMoedl.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BC52B1F57E5D5005B80E5 /* RecordMoedl.m */; };
+		849BC52F1F57E7AF005B80E5 /* BorrowingRecordableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BC52E1F57E7AF005B80E5 /* BorrowingRecordableViewCell.m */; };
 		84A274211ED3CA35009462F4 /* lmzxResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84A2741F1ED3CA35009462F4 /* lmzxResource.bundle */; };
 		84A274241ED3DAAF009462F4 /* AccumulationFundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A274231ED3DAAF009462F4 /* AccumulationFundViewController.m */; };
 		84A274261ED427DC009462F4 /* LMZXSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A274251ED427DC009462F4 /* LMZXSDK.a */; };
@@ -158,7 +166,6 @@
 		84B9DC0F1E9DC0990066A92D /* haitianUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC0E1E9DC0990066A92D /* haitianUITests.m */; };
 		84B9DC401E9DCDBC0066A92D /* LoadSupermarketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC3F1E9DCDBC0066A92D /* LoadSupermarketViewController.m */; };
 		84B9DC431E9DCDF50066A92D /* FastHandleCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC421E9DCDF50066A92D /* FastHandleCardViewController.m */; };
-		84B9DC461E9DCE240066A92D /* PersonCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC451E9DCE240066A92D /* PersonCenterViewController.m */; };
 		84B9DC4B1E9DD9CE0066A92D /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9DC4A1E9DD9CE0066A92D /* HomePageViewController.m */; };
 		84C4B0821EC00173001C685A /* CreditSesameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C4B0811EC00173001C685A /* CreditSesameViewController.m */; };
 		84C50C381EADA5BC00AD0B62 /* Authentication.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C50C371EADA5BC00AD0B62 /* Authentication.xcassets */; };
@@ -176,10 +183,7 @@
 		84CD81F51EA48F30009B786F /* RegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CD81F41EA48F30009B786F /* RegisterVC.m */; };
 		84E47DC81F13507400C72D20 /* PhoneCarrierViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E47DC71F13507400C72D20 /* PhoneCarrierViewController.m */; };
 		84E47DCB1F13565700C72D20 /* SmsCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E47DCA1F13565700C72D20 /* SmsCodeViewController.m */; };
-		84EAEAD71EE17683007D3CCA /* HelpCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FC1EA7039D00EC8C9D /* HelpCenterViewController.m */; };
 		84EAEAD81EE176A9007D3CCA /* AppDelegate+JPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C9E9F1ED821A40099CC51 /* AppDelegate+JPush.m */; };
-		84F5D4001EA703D100EC8C9D /* XDMultTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D3FF1EA703D100EC8C9D /* XDMultTableView.m */; };
-		84F5D4041EA7492A00EC8C9D /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D4031EA7492A00EC8C9D /* FeedbackViewController.m */; };
 		84F5D4191EA7675E00EC8C9D /* TZAlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F5D4051EA7675E00EC8C9D /* TZAlbumCell.xib */; };
 		84F5D41A1EA7675E00EC8C9D /* TZAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D4071EA7675E00EC8C9D /* TZAssetCell.m */; };
 		84F5D41B1EA7675E00EC8C9D /* TZAssetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F5D4081EA7675E00EC8C9D /* TZAssetCell.xib */; };
@@ -256,8 +260,6 @@
 		8403318B1F56A1A600DE1E60 /* AddEvaluationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEvaluationViewController.m; sourceTree = "<group>"; };
 		8403318D1F56A2DE00DE1E60 /* AppraiseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppraiseTableViewCell.h; sourceTree = "<group>"; };
 		8403318E1F56A2DE00DE1E60 /* AppraiseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppraiseTableViewCell.m; sourceTree = "<group>"; };
-		84174D671EDEC3FA00A815B3 /* PersonalDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalDataViewController.h; sourceTree = "<group>"; };
-		84174D681EDEC3FA00A815B3 /* PersonalDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalDataViewController.m; sourceTree = "<group>"; };
 		8420A4D91EE4E808001C5EAC /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		842A01671EC9464200143E4A /* NewRemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRemindViewController.h; sourceTree = "<group>"; };
 		842A01681EC9464200143E4A /* NewRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRemindViewController.m; sourceTree = "<group>"; };
@@ -338,8 +340,6 @@
 		8466290B1EB34252003E7979 /* LZCityPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZCityPickerView.m; sourceTree = "<group>"; };
 		8466290C1EB34252003E7979 /* LZPickerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZPickerModel.h; sourceTree = "<group>"; };
 		8466290D1EB34252003E7979 /* LZPickerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZPickerModel.m; sourceTree = "<group>"; };
-		846724321F15C320002F2F57 /* InviteFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteFriendsViewController.h; sourceTree = "<group>"; };
-		846724331F15C320002F2F57 /* InviteFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteFriendsViewController.m; sourceTree = "<group>"; };
 		846856131EA059F400C74F87 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		846856141EA059F400C74F87 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		846856161EA0764900C74F87 /* AccountPassswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountPassswordViewController.h; sourceTree = "<group>"; };
@@ -384,10 +384,6 @@
 		847A114D1EA45F0C002D8832 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		847A114E1EA45F0C002D8832 /* UserInfoContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoContext.h; sourceTree = "<group>"; };
 		847A114F1EA45F0C002D8832 /* UserInfoContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoContext.m; sourceTree = "<group>"; };
-		847B171E1EDE8F2B003A4D98 /* SetUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetUpViewController.h; sourceTree = "<group>"; };
-		847B171F1EDE8F2B003A4D98 /* SetUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetUpViewController.m; sourceTree = "<group>"; };
-		847B17211EDE91B2003A4D98 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
-		847B17221EDE91B2003A4D98 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
 		847DF4091F146639007DDB60 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		848F1F891EC0078D00720FB6 /* H5Service.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = H5Service.bundle; sourceTree = "<group>"; };
 		848F1F8A1EC0078D00720FB6 /* Poseidon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Poseidon.bundle; sourceTree = "<group>"; };
@@ -441,6 +437,30 @@
 		84939E2E1EFA90DA00152EAF /* BasicInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicInformationViewController.m; sourceTree = "<group>"; };
 		84939E301EFAA48600152EAF /* LoadDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadDetailViewController.h; sourceTree = "<group>"; };
 		84939E311EFAA48600152EAF /* LoadDetailViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoadDetailViewController.mm; sourceTree = "<group>"; };
+		849BC5071F57A2A8005B80E5 /* CommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentModel.h; sourceTree = "<group>"; };
+		849BC5081F57A2A8005B80E5 /* CommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel.m; sourceTree = "<group>"; };
+		849BC50E1F57E570005B80E5 /* BorrowingRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BorrowingRecordViewController.h; path = Person/BorrowingRecordViewController.h; sourceTree = "<group>"; };
+		849BC50F1F57E570005B80E5 /* BorrowingRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BorrowingRecordViewController.m; path = Person/BorrowingRecordViewController.m; sourceTree = "<group>"; };
+		849BC5101F57E570005B80E5 /* InviteFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InviteFriendsViewController.h; path = Person/InviteFriendsViewController.h; sourceTree = "<group>"; };
+		849BC5111F57E570005B80E5 /* InviteFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InviteFriendsViewController.m; path = Person/InviteFriendsViewController.m; sourceTree = "<group>"; };
+		849BC5121F57E570005B80E5 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutUsViewController.h; path = Person/AboutUsViewController.h; sourceTree = "<group>"; };
+		849BC5131F57E570005B80E5 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutUsViewController.m; path = Person/AboutUsViewController.m; sourceTree = "<group>"; };
+		849BC5141F57E570005B80E5 /* PersonalDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalDataViewController.h; path = Person/PersonalDataViewController.h; sourceTree = "<group>"; };
+		849BC5151F57E570005B80E5 /* PersonalDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalDataViewController.m; path = Person/PersonalDataViewController.m; sourceTree = "<group>"; };
+		849BC5161F57E570005B80E5 /* SetUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetUpViewController.h; path = Person/SetUpViewController.h; sourceTree = "<group>"; };
+		849BC5171F57E570005B80E5 /* SetUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetUpViewController.m; path = Person/SetUpViewController.m; sourceTree = "<group>"; };
+		849BC5181F57E570005B80E5 /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedbackViewController.h; path = Person/FeedbackViewController.h; sourceTree = "<group>"; };
+		849BC5191F57E570005B80E5 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedbackViewController.m; path = Person/FeedbackViewController.m; sourceTree = "<group>"; };
+		849BC51A1F57E570005B80E5 /* HelpCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpCenterViewController.h; path = Person/HelpCenterViewController.h; sourceTree = "<group>"; };
+		849BC51B1F57E570005B80E5 /* HelpCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpCenterViewController.m; path = Person/HelpCenterViewController.m; sourceTree = "<group>"; };
+		849BC51C1F57E570005B80E5 /* PersonCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonCenterViewController.h; path = Person/PersonCenterViewController.h; sourceTree = "<group>"; };
+		849BC51D1F57E570005B80E5 /* PersonCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonCenterViewController.m; path = Person/PersonCenterViewController.m; sourceTree = "<group>"; };
+		849BC51E1F57E570005B80E5 /* XDMultTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XDMultTableView.h; path = Person/XDMultTableView.h; sourceTree = "<group>"; };
+		849BC51F1F57E570005B80E5 /* XDMultTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XDMultTableView.m; path = Person/XDMultTableView.m; sourceTree = "<group>"; };
+		849BC52A1F57E5D5005B80E5 /* RecordMoedl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordMoedl.h; sourceTree = "<group>"; };
+		849BC52B1F57E5D5005B80E5 /* RecordMoedl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordMoedl.m; sourceTree = "<group>"; };
+		849BC52D1F57E7AF005B80E5 /* BorrowingRecordableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorrowingRecordableViewCell.h; sourceTree = "<group>"; };
+		849BC52E1F57E7AF005B80E5 /* BorrowingRecordableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorrowingRecordableViewCell.m; sourceTree = "<group>"; };
 		84A2741E1ED3CA35009462F4 /* LMZXSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMZXSDK.h; sourceTree = "<group>"; };
 		84A2741F1ED3CA35009462F4 /* lmzxResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = lmzxResource.bundle; sourceTree = "<group>"; };
 		84A274221ED3DAAF009462F4 /* AccumulationFundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccumulationFundViewController.h; sourceTree = "<group>"; };
@@ -497,8 +517,6 @@
 		84B9DC3F1E9DCDBC0066A92D /* LoadSupermarketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadSupermarketViewController.m; sourceTree = "<group>"; };
 		84B9DC411E9DCDF50066A92D /* FastHandleCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastHandleCardViewController.h; sourceTree = "<group>"; };
 		84B9DC421E9DCDF50066A92D /* FastHandleCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastHandleCardViewController.m; sourceTree = "<group>"; };
-		84B9DC441E9DCE240066A92D /* PersonCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCenterViewController.h; sourceTree = "<group>"; };
-		84B9DC451E9DCE240066A92D /* PersonCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCenterViewController.m; sourceTree = "<group>"; };
 		84B9DC471E9DCF2A0066A92D /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		84B9DC481E9DCF5A0066A92D /* Public.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Public.h; sourceTree = "<group>"; };
 		84B9DC491E9DD9CE0066A92D /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
@@ -534,12 +552,6 @@
 		84E47DC71F13507400C72D20 /* PhoneCarrierViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneCarrierViewController.m; sourceTree = "<group>"; };
 		84E47DC91F13565700C72D20 /* SmsCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmsCodeViewController.h; sourceTree = "<group>"; };
 		84E47DCA1F13565700C72D20 /* SmsCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmsCodeViewController.m; sourceTree = "<group>"; };
-		84F5D3FB1EA7039D00EC8C9D /* HelpCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpCenterViewController.h; sourceTree = "<group>"; };
-		84F5D3FC1EA7039D00EC8C9D /* HelpCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpCenterViewController.m; sourceTree = "<group>"; };
-		84F5D3FE1EA703D100EC8C9D /* XDMultTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDMultTableView.h; sourceTree = "<group>"; };
-		84F5D3FF1EA703D100EC8C9D /* XDMultTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDMultTableView.m; sourceTree = "<group>"; };
-		84F5D4021EA7492A00EC8C9D /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
-		84F5D4031EA7492A00EC8C9D /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		84F5D4051EA7675E00EC8C9D /* TZAlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TZAlbumCell.xib; sourceTree = "<group>"; };
 		84F5D4061EA7675E00EC8C9D /* TZAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZAssetCell.h; sourceTree = "<group>"; };
 		84F5D4071EA7675E00EC8C9D /* TZAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZAssetCell.m; sourceTree = "<group>"; };
@@ -791,6 +803,8 @@
 			children = (
 				8436738C1F55674C00F6E5C3 /* ClassModel.h */,
 				8436738D1F55674C00F6E5C3 /* ClassModel.m */,
+				849BC5071F57A2A8005B80E5 /* CommentModel.h */,
+				849BC5081F57A2A8005B80E5 /* CommentModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -994,6 +1008,15 @@
 				84939E2B1EFA698900152EAF /* UploadDocumentsViewController.m */,
 			);
 			name = PersonalDetails;
+			sourceTree = "<group>";
+		};
+		849BC5291F57E5A7005B80E5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				849BC52A1F57E5D5005B80E5 /* RecordMoedl.h */,
+				849BC52B1F57E5D5005B80E5 /* RecordMoedl.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		84A733581EB86C97008ABB7E /* Addressbook */ = {
@@ -1286,23 +1309,28 @@
 		84F5D4011EA7461000EC8C9D /* Person */ = {
 			isa = PBXGroup;
 			children = (
+				849BC5291F57E5A7005B80E5 /* Model */,
+				849BC50E1F57E570005B80E5 /* BorrowingRecordViewController.h */,
+				849BC50F1F57E570005B80E5 /* BorrowingRecordViewController.m */,
+				849BC52D1F57E7AF005B80E5 /* BorrowingRecordableViewCell.h */,
+				849BC52E1F57E7AF005B80E5 /* BorrowingRecordableViewCell.m */,
+				849BC5101F57E570005B80E5 /* InviteFriendsViewController.h */,
+				849BC5111F57E570005B80E5 /* InviteFriendsViewController.m */,
+				849BC5121F57E570005B80E5 /* AboutUsViewController.h */,
+				849BC5131F57E570005B80E5 /* AboutUsViewController.m */,
+				849BC5141F57E570005B80E5 /* PersonalDataViewController.h */,
+				849BC5151F57E570005B80E5 /* PersonalDataViewController.m */,
+				849BC5161F57E570005B80E5 /* SetUpViewController.h */,
+				849BC5171F57E570005B80E5 /* SetUpViewController.m */,
+				849BC5181F57E570005B80E5 /* FeedbackViewController.h */,
+				849BC5191F57E570005B80E5 /* FeedbackViewController.m */,
+				849BC51A1F57E570005B80E5 /* HelpCenterViewController.h */,
+				849BC51B1F57E570005B80E5 /* HelpCenterViewController.m */,
+				849BC51C1F57E570005B80E5 /* PersonCenterViewController.h */,
+				849BC51D1F57E570005B80E5 /* PersonCenterViewController.m */,
+				849BC51E1F57E570005B80E5 /* XDMultTableView.h */,
+				849BC51F1F57E570005B80E5 /* XDMultTableView.m */,
 				84939E1D1EFA113000152EAF /* PersonalDetails */,
-				84B9DC441E9DCE240066A92D /* PersonCenterViewController.h */,
-				84B9DC451E9DCE240066A92D /* PersonCenterViewController.m */,
-				846724321F15C320002F2F57 /* InviteFriendsViewController.h */,
-				846724331F15C320002F2F57 /* InviteFriendsViewController.m */,
-				84174D671EDEC3FA00A815B3 /* PersonalDataViewController.h */,
-				84174D681EDEC3FA00A815B3 /* PersonalDataViewController.m */,
-				847B171E1EDE8F2B003A4D98 /* SetUpViewController.h */,
-				847B171F1EDE8F2B003A4D98 /* SetUpViewController.m */,
-				847B17211EDE91B2003A4D98 /* AboutUsViewController.h */,
-				847B17221EDE91B2003A4D98 /* AboutUsViewController.m */,
-				84F5D3FB1EA7039D00EC8C9D /* HelpCenterViewController.h */,
-				84F5D3FC1EA7039D00EC8C9D /* HelpCenterViewController.m */,
-				84F5D3FE1EA703D100EC8C9D /* XDMultTableView.h */,
-				84F5D3FF1EA703D100EC8C9D /* XDMultTableView.m */,
-				84F5D4021EA7492A00EC8C9D /* FeedbackViewController.h */,
-				84F5D4031EA7492A00EC8C9D /* FeedbackViewController.m */,
 				84F5D4241EA7676300EC8C9D /* TZImagePickerController */,
 			);
 			name = Person;
@@ -1592,7 +1620,6 @@
 			files = (
 				84EAEAD81EE176A9007D3CCA /* AppDelegate+JPush.m in Sources */,
 				840331761F56701300DE1E60 /* BottomLineView.m in Sources */,
-				84EAEAD71EE17683007D3CCA /* HelpCenterViewController.m in Sources */,
 				842E61FE1EB08C8300BF91FB /* IFlyFaceImage.m in Sources */,
 				842E62161EB0915D00BF91FB /* DetectionSuccessfulViewController.m in Sources */,
 				842E61E51EB08BEF00BF91FB /* FaceStreamDetectorViewController.m in Sources */,
@@ -1622,11 +1649,11 @@
 				84E47DCB1F13565700C72D20 /* SmsCodeViewController.m in Sources */,
 				846856391EA08FF900C74F87 /* BaseVC.m in Sources */,
 				8403318F1F56A2DE00DE1E60 /* AppraiseTableViewCell.m in Sources */,
-				847B17231EDE91B2003A4D98 /* AboutUsViewController.m in Sources */,
 				84C50C3B1EADD49C00AD0B62 /* IdVerificationViewController.m in Sources */,
 				84F5D41D1EA7675E00EC8C9D /* TZImageManager.m in Sources */,
 				849012B81F0248F200E3D62A /* LoanClasssificationVC.m in Sources */,
 				842E61FD1EB08C8300BF91FB /* CalculatorTools.m in Sources */,
+				849BC5261F57E570005B80E5 /* HelpCenterViewController.m in Sources */,
 				842DCD1E1F1DF40F00078589 /* AdvertiseViewController.m in Sources */,
 				846856411EA0902D00C74F87 /* ASValuePopUpView.m in Sources */,
 				84A733531EB86C82008ABB7E /* AddressBookVC.m in Sources */,
@@ -1636,11 +1663,13 @@
 				849012CA1F024B3F00E3D62A /* BtnView.m in Sources */,
 				84939E201EFA120200152EAF /* FamilyAndLivingConditionsViewController.m in Sources */,
 				84C50C401EADF3DE00AD0B62 /* RectManager.m in Sources */,
+				849BC52F1F57E7AF005B80E5 /* BorrowingRecordableViewCell.m in Sources */,
 				844E16481EC99FB700F4EA80 /* AddBillViewController.m in Sources */,
 				84A733551EB86C82008ABB7E /* NSString+TKUtilities.m in Sources */,
 				84546F4A1EA5E77B00AD0350 /* CertificationViewController.m in Sources */,
 				840331891F569F5600DE1E60 /* UIView+View.m in Sources */,
 				842E62001EB08C8300BF91FB /* UIImage+Extensions.m in Sources */,
+				849BC5091F57A2A8005B80E5 /* CommentModel.m in Sources */,
 				84B9DBEE1E9DC0990066A92D /* AppDelegate.m in Sources */,
 				84939E231EFA133100152EAF /* OtherContactsViewController.m in Sources */,
 				84CD81F51EA48F30009B786F /* RegisterVC.m in Sources */,
@@ -1648,15 +1677,18 @@
 				84939E2C1EFA698900152EAF /* UploadDocumentsViewController.m in Sources */,
 				843DD77E1EB2F14A0014E283 /* DataSubmittedViewController.m in Sources */,
 				8403318C1F56A1A600DE1E60 /* AddEvaluationViewController.m in Sources */,
+				849BC5211F57E570005B80E5 /* InviteFriendsViewController.m in Sources */,
 				84A733541EB86C82008ABB7E /* CDFInitialsAvatar.m in Sources */,
 				8402B9F91E9F6A00000CDFF7 /* FastHandleCardCollectionViewCell.m in Sources */,
 				84A733391EB86BA0008ABB7E /* PersonModel.m in Sources */,
+				849BC5241F57E570005B80E5 /* SetUpViewController.m in Sources */,
+				849BC5281F57E570005B80E5 /* XDMultTableView.m in Sources */,
+				849BC52C1F57E5D5005B80E5 /* RecordMoedl.m in Sources */,
 				8466290F1EB34252003E7979 /* LZCityPickerController.m in Sources */,
 				84C50C4E1EADF44A00AD0B62 /* IDInfo.m in Sources */,
 				84C50C5A1EADF47100AD0B62 /* AVCaptureViewController.m in Sources */,
 				8468563C1EA08FF900C74F87 /* NavBaseVC.m in Sources */,
 				846856421EA0902D00C74F87 /* ASValueTrackingSlider.m in Sources */,
-				846724341F15C320002F2F57 /* InviteFriendsViewController.m in Sources */,
 				84939E191EFA0C1200152EAF /* PersonalCreditViewController.m in Sources */,
 				842E62061EB08C9700BF91FB /* IFlyFaceResultKeys.m in Sources */,
 				840331781F56701300DE1E60 /* OptionsBarItem.m in Sources */,
@@ -1664,7 +1696,6 @@
 				849012C11F024A2500E3D62A /* AmountClassificationViewController.m in Sources */,
 				848FBC151ED2E99000A1E1CD /* RemindViewController.m in Sources */,
 				84B9DC401E9DCDBC0066A92D /* LoadSupermarketViewController.m in Sources */,
-				84174D691EDEC3FA00A815B3 /* PersonalDataViewController.m in Sources */,
 				842DCD1B1F1DF1BE00078589 /* AdvertiseView.m in Sources */,
 				84F5D4201EA7675E00EC8C9D /* TZPhotoPreviewCell.m in Sources */,
 				84ABC8F01EC5556400269C87 /* RemindTableViewCell.m in Sources */,
@@ -1675,7 +1706,6 @@
 				849012CD1F024C3000E3D62A /* HomeProductModel.m in Sources */,
 				8403316D1F566FE900DE1E60 /* LoanDetaiViewController.m in Sources */,
 				846856181EA0764900C74F87 /* AccountPassswordViewController.m in Sources */,
-				84F5D4001EA703D100EC8C9D /* XDMultTableView.m in Sources */,
 				84A733331EB85FB1008ABB7E /* ContactInformationViewController.m in Sources */,
 				84A7335B1EB88660008ABB7E /* ReferenceDataViewController.m in Sources */,
 				846856381EA08FF900C74F87 /* BaseNC.m in Sources */,
@@ -1687,8 +1717,8 @@
 				842A01691EC9464200143E4A /* NewRemindViewController.m in Sources */,
 				84F5D41C1EA7675E00EC8C9D /* TZAssetModel.m in Sources */,
 				849012B11F02477B00E3D62A /* JishiyuViewController.m in Sources */,
-				847B17201EDE8F2B003A4D98 /* SetUpViewController.m in Sources */,
 				84361FDC1EB1EFB9008595E7 /* YLSOPickerView.m in Sources */,
+				849BC5201F57E570005B80E5 /* BorrowingRecordViewController.m in Sources */,
 				840331861F569F4E00DE1E60 /* ZJD_StarEvaluateView.m in Sources */,
 				8468562C1EA0822900C74F87 /* MessageAlertView.m in Sources */,
 				84747CCE1EFBDB55006AF462 /* OtherInformationAuthenticationViewController.m in Sources */,
@@ -1700,10 +1730,10 @@
 				847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */,
 				84F5D4271EA768EA00EC8C9D /* TZTestCell.m in Sources */,
 				84E47DC81F13507400C72D20 /* PhoneCarrierViewController.m in Sources */,
-				84F5D4041EA7492A00EC8C9D /* FeedbackViewController.m in Sources */,
 				8476E8181F5537C5004C1608 /* CCPScrollView.m in Sources */,
 				844E16441EC97A2000F4EA80 /* MXSCycleScrollView.m in Sources */,
 				84B9DBEB1E9DC0990066A92D /* main.m in Sources */,
+				849BC5271F57E570005B80E5 /* PersonCenterViewController.m in Sources */,
 				849012B51F02481F00E3D62A /* JishiyuTableViewCell.m in Sources */,
 				84C50C471EADF40D00AD0B62 /* UIAlertController+Extend.m in Sources */,
 				84A7398C1E9E25B700A42502 /* WSPageView.m in Sources */,
@@ -1712,9 +1742,11 @@
 				84A733571EB86C82008ABB7E /* XHJAddressBook.m in Sources */,
 				84B9DC4B1E9DD9CE0066A92D /* HomePageViewController.m in Sources */,
 				846856151EA059F400C74F87 /* LoginViewController.m in Sources */,
+				849BC5231F57E570005B80E5 /* PersonalDataViewController.m in Sources */,
 				84F5D4231EA7675E00EC8C9D /* UIView+Layout.m in Sources */,
 				842E621B1EB0A19E00BF91FB /* BankCardAuthenticationViewController.m in Sources */,
 				84F5D4221EA7675E00EC8C9D /* TZVideoPlayerController.m in Sources */,
+				849BC5221F57E570005B80E5 /* AboutUsViewController.m in Sources */,
 				846856481EA09A8B00C74F87 /* UtilTools.m in Sources */,
 				8468563B1EA08FF900C74F87 /* GestureNavBaseVC.m in Sources */,
 				846629101EB34252003E7979 /* LZCityPickerView.m in Sources */,
@@ -1724,9 +1756,9 @@
 				84F5D4211EA7675E00EC8C9D /* TZPhotoPreviewController.m in Sources */,
 				849012C71F024B0100E3D62A /* LoanClickViewController.m in Sources */,
 				84A733301EB81934008ABB7E /* FamilyInformationViewController.m in Sources */,
-				84B9DC461E9DCE240066A92D /* PersonCenterViewController.m in Sources */,
 				84C50C5B1EADF47100AD0B62 /* IDAuthViewController.m in Sources */,
 				84C4B0821EC00173001C685A /* CreditSesameViewController.m in Sources */,
+				849BC5251F57E570005B80E5 /* FeedbackViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

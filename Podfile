@@ -4,6 +4,8 @@ target 'haitian' do
 pod 'AFNetworking'
 pod 'RealReachability'
 
+pod 'MJRefresh'
+
 # U-Share SDK UI模块（分享面板，建议添加）
 pod ‘UMengUShare/UI’
 

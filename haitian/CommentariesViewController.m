@@ -8,39 +8,87 @@
 
 #import "CommentariesViewController.h"
 #import "AppraiseTableViewCell.h"
+#import "CommentModel.h"
 @interface CommentariesViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(strong, nonatomic)UIView*footView;
+@property(strong, nonatomic)    NSMutableArray *commentMutableArray;
 
 @end
 
 @implementation CommentariesViewController
+{
+    NSUInteger page_total;
+    NSUInteger page;
 
+}
+//-(void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//    [_tableView.mj_header beginRefreshing];
+//
+//}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"产品评论";
-    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-220)];
-    tableView.delegate=self;
-    tableView.dataSource=self;
-    [self.view addSubview:tableView];
-    [self getCommentList];
+    page=1;
+  _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-210-50-64)];
+    _tableView.delegate=self;
+    _tableView.dataSource=self;
+    _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        self.commentMutableArray =nil;
+        page=1;
+        // 进入刷新状态后会自动调用这个block
+        [self getCommentList];
+    }];
+    [_tableView.mj_header beginRefreshing];
+_tableView.mj_footer=[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    if (page<page_total) {
+        page++;
+        [self getCommentList];
+
+    }
+    else{
+        [MessageAlertView showErrorMessage:@"没有更多评论"];
+    }
+    DLog(@"%lu",(unsigned long)page);
+
+
+}];
+    [_tableView.mj_header beginRefreshing];
+    // 马上进入刷新状态
+    [self.view addSubview:_tableView];
     [self.view addSubview:self.footView];
        // Do any additional setup after loading the view.
 }
 -(void)getCommentList{
+
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
-                       @"6",@"pid",
-                       @"1",@"page",
+                       self.productModel.productID,@"pid",
+                    [NSString stringWithFormat:@"%lu",(unsigned long)page],@"page",
                        @"10",@"page_size",
                        nil];
     [[NetWorkManager sharedManager]postNoTipJSON:@"http://app.jishiyu11.cn/index.php?g=app&m=comment&a=getList" parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
-        if ([responseObject[@"code"] isEqualToString:@"0000"]) {
-            NSArray *dataArray=[responseObject[@"code"] objectForKey:@"list"];
-            DLog(@"%@",dataArray);
+        [_tableView.mj_header endRefreshing];
+        [_tableView.mj_footer endRefreshing];
 
+        if ([responseObject[@"code"] isEqualToString:@"0000"]) {
+            NSArray *dataArray=[responseObject[@"data"] objectForKey:@"list"];
+            DLog(@"%@",dataArray);
+            for (NSDictionary *dic in dataArray) {
+                CommentModel  *comment=[CommentModel new];
+                [comment setValuesForKeysWithDictionary:dic];
+                [self.commentMutableArray addObject:comment ];
+            }
+          page_total =[[responseObject[@"data"] objectForKey:@"page_total"] integerValue];
+            DLog(@"%lu",(unsigned long)page_total);
+
+            [_tableView reloadData];
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
-        
+        [_tableView.mj_header endRefreshing];
+        [_tableView.mj_footer endRefreshing];
+
         
     }];
 
@@ -67,18 +115,21 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return self.commentMutableArray.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    CommentModel *comment=self.commentMutableArray[indexPath.row];
     
-    
-    return 120+[UtilTools getTextViewHeight:@"“共享男友”牌子上写着各种项目的标价，除了陪逛街、陪吃饭、陪看电影、陪去K歌，还有“拉手1元/次”“拥抱3元/次”“接吻7元/次”，甚至还有“在前男友前炫耀77元/次”。从标价中可以看出，“共享男友”不同于正常的男女恋爱，而是满足一部分没有异性朋友的需求，以无感情的近距离接触，甚至是肢体上接触，满足个人的虚荣心，或以不正当交友的方式，满足异性感官上和精神上的愉悦与享受。这其实都是很危险的。“共享男友”牌子上写着各种项目的标价，除了陪逛街、陪吃饭、陪看电影、陪去K歌，还有“拉手1元/次”“拥抱3元/次”“接吻7元/次”，甚至还有“在前男友前炫耀77元/次”。从标价中可以看出，“共享男友”不同于正常的男女恋爱，而是满足一部分没有异性朋友的需求，以无感情的近距离接触，甚至是肢体上接触，满足个人的虚荣心，或以不正当交友的方式，满足异性感官上和精神上的愉悦与享受。这其实都是很危险的。“共享男友”牌子上写着各种项目的标价，除了陪逛街、陪吃饭、陪看电影、陪去K歌，还有“拉手1元/次”“拥抱3元/次”“接吻7元/次”，甚至还有“在前男友前炫耀77元/次”。从标价中可以看出，“共享男友”不同于正常的男女恋爱，而是满足一部分没有异性朋友的需求，以无感情的近距离接触，甚至是肢体上接触，满足个人的虚荣心，或以不正当交友的方式，满足异性感官上和精神上的愉悦与享受。这其实都是很危险的。" font:[UIFont systemFontOfSize:13] width:WIDTH];
+    return 120+    [UtilTools getTextViewHeight:comment.comment font:[UIFont systemFontOfSize:13] width:WIDTH];
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 
 {
+    CommentModel *comment=self.commentMutableArray[indexPath.row];
+
     static NSString *cell=@"cell";
     AppraiseTableViewCell *loancell=[tableView dequeueReusableCellWithIdentifier:cell];
     
@@ -87,10 +138,16 @@
         loancell.selectionStyle=UITableViewCellSelectionStyleNone;
         
     }
-    loancell.index=5;
+    [loancell setCommentModel:comment];
     return loancell;
 }
-
+-(NSMutableArray *)commentMutableArray
+{
+    if (!_commentMutableArray) {
+        _commentMutableArray=[NSMutableArray array];
+    }
+    return  _commentMutableArray;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

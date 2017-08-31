@@ -16,6 +16,7 @@
 #import "MessageAlertView.h"
 #import "UtilTools.h"
 #import "UserInfoContext.h"
+#import "MJRefresh.h"
 
 //STD_API(int)	EXCARDS_Init(const char *szWorkPath);
 //STD_API(void)	EXCARDS_Done();

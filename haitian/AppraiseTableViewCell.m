@@ -7,9 +7,9 @@
 //
 
 #import "AppraiseTableViewCell.h"
-#import "ZJD_StarEvaluateView.h"
 
 #define  interval  30
+#define LeftPadding 20
 
 @implementation AppraiseTableViewCell
 
@@ -24,7 +24,7 @@
 -(void)creatHealthBroadcastCellUI
 
 {
-    CGFloat LeftPadding = 20;
+   
 
     
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(10, 5, WIDTH-20, 110)];
@@ -55,10 +55,10 @@
     CGFloat starWidth = 20;
     CGFloat space = 5;
     
-    ZJD_StarEvaluateView *starView = [[ZJD_StarEvaluateView alloc] initWithFrame:CGRectMake(LeftPadding, CGRectGetMaxY(_post_hits_Label.frame), self.contentView.width - LeftPadding, 20) starIndex:index starWidth:starWidth space:space defaultImage:nil lightImage:nil isCanTap:NO];
+  _starView = [[ZJD_StarEvaluateView alloc] initWithFrame:CGRectMake(LeftPadding, CGRectGetMaxY(_post_hits_Label.frame), self.contentView.width - LeftPadding, 20) starIndex:index starWidth:starWidth space:space defaultImage:nil lightImage:nil isCanTap:NO];
    
-    [self.contentView addSubview:starView];
-    starView.index=self.index;
+    [self.contentView addSubview:_starView];
+    _starView.index=self.index;
     _feliv_Label=[[UILabel alloc]init];
     [_feliv_Label setTextColor:[UIColor whiteColor]];
     _feliv_Label.backgroundColor=kColorFromRGBHex(0x1786e2);
@@ -66,7 +66,7 @@
     _feliv_Label.clipsToBounds=YES;
     _feliv_Label.layer.cornerRadius = 5;
     CGSize size=(CGSize )[UtilTools getTextHeight:@"以放宽" hight:16 font:[UIFont systemFontOfSize:11]];
-    [_feliv_Label setFrame:CGRectMake(LeftPadding ,CGRectGetMaxY(starView.frame)+8, size.width+20, 16)];
+    [_feliv_Label setFrame:CGRectMake(LeftPadding ,CGRectGetMaxY(_starView.frame)+8, size.width+20, 16)];
     _feliv_Label.textAlignment=NSTextAlignmentCenter;
     _feliv_Label.font=[UIFont systemFontOfSize:11];
     [self.contentView addSubview:_feliv_Label];
@@ -84,6 +84,19 @@
     
     
 }
+-(void)setCommentModel:(CommentModel *)commentModel
+{
+    commentModel.mobile= [commentModel.mobile stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+       [self.titleLabel setText:commentModel.mobile];
+    NSArray *timaArray=[commentModel.created_at componentsSeparatedByString:@" "];
+    [self.post_hits_Label setText:[timaArray firstObject]];
+    _starView.index=[commentModel.score integerValue];
+    _feliv_Label.text=[commentModel.type isEqualToString:@"1"]?@"已放款":@"未放款";
+    _comment_Label.text=commentModel.comment;
+    _comment_Label.frame=CGRectMake(LeftPadding ,CGRectGetMaxY(_feliv_Label.frame)+14, WIDTH-LeftPadding*2, [UtilTools getTextViewHeight:_comment_Label.text font:[UIFont systemFontOfSize:13] width:WIDTH]);
+
+}
+
 
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -8,8 +8,11 @@
 
 #import "GestureNavBaseVC.h"
 #import "HomeProductModel.h"
+typedef void (^back)();
 
 @interface ProductDetailViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate>
 @property(strong, nonatomic)HomeProductModel*productModel;
+
+@property(strong, nonatomic)back backblock;
 
 @end

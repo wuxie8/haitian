@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CommentModel.h"
+#import "ZJD_StarEvaluateView.h"
 
 @interface AppraiseTableViewCell : UITableViewCell
 
@@ -23,6 +25,6 @@
 @property(strong, nonatomic)UILabel *comment_Label;
 
 @property (nonatomic, assign) NSInteger index;
-
-
+@property(strong, nonatomic)ZJD_StarEvaluateView *starView;
+@property(strong, nonatomic)CommentModel*commentModel;
 @end

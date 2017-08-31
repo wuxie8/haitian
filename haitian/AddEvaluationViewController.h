@@ -7,7 +7,11 @@
 //
 
 #import "GestureNavBaseVC.h"
+#import "HomeProductModel.h"
+typedef void (^refresh)();
 
 @interface AddEvaluationViewController : GestureNavBaseVC
+@property(strong, nonatomic)HomeProductModel*productModel;
+@property(strong, nonatomic)refresh refreshblock;
 
 @end

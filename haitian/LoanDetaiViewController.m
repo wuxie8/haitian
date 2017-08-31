@@ -32,17 +32,50 @@
     
     [self.view addSubview:self.headView];
     CommentariesViewController *commentaries=[[CommentariesViewController alloc]init];
+    commentaries.productModel=self.product;
+    __block CommentariesViewController *  blockSelf = commentaries;
+
     [commentaries setBackblock:^()
      {
-         [self.navigationController pushViewController:[AddEvaluationViewController new] animated:YES];
+         AddEvaluationViewController *addEvaluation=[AddEvaluationViewController new];
+         [addEvaluation setRefreshblock:^()
+         {
+             [blockSelf.tableView.mj_header beginRefreshing];
+         }];
+         addEvaluation.productModel=self.product;
+         [self.navigationController pushViewController:addEvaluation animated:YES];
 
      }];
-    
+   
     AuthenticationInformationViewController *authenticationInformation=[[AuthenticationInformationViewController alloc]init];
     authenticationInformation.product=self.product;
     ProductDetailViewController *productDetail=[[ProductDetailViewController alloc]init];
     productDetail.productModel=self.product;
-    NSArray *controllersArr = @[productDetail, commentaries];
+    [productDetail setBackblock:^()
+    {
+        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
+                           Context.currentUser.uid,@"uid",
+                           self.product.productID,@"pid",
+                           [NSString stringWithFormat:@"%d",edu],@"amount",
+                          [NSString stringWithFormat:@"%d",qixian],@"deadline",
+                           self.product.qx_unit,@"unit",
+                           
+                           nil];
+        [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@&m=loanrecord&a=postAdd",SERVEREURL] parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
+            
+            if ([responseObject[@"code"]isEqualToString:@"0000"]) {
+                DLog(@"%@",responseObject);
+                
+            }
+            
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            NSLog(@"%@",error);
+            
+            
+        }];
+    }];
+
+    NSArray *controllersArr = [self.product.api_type  isEqualToString:@"3"]?@[authenticationInformation, commentaries]:@[productDetail, commentaries];
 
     OptionBarController *optionBar = [[OptionBarController alloc] initWithSubViewControllers:controllersArr andParentViewController:self andshowSeperateLine:NO];
     //    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {

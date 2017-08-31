@@ -7,9 +7,14 @@
 //
 
 #import "GestureNavBaseVC.h"
+#import "HomeProductModel.h"
+
 typedef void (^back)();
 
 @interface CommentariesViewController : UIViewController
 @property(strong, nonatomic)back backblock;
+
+@property(strong, nonatomic)HomeProductModel*productModel;
+@property (nonatomic,retain) UITableView *tableView;
 
 @end

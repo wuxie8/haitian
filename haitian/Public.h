@@ -15,7 +15,7 @@
 
 
 #ifdef DEBUG
-#define DLog( s, ... ) NSLog( @"%s <第%d行> %@",__FUNCTION__,  __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#define DLog( s, ... ) NSLog( @"%s <第%d-> %@",__FUNCTION__,  __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 #else
 #define DLog( s, ... )
 #endif

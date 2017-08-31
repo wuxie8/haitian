@@ -19,12 +19,16 @@
     NSArray *arr;
     UITextView *text1;
     UILabel *label;
+    NSInteger score;
+    NSInteger type;
 
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"评价";
     arr=@[@"用户状态",@"描述相符"];
+    type=1;
+    score=5;
     UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-220)];
     tableView.delegate=self;
     tableView.dataSource=self;
@@ -44,14 +48,15 @@
         text1=[[UITextView alloc]initWithFrame:CGRectMake(10, 10, WIDTH-20, 200)];
         text1.backgroundColor=[UIColor whiteColor];
         text1.delegate=self;
+        text1.font=[UIFont systemFontOfSize:14];
         text1.returnKeyType=UIReturnKeyDone;
         NSString *textplaceholder=@"请详细描述您的问题或建议，我们将及时跟进解决。";
-        CGSize size=[UtilTools getTextHeight:textplaceholder width:WIDTH-40 font:[UIFont systemFontOfSize:12]];
+        CGSize size=[UtilTools getTextHeight:textplaceholder width:WIDTH-40 font:[UIFont systemFontOfSize:14]];
         label=[[UILabel alloc]initWithFrame:CGRectMake(20, 10, WIDTH-60, size.height)];
         
         label.text=textplaceholder;
         label.numberOfLines=0;
-        label.font=[UIFont systemFontOfSize:12];
+        label.font=[UIFont systemFontOfSize:14];
         label.textColor=kColorFromRGBHex(0xb6b6b6);
 
         [text1 addSubview:label];
@@ -62,7 +67,7 @@
         button.clipsToBounds=YES;
         [button addTarget:self action:@selector(nextStep) forControlEvents:UIControlEventTouchUpInside];
         button.backgroundColor=AppButtonbackgroundColor;
-        [button setTitle:@"我要评价" forState:UIControlStateNormal];
+        [button setTitle:@"提交" forState:UIControlStateNormal];
         [_footView addSubview:button];
     }
     return _footView;
@@ -72,6 +77,12 @@
         label.hidden = NO;
     }else{
         label.hidden = YES;
+    }
+    //字数限制操作
+    if (textView.text.length >= 100) {
+        [MessageAlertView showErrorMessage:@"不能超过100个字"];
+        textView.text = [textView.text substringToIndex:100];
+        
     }
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -86,16 +97,20 @@
 -(void)nextStep{
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
                        Context.currentUser.uid,@"uid",
-                       @"6",@"pid",
+                       self.productModel.productID,@"pid",
                        text1.text,@"comment",
-                       @"5",@"score",
+                       [NSString stringWithFormat:@"%ld",(long)score],@"score",
 
-                       @"1",@"type",
+                       [NSString stringWithFormat:@"%ld",(long)type],@"type",
 
                        nil];
     [[NetWorkManager sharedManager]postNoTipJSON:@"http://app.jishiyu11.cn/index.php?g=app&m=comment&a=postAdd" parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
-        
-       
+        if ([responseObject[@"code"] isEqualToString:@"0000"]) {
+            if (self.refreshblock) {
+                self.refreshblock();
+            }
+            [self.navigationController popViewControllerAnimated:NO];
+        }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
         
@@ -111,7 +126,7 @@
     
     
     
-    return 50;
+    return 70;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -130,7 +145,7 @@ loancell.textLabel.text=arr[indexPath.row];
     
     if (indexPath.row==0) {
         for (int i=0; i<2; i++) {
-            UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(120+(50+30)*i, 14, 50, loancell.frame.size.height-25)];
+            UIButton *but=[[UIButton alloc]initWithFrame:CGRectMake(120+(70+30)*i, 22, 70, 26)];
             but.tag=1000+i;
             if (i==0) {
                 [but setBackgroundImage:[UIImage imageNamed:@"Lending"] forState:0];
@@ -143,6 +158,8 @@ loancell.textLabel.text=arr[indexPath.row];
                 but.selected=NO;
 
             }
+            but.imageView.contentMode=UIViewContentModeScaleAspectFit;
+            but.imageView.clipsToBounds=YES;
             [but addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
             [loancell.contentView addSubview:but];
         }
@@ -155,10 +172,9 @@ loancell.textLabel.text=arr[indexPath.row];
         CGFloat space = 20;
         BOOL isCanTap = YES;
         
-        ZJD_StarEvaluateView *starView = [[ZJD_StarEvaluateView alloc] initWithFrame:CGRectMake(LeftPadding, 10, self.view.width - LeftPadding, loancell.frame.size.height-20) starIndex:index starWidth:starWidth space:space defaultImage:nil lightImage:nil isCanTap:isCanTap];
+        ZJD_StarEvaluateView *starView = [[ZJD_StarEvaluateView alloc] initWithFrame:CGRectMake(LeftPadding, 22, self.view.width - LeftPadding, 26) starIndex:index starWidth:starWidth space:space defaultImage:nil lightImage:nil isCanTap:isCanTap];
         starView.starEvaluateBlock = ^(ZJD_StarEvaluateView * starView, NSInteger starIndex){
-            
-            DLog(@"%ld",(long)starIndex);
+            score=starIndex;
             
         };
         [loancell.contentView addSubview:starView];
@@ -184,6 +200,7 @@ loancell.textLabel.text=arr[indexPath.row];
     return YES;
     
 }
+
 -(void)click:(UIButton *)sender{
     UIButton *but1=(UIButton *)[self.view viewWithTag:1000];
     UIButton *but2=(UIButton *)[self.view viewWithTag:1001];
@@ -191,10 +208,12 @@ loancell.textLabel.text=arr[indexPath.row];
     if (sender.tag==1000) {
         but1.selected=YES;
         but2.selected=NO;
+        type=1;
     }
     else{
         but2.selected=YES;
         but1.selected=NO;
+        type=0;
     }
 }
 

@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - JPush-iOS-SDK (3.0.5)
+  - MJRefresh (3.1.12)
   - RealReachability (1.1.8):
     - RealReachability/Connection (= 1.1.8)
     - RealReachability/Ping (= 1.1.8)
@@ -33,6 +34,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - JPush-iOS-SDK
+  - MJRefresh
   - RealReachability
   - UMengUShare/Social/ReducedQQ
   - UMengUShare/Social/ReducedWeChat
@@ -41,9 +43,10 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   JPush-iOS-SDK: f80e435b524449fd5101e247b044d4e48174ef5f
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   RealReachability: e6c8a2bbffa316006e8c282efc1ee2567d61a920
   UMengUShare: a5711c54e640b04e3048e931d2b88d50f9cfa55c
 
-PODFILE CHECKSUM: 9ce84f871832985ab8e54b96ce3f10aec912c41c
+PODFILE CHECKSUM: 8ea46433c7e5f4bc51822510387532d8b0dfcc93
 
 COCOAPODS: 1.2.0

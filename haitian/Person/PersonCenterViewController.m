@@ -13,6 +13,7 @@
 #import "SetUpViewController.h"
 #import "PersonalDataViewController.h"
 #import "InviteFriendsViewController.h"
+#import "BorrowingRecordViewController.h"
 @interface PersonCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(strong, nonatomic)UIView *headView;
 @end
@@ -35,8 +36,8 @@
     [self.view addSubview:tab];
    
    
-   arr1=@[@"",@"PersonalData",@"InviteFriends",@"HelpCenter",@"feedback",@"SetUp"];
-    arr=@[@"",@"个人资料",@"邀请好友",@"帮助中心",@"意见反馈",@"设置"];
+   arr1=@[@"",@"PersonalData",@"InviteFriends",@"HelpCenter",@"feedback",@"BrowsingHistory",@"SetUp"];
+    arr=@[@"",@"个人资料",@"邀请好友",@"帮助中心",@"意见反馈",@"借款记录",@"设置"];
     
     // Do any additional setup after loading the view.
 }
@@ -213,12 +214,20 @@
             break;
             case 5:
         {
-            SetUpViewController *setup=[SetUpViewController new];
+            BorrowingRecordViewController *setup=[BorrowingRecordViewController new];
             setup.hidesBottomBarWhenPushed=YES;
             [self.navigationController pushViewController:setup animated:YES];
 
         }
+            break;
+        case 6:
+        {
+            SetUpViewController *setup=[SetUpViewController new];
+            setup.hidesBottomBarWhenPushed=YES;
+            [self.navigationController pushViewController:setup animated:YES];
             
+        }
+            break;
         default:
             break;
     }
