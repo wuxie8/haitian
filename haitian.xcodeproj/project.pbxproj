@@ -93,6 +93,8 @@
 		847A11501EA45F0C002D8832 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114D1EA45F0C002D8832 /* User.m */; };
 		847A11511EA45F0C002D8832 /* UserInfoContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A114F1EA45F0C002D8832 /* UserInfoContext.m */; };
 		847DF40A1F146639007DDB60 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 847DF4091F146639007DDB60 /* libsqlite3.tbd */; };
+		848A0B491F58F89C005D49B1 /* ClassListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848A0B481F58F89C005D49B1 /* ClassListViewController.m */; };
+		848A0B4C1F58FB95005D49B1 /* ClassListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 848A0B4B1F58FB95005D49B1 /* ClassListTableViewCell.m */; };
 		848F1F8B1EC0078D00720FB6 /* H5Service.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 848F1F891EC0078D00720FB6 /* H5Service.bundle */; };
 		848F1F8C1EC0078D00720FB6 /* Poseidon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 848F1F8A1EC0078D00720FB6 /* Poseidon.bundle */; };
 		848F1F8F1EC0089000720FB6 /* ZMCreditSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848F1F8D1EC0088F00720FB6 /* ZMCreditSDK.framework */; };
@@ -385,6 +387,10 @@
 		847A114E1EA45F0C002D8832 /* UserInfoContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoContext.h; sourceTree = "<group>"; };
 		847A114F1EA45F0C002D8832 /* UserInfoContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoContext.m; sourceTree = "<group>"; };
 		847DF4091F146639007DDB60 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		848A0B471F58F89C005D49B1 /* ClassListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassListViewController.h; sourceTree = "<group>"; };
+		848A0B481F58F89C005D49B1 /* ClassListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassListViewController.m; sourceTree = "<group>"; };
+		848A0B4A1F58FB95005D49B1 /* ClassListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassListTableViewCell.h; sourceTree = "<group>"; };
+		848A0B4B1F58FB95005D49B1 /* ClassListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassListTableViewCell.m; sourceTree = "<group>"; };
 		848F1F891EC0078D00720FB6 /* H5Service.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = H5Service.bundle; sourceTree = "<group>"; };
 		848F1F8A1EC0078D00720FB6 /* Poseidon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Poseidon.bundle; sourceTree = "<group>"; };
 		848F1F8D1EC0088F00720FB6 /* ZMCreditSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZMCreditSDK.framework; sourceTree = "<group>"; };
@@ -963,6 +969,10 @@
 				8476E8151F553789004C1608 /* CCPScrollView */,
 				8436738B1F55673900F6E5C3 /* Model */,
 				8403316A1F566D5800DE1E60 /* LoanDetail */,
+				848A0B471F58F89C005D49B1 /* ClassListViewController.h */,
+				848A0B481F58F89C005D49B1 /* ClassListViewController.m */,
+				848A0B4A1F58FB95005D49B1 /* ClassListTableViewCell.h */,
+				848A0B4B1F58FB95005D49B1 /* ClassListTableViewCell.m */,
 				849012CB1F024C3000E3D62A /* HomeProductModel.h */,
 				849012CC1F024C3000E3D62A /* HomeProductModel.m */,
 				849012BF1F024A2500E3D62A /* AmountClassificationViewController.h */,
@@ -1631,6 +1641,7 @@
 				84A274241ED3DAAF009462F4 /* AccumulationFundViewController.m in Sources */,
 				847A11501EA45F0C002D8832 /* User.m in Sources */,
 				840331801F5671F100DE1E60 /* CommentariesViewController.m in Sources */,
+				848A0B491F58F89C005D49B1 /* ClassListViewController.m in Sources */,
 				844E16431EC97A2000F4EA80 /* HcdDateTimePickerView.m in Sources */,
 				849012C41F024A9400E3D62A /* AmountTableViewCell.m in Sources */,
 				844E16451EC97A2000F4EA80 /* UIColor+HcdCustom.m in Sources */,
@@ -1659,6 +1670,7 @@
 				84A733531EB86C82008ABB7E /* AddressBookVC.m in Sources */,
 				8436738E1F55674C00F6E5C3 /* ClassModel.m in Sources */,
 				84B9DBF11E9DC0990066A92D /* ViewController.m in Sources */,
+				848A0B4C1F58FB95005D49B1 /* ClassListTableViewCell.m in Sources */,
 				84939E321EFAA48600152EAF /* LoadDetailViewController.mm in Sources */,
 				849012CA1F024B3F00E3D62A /* BtnView.m in Sources */,
 				84939E201EFA120200152EAF /* FamilyAndLivingConditionsViewController.m in Sources */,

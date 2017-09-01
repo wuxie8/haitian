@@ -95,6 +95,10 @@
     
 }
 -(void)nextStep{
+    if ([UtilTools isBlankString:text1.text]) {
+        [MessageAlertView showErrorMessage:@"请填写信息"];
+        return;
+    }
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:
                        Context.currentUser.uid,@"uid",
                        self.productModel.productID,@"pid",

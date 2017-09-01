@@ -1,15 +1,16 @@
 //
-//  JishiyuTableViewCell.m
-//  jishi
+//  ClassListTableViewCell.m
+//  haitian
 //
-//  Created by Admin on 2017/3/8.
+//  Created by Admin on 2017/9/1.
 //  Copyright © 2017年 Admin. All rights reserved.
 //
 
-#import "JishiyuTableViewCell.h"
-#import "UIImageView+AFNetworking.h"
+#import "ClassListTableViewCell.h"
 
-@implementation JishiyuTableViewCell
+
+
+@implementation ClassListTableViewCell
 
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -27,8 +28,8 @@
     _image = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 60, 60)];
     _image.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.500];
     _image.contentMode = UIViewContentModeScaleAspectFill;
-//    _image.layer.cornerRadius=10;
-//    _image.layer.masksToBounds=YES;
+    //    _image.layer.cornerRadius=10;
+    //    _image.layer.masksToBounds=YES;
     [self.contentView addSubview:_image];
     
     _titleLabel=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_image.frame)+20, 20, WIDTH-CGRectGetMaxX(_image.frame)-20, 20)];
@@ -56,7 +57,7 @@
     _labellingImage = [[UIImageView alloc] initWithFrame:CGRectMake(WIDTH-60-30, 0, 25, 25)];
     _labellingImage.contentMode = UIViewContentModeScaleAspectFill;
     _labellingImage.image=[UIImage imageNamed:@"activity"];
-
+    
     //    _labellingImage.layer.cornerRadius=10;
     //    _labellingImage.layer.masksToBounds=YES;
     [self.contentView addSubview:_labellingImage];
@@ -67,18 +68,18 @@
     [self.contentView addSubview:view];
 }
 
--(void)setModel:(HomeProductModel *)model
+-(void)setModel:(ClassListModel *)model
 {
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
-        [self.image setImage:[UIImage imageNamed:model.smeta]];
+        [self.image setImage:[UIImage imageNamed:model.img]];
         
     }
     else
     {
         [self.image setImage:[UIImage imageNamed:@"iconLoading"]];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,model.smeta]];
+            NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,model.img]];
             UIImage * result;
             NSData * data = [NSData dataWithContentsOfURL:url];
             
@@ -86,14 +87,14 @@
             
             [self.image setImage:result];
         });
-   
+        
     }
-//        [self.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,model.smeta]]];
-//    }
-    [self.titleLabel setText:model.post_title];
+    //        [self.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,model.smeta]]];
+    //    }
+    [self.titleLabel setText:model.pro_name];
     [self.feliv_Label setText:[NSString stringWithFormat:@"%@利率%@",[model.qx_unit isEqualToString:@"1"]?@"日":@"月",model.feilv]];
     
-    NSString *str=[NSString stringWithFormat:@"申请人数%@人",model.post_hits];
+    NSString *str=[NSString stringWithFormat:@"申请人数%@人",model.hits];
     NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:str];
     
     [AttributedStr addAttribute:NSForegroundColorAttributeName
@@ -102,7 +103,7 @@
      
                           range:NSMakeRange(4, [AttributedStr length]-4)];
     
-   self.post_hits_Label.attributedText=AttributedStr;
+    self.post_hits_Label.attributedText=AttributedStr;
 }
 
 - (void)awakeFromNib {
@@ -112,7 +113,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 

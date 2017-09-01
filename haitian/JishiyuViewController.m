@@ -21,6 +21,7 @@
 #import "HomePageCollectionViewCell.h"
 #import "ClassModel.h"
 #import "LoanDetaiViewController.h"
+#import "ClassListViewController.h"
 #define  ScrollviewWeight 50
 #define  ScrollviewHeight 180
 #define SectionHeight 110
@@ -766,8 +767,10 @@ static NSString *const adUrl = @"adUrl";
 {
     ClassModel *class=self.classArray[indexPath.row];
     NSArray *array=class.classListArray;
-    DLog(@"%@",array);
-
+    ClassListViewController *classList=[ClassListViewController new];
+    classList.hidesBottomBarWhenPushed=YES;
+    classList.productArray=[NSMutableArray arrayWithArray:array];
+    [self.navigationController pushViewController:classList animated:YES];
     if (indexPath.row==7) {
         WebVC *vc = [[WebVC alloc] init];
         [vc setNavTitle:@"信用卡查询"];
