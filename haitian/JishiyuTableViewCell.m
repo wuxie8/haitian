@@ -40,12 +40,26 @@
     
     [self.contentView addSubview:_post_hits_Label];
     
-    _feliv_Label=[[UILabel alloc]initWithFrame:CGRectMake(WIDTH-160, 40, 120, 20)];
+    _feliv_Label=[[UILabel alloc]initWithFrame:CGRectMake(WIDTH-160, 40, 120, 40)];
     [_feliv_Label setTextColor:[UIColor grayColor]];
     _feliv_Label.textAlignment=NSTextAlignmentRight;
     _feliv_Label.font=[UIFont systemFontOfSize:12];
     [self.contentView addSubview:_feliv_Label];
     
+    _activityImage = [[UIImageView alloc] initWithFrame:CGRectMake(WIDTH-60-30-5-30, 0, 25, 25)];
+    _activityImage.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.500];
+    _activityImage.image=[UIImage imageNamed:@"activity"];
+    _activityImage.contentMode = UIViewContentModeScaleAspectFill;
+    //    _activityImage.layer.cornerRadius=10;
+    //    _activityImage.layer.masksToBounds=YES;
+    [self.contentView addSubview:_activityImage];
+    _labellingImage = [[UIImageView alloc] initWithFrame:CGRectMake(WIDTH-60-30, 0, 25, 25)];
+    _labellingImage.contentMode = UIViewContentModeScaleAspectFill;
+    _labellingImage.image=[UIImage imageNamed:@"activity"];
+
+    //    _labellingImage.layer.cornerRadius=10;
+    //    _labellingImage.layer.masksToBounds=YES;
+    [self.contentView addSubview:_labellingImage];
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(10, 79, WIDTH-20, 1)];
     view.backgroundColor=[UIColor grayColor];
     view.alpha=0.3;
@@ -77,7 +91,7 @@
 //        [self.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,model.smeta]]];
 //    }
     [self.titleLabel setText:model.post_title];
-    [self.feliv_Label setText:model.feilv];
+    [self.feliv_Label setText:[NSString stringWithFormat:@"%@%@",[model.qx_unit isEqualToString:@"1"]?@"日":@"月",model.feilv]];
     
     NSString *str=[NSString stringWithFormat:@"申请人数%@人",model.post_hits];
     NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:str];

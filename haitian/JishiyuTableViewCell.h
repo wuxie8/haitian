@@ -22,4 +22,10 @@
 @property(strong, nonatomic)UILabel *feliv_Label;
 
 @property (nonatomic, strong)HomeProductModel *model;
+
+@property(strong, nonatomic)UIImageView *labellingImage;
+
+
+@property(strong, nonatomic)UIImageView *activityImage;
+
 @end

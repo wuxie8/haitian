@@ -11,7 +11,7 @@
 #import "RecordMoedl.h"
 @interface BorrowingRecordViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(strong, nonatomic)    NSMutableArray *borrowMutableArray;
-
+@property(strong, nonatomic)UIView *blankRecord;
 @end
 
 @implementation BorrowingRecordViewController
@@ -39,12 +39,18 @@
         if ([responseObject[@"code"]isEqualToString:@"0000"]) {
             DLog(@"%@",responseObject);
             NSArray *array=responseObject[@"data"];
+            if ([UtilTools isBlankArray:array]) {
+                [self.view addSubview:self.blankRecord];
+            }
+            else{
+                [self.blankRecord removeFromSuperview];
             for (NSDictionary *dic in  array) {
                 RecordMoedl *recordMoed=[RecordMoedl new];
                 [recordMoed setValuesForKeysWithDictionary:dic];
                 [self.borrowMutableArray addObject:recordMoed];
             }
             [tab reloadData];
+            }
         }
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -53,6 +59,28 @@
         
     }];
 
+}
+-(UIView *)blankRecord
+{
+    if (!_blankRecord) {
+        _blankRecord=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+        _blankRecord.backgroundColor=kColorFromRGBHex(0xf3f3f3);
+        UIImageView *blankimage=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, WIDTH)];
+        blankimage.image=[UIImage imageNamed:@"blank"];
+        blankimage.contentMode=UIViewContentModeScaleAspectFit;
+        blankimage.clipsToBounds=YES;
+        [_blankRecord addSubview:blankimage];
+        UIButton *button=[[UIButton alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(blankimage.frame), WIDTH-10*2, 150)];
+        [button setImage:[UIImage imageNamed:@"Button"] forState:0];
+        button.imageView.contentMode=UIViewContentModeScaleAspectFit;
+        button.imageView.clipsToBounds=YES;
+        [button addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
+        [_blankRecord addSubview:button];
+    }
+    return  _blankRecord;
+}
+-(void)click{
+    
 }
 -(void)borrowingImmediately:(UIButton *)sender{
     DLog(@"%ld",(long)sender.tag);

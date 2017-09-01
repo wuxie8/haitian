@@ -764,6 +764,10 @@ static NSString *const adUrl = @"adUrl";
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    ClassModel *class=self.classArray[indexPath.row];
+    NSArray *array=class.classListArray;
+    DLog(@"%@",array);
+
     if (indexPath.row==7) {
         WebVC *vc = [[WebVC alloc] init];
         [vc setNavTitle:@"信用卡查询"];
