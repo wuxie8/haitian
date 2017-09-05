@@ -56,6 +56,9 @@
 @property (nonatomic, copy) NSString *pro_hits;
 
 @property (nonatomic, copy) NSString *hits;
+@property (nonatomic, copy) NSString *is_new;
+
+@property (nonatomic, copy) NSString *is_activity;
 
 
 @property (nonatomic, copy) NSString *status;

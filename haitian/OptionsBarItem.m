@@ -67,6 +67,7 @@
     }
     if(showSeprateLine){
         self.lineImageView.image=[UIImage imageNamed:@"sline_"];
+
         self.lineImageView.hidden=NO;
     }else{
         self.lineImageView.hidden=YES;

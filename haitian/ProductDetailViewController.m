@@ -136,7 +136,7 @@
         _footView=[[UIView alloc]initWithFrame:CGRectMake(0, HEIGHT-64-50-250, WIDTH, 50)];
         UIButton *footBut=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 50)];
         [footBut setTitle:@"立即申请" forState:0];
-        footBut.backgroundColor=AppBaseColor;
+        footBut.backgroundColor=kColorFromRGBHex(0x1786e2);
         [footBut addTarget:self action:@selector(nextStep) forControlEvents:UIControlEventTouchUpInside];
         
         [_footView addSubview:footBut];

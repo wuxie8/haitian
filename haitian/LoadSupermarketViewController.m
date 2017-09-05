@@ -98,9 +98,33 @@ static NSString *const footerId = @"footerId1";
             NSMutableArray *quickMutableArray=[NSMutableArray array];
             
             for (NSDictionary *dic1 in recommendarr) {
-                ProductListModel *remind=[ProductListModel new];
-                [remind setValuesForKeysWithDictionary:dic1];
-                [recommendMutableArray addObject:remind];
+                ProductListModel *pro=[ProductListModel new];
+                pro.pro_link=diction[@"pro_link"];
+                pro.edufanwei=diction[@"edufanwei"];
+                pro.qixianfanwei=diction[@"qixianfanwei"];
+                pro.tiaojian=diction[@"tiaojian"];
+                pro.zuikuaifangkuan=diction[@"zuikuaifangkuan"];
+                pro.api_type=diction[@"api_type"];
+                pro.hits=diction[@"hits"];
+                pro.is_new=diction[@"is_new"];
+                pro.is_activity=diction[@"is_activity"];
+                pro.data_id=diction[@"data_id"];
+
+                pro.pro_hits=diction[@"pro_hits"];
+                pro.feilv=diction[@"feilv"];
+                pro.id=diction[@"id"];
+                pro.pro_describe=diction[@"pro_describe"];
+//                NSArray *tags=diction[@"tags"];
+//                NSMutableArray *tagsArray=[NSMutableArray array];
+//                for (NSDictionary *dic in tags) {
+//                    [tagsArray addObject:dic[@"tag_name"]];
+//                }
+//                pro.tagsArray=tagsArray;
+                pro.fv_unit=diction[@"fv_unit"];
+                
+                pro.qx_unit=diction[@"qx_unit"];
+//                [remind setValuesForKeysWithDictionary:dic1];
+                [recommendMutableArray addObject:pro];
             }
             for (NSDictionary *dic1 in quickarr) {
                 ProductListModel *remind=[ProductListModel new];

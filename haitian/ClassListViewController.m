@@ -191,7 +191,8 @@
     home.link=pro.pro_link;
     home.zuikuaifangkuan=pro.zuikuaifangkuan;
     home.post_excerpt=pro.pro_describe;
-//    home.tagsArray=pro.t
+    home.is_new=pro.is_new;
+    home.is_activity=  pro.is_activity;
     LoanDetaiViewController *loan=[[LoanDetaiViewController alloc]init];
     loan.product=home;
     loan.hidesBottomBarWhenPushed=YES;

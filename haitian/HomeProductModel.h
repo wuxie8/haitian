@@ -41,6 +41,12 @@
 @property(strong, nonatomic)NSString*  qx_unit;
 //介绍
 @property(strong, nonatomic)NSString*  post_excerpt;
+
+@property(strong, nonatomic)NSString*  is_activity;
+
+
+@property(strong, nonatomic)NSString*  is_new;
+
 //标签数组
 @property(strong, nonatomic)NSArray*  tagsArray;
 

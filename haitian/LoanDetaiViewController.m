@@ -77,7 +77,7 @@
 
     NSArray *controllersArr = [self.product.api_type  isEqualToString:@"3"]?@[authenticationInformation, commentaries]:@[productDetail, commentaries];
 
-    OptionBarController *optionBar = [[OptionBarController alloc] initWithSubViewControllers:controllersArr andParentViewController:self andshowSeperateLine:NO];
+    OptionBarController *optionBar = [[OptionBarController alloc] initWithSubViewControllers:controllersArr andParentViewController:self andshowSeperateLine:YES];
     //    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
     //        optionBar.linecolor=AppgreenColor;
     //    }
@@ -125,7 +125,7 @@
         label.font=[UIFont systemFontOfSize:14*Context.rectScaleX];
         [view addSubview:label];
         //        NSArray *titleArr = self.product.tagsArray;
-        NSArray *titleArr =@[@"工薪贷",@"工薪贷"];
+        NSArray *titleArr =self.product.tagsArray;
         
         UIView *btnview=[BtnView creatBtnWithArray:titleArr frame:CGRectMake(CGRectGetMaxX(imageView.frame)+10, CGRectGetMaxY(label.frame), WIDTH-CGRectGetMaxX(imageView.frame)-10, 40)];
         [view addSubview:btnview];

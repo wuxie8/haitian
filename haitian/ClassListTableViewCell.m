@@ -49,14 +49,14 @@
     
     _activityImage = [[UIImageView alloc] initWithFrame:CGRectMake(WIDTH-60-30-5-30, 0, 25, 25)];
     _activityImage.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.500];
-    _activityImage.image=[UIImage imageNamed:@"activity"];
+//    _activityImage.image=[UIImage imageNamed:@"activity"];
     _activityImage.contentMode = UIViewContentModeScaleAspectFill;
     //    _activityImage.layer.cornerRadius=10;
     //    _activityImage.layer.masksToBounds=YES;
     [self.contentView addSubview:_activityImage];
     _labellingImage = [[UIImageView alloc] initWithFrame:CGRectMake(WIDTH-60-30, 0, 25, 25)];
     _labellingImage.contentMode = UIViewContentModeScaleAspectFill;
-    _labellingImage.image=[UIImage imageNamed:@"activity"];
+//    _labellingImage.image=[UIImage imageNamed:@"activity"];
     
     //    _labellingImage.layer.cornerRadius=10;
     //    _labellingImage.layer.masksToBounds=YES;
@@ -89,8 +89,26 @@
         });
         
     }
-    //        [self.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,model.smeta]]];
-    //    }
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,model.is_activity]];
+        UIImage * result;
+        NSData * data = [NSData dataWithContentsOfURL:url];
+        
+        result = [UIImage imageWithData:data];
+        
+        [_activityImage setImage:result];
+    });
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMG_PATH,model.is_new]];
+        UIImage * result;
+        NSData * data = [NSData dataWithContentsOfURL:url];
+        
+        result = [UIImage imageWithData:data];
+        
+        [_labellingImage setImage:result];
+    });
+
     [self.titleLabel setText:model.pro_name];
     [self.feliv_Label setText:[NSString stringWithFormat:@"%@利率%@",[model.qx_unit isEqualToString:@"1"]?@"日":@"月",model.feilv]];
     

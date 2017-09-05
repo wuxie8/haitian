@@ -68,4 +68,8 @@
 
 @property (nonatomic, copy) NSString *id;
 
+@property (nonatomic, copy) NSString *is_activity;
+
+@property (nonatomic, copy) NSString *is_new;
+
 @end
