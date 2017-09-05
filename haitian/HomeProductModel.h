@@ -36,14 +36,26 @@
 @property(strong, nonatomic)NSString*  fv_unit;
 
 @property(strong, nonatomic)NSString*  api_type;
+@property(strong, nonatomic)NSString*  type;
+
 
 //天／月
 @property(strong, nonatomic)NSString*  qx_unit;
 //介绍
 @property(strong, nonatomic)NSString*  post_excerpt;
+@property(strong, nonatomic)NSString*  data_id;
+@property(strong, nonatomic)NSString*  order;
+
+@property(strong, nonatomic)NSString*  other_auth;
 
 @property(strong, nonatomic)NSString*  is_activity;
 
+@property(strong, nonatomic)NSString*  other_id;
+@property(strong, nonatomic)NSString*  pro_describe;
+@property(strong, nonatomic)NSString*  pro_hits;
+@property(strong, nonatomic)NSString*  pro_link;
+
+@property(strong, nonatomic)NSString*  pro_name;
 
 @property(strong, nonatomic)NSString*  is_new;
 

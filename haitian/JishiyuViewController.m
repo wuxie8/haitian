@@ -50,6 +50,7 @@ static NSString *const adUrl = @"adUrl";
     int page;
     int page_count;
     UIView *backgroundView;
+    NSArray *titlearray;
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -209,7 +210,7 @@ static NSString *const adUrl = @"adUrl";
                        [NSString stringWithFormat:@"%d",page],@"page",
                        appcode,@"code",
                        nil];
-    NSArray *array=@[@"及时雨-社保贷",@"及时雨-公积金贷",@"及时雨-保单贷",@"及时雨-供房贷",@"及时雨-税金贷",@"及时雨-学信贷"];
+   titlearray=@[@"及时雨-社保贷",@"及时雨-公积金贷",@"及时雨-保单贷",@"及时雨-供房贷",@"及时雨-税金贷",@"及时雨-学信贷"];
     [[NetWorkManager sharedManager]postNoTipJSON:[NSString stringWithFormat:@"%@&m=product&a=change_list",SERVEREURL] parameters:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic=(NSDictionary *)responseObject;
         
@@ -236,8 +237,8 @@ static NSString *const adUrl = @"adUrl";
                     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"review"]) {
                         pro.smeta=@"icon";
                         
-                        int location=i%array.count;
-                        pro.post_title=array[location];
+                        int location=i%titlearray.count;
+                        pro.post_title=titlearray[location];
                     }
                     else
                     {
@@ -259,6 +260,8 @@ static NSString *const adUrl = @"adUrl";
                     pro.feilv=diction[@"feilv"];
                     pro.productID=diction[@"id"];
                     pro.post_excerpt=diction[@"post_excerpt"];
+                    pro.data_id=diction[@"data_id"];
+
                     NSArray *tags=diction[@"tags"];
                     NSMutableArray *tagsArray=[NSMutableArray array];
                     for (NSDictionary *dic in tags) {
@@ -651,14 +654,76 @@ static NSString *const adUrl = @"adUrl";
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    
     HomeProductModel *product=(HomeProductModel *)self.productArray[indexPath.row];
-    
-    LoanDetaiViewController *load=[[LoanDetaiViewController alloc]init];
-    load.hidesBottomBarWhenPushed=YES;
-    
-    load.product=product;
-    [self.navigationController pushViewController:load animated:YES];
-    return;
+    NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:
+                        Context.currentUser.uid,@"uid",
+                        product.productID,@"id",
+                        
+                        nil];
+    [[NetWorkManager sharedManager]postJSON:[NSString stringWithFormat:@"%@&m=product&a=postDetail",SERVERE] parameters:dic1 success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        if ([responseObject[@"code"]isEqualToString:@"0000"]) {
+            NSDictionary *diction=responseObject[@"data"];
+            HomeProductModel *pro=[[HomeProductModel alloc]init];
+
+           
+                
+                pro.smeta=diction[@"img"];
+                pro.post_title=diction[@"pro_name"];
+          
+            pro.link=diction[@"pro_link"];
+            pro.edufanwei=diction[@"edufanwei"];
+            pro.qixianfanwei=diction[@"qixianfanwei"];
+            pro.shenqingtiaojian=diction[@"shenqingtiaojian"];
+            pro.zuikuaifangkuan=diction[@"zuikuaifangkuan"];
+            pro.api_type=diction[@"api_type"];
+            pro.hits=diction[@"hits"];
+            pro.is_new=diction[@"is_new"];
+            pro.is_activity=diction[@"is_activity"];
+            
+            pro.post_hits=diction[@"hits"];
+            pro.feilv=diction[@"feilv"];
+            pro.productID=diction[@"id"];
+            pro.post_excerpt=diction[@"post_excerpt"];
+            pro.order=diction[@"order"];
+            pro.other_auth=diction[@"other_auth"];
+            pro.order=diction[@"order"];
+            pro.other_id=diction[@"other_id"];
+            pro.pro_hits=diction[@"pro_hits"];
+            pro.pro_link=diction[@"pro_link"];
+            pro.pro_name=diction[@"pro_name"];
+            pro.shenqingtiaojian=diction[@"tiaojian"];
+            pro.type=diction[@"type"];
+
+            NSArray *tags=diction[@"tags"];
+            NSMutableArray *tagsArray=[NSMutableArray array];
+            for (NSDictionary *dic in tags) {
+                [tagsArray addObject:dic[@"tag_name"]];
+            }
+            pro.tagsArray=tagsArray;
+            pro.fv_unit=diction[@"fv_unit"];
+            
+            pro.qx_unit=diction[@"qx_unit"];
+            NSDictionary *detailDic=diction[@"guid"];
+            NSString *guid=detailDic[@"guid"];
+            
+            
+            
+            LoanDetaiViewController *load=[LoanDetaiViewController new];
+            load.product=pro;
+            [self.navigationController pushViewController:load animated:YES];
+
+            return;
+        }
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+   
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"kIsLogin"])
     {
         
@@ -707,8 +772,7 @@ static NSString *const adUrl = @"adUrl";
                         [self.navigationController pushViewController:vc animated:NO];
                         
                     }
-                    else
-                    {}
+                   
                 } failure:^(NSURLSessionDataTask *task, NSError *error) {
                     NSLog(@"%@",error);
                     

@@ -224,7 +224,7 @@
         case 0:
         {
             UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(30, 10, WIDTH-30*2, 100)];
-            label.text=@"sndlkas";
+            label.text=self.productModel.shenqingtiaojian;
             label.numberOfLines=0;
             [cell.contentView addSubview:label];
         }
